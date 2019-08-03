@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class LolextapiApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(LolextapiApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(LolextapiApplication.class, args);
+    }
 
 }
