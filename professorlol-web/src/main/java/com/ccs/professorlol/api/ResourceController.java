@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/resource")
+@RequestMapping("api/v1/resources")
 @RequiredArgsConstructor
 public class ResourceController {
 
