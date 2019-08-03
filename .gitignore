@@ -1,3 +1,4 @@
+.DS_Store
 HELP.md
 .gradle
 build/
@@ -31,4 +32,4 @@ out/
 ### VS Code ###
 .vscode/
 
-application-oauth.yml
+professorlol-web/src/main/resources/application-oauth.yml
