@@ -1,0 +1,25 @@
+<div class="elt">
+<h4 class="change-detail-title ability-title"><img src="./patchNote_9_14_files/image(12)">W - 일식</h4>
+<div class="attribute-change">
+<span class="attribute"><span class="new">신규</span>피해량 감소:</span>
+<span class="attribute-after">W - 일식이 감소 전 피해량을 8/12/16/20/24만큼 줄입니다. <strong>(최대 50% 감소)</strong></span>
+</div>
+<div class="attribute-change">
+<span class="attribute">방어력:</span>
+<span class="attribute-before">25/35/45/55/65</span>
+<span class="change-indicator">⇒</span>
+<span class="attribute-after">20/25/30/35/40</span>
+</div>
+<div class="attribute-change">
+<span class="attribute">마법 저항력:</span>
+<span class="attribute-before">20/30/40/50/60</span>
+<span class="change-indicator">⇒</span>
+<span class="attribute-after">20/25/30/35/40</span>
+</div>
+<hr class="divider">
+<h4 class="change-detail-title ability-title"><img src="./patchNote_9_14_files/image(13)">R - 흑점 폭발</h4>
+<div class="attribute-change">
+<span class="attribute"><span class="removed">삭제</span>작열:</span>
+<span class="attribute-removed">레오나가 R - 흑점 폭발 사용 후 기본 공격이 강화되지 않습니다.</span>
+</div>
+</div>
