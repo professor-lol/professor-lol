@@ -1,7 +1,9 @@
 package com.css.riotapi.interceptor;
 
+import com.css.riotapi.core.properties.XRiotTokenProperties;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,14 +11,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 public class RiotTokenInterceptorImplTest {
 
@@ -27,18 +32,23 @@ public class RiotTokenInterceptorImplTest {
     private RiotTokenInterceptor riotTokenInterceptor;
 
     @Autowired
-    XRiotTokenProperties xRiotTokenProperties;
+    private XRiotTokenProperties xRiotTokenProperties;
+
+    @LocalServerPort
+    private int randomServerPort;
 
     @Test
     public void intercept_헤더_정상추가_확인() {
+        //given
         RestTemplate restTemplate = new RestTemplateBuilder()
                 .additionalInterceptors(riotTokenInterceptor)
                 .build();
 
-        ResponseEntity<String> responseEntity = restTemplate.getForEntity("http://httpbin.org/get", String.class);
+        //when
+        Map<String,String> headers = restTemplate.getForObject("http://localhost:"+randomServerPort+"/api/test/get", Map.class);
 
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getHeaders().get(xRiotTokenProperties.getKey()).get(0)).isEqualTo(xRiotTokenProperties.getValue());
-        log.info(gson.toJson(responseEntity.getHeaders()));
+        //then
+        log.info(gson.toJson(headers));
+        assertThat(headers.get(xRiotTokenProperties.getKey().toLowerCase())).isEqualTo(xRiotTokenProperties.getValue());
     }
 }

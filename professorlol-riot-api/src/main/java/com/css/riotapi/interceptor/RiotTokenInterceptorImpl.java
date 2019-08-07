@@ -1,5 +1,6 @@
 package com.css.riotapi.interceptor;
 
+import com.css.riotapi.core.properties.XRiotTokenProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -16,9 +17,8 @@ public class RiotTokenInterceptorImpl implements RiotTokenInterceptor {
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
-        ClientHttpResponse response = execution.execute(request, body);
-        response.getHeaders()
-                .add(xRiotTokenProperties.getKey(), xRiotTokenProperties.getValue());
-        return response;
+        request.getHeaders()
+                .set(xRiotTokenProperties.getKey(),xRiotTokenProperties.getValue());
+        return execution.execute(request,body);
     }
 }

@@ -1,4 +1,4 @@
-package com.css.riotapi.interceptor;
+package com.css.riotapi.core.properties;
 
 import lombok.Getter;
 import lombok.Setter;

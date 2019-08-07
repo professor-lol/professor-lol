@@ -1,4 +1,4 @@
-package com.css.riotapi.interceptor;
+package com.css.riotapi.core.properties;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
