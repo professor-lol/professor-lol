@@ -31,12 +31,19 @@ public class SummonerRestTemplateImpl implements SummonerRestTemplate {
                 .build();
     }
 
+    @Override
     public SummonerDto getSummonerDto(String summonerName) {
-        SummonerDto summonerDto = null;
+        SummonerDto summonerDto;
         try {
             summonerDto = restTemplate.getForObject("/lol/summoner/v4/summoners/by-name/{summonerName}", SummonerDto.class, summonerName);
         } catch (RestClientException restException) {
-            throw new RuntimeException(restException.getMessage());
+            log.error("REST CLIENT EXCEPTION.");
+            log.error(restException.getMessage());
+            log.error(restException.getLocalizedMessage());
+            log.error(restException.getClass().getTypeName());
+            log.error(restException.getClass().getCanonicalName());
+            log.error(restException.getClass().getSimpleName());
+            throw restException;
         }
         return summonerDto;
     }

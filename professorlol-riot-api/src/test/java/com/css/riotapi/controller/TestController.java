@@ -14,6 +14,11 @@ import java.util.Map;
 @RequestMapping("/api/test")
 public class TestController {
 
+    /**
+     * Request 헤더를 테스트 하기 위한 테스트용 Controller
+     * @param request
+     * @return
+     */
     @GetMapping("/get")
     public ResponseEntity<Map<String, String>> getRequestHeader(HttpServletRequest request) {
         Map<String, String> headers = new HashMap<>();
