@@ -24,9 +24,6 @@ public class SecurityConfigTest {
 
     @Test
     public void google로그인_시도하면_OAuth인증창_등장한다() throws Exception {
-        //given
-        //when
-        //then
         this.mockMvc.perform(get("/oauth2/authorization/google"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
@@ -35,9 +32,7 @@ public class SecurityConfigTest {
 
     @Test
     public void 로그인_안하고_요청시_401() throws Exception {
-        //given
-        //when
-        //then
+
         this.mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(status().isUnauthorized());
