@@ -8,11 +8,14 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-@Service
-@RequiredArgsConstructor
+
 public class CustomUserService extends DefaultOAuth2UserService {
 
     private final AccessUserManager accessUserManager;
+
+    public CustomUserService(AccessUserManager accessUserManager) {
+        this.accessUserManager = accessUserManager;
+    }
 
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {

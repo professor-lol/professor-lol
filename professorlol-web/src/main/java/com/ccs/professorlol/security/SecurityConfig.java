@@ -1,5 +1,6 @@
 package com.ccs.professorlol.security;
 
+import com.ccs.professorlol.security.store.AccessUserSessionManager;
 import com.ccs.professorlol.security.user.CustomUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @RequiredArgsConstructor
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final CustomUserService customUserService;
+    private final AccessUserSessionManager accessUserSessionManager;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -25,6 +26,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().exceptionHandling().authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 .and().oauth2Login()
                 .userInfoEndpoint()
-                .userService(customUserService);
+                .userService(new CustomUserService(accessUserSessionManager));
     }
 }
