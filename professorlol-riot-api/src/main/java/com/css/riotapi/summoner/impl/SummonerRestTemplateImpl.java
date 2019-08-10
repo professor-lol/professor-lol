@@ -1,5 +1,6 @@
 package com.css.riotapi.summoner.impl;
 
+import com.css.riotapi.core.properties.RiotURIProperties;
 import com.css.riotapi.interceptor.RiotTokenInterceptor;
 import com.css.riotapi.summoner.SummonerRestTemplate;
 import com.css.riotapi.summoner.dto.SummonerDto;
@@ -15,17 +16,18 @@ import java.time.Duration;
 @Slf4j
 public class SummonerRestTemplateImpl implements SummonerRestTemplate {
 
-    private static final String ROOT_URI = "https://kr.api.riotgames.com";
     private static final Duration READ_TIME_OUT = Duration.ofMillis(2000);
     private static final Duration CONN_TIME_OUT = Duration.ofMillis(2000);
 
+    private final String SUMMONER_BY_NAME;
     private final RestTemplate restTemplate;
 
-    public SummonerRestTemplateImpl(RiotTokenInterceptor riotTokenInterceptor) {
+    public SummonerRestTemplateImpl(RiotTokenInterceptor riotTokenInterceptor, RiotURIProperties riotURIProperties) {
         log.info("LeagueRestTemplate Default Constructor.");
+        this.SUMMONER_BY_NAME = riotURIProperties.getSummonerByName();
         this.restTemplate = new RestTemplateBuilder()
                 .additionalInterceptors(riotTokenInterceptor)
-                .rootUri(ROOT_URI)
+                .rootUri(riotURIProperties.getHost())
                 .setConnectTimeout(CONN_TIME_OUT)
                 .setReadTimeout(READ_TIME_OUT)
                 .build();
@@ -35,7 +37,7 @@ public class SummonerRestTemplateImpl implements SummonerRestTemplate {
     public SummonerDto getSummonerDto(String summonerName) {
         SummonerDto summonerDto;
         try {
-            summonerDto = restTemplate.getForObject("/lol/summoner/v4/summoners/by-name/{summonerName}", SummonerDto.class, summonerName);
+            summonerDto = restTemplate.getForObject(SUMMONER_BY_NAME, SummonerDto.class, summonerName);
         } catch (RestClientException restException) {
             log.error("REST CLIENT EXCEPTION.");
             log.error(restException.getMessage());

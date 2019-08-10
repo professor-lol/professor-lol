@@ -1,5 +1,6 @@
 package com.css.riotapi.match.impl;
 
+import com.css.riotapi.core.properties.RiotURIProperties;
 import com.css.riotapi.interceptor.RiotTokenInterceptor;
 import com.css.riotapi.match.MatchRestTemplate;
 import com.css.riotapi.match.dto.MatchQueryParam;
@@ -14,16 +15,16 @@ import java.time.Duration;
 @Component
 public class MatchRestTemplateImpl implements MatchRestTemplate {
 
-    private static final String ROOT_URI = "https://kr.api.riotgames.com";
-    private static final String MATCH_LIST_BY_ACCOUNT = "/lol/match/v4/matchlists/by-account/{encryptedAccountId}";
     private static final Duration READ_TIME_OUT = Duration.ofMillis(2000);
     private static final Duration CONN_TIME_OUT = Duration.ofMillis(2000);
 
+    private final String MATCH_LIST_BY_ACCOUNT;
     private final RestTemplate restTemplate;
 
-    public MatchRestTemplateImpl(final RiotTokenInterceptor riotTokenInterceptor) {
+    public MatchRestTemplateImpl(final RiotTokenInterceptor riotTokenInterceptor, RiotURIProperties riotURIProperties) {
+        this.MATCH_LIST_BY_ACCOUNT = riotURIProperties.getMatchListByAccount();
         this.restTemplate = new RestTemplateBuilder()
-                .rootUri(ROOT_URI)
+                .rootUri(riotURIProperties.getHost())
                 .setReadTimeout(READ_TIME_OUT)
                 .setConnectTimeout(CONN_TIME_OUT)
                 .additionalInterceptors(riotTokenInterceptor)

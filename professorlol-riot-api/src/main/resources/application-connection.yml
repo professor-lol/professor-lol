@@ -1,0 +1,19 @@
+spring:
+  profiles: dev
+conn-time-out: 2000
+read-time-out: 2000
+
+---
+
+spring:
+  profiles: connTest
+
+conn-time-out: 0
+read-time-out: 2000
+
+---
+spring:
+  profiles: readTest
+
+conn-time-out: 2000
+read-time-out: 0

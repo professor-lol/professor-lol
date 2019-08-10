@@ -1,5 +1,6 @@
 package com.css.riotapi.league.impl;
 
+import com.css.riotapi.core.properties.RiotURIProperties;
 import com.css.riotapi.interceptor.RiotTokenInterceptor;
 import com.css.riotapi.league.LeagueRestTemplate;
 import com.css.riotapi.league.dto.LeagueEntryDto;
@@ -19,16 +20,17 @@ public class LeagueRestTemplateImpl implements LeagueRestTemplate {
 
     private static final Duration READ_TIME_OUT = Duration.ofMillis(2000);
     private static final Duration CONN_TIME_OUT = Duration.ofMillis(2000);
-    private static final String ROOT_URI = "https://kr.api.riotgames.com";
-    private static final String LEAGUE_ENTRY_BY_SUMMONER = "/lol/league/v4/entries/by-summoner/{encryptedSummonerId}";
 
+    private final String LEAGUE_ENTRY_BY_SUMMONER;
     private final RestTemplate restTemplate;
 
-    public LeagueRestTemplateImpl(RiotTokenInterceptor riotTokenInterceptor) {
+    public LeagueRestTemplateImpl(RiotTokenInterceptor riotTokenInterceptor, RiotURIProperties riotURIProperties) {
         log.info("LeagueRestTemplate Default Constructor.");
+        this.LEAGUE_ENTRY_BY_SUMMONER = riotURIProperties.getLeagueEntryBySummoner();
+
         this.restTemplate = new RestTemplateBuilder()
                 .additionalInterceptors(riotTokenInterceptor)
-                .rootUri(ROOT_URI)
+                .rootUri(riotURIProperties.getHost())
                 .setConnectTimeout(CONN_TIME_OUT)
                 .setReadTimeout(READ_TIME_OUT)
                 .build();
@@ -47,7 +49,6 @@ public class LeagueRestTemplateImpl implements LeagueRestTemplate {
     }
 
     private static class LeagueEntrySet extends HashSet<LeagueEntryDto> {
-
     }
 
 }
