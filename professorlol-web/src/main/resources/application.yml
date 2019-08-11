@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: local
+    include:
+      - oauth
+
+
+server.tomcat:
+  remote-ip-header: x-forwarded-for
+  protocol-header: x-forwarded-proto
