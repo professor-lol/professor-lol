@@ -1,4 +1,4 @@
-package com.css.riotapi.interceptor;
+package com.css.riotapi.core.interceptor;
 
 import com.css.riotapi.core.properties.XRiotTokenProperties;
 import lombok.RequiredArgsConstructor;

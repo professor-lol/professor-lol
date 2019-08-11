@@ -14,4 +14,6 @@ public class RiotURIProperties {
     private String leagueEntryBySummoner;
     private String summonerByName;
     private String matchListByAccount;
+    private String matchByMatchId;
+    private String thirdPartyCode;
 }

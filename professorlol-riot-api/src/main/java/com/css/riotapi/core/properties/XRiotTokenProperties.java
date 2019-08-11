@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter //이거 세터 없이 만드는 방법 없음??
 public class XRiotTokenProperties {
-
     private String key;
     private String value;
-
 }

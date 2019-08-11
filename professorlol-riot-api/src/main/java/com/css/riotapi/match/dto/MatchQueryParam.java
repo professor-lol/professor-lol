@@ -6,41 +6,51 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.Optional;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MatchQueryParam {
+    private static final String QUEUE = "queue";
+    private static final String SEASON = "season";
+    private static final String BEGIN_INDEX = "beginIndex";
+    private static final String END_INDEX = "endIndex";
 
-    private Set<Integer> queue;
-    private Set<Integer> season;
+    private Integer queue;
+    private Integer season;
     private Integer endIndex;
-    private Integer startIndex;
+    private Integer beginIndex;
 
-    public Map getQueryParam() {
-        MultiValueMap<String, Object> queryParam = new LinkedMultiValueMap<>();
-        if (!queue.isEmpty()) {
-            queryParam.add("queue", queue);
-        }
-        if (!season.isEmpty()) {
-            queryParam.add("season", season);
-        }
-        if (endIndex != null) {
-            queryParam.add("endIndex", endIndex);
-        }
-        if (startIndex != null) {
-            queryParam.add("endIndex", startIndex);
-        }
+    public MultiValueMap<String, String> getQueryParam() {
+        MultiValueMap<String, String> queryParam = new LinkedMultiValueMap<>();
+        addQueryParam(queryParam, QUEUE, queue);
+        addQueryParam(queryParam, SEASON, season);
+        addQueryParam(queryParam, BEGIN_INDEX, beginIndex);
+        addQueryParam(queryParam, END_INDEX, endIndex);
         return queryParam;
     }
 
+    private void addQueryParam(MultiValueMap<String, String> queryParam, String key, Integer maybeValue) {
+        Optional.ofNullable(maybeValue)
+                .map(String::valueOf)
+                .ifPresent(value -> queryParam.add(key, value));
+    }
+
+    public String getOptionalURI() {
+        return UriComponentsBuilder.newInstance()
+                .queryParams(getQueryParam())
+                .build()
+                .encode()
+                .toUriString();
+    }
+
     @Builder(builderMethodName = "testBuilder")
-    private MatchQueryParam(Set<Integer> queue, Set<Integer> season, Integer endIndex, Integer startIndex) {
+    private MatchQueryParam(Integer queue, Integer season, Integer endIndex, Integer beginIndex) {
         this.queue = queue;
         this.season = season;
         this.endIndex = endIndex;
-        this.startIndex = startIndex;
+        this.beginIndex = beginIndex;
     }
 }

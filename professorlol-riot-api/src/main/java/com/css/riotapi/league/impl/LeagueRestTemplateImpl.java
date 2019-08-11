@@ -1,7 +1,7 @@
 package com.css.riotapi.league.impl;
 
 import com.css.riotapi.core.properties.RiotURIProperties;
-import com.css.riotapi.interceptor.RiotTokenInterceptor;
+import com.css.riotapi.core.interceptor.RiotTokenInterceptor;
 import com.css.riotapi.league.LeagueRestTemplate;
 import com.css.riotapi.league.dto.LeagueEntryDto;
 import lombok.extern.slf4j.Slf4j;
@@ -18,21 +18,20 @@ import java.util.Set;
 @Slf4j
 public class LeagueRestTemplateImpl implements LeagueRestTemplate {
 
-    private static final Duration READ_TIME_OUT = Duration.ofMillis(2000);
-    private static final Duration CONN_TIME_OUT = Duration.ofMillis(2000);
+    private static final Duration READ_TIME = Duration.ofMillis(2000L);
+    private static final Duration CONN_TIME = Duration.ofMillis(2000L);
 
-    private final String LEAGUE_ENTRY_BY_SUMMONER;
+    private final String LEAGUE_ENTRY_BY_SUMMONER_URL;
     private final RestTemplate restTemplate;
 
     public LeagueRestTemplateImpl(RiotTokenInterceptor riotTokenInterceptor, RiotURIProperties riotURIProperties) {
         log.info("LeagueRestTemplate Default Constructor.");
-        this.LEAGUE_ENTRY_BY_SUMMONER = riotURIProperties.getLeagueEntryBySummoner();
-
+        this.LEAGUE_ENTRY_BY_SUMMONER_URL = riotURIProperties.getLeagueEntryBySummoner();
         this.restTemplate = new RestTemplateBuilder()
                 .additionalInterceptors(riotTokenInterceptor)
                 .rootUri(riotURIProperties.getHost())
-                .setConnectTimeout(CONN_TIME_OUT)
-                .setReadTimeout(READ_TIME_OUT)
+                .setReadTimeout(READ_TIME)
+                .setConnectTimeout(CONN_TIME)
                 .build();
     }
 
@@ -40,9 +39,8 @@ public class LeagueRestTemplateImpl implements LeagueRestTemplate {
     public Set<LeagueEntryDto> getLeagueEntries(String encryptedSummonerId) {
         Set<LeagueEntryDto> leagueEntrySet;
         try {
-            leagueEntrySet = restTemplate.getForObject(LEAGUE_ENTRY_BY_SUMMONER, LeagueEntrySet.class, encryptedSummonerId);
+            leagueEntrySet = restTemplate.getForObject(LEAGUE_ENTRY_BY_SUMMONER_URL, LeagueEntrySet.class, encryptedSummonerId);
         } catch (RestClientException restClientException) {
-            log.error(restClientException.getMessage());
             throw restClientException;
         }
         return leagueEntrySet;

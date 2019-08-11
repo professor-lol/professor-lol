@@ -1,3 +1,6 @@
 spring:
   profiles:
-    include: riot
+    active: dev
+    include: >
+      riot,
+      uri
