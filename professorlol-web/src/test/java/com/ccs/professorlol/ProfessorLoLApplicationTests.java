@@ -1,4 +1,4 @@
-package com.css.riotapi;
+package com.css.professorlol;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
