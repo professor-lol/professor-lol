@@ -1,0 +1,66 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+    }
+}
+
+//전체 프로젝트에 적용될 설정
+allprojects {
+
+}
+
+//모든 하위 프로젝트에 공통으로 적용될 설정
+subprojects {
+    group = 'com.ccs'
+    version = '0.0.1-SNAPSHOT'
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    sourceCompatibility = '1.8'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        runtimeOnly 'com.h2database:h2'
+        runtimeOnly 'mysql:mysql-connector-java'
+        runtimeOnly "org.mariadb.jdbc:mariadb-java-client"
+        testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+}
+
+project(':professorlol-web'){
+    dependencies {
+        compile project(':professorlol-riot-api')
+    }
+}
+
+/**
+ * main메소드가 필요없는 모듈의 경우 build.gradle에
+ * bootJar { enabled = false}
+ * jar {enabled = true}
+ */

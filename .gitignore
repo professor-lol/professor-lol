@@ -1,4 +1,8 @@
 .DS_Store
+### X-RIOT-KEY ###
+**/application-riot.yml
+
+
 HELP.md
 .gradle
 build/
