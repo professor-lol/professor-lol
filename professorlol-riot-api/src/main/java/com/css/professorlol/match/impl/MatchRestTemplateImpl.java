@@ -27,8 +27,8 @@ public class MatchRestTemplateImpl implements MatchRestTemplate {
     @Override
     public MatchlistDto getMatchList(final String encryptedAccountId, MatchQueryParam queryParam) {
         Map<String, Object> params = queryParam.getQueryParam();
-        Object[] parameters = {encryptedAccountId, queryParam.getQueue(), queryParam.getSeason(), queryParam.getEndIndex(), queryParam.getBeginIndex()};
-        return restTemplate.getForObject(MATCH_LIST_BY_ACCOUNT_URL, MatchlistDto.class, parameters);
+        params.put("encryptedAccountId", encryptedAccountId);
+        return restTemplate.getForObject(MATCH_LIST_BY_ACCOUNT_URL, MatchlistDto.class, params);
     }
 
     @Override
