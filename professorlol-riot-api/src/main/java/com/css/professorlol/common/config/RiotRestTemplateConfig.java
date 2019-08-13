@@ -1,7 +1,6 @@
-package com.css.professorlol.core;
+package com.css.professorlol.common.config;
 
-import com.css.professorlol.core.interceptor.RiotTokenInterceptor;
-import com.css.professorlol.core.properties.RiotURIProperties;
+import com.css.professorlol.common.interceptor.RiotTokenInterceptor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -19,79 +18,93 @@ import java.time.Duration;
 public class RiotRestTemplateConfig {
 
     private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
+    private static Duration ONE_SEC = Duration.ofMillis(1000L);
+    private static Duration TWO_SEC = Duration.ofMillis(2000L);
+
     private static RestTemplateBuilder defaultRestTemplateBuilder;
-    private final RiotURIProperties riotURIProperties;
     private final RiotTokenInterceptor riotTokenInterceptor;
 
     @PostConstruct
     public void init() {
-        log.debug("Riot RestTemplate Configuration init");
+        log.info("Riot RestTemplate Configuration init");
         defaultRestTemplateBuilder = new RestTemplateBuilder()
-                .additionalInterceptors(riotTokenInterceptor);
+                .additionalInterceptors(riotTokenInterceptor)
+                .rootUri(RIOT_HOST_URL);
     }
 
     @Profile("dev")
+    @Configuration
     static class RiotRestTemplate {
 
         @PostConstruct
         private void init() {
-            log.debug("dev RiotRestTemplate init");
+            log.info("dev profile RiotRestTemplate init");
         }
 
         @Bean(name = "summonerRestTemplateBean")
         public RestTemplate getSummonerRestTemplateBean() {
-            log.debug("Summoner RestTemplate Bean created");
-            Duration READ_TIME = Duration.ofMillis(1000L);
-            Duration CONN_TIME = Duration.ofMillis(2000L);
-            return defaultRestTemplateBuilder.rootUri(RIOT_HOST_URL)
-                    .setConnectTimeout(CONN_TIME)
-                    .setReadTimeout(READ_TIME)
+            log.info("Summoner RestTemplate Bean created");
+            return defaultRestTemplateBuilder.setConnectTimeout(ONE_SEC)
+                    .setReadTimeout(TWO_SEC)
                     .build();
         }
 
         @Bean(name = "leagueRestTemplateBean")
         public RestTemplate getLeagueRestTemplateBean() {
-            log.debug("League RestTemplate Bean created");
-            Duration READ_TIME = Duration.ofMillis(2000L);
-            Duration CONN_TIME = Duration.ofMillis(2000L);
-
-            return defaultRestTemplateBuilder.build();
+            log.info("League RestTemplate Bean created");
+            return defaultRestTemplateBuilder.setConnectTimeout(ONE_SEC)
+                    .setReadTimeout(TWO_SEC)
+                    .build();
         }
 
         @Bean(name = "matchRestTemplateBean")
         public RestTemplate getMatchRestTemplateBean() {
-            log.debug("Match RestTemplate Bean created");
-            Duration READ_TIME = Duration.ofMillis(2000L);
-            Duration CONN_TIME = Duration.ofMillis(2000L);
+            log.info("Match RestTemplate Bean created");
+            return defaultRestTemplateBuilder.setConnectTimeout(ONE_SEC)
+                    .setReadTimeout(TWO_SEC)
+                    .build();
+        }
 
-            return defaultRestTemplateBuilder.build();
+        @Bean(name = "thirdPartyRestTemplateBean")
+        public RestTemplate getThirdPartyRestTemplateBean() {
+            log.info("ThirdParty RestTemplate Bean created");
+            return defaultRestTemplateBuilder.setConnectTimeout(ONE_SEC)
+                    .setReadTimeout(TWO_SEC)
+                    .build();
         }
 
     }
 
     @Profile("test")
+    @Configuration
     static class RiotRestTemplateTest {
 
         @PostConstruct
         private void init() {
-            log.debug("test RiotRestTemplate init");
+            log.info("test profile RiotRestTemplate init");
         }
 
         @Bean(name = "summonerRestTemplateBean")
         public RestTemplate getSummonerRestTemplateBean() {
-            log.debug("Test Summoner RestTemplate Bean created");
+            log.info("Test Summoner RestTemplate Bean created");
             return defaultRestTemplateBuilder.build();
         }
 
         @Bean(name = "leagueRestTemplateBean")
         public RestTemplate getLeagueRestTemplateBean() {
-            log.debug("Test League RestTemplate Bean created");
+            log.info("Test League RestTemplate Bean created");
             return defaultRestTemplateBuilder.build();
         }
 
         @Bean(name = "matchRestTemplateBean")
         public RestTemplate getMatchRestTemplateBean() {
-            log.debug("Test Match RestTemplate Bean created");
+            log.info("Test Match RestTemplate Bean created");
+            return defaultRestTemplateBuilder.build();
+        }
+
+        @Bean(name = "thirdPartyRestTemplateBean")
+        public RestTemplate getThirdPartyRestTemplateBean() {
+            log.info("Test ThirdParty RestTemplate Bean created");
             return defaultRestTemplateBuilder.build();
         }
 

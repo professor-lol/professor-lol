@@ -4,11 +4,9 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.util.Optional;
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -23,27 +21,13 @@ public class MatchQueryParam {
     private Integer endIndex;
     private Integer beginIndex;
 
-    public MultiValueMap<String, String> getQueryParam() {
-        MultiValueMap<String, String> queryParam = new LinkedMultiValueMap<>();
-        addQueryParam(queryParam, QUEUE, queue);
-        addQueryParam(queryParam, SEASON, season);
-        addQueryParam(queryParam, BEGIN_INDEX, beginIndex);
-        addQueryParam(queryParam, END_INDEX, endIndex);
+    public Map<String, Object> getQueryParam() {
+        Map<String, Object> queryParam = new HashMap<>();
+        queryParam.put(QUEUE, queue);
+        queryParam.put(SEASON, season);
+        queryParam.put(END_INDEX, endIndex);
+        queryParam.put(BEGIN_INDEX, beginIndex);
         return queryParam;
-    }
-
-    private void addQueryParam(MultiValueMap<String, String> queryParam, String key, Integer maybeValue) {
-        Optional.ofNullable(maybeValue)
-                .map(String::valueOf)
-                .ifPresent(value -> queryParam.add(key, value));
-    }
-
-    public String getOptionalURI() {
-        return UriComponentsBuilder.newInstance()
-                .queryParams(getQueryParam())
-                .build()
-                .encode()
-                .toUriString();
     }
 
     @Builder(builderMethodName = "testBuilder")

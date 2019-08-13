@@ -1,6 +1,7 @@
 package com.css.professorlol.core.interceptor;
 
-import com.css.professorlol.core.properties.XRiotTokenProperties;
+import com.css.professorlol.common.interceptor.RiotTokenInterceptor;
+import com.css.professorlol.common.properties.XRiotTokenProperties;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Test;

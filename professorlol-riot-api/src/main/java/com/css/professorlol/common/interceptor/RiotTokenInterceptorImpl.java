@@ -1,6 +1,6 @@
-package com.css.professorlol.core.interceptor;
+package com.css.professorlol.common.interceptor;
 
-import com.css.professorlol.core.properties.XRiotTokenProperties;
+import com.css.professorlol.common.properties.XRiotTokenProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;

@@ -1,5 +1,6 @@
 package com.css.professorlol.core.properties;
 
+import com.css.professorlol.common.properties.XRiotTokenProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

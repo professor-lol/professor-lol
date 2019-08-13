@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.MultiValueMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -56,7 +55,6 @@ public class MatchRestTemplateImplTest {
 
         log.info(gson.toJson(matchQueryParam));
 
-        MultiValueMap param = matchQueryParam.getQueryParam();
 
         //when
         MatchlistDto matchlist = matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam);
@@ -77,8 +75,6 @@ public class MatchRestTemplateImplTest {
                 .build();
 
         log.info(gson.toJson(matchQueryParam));
-
-        MultiValueMap param = matchQueryParam.getQueryParam();
 
         //when
         MatchlistDto matchlist = matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam);
@@ -103,8 +99,6 @@ public class MatchRestTemplateImplTest {
                 .build();
 
         log.info(gson.toJson(matchQueryParam));
-
-        MultiValueMap param = matchQueryParam.getQueryParam();
 
         //when
         MatchlistDto matchlist = matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam);
