@@ -1,4 +1,4 @@
-package com.css.professorlol.common.properties;
+package com.css.professorlol.config.properties;
 
 import lombok.Getter;
 import lombok.Setter;

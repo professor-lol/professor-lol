@@ -1,6 +1,7 @@
-package com.css.professorlol.common.config;
+package com.css.professorlol.config;
 
-import com.css.professorlol.common.interceptor.RiotTokenInterceptor;
+import com.css.professorlol.config.exception.RiotExceptionHandler;
+import com.css.professorlol.config.interceptor.RiotTokenInterceptor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -22,13 +23,16 @@ public class RiotRestTemplateConfig {
     private static Duration TWO_SEC = Duration.ofMillis(2000L);
 
     private static RestTemplateBuilder defaultRestTemplateBuilder;
+
     private final RiotTokenInterceptor riotTokenInterceptor;
+    private final RiotExceptionHandler riotExceptionHandler;
 
     @PostConstruct
     public void init() {
         log.info("Riot RestTemplate Configuration init");
         defaultRestTemplateBuilder = new RestTemplateBuilder()
                 .additionalInterceptors(riotTokenInterceptor)
+                .errorHandler(riotExceptionHandler)
                 .rootUri(RIOT_HOST_URL);
     }
 
@@ -75,9 +79,9 @@ public class RiotRestTemplateConfig {
 
     }
 
-    @Profile("test")
+    @Profile("stub")
     @Configuration
-    static class RiotRestTemplateTest {
+    static class RiotRestTemplateStub {
 
         @PostConstruct
         private void init() {

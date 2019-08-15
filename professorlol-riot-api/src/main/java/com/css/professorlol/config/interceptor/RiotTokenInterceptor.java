@@ -1,4 +1,4 @@
-package com.css.professorlol.common.interceptor;
+package com.css.professorlol.config.interceptor;
 
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 

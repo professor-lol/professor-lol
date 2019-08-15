@@ -9,8 +9,10 @@ import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Set;
 
@@ -24,11 +26,14 @@ public class LeagueRestTemplateImplTest {
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Autowired
-    private LeagueRestTemplate leagueRestTemplate;
+    @Qualifier("leagueRestTemplateBean")
+    private RestTemplate restTemplate;
+
 
     @Test
     public void getLeagueEntries_성공시() {
         //given
+        LeagueRestTemplate leagueRestTemplate = new LeagueRestTemplateImpl(restTemplate);
         String encryptedSummonerId = "zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ";
 
         //when

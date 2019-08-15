@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import javax.validation.constraints.NotBlank;
 import java.util.Map;
 
 @Component
@@ -25,7 +26,7 @@ public class MatchRestTemplateImpl implements MatchRestTemplate {
     }
 
     @Override
-    public MatchlistDto getMatchList(final String encryptedAccountId, MatchQueryParam queryParam) {
+    public MatchlistDto getMatchList(@NotBlank final String encryptedAccountId, MatchQueryParam queryParam) {
         Map<String, Object> params = queryParam.getQueryParam();
         params.put("encryptedAccountId", encryptedAccountId);
         return restTemplate.getForObject(MATCH_LIST_BY_ACCOUNT_URL, MatchlistDto.class, params);
