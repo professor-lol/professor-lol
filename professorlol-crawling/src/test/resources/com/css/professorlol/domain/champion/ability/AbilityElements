@@ -1,0 +1,131 @@
+<hr class="divider">
+    <h4 class="change-detail-title">기본 능력치</h4>
+    <div class="attribute-change">
+        <span class="attribute">마나:</span>
+        <span class="attribute-before">400</span>
+        <span class="change-indicator">⇒</span>
+        <span class="attribute-after">300</span>
+    </div>
+    <div class="attribute-change">
+        <span class="attribute">마나 재생:</span>
+        <span class="attribute-before">6</span>
+        <span class="change-indicator">⇒</span>
+        <span class="attribute-after">8</span>
+    </div>
+    <hr class="divider">
+        <h4 class="change-detail-title ability-title"><img src="./PatchNote_9_12_files/image(3)">Q - 과부하</h4>
+        <div class="attribute-change">
+            <span class="attribute">최고 스킬 레벨:</span>
+            <span class="attribute-before">6</span>
+            <span class="change-indicator">⇒</span>
+            <span class="attribute-after">5</span>
+        </div>
+        <div class="attribute-change">
+            <span class="attribute">피해량:</span>
+            <span class="attribute-before">60/85/110/135/160/185</span>
+            <span class="change-indicator">⇒</span>
+            <span class="attribute-after">80/105/130/155/180</span>
+        </div>
+        <div class="attribute-change">
+            <span class="attribute"><span class="removed">삭제</span>보호막:</span>
+            <span class="attribute-removed">이제 룬이 2개 방출되어도 라이즈에게 보호막을 씌우지 않습니다.</span>
+        </div>
+        <div class="attribute-change">
+            <span class="attribute"><span class="‎‎‎‎updated">업데이트</span>추가 스킬 피해량:</span>
+            <span class="attribute-before">40/50/60/70/80% (E - 주문 전이 스킬 레벨에 따라)</span>
+            <span class="change-indicator">⇒</span>
+            <span class="attribute-after">10/40/70/100% (R - 공간 왜곡 스킬 레벨에 따라)</span>
+        </div>
+        <div class="attribute-change">
+            <span class="attribute">추가 이동 속도:</span>
+            <span class="attribute-before">25/28/31/34/37/40%</span>
+            <span class="change-indicator">⇒</span>
+            <span class="attribute-after">20/25/30/35/40%</span>
+        </div>
+        <hr class="divider">
+            <h4 class="change-detail-title ability-title"><img src="./PatchNote_9_12_files/image(4)">W - 룬 감옥</h4>
+            <div class="attribute-change">
+                <span class="attribute">추가 마나 피해량 계수:</span>
+                <span class="attribute-before">1%</span>
+                <span class="change-indicator">⇒</span>
+                <span class="attribute-after">4%</span>
+            </div>
+            <div class="attribute-change">
+                <span class="attribute">마나 소모량:</span>
+                <span class="attribute-before">50/60/70/80/90</span>
+                <span class="change-indicator">⇒</span>
+                <span class="attribute-after">40/55/70/85/100</span>
+            </div>
+            <div class="attribute-change">
+                <span class="attribute">기본 군중 제어 효과:</span>
+                <span class="attribute-before">0.75초 동안 속박</span>
+                <span class="change-indicator">⇒</span>
+                <span class="attribute-after">1.5초 동안 35% 둔화</span>
+            </div>
+            <div class="attribute-change">
+                <span class="attribute">E - 주문 전이 추가 효과:</span>
+                <span class="attribute-before">속박 지속시간 증가</span>
+                <span class="change-indicator">⇒</span>
+                <span class="attribute-after">둔화 대신 속박 적용</span>
+            </div>
+            <hr class="divider">
+                <h4 class="change-detail-title ability-title"><img src="./PatchNote_9_12_files/image(5)">E - 주문 전이</h4>
+                <div class="attribute-change">
+                    <span class="attribute">피해량:</span>
+                    <span class="attribute-before">70/90/110/130/150</span>
+                    <span class="change-indicator">⇒</span>
+                    <span class="attribute-after">60/80/100/120/140</span>
+                </div>
+                <div class="attribute-change">
+                    <span class="attribute">마나 소모량:</span>
+                    <span class="attribute-before">60/70/80/90/100</span>
+                    <span class="change-indicator">⇒</span>
+                    <span class="attribute-after">40/55/70/85/100</span>
+                </div>
+                <div class="attribute-change">
+                    <span class="attribute"><span class="new">신규</span>멀리 멀리 퍼져라:</span>
+                    <span class="attribute-after">이제 첫 번째 대상 주변의 적에게 항상 전이 표식을 남깁니다.</span>
+                </div>
+                <div class="attribute-change">
+                    <span class="attribute"><span class="removed">삭제</span>탱탱볼 튀기기:</span>
+                    <span class="attribute-removed">이제 퍼져나간 전이 표식이 적에게 피해를 입히지 않습니다.</span>
+                </div>
+                <div class="attribute-change">
+                    <span class="attribute"><span class="removed">삭제</span>전이된 폭탄:</span>
+                    <span class="attribute-removed">이제 스킬을 사용해 전이 표식이 남은 적을 처치해도 주변의 모든 적에게 전이 표식을 남기지 않습니다.</span>
+                </div>
+                <hr class="divider">
+                    <h4 class="change-detail-title ability-title"><img src="./PatchNote_9_12_files/image(6)">R - 공간 왜곡
+                    </h4>
+                    <div class="attribute-change">
+                        <span class="attribute">최고 스킬 레벨:</span>
+                        <span class="attribute-before">2</span>
+                        <span class="change-indicator">⇒</span>
+                        <span class="attribute-after">3</span>
+                    </div>
+                    <div class="attribute-change">
+                        <span class="attribute"><span class="new">신규</span>공간 왜곡 피해:</span>
+                        <span class="attribute-after">전이 표식이 남은 대상을 Q - 과부하로 공격하면 40/70/100%의 추가 피해를 입힙니다.</span>
+                    </div>
+                    <div class="attribute-change">
+                        <span class="attribute"><span class="new">신규</span>바짝 붙기:</span>
+                        <span class="attribute-after">사거리를 벗어난 위치에 사용하면 최대 사거리로 즉시 사용됩니다.</span>
+                    </div>
+                    <div class="attribute-change">
+                        <span class="attribute">최소 사거리:</span>
+                        <span class="attribute-before">730</span>
+                        <span class="change-indicator">⇒</span>
+                        <span class="attribute-after">1,000</span>
+                    </div>
+                    <div class="attribute-change">
+                        <span class="attribute">최대 사거리:</span>
+                        <span class="attribute-before">1,750/3,000</span>
+                        <span class="change-indicator">⇒</span>
+                        <span class="attribute-after">3,000</span>
+                    </div>
+                    <div class="attribute-change">
+                        <span class="attribute">재사용 대기시간:</span>
+                        <span class="attribute-before">180초</span>
+                        <span class="change-indicator">⇒</span>
+                        <span class="attribute-after">210/180/150초</span>
+                    </div>

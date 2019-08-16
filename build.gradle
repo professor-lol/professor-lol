@@ -34,16 +34,6 @@ subprojects {
         testCompile group: 'junit', name: 'junit', version: '4.12'
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
-        annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
-
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
-
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-        runtimeOnly 'com.h2database:h2'
-        runtimeOnly 'mysql:mysql-connector-java'
-        runtimeOnly "org.mariadb.jdbc:mariadb-java-client"
-        testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
     }
 
     configurations {
@@ -53,14 +43,13 @@ subprojects {
     }
 }
 
-project(':professorlol-web'){
+project(':professorlol-web') {   //application 모듈
     dependencies {
-        compile project(':professorlol-riot-api')
+        compile project(':professorlol-riot-api')   // 독립 모듈
+        compile project(':professorlol-core')       // 공통 모듈
     }
 }
 
 /**
  * main메소드가 필요없는 모듈의 경우 build.gradle에
- * bootJar { enabled = false}
- * jar {enabled = true}
- */
+ * bootJar { enabled = false}* jar {enabled = true}*/
