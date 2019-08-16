@@ -29,7 +29,6 @@ public class LeagueRestTemplateImplTest {
     @Qualifier("leagueRestTemplateBean")
     private RestTemplate restTemplate;
 
-
     @Test
     public void getLeagueEntries_성공시() {
         //given
