@@ -20,7 +20,6 @@ public class New {   // .attribute-change
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n========unit(new)========");
         sb.append("\nattribute : ").append(attribute);
         sb.append("\n>>>").append(content);
         return sb.toString();

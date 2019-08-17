@@ -19,8 +19,9 @@ public class Remove {   // .attribute-change
     private String content;       // 변경 후 능력 셋 .attribute-removed
 
     public String toString() {
-        return "\n========unit(remove)========" +
-                "\nattribute : " + attribute +
-                "\n>>>" + content;
+        StringBuilder sb = new StringBuilder();
+        sb.append("\nattribute : ").append(attribute);
+        sb.append("\n>>>").append(content);
+        return sb.toString();
     }
 }

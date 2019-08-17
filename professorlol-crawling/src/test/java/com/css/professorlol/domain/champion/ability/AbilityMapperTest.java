@@ -2,16 +2,21 @@ package com.css.professorlol.domain.champion.ability;
 
 import com.css.professorlol.jsoupUtil.DocumentUtil;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 
+import java.io.IOException;
+
+import static com.css.professorlol.domain.champion.ability.attribute.AttributeFactoryTest.ATTRIBUTE_FILE_PATH;
 import static org.junit.Assert.assertEquals;
 
 public class AbilityMapperTest {
 
-    public final static String ABILITY_FILE_PATH = "domain/champion/ability/AbilityOneElement";
+    public static final String ABILITY_FILE_PATH = "com/css/professorlol/domain/champion/ability/AbilityOneElement";
+
 
     Elements select;
 
@@ -30,6 +35,24 @@ public class AbilityMapperTest {
         assertEquals(2, ability.getRemoves().size());
         assertEquals(1, ability.getNews().size());
         assertEquals(2, ability.getChanges().size());
+    }
+
+    @Test
+    public void AbilityMapper의_인자_Attribute와_AttributeFactory에_사용되는_mock_대응() throws IOException {
+        //given
+        ClassPathResource resourceAbilityHTMLFile = new ClassPathResource(ABILITY_FILE_PATH);
+        Document abilityDocument = DocumentUtil.convertFromHtmlFile(resourceAbilityHTMLFile.getFile());
+        Element oneAbilityElement = abilityDocument.child(0);
+
+        ClassPathResource resourceAttributeHTMLFile = new ClassPathResource(ATTRIBUTE_FILE_PATH);
+        Document attributeDocument = DocumentUtil.convertFromHtmlFile(resourceAttributeHTMLFile.getFile());
+        Element manyAttributeElement = attributeDocument.child(0);
+        Elements attributeElements = manyAttributeElement.select(".attribute_change");
+
+        //when
+
+        //then
+        assertEquals(oneAbilityElement.val(), attributeElements.val());
     }
 
 }

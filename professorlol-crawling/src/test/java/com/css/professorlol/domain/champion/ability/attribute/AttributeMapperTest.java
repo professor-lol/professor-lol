@@ -12,11 +12,11 @@ import static org.junit.Assert.assertEquals;
 
 public class AttributeMapperTest {
 
-    public final static String ATTRIBUTE_DIRECTORY_PATH = "domain/champion/ability/attribute/";
+    public static final String ATTRIBUTE_DIRECTORY_PATH = "com/css/professorlol/domain/champion/ability/attribute/";
 
-    public final static String CHANGE_HTML_NAME = "AttributeChangeElements";
-    public final static String REMOVE_HTML_NAME = "AttributeRemoveElements";
-    public final static String NEW_HTML_NAME = "AttributeNewElements";
+    public static final String CHANGE_HTML_NAME = "AttributeChangeElements";
+    public static final String REMOVE_HTML_NAME = "AttributeRemoveElements";
+    public static final String NEW_HTML_NAME = "AttributeNewElements";
 
     @Test
     public void 하나의_Attribute_생성_확인_CHANGE() throws IOException {

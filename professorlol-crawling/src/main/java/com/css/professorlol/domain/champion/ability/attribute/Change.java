@@ -22,7 +22,6 @@ public class Change {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\n========unit(change)========");
         sb.append("\nattribute : ").append(attribute);
         sb.append("\n").append(beforeContent).append("->").append(afterContent);
         return sb.toString();

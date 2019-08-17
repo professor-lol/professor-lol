@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 public class AttributeFactoryTest {
 
-    public final static String ATTRIBUTE_FILE_PATH = "domain/champion/ability/attribute/AttributeAllElements";
+    public final static String ATTRIBUTE_FILE_PATH = "com/css/professorlol/domain/champion/ability/attribute/AttributeAllElements";
 
     Elements select;
 
