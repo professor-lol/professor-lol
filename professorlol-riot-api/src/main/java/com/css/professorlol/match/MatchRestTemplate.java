@@ -1,10 +1,11 @@
 package com.css.professorlol.match;
 
-import com.css.professorlol.match.dto.MatchQueryParam;
-import com.css.professorlol.match.dto.MatchlistDto;
+import com.css.professorlol.match.dto.match.MatchDto;
+import com.css.professorlol.match.dto.matchList.MatchQueryParam;
+import com.css.professorlol.match.dto.matchList.MatchlistDto;
 
 public interface MatchRestTemplate {
     MatchlistDto getMatchList(final String encryptedAccountId, MatchQueryParam queryParam);
 
-    Object getMatch(String matchId);
+    MatchDto getMatch(String matchId);
 }

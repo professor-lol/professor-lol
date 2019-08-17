@@ -1,4 +1,4 @@
-package com.css.professorlol.match.dto;
+package com.css.professorlol.match.dto.matchList;
 
 import lombok.AccessLevel;
 import lombok.Getter;

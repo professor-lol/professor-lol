@@ -1,9 +1,10 @@
 package com.css.professorlol.match.impl;
 
 import com.css.professorlol.match.MatchRestTemplate;
-import com.css.professorlol.match.dto.MatchQueryParam;
-import com.css.professorlol.match.dto.MatchReferenceDto;
-import com.css.professorlol.match.dto.MatchlistDto;
+import com.css.professorlol.match.dto.match.MatchDto;
+import com.css.professorlol.match.dto.matchList.MatchQueryParam;
+import com.css.professorlol.match.dto.matchList.MatchReferenceDto;
+import com.css.professorlol.match.dto.matchList.MatchlistDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
@@ -122,5 +123,23 @@ public class MatchRestTemplateImplTest {
                 .filter(queue -> queue.equals(420))
                 .count();
         assertThat(originalSize).isEqualTo(filteredSize);
+    }
+
+    @Test
+    public void getMatch_정상성공() {
+        //given
+        String matchId = "3724003832";
+
+        //when
+        MatchDto matchDto = matchRestTemplate.getMatch(matchId);
+
+        //then
+        assertThat(matchDto).isNotNull();
+        assertThat(matchDto.getParticipantIdentities()).isNotEmpty();
+        assertThat(matchDto.getTeams()).isNotEmpty();
+        assertThat(matchDto.getParticipants()).isNotEmpty();
+        assertThat(matchDto.getParticipants()).isNotNull();
+        assertThat(matchDto.getParticipants().get(0).getStats()).isNotNull();
+        log.info(gson.toJson(matchDto));
     }
 }

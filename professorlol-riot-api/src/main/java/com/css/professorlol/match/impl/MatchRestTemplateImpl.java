@@ -1,8 +1,9 @@
 package com.css.professorlol.match.impl;
 
 import com.css.professorlol.match.MatchRestTemplate;
-import com.css.professorlol.match.dto.MatchQueryParam;
-import com.css.professorlol.match.dto.MatchlistDto;
+import com.css.professorlol.match.dto.match.MatchDto;
+import com.css.professorlol.match.dto.matchList.MatchQueryParam;
+import com.css.professorlol.match.dto.matchList.MatchlistDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -33,7 +34,7 @@ public class MatchRestTemplateImpl implements MatchRestTemplate {
     }
 
     @Override
-    public Object getMatch(String matchId) {
-        return restTemplate.getForObject(MATCH_URL, Object.class);
+    public MatchDto getMatch(String matchId) {
+        return restTemplate.getForObject(MATCH_URL, MatchDto.class, matchId);
     }
 }

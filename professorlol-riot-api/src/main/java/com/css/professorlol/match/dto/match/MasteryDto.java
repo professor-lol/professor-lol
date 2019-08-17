@@ -1,14 +1,12 @@
-package com.css.professorlol.match.dto;
+package com.css.professorlol.match.dto.match;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class MatchDto {
-
-    List<TeamStatsDto> teams;
+public class MasteryDto {
+    Integer masteryId;
+    Integer rank;
 }

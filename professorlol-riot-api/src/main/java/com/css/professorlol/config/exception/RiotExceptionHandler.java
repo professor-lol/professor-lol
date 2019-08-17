@@ -27,7 +27,6 @@ public class RiotExceptionHandler implements ResponseErrorHandler {
         if (isClientError(response)) {
             log.info("[Client Error] : {}", response.getStatusCode());
             RiotExceptionDto exceptionDto = parseRiotExceptionBody(response);
-            log.info("exception body : " + exceptionDto.toString());
             return;
         }
         log.info("[Server error] : {}", response.getStatusCode());

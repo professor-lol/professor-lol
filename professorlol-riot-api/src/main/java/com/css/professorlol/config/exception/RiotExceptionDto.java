@@ -5,7 +5,6 @@ import lombok.*;
 
 @Getter
 @Builder
-@ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class RiotExceptionDto {
@@ -21,12 +20,10 @@ public class RiotExceptionDto {
     }
 
     @Getter
-    @ToString
     private static class Status {
         @JsonAlias("status_code")
         private String statusCode;
 
         private String message;
-
     }
 }
