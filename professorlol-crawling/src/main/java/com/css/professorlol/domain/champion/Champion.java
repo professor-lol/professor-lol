@@ -28,7 +28,7 @@ public class Champion { // .header-primary : 제목이 나온다 (여기 id 값�
                 "\nimage : " + image +
                 "\nsummary : " + summary +
                 "\ncontext : " + context +
-                "\nattribute : " + abilities.toString();
+                "\nabilities : " + abilities.toString();
     }
 
 }
