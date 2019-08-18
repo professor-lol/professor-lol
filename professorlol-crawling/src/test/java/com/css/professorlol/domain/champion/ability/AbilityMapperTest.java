@@ -1,35 +1,37 @@
 package com.css.professorlol.domain.champion.ability;
 
-import com.css.professorlol.jsoupUtil.DocumentUtil;
+import com.css.professorlol.util.DocumentUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
 
+import java.io.File;
 import java.io.IOException;
 
-import static com.css.professorlol.domain.champion.ability.attribute.AttributeFactoryTest.ATTRIBUTE_FILE_PATH;
+import static com.css.professorlol.domain.champion.ability.attribute.AttributeFactoryTest.ATTRIBUTE_FACTORY_FILE_PATH;
+import static com.css.professorlol.util.DocumentUtil.convertFromHtmlFile;
+import static com.css.professorlol.util.DocumentUtilTest.getFileFromPath;
 import static org.junit.Assert.assertEquals;
 
 public class AbilityMapperTest {
 
-    public static final String ABILITY_FILE_PATH = "com/css/professorlol/domain/champion/ability/AbilityOneElement";
+    public static final String ABILITY_MAPPER_FILE_PATH = "com/css/professorlol/domain/champion/ability/AbilityOneElement";
 
 
     Elements select;
 
     @Before
-    public void setUp() throws Exception {
-        ClassPathResource resourceHTMLFile = new ClassPathResource(ABILITY_FILE_PATH);
-        Document document = DocumentUtil.convertFromHtmlFile(resourceHTMLFile.getFile());
+    public void setUp() {
+        File resourceFile = getFileFromPath(ABILITY_MAPPER_FILE_PATH);
+        Document document = convertFromHtmlFile(resourceFile);
         select = document.children();
     }
 
     @Test
     public void 하나의_Ability_생성_확인() {
-        Ability ability = AbilityMapper.of(select);
+        Ability ability = AbilityMapper.convert(select);
         assertEquals("W - 룬 감옥", ability.getTitle());
         assertEquals("./PatchNote_9_12_files/image(4)", ability.getImage());
         assertEquals(2, ability.getRemoves().size());
@@ -38,14 +40,14 @@ public class AbilityMapperTest {
     }
 
     @Test
-    public void AbilityMapper의_인자_Attribute와_AttributeFactory에_사용되는_mock_대응() throws IOException {
+    public void AbilityMapper의_인자_Attribute와_AttributeFactory에_사용되는_mock_대응() {
         //given
-        ClassPathResource resourceAbilityHTMLFile = new ClassPathResource(ABILITY_FILE_PATH);
-        Document abilityDocument = DocumentUtil.convertFromHtmlFile(resourceAbilityHTMLFile.getFile());
+        File resourceAbilityHTMLFile = getFileFromPath(ABILITY_MAPPER_FILE_PATH);
+        Document abilityDocument = convertFromHtmlFile(resourceAbilityHTMLFile);
         Element oneAbilityElement = abilityDocument.child(0);
 
-        ClassPathResource resourceAttributeHTMLFile = new ClassPathResource(ATTRIBUTE_FILE_PATH);
-        Document attributeDocument = DocumentUtil.convertFromHtmlFile(resourceAttributeHTMLFile.getFile());
+        File resourceAttributeHTMLFile = getFileFromPath(ATTRIBUTE_FACTORY_FILE_PATH);
+        Document attributeDocument = convertFromHtmlFile(resourceAttributeHTMLFile);
         Element manyAttributeElement = attributeDocument.child(0);
         Elements attributeElements = manyAttributeElement.select(".attribute_change");
 

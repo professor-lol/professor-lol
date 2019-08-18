@@ -7,7 +7,5 @@ import java.io.IOException;
 
 public interface PatchNoteCrawler {
 
-    ChampionFactory getChampionPatchById(Long id) throws IOException;
-
-    ChampionFactory getChampionPatchByHtml(File html) throws IOException;
+    ChampionFactory getChampionPatchById(Long id);
 }

@@ -2,7 +2,6 @@ package com.css.professorlol.domain.champion.ability;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +17,7 @@ public class AbilityFactory {
     public static List<Ability> of(Element element) {
         return pretreatmentHtml(element).stream()
                 .map(abilityString -> Jsoup.parse(abilityString).children())
-                .map(AbilityMapper::of)
+                .map(AbilityMapper::convert)
                 .collect(Collectors.toList());
     }
 

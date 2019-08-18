@@ -1,4 +1,4 @@
-package com.css.professorlol.jsoupUtil;
+package com.css.professorlol.util;
 
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;

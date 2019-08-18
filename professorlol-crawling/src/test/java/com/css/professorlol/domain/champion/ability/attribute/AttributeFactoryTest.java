@@ -1,27 +1,29 @@
 package com.css.professorlol.domain.champion.ability.attribute;
 
-import com.css.professorlol.jsoupUtil.DocumentUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
 
+import java.io.File;
 import java.util.List;
 
+import static com.css.professorlol.util.DocumentUtil.convertFromHtmlFile;
+import static com.css.professorlol.util.DocumentUtilTest.getFileFromPath;
 import static org.junit.Assert.assertEquals;
 
 
 public class AttributeFactoryTest {
 
-    public final static String ATTRIBUTE_FILE_PATH = "com/css/professorlol/domain/champion/ability/attribute/AttributeAllElements";
+    public final static String ATTRIBUTE_FACTORY_FILE_PATH = "com/css/professorlol/domain/champion/ability/attribute/AttributeAllElements";
 
     Elements select;
 
     @Before
-    public void setUp() throws Exception {
-        ClassPathResource resourceHTMLFile = new ClassPathResource(ATTRIBUTE_FILE_PATH);
-        Document document = DocumentUtil.convertFromHtmlFile(resourceHTMLFile.getFile());
+    public void setUp(){
+        File resourceFile = getFileFromPath(ATTRIBUTE_FACTORY_FILE_PATH);
+        Document document = convertFromHtmlFile(resourceFile);
+
         select = document.children();
     }
 

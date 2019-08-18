@@ -4,12 +4,12 @@ import com.css.professorlol.domain.champion.ability.AbilityFactory;
 import org.jsoup.nodes.Element;
 
 import static com.css.professorlol.domain.champion.ChampionMapper.ChampionSelector.*;
-import static com.css.professorlol.jsoupUtil.ElementContextUtil.getTextFromCssSelector;
-import static com.css.professorlol.jsoupUtil.ElementContextUtil.getUrlFromCssSelector;
+import static com.css.professorlol.util.ElementContextUtil.getTextFromCssSelector;
+import static com.css.professorlol.util.ElementContextUtil.getUrlFromCssSelector;
 
 public class ChampionMapper {
 
-    static Champion of(Element element) {
+    public static Champion convert(Element element) {
 
         return Champion.builder()
                 .name(getTextFromCssSelector(element, NAME.cssQuery))

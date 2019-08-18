@@ -1,29 +1,31 @@
 package com.css.professorlol.domain.champion;
 
-import com.css.professorlol.jsoupUtil.DocumentUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
 
+import java.io.File;
 import java.io.IOException;
 
-import static com.css.professorlol.domain.champion.ability.AbilityFactoryTest.ABILITY_FILE_PATH;
+import static com.css.professorlol.domain.champion.ability.AbilityFactoryTest.ABILITY_FACTORY_FILE_PATH;
+import static com.css.professorlol.util.DocumentUtil.convertFromHtmlFile;
+import static com.css.professorlol.util.DocumentUtilTest.getFileFromPath;
 import static org.junit.Assert.assertEquals;
 
 
 public class ChampionMapperTest {
-    public final static String CHAMPION_FILE_PATH = "com/css/professorlol/domain/champion/ChampionOneElement";
+    public final static String CHAMPION_MAPPER_FILE_PATH = "com/css/professorlol/domain/champion/ChampionOneElement";
 
     @Test
-    public void 하나의_Champion_생성_확인() throws IOException {
+    public void 하나의_Champion_생성_확인() {
         //given
-        ClassPathResource resourceHTMLFile = new ClassPathResource(CHAMPION_FILE_PATH);
-        Document document = DocumentUtil.convertFromHtmlFile(resourceHTMLFile.getFile());
+
+        File resourceFile = getFileFromPath(CHAMPION_MAPPER_FILE_PATH);
+        Document document = convertFromHtmlFile(resourceFile);
         Element select = document.child(0);
 
         //when
-        Champion champion = ChampionMapper.of(select);
+        Champion champion = ChampionMapper.convert(select);
 
         //then
         assertEquals("라이즈", champion.getName());
@@ -52,19 +54,20 @@ public class ChampionMapperTest {
     }
 
     @Test
-    public void ChampionMapper의_인자_ability와_AbilityFactory에_사용되는_mock_대응() throws IOException {
+    public void ChampionMapper의_인자_ability와_AbilityFactory에_사용되는_mock_대응() {
         //given
-        ClassPathResource resourceChampionHTMLFile = new ClassPathResource(CHAMPION_FILE_PATH);
-        Document championDocument = DocumentUtil.convertFromHtmlFile(resourceChampionHTMLFile.getFile());
+
+        File resourceChampionHTMLFile = getFileFromPath(CHAMPION_MAPPER_FILE_PATH);
+        Document championDocument = convertFromHtmlFile(resourceChampionHTMLFile);
         Element abilitiesElements = championDocument.child(0);
 
-        ClassPathResource resourceAbilityHTMLFile = new ClassPathResource(ABILITY_FILE_PATH);
-        Document abilityDocument = DocumentUtil.convertFromHtmlFile(resourceAbilityHTMLFile.getFile());
+        File resourceAbilityHTMLFile = getFileFromPath(ABILITY_FACTORY_FILE_PATH);
+        Document abilityDocument = convertFromHtmlFile(resourceAbilityHTMLFile);
         Element manyAbilityElements = abilityDocument.child(0);
-
         //when
 
         //then
         assertEquals(abilitiesElements.val(), manyAbilityElements.val());
     }
+
 }
