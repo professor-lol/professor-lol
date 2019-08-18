@@ -4,15 +4,15 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import static com.css.professorlol.domain.champion.ability.attribute.AttributeMapper.AttributeSelector.*;
-import static com.css.professorlol.jsoupUtil.ElementContextUtil.getTextFromCssSelector;
-import static com.css.professorlol.jsoupUtil.ElementContextUtil.getTextFromElement;
+import static com.css.professorlol.util.ElementContextUtil.getTextFromCssSelector;
+import static com.css.professorlol.util.ElementContextUtil.getTextFromElement;
 
 public class AttributeMapper {
 
     public static final String ATTRIBUTE_EXTRA_STRING = ":";
     public static final String EMPTY_STRING = "";
 
-    static Change ofChange(Element element) {
+    protected static Change convertChange(Element element) {
         return Change.builder()
                 .attribute(getAttributeTextClearly(element))
                 .beforeContent(getTextFromCssSelector(element, BEFORE.cssQuery))
@@ -20,14 +20,14 @@ public class AttributeMapper {
                 .build();
     }
 
-    static Remove ofRemove(Element element) {
+    protected static Remove convertRemove(Element element) {
         return Remove.builder()
                 .attribute(getAttributeTextClearly(element))
                 .content(getTextFromCssSelector(element, REMOVE.cssQuery))
                 .build();
     }
 
-    static New ofNew(Element element) {
+    protected static New convertNew(Element element) {
         return New.builder()
                 .attribute(getAttributeTextClearly(element))
                 .content(getTextFromCssSelector(element, AFTER.cssQuery))

@@ -1,27 +1,29 @@
 package com.css.professorlol.domain.champion.ability;
 
-import com.css.professorlol.jsoupUtil.DocumentUtil;
+import com.css.professorlol.util.DocumentUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 
+import java.io.File;
 import java.util.List;
 
+import static com.css.professorlol.util.DocumentUtil.convertFromHtmlFile;
+import static com.css.professorlol.util.DocumentUtilTest.getFileFromPath;
 import static org.junit.Assert.assertEquals;
 
 public class AbilityFactoryTest {
 
-    public static final String ABILITY_FILE_PATH = "com/css/professorlol/domain/champion/ability/AbilityElements";
-
+    public static final String ABILITY_FACTORY_FILE_PATH = "com/css/professorlol/domain/champion/ability/AbilityElements";
 
     Element select;
 
     @Before
-    public void setUp() throws Exception {
-        ClassPathResource resourceHTMLFile = new ClassPathResource(ABILITY_FILE_PATH);
-        Document document = DocumentUtil.convertFromHtmlFile(resourceHTMLFile.getFile());
+    public void setUp() {
+        File resourceFile = getFileFromPath(ABILITY_FACTORY_FILE_PATH);
+        Document document = convertFromHtmlFile(resourceFile);
         select = document.child(0);
     }
 

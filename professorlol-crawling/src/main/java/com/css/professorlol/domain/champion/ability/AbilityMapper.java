@@ -6,13 +6,13 @@ import org.jsoup.select.Elements;
 import static com.css.professorlol.domain.champion.ability.AbilityMapper.AbilitySelector.*;
 import static com.css.professorlol.domain.champion.ability.attribute.AttributeFactory.ofNews;
 import static com.css.professorlol.domain.champion.ability.attribute.AttributeFactory.ofRemoves;
-import static com.css.professorlol.jsoupUtil.ElementContextUtil.getTextFromCssSelector;
-import static com.css.professorlol.jsoupUtil.ElementContextUtil.getUrlFromCssSelector;
+import static com.css.professorlol.util.ElementContextUtil.getTextFromCssSelector;
+import static com.css.professorlol.util.ElementContextUtil.getUrlFromCssSelector;
 
 
 public class AbilityMapper {
 
-    public static Ability of(Elements elements) {
+    public static Ability convert(Elements elements) {
 
         Elements attributeElements = elements.select(ATTRIBUTE_CHANGE.cssQuery);
 
@@ -25,7 +25,7 @@ public class AbilityMapper {
                 .build();
     }
 
-    enum AbilitySelector {
+    protected enum AbilitySelector {
 
         TITLE(".change-detail-title"),
         IMAGE(".change-detail-title img"),

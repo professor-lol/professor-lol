@@ -11,19 +11,19 @@ public class AttributeFactory {
 
     public static List<Change> ofChanges(Elements elements) {
         return selectChangeUnit(elements).stream()
-                .map(AttributeMapper::ofChange)
+                .map(AttributeMapper::convertChange)
                 .collect(Collectors.toList());
     }
 
     public static List<Remove> ofRemoves(Elements elements) {
         return selectRemoveUnit(elements).stream()
-                .map(AttributeMapper::ofRemove)
+                .map(AttributeMapper::convertRemove)
                 .collect(Collectors.toList());
     }
 
     public static List<New> ofNews(Elements elements) {
         return selectNewUnit(elements).stream()
-                .map(AttributeMapper::ofNew)
+                .map(AttributeMapper::convertNew)
                 .collect(Collectors.toList());
     }
 

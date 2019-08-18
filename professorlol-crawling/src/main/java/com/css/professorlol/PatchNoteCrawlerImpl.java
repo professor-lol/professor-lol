@@ -1,13 +1,9 @@
 package com.css.professorlol;
 
 import com.css.professorlol.domain.champion.ChampionFactory;
-import com.css.professorlol.jsoupUtil.DocumentUtil;
 import org.jsoup.nodes.Document;
 
-import java.io.File;
-import java.io.IOException;
-
-import static com.css.professorlol.jsoupUtil.DocumentUtil.convertFromUrlConnection;
+import static com.css.professorlol.util.DocumentUtil.convertFromUrlConnection;
 
 public class PatchNoteCrawlerImpl implements PatchNoteCrawler {
 
@@ -16,15 +12,9 @@ public class PatchNoteCrawlerImpl implements PatchNoteCrawler {
 //    262762
 
     @Override
-    public ChampionFactory getChampionPatchById(Long id) throws IOException {
+    public ChampionFactory getChampionPatchById(Long id) {
         String completeURL = BASE_URL_FRONT + id + BASE_URL_BACK;
         Document document = convertFromUrlConnection(completeURL);
-        return new ChampionFactory(document);
-    }
-
-    @Override
-    public ChampionFactory getChampionPatchByHtml(File file) throws IOException {
-        Document document = DocumentUtil.convertFromHtmlFile(file);
         return new ChampionFactory(document);
     }
 }
