@@ -1,10 +1,12 @@
 package com.css.professorlol.summoner.impl;
 
+import com.css.professorlol.config.exception.RiotException;
 import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -13,11 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Ignore
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class SummonerRestTemplateImplTest {
@@ -49,7 +51,7 @@ public class SummonerRestTemplateImplTest {
         log.info(gson.toJson(summonerDto));
     }
 
-    @Test
+    @Test(expected = RiotException.class)
     public void getSummonerDto_빈칸입력() {
         //given
         String summonerName = "";
@@ -60,7 +62,7 @@ public class SummonerRestTemplateImplTest {
         log.info(gson.toJson(summonerDto));
     }
 
-    @Test
+    @Test(expected = RiotException.class)
     public void getSummonerDto_NULL_입력() {
         //given
         String summonerName = null;
@@ -71,7 +73,7 @@ public class SummonerRestTemplateImplTest {
         log.info(gson.toJson(summonerDto));
     }
 
-    @Test
+    @Test(expected = RiotException.class)
     public void getSummonerDto_없는_소환사_이름() {
         //given
         String summonerName = "@";
@@ -80,7 +82,4 @@ public class SummonerRestTemplateImplTest {
         //then
         summonerRestTemplate.getSummonerDto(summonerName);
     }
-
-    //TODO: Exception Test Code
-
 }

@@ -26,10 +26,12 @@ public class RiotExceptionHandler implements ResponseErrorHandler {
     public void handleError(ClientHttpResponse response) throws IOException {
         if (isClientError(response)) {
             log.info("[Client Error] : {}", response.getStatusCode());
-            RiotExceptionDto exceptionDto = parseRiotExceptionBody(response);
-            return;
+            log.info(response.getStatusCode().getReasonPhrase());
+//            RiotExceptionDto exceptionDto = parseRiotExceptionBody(response);
+            throw RiotExceptionGroup.findExceptionByHttpStatus(response.getStatusCode());
         }
         log.info("[Server error] : {}", response.getStatusCode());
+        throw new RiotException("[Server Error] : " + response.getStatusCode());
     }
 
     private boolean isClientError(ClientHttpResponse response) throws IOException {
@@ -47,7 +49,8 @@ public class RiotExceptionHandler implements ResponseErrorHandler {
             String exceptionBody = br.readLine();
             return new ObjectMapper().readValue(exceptionBody, RiotExceptionDto.class);
         }
-        throw new NotJsonTypeException();
+        log.error("[Json Parsing Error] {} : {}", response.getStatusCode(), response.getStatusText());
+        throw new NotJsonTypeException(response.getStatusText());
     }
 
     private boolean isJson(ClientHttpResponse response) {

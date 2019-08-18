@@ -43,10 +43,11 @@ public class RiotTokenInterceptorImplTest {
                 .build();
 
         //when
-        Map<String,String> headers = restTemplate.getForObject("http://localhost:"+randomServerPort+"/api/test/get", Map.class);
+        Map headers = restTemplate.getForObject("http://localhost:" + randomServerPort + "/api/test/get", Map.class);
 
         //then
-        log.info(gson.toJson(headers));
+        assertThat(headers).isNotNull();
         assertThat(headers.get(xRiotTokenProperties.getKey().toLowerCase())).isEqualTo(xRiotTokenProperties.getValue());
+        log.info(gson.toJson(headers));
     }
 }

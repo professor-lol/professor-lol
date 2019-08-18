@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.*;
 
 @Getter
+@ToString
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -20,6 +21,7 @@ public class RiotExceptionDto {
     }
 
     @Getter
+    @ToString
     private static class Status {
         @JsonAlias("status_code")
         private String statusCode;

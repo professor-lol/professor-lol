@@ -4,6 +4,7 @@ import com.css.professorlol.league.LeagueRestTemplate;
 import com.css.professorlol.league.dto.LeagueEntryDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Ignore
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class LeagueRestTemplateImplTest {
