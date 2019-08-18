@@ -1,3 +1,7 @@
+bootJar { enabled = false }
+jar { enabled = true }
+
 dependencies {
-    compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
+    implementation 'org.jsoup:jsoup:1.11.3'
+    implementation 'org.springframework:spring-core:5.1.8.RELEASE'
 }
