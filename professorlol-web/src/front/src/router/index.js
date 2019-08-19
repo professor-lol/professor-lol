@@ -12,11 +12,15 @@ export default new VueRouter({
         },
         {
             path: '/page',
-            component: () = > import('@/views/HelloWorld'),
-},
-    {
-        path: '/login',
-        component: () = > import('@/views/LoginView'),
-}
-]
+            component: () => import('@/views/HelloWorld'),
+        },
+        {
+            path: '/login',
+            component: () => import('@/views/LoginView'),
+        },
+        {
+            path: '/registration',
+            component: () => import('@/views/RegistrationForm'),
+        }
+    ]
 })
