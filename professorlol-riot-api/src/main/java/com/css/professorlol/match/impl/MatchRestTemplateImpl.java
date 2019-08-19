@@ -5,14 +5,11 @@ import com.css.professorlol.match.dto.match.MatchDto;
 import com.css.professorlol.match.dto.matchList.MatchQueryParam;
 import com.css.professorlol.match.dto.matchList.MatchlistDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotBlank;
 import java.util.Map;
 
-@Component
 @Slf4j
 public class MatchRestTemplateImpl implements MatchRestTemplate {
 
@@ -21,7 +18,7 @@ public class MatchRestTemplateImpl implements MatchRestTemplate {
 
     private final RestTemplate restTemplate;
 
-    public MatchRestTemplateImpl(@Qualifier("matchRestTemplateBean") RestTemplate restTemplate) {
+    public MatchRestTemplateImpl(RestTemplate restTemplate) {
         log.info("MatchRestTemplate created.");
         this.restTemplate = restTemplate;
     }

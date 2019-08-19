@@ -1,11 +1,14 @@
-package com.css.professorlol.config.exception;
+package com.css.professorlol.config.exception.handler;
 
+import com.css.professorlol.config.exception.BadRequestException;
+import com.css.professorlol.config.exception.ClientException;
+import com.css.professorlol.config.exception.NotJsonTypeException;
+import com.css.professorlol.config.exception.dto.RiotExceptionDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpResponse;
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResponseErrorHandler;
 
 import java.io.BufferedReader;
@@ -14,8 +17,7 @@ import java.io.InputStreamReader;
 import java.util.Optional;
 
 @Slf4j
-@Component
-public class RiotExceptionHandler implements ResponseErrorHandler {
+public class RiotErrorHandler implements ResponseErrorHandler {
 
     @Override
     public boolean hasError(ClientHttpResponse response) throws IOException {
@@ -24,14 +26,17 @@ public class RiotExceptionHandler implements ResponseErrorHandler {
 
     @Override
     public void handleError(ClientHttpResponse response) throws IOException {
-        if (isClientError(response)) {
-            log.info("[Client Error] : {}", response.getStatusCode());
-            log.info(response.getStatusCode().getReasonPhrase());
-//            RiotExceptionDto exceptionDto = parseRiotExceptionBody(response);
-            throw RiotExceptionGroup.findExceptionByHttpStatus(response.getStatusCode());
+        RiotExceptionDto exceptionDto = parseRiotExceptionBody(response);
+        if (isBadRequest(response)) {
+            log.error("[Bad Request Exception] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
+            throw new BadRequestException(exceptionDto.getMessage());
         }
-        log.info("[Server error] : {}", response.getStatusCode());
-        throw new RiotException("[Server Error] : " + response.getStatusCode());
+        if (isClientError(response)) {
+            log.error("[Client Error] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
+            throw new ClientException(exceptionDto.getMessage());
+        }
+        log.error("[Server error] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
+        throw new SecurityException(exceptionDto.getMessage());
     }
 
     private boolean isClientError(ClientHttpResponse response) throws IOException {
@@ -40,6 +45,10 @@ public class RiotExceptionHandler implements ResponseErrorHandler {
 
     private boolean isServerError(ClientHttpResponse response) throws IOException {
         return response.getStatusCode().series() == HttpStatus.Series.SERVER_ERROR;
+    }
+
+    private boolean isBadRequest(ClientHttpResponse response) throws IOException {
+        return response.getStatusCode().equals(HttpStatus.BAD_REQUEST);
     }
 
     private RiotExceptionDto parseRiotExceptionBody(ClientHttpResponse response) throws IOException {

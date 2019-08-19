@@ -1,4 +1,4 @@
-package com.css.professorlol.config.exception;
+package com.css.professorlol.config.exception.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.*;
