@@ -3,18 +3,12 @@ package com.css.professorlol.summoner.impl;
 import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 public class SummonerRestTemplateStubImpl implements SummonerRestTemplate {
 
-    private static final String SUMMONER_BY_NAME_URL = "/lol/summoner/v4/summoners/by-name/{summonerName}";
-
-    private final RestTemplate restTemplate;
-
-    public SummonerRestTemplateStubImpl(RestTemplate restTemplate) {
+    public SummonerRestTemplateStubImpl() {
         log.info("Stub SummonerRestTemplate created.");
-        this.restTemplate = restTemplate;
     }
 
     @Override

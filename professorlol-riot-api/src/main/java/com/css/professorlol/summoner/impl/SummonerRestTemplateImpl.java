@@ -3,6 +3,7 @@ package com.css.professorlol.summoner.impl;
 import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.web.client.RestTemplate;
 
 @Slf4j
@@ -12,9 +13,9 @@ public class SummonerRestTemplateImpl implements SummonerRestTemplate {
 
     private final RestTemplate restTemplate;
 
-    public SummonerRestTemplateImpl(RestTemplate restTemplate) {
+    public SummonerRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
         log.info("SummonerRestTemplate created.");
-        this.restTemplate = restTemplate;
+        this.restTemplate = restTemplateBuilder.build();
     }
 
     @Override

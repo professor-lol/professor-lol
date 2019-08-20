@@ -22,7 +22,7 @@ public class RiotExceptionDto {
 
     @Getter
     @ToString
-    private static class Status {
+    public static class Status {
         @JsonAlias("status_code")
         private String statusCode;
 

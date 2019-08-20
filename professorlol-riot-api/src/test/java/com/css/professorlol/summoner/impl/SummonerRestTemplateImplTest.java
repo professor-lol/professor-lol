@@ -66,7 +66,7 @@ public class SummonerRestTemplateImplTest {
     @Test(expected = BadRequestException.class)
     public void getSummonerDto_올바르지_않은_값_입력() {
         //given
-        String summonerName = "";
+        String summonerName = null;
 
         //when
         //then (400 BAD REQUEST)
