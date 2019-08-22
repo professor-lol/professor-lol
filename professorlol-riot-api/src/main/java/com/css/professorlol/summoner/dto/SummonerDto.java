@@ -1,5 +1,6 @@
 package com.css.professorlol.summoner.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.*;
 
 @ToString
@@ -7,7 +8,8 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SummonerDto {
 
-    private String id;
+    @JsonAlias("id")
+    private String summonerId;
     private String accountId;
     //        private Integer profileIconId;
     //        private String name;
@@ -17,8 +19,8 @@ public class SummonerDto {
 
 
     @Builder(builderMethodName = "stubBuilder")
-    private SummonerDto(String id, String accountId) {
-        this.id = id;
+    private SummonerDto(String summonerId, String accountId) {
+        this.summonerId = summonerId;
         this.accountId = accountId;
     }
 }

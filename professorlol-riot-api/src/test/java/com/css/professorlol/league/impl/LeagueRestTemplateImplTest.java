@@ -1,0 +1,82 @@
+package com.css.professorlol.league.impl;
+
+import com.css.professorlol.config.exception.BadRequestException;
+import com.css.professorlol.config.resttemplate.LeagueRestTemplateConfig;
+import com.css.professorlol.league.LeagueRestTemplate;
+import com.css.professorlol.league.dto.LeagueEntryDto;
+import com.css.professorlol.summoner.impl.SummonerRestTemplateImplMockTest;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Set;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+@Ignore
+@SpringBootTest
+@RunWith(SpringRunner.class)
+@ActiveProfiles("dev")
+public class LeagueRestTemplateImplTest {
+
+    private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplateImplMockTest.class);
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+    @Autowired
+    private LeagueRestTemplateConfig.LeagueRestTemplateConfiguration leagueRestTemplateConfiguration;
+
+    private LeagueRestTemplate leagueRestTemplate;
+
+    @Before
+    public void setUp() throws Exception {
+        leagueRestTemplate = leagueRestTemplateConfiguration.leagueRestTemplate();
+    }
+
+    @Test
+    public void getLeagueEntries_정상호출() {
+        //given
+        String encodedSummonerId = "wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCg";
+
+        //when
+        Set<LeagueEntryDto> leagueEntries = leagueRestTemplate.getLeagueEntries(encodedSummonerId);
+
+        //then
+        assertThat(leagueEntries).isNotNull();
+        assertThat(leagueEntries).isNotEmpty();
+        log.info(gson.toJson(leagueEntries));
+    }
+
+    @Test
+    public void getLeagueEntries_정상호출_결과없음() {
+        //given
+        String encodedSummonerId = "ssgqMEzI5DLXfQGYyYVJKZUqMpT-qvjbwJqw_CaRJl6i0A";
+
+        //when
+        Set<LeagueEntryDto> leagueEntryDtoSet = leagueRestTemplate.getLeagueEntries(encodedSummonerId);
+
+        //then
+        assertThat(leagueEntryDtoSet).isNotNull();
+        assertThat(leagueEntryDtoSet).isEmpty();
+        log.info(gson.toJson(leagueEntryDtoSet));
+    }
+
+    @Test(expected = BadRequestException.class)
+    public void getLeagueEntries() {
+        //given
+        String encodedSummonerId = "w";
+
+        //when
+        leagueRestTemplate.getLeagueEntries(encodedSummonerId);
+
+        //then
+    }
+}

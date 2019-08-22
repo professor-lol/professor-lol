@@ -60,7 +60,6 @@ public class SummonerRestTemplateImplTest {
         //when
         //then (404 NOT FOUND)
         SummonerDto summonerDto = this.summonerRestTemplate.getSummonerDto(summonerName);
-
     }
 
     @Test(expected = BadRequestException.class)

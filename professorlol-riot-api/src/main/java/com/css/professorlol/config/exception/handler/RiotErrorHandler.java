@@ -3,6 +3,7 @@ package com.css.professorlol.config.exception.handler;
 import com.css.professorlol.config.exception.BadRequestException;
 import com.css.professorlol.config.exception.ClientException;
 import com.css.professorlol.config.exception.NotJsonTypeException;
+import com.css.professorlol.config.exception.ServerException;
 import com.css.professorlol.config.exception.dto.RiotExceptionDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -32,11 +33,11 @@ public class RiotErrorHandler implements ResponseErrorHandler {
             throw new BadRequestException(exceptionDto.getMessage());
         }
         if (isClientError(response)) {
-            log.error("[Client Error] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
+            log.error("[Client Exception] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
             throw new ClientException(exceptionDto.getMessage());
         }
-        log.error("[Server error] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
-        throw new SecurityException(exceptionDto.getMessage());
+        log.error("[Server Exception] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
+        throw new ServerException(exceptionDto.getMessage());
     }
 
     private boolean isClientError(ClientHttpResponse response) throws IOException {
@@ -58,7 +59,7 @@ public class RiotErrorHandler implements ResponseErrorHandler {
             String exceptionBody = br.readLine();
             return new ObjectMapper().readValue(exceptionBody, RiotExceptionDto.class);
         }
-        log.error("[Json Parsing Error] {} : {}", response.getStatusCode(), response.getStatusText());
+        log.error("[Json Parsing Exception] {} : {}", response.getStatusCode(), response.getStatusText());
         throw new NotJsonTypeException(response.getStatusText());
     }
 

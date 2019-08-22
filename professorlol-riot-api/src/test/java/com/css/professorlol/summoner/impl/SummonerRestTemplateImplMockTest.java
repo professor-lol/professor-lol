@@ -56,7 +56,7 @@ public class SummonerRestTemplateImplMockTest {
 
         SummonerDto expectSummonerDto = SummonerDto.stubBuilder()
                 .accountId("w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv")
-                .id("zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ")
+                .summonerId("zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ")
                 .build();
 
         String expectBody = "{\n" +
@@ -77,7 +77,8 @@ public class SummonerRestTemplateImplMockTest {
 
         //then
         assertThat(resultSummonerDto.getAccountId()).isEqualTo(expectSummonerDto.getAccountId());
-        assertThat(resultSummonerDto.getId()).isEqualTo(expectSummonerDto.getId());
+        assertThat(resultSummonerDto.getSummonerId()).isEqualTo(expectSummonerDto.getSummonerId());
+        log.info(gson.toJson(resultSummonerDto));
     }
 
     @Test(expected = BadRequestException.class)
@@ -99,9 +100,8 @@ public class SummonerRestTemplateImplMockTest {
                         .contentType(MediaType.APPLICATION_JSON_UTF8));
 
         //when
-        summonerRestTemplate.getSummonerDto(summonerName);
-
         //then
+        summonerRestTemplate.getSummonerDto(summonerName);
     }
 
     @Test(expected = ClientException.class)
@@ -122,9 +122,8 @@ public class SummonerRestTemplateImplMockTest {
                         .contentType(MediaType.APPLICATION_JSON_UTF8));
 
         //when
-        summonerRestTemplate.getSummonerDto(summonerName);
-
         //then
+        summonerRestTemplate.getSummonerDto(summonerName);
     }
 
 }

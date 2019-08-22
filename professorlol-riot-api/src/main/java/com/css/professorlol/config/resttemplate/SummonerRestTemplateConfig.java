@@ -23,21 +23,24 @@ public class SummonerRestTemplateConfig {
     @RequiredArgsConstructor
     @Configuration
     public static class SummonerRestTemplateConfiguration {
+        private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
 
         private static final Duration ONE_SEC = Duration.ofMillis(1000);
         private static final Duration TWO_SEC = Duration.ofMillis(2000);
 
         private final XRiotTokenProperties xRiotTokenProperties;
+        private final RestTemplateBuilder restTemplateBuilder;
 
         @Bean
         public SummonerRestTemplate summonerRestTemplate() {
             log.info("Summoner RestTemplate Bean created");
             RiotErrorHandler riotErrorHandler = new RiotErrorHandler();
             RiotTokenInterceptor riotTokenInterceptor = new RiotTokenInterceptor(xRiotTokenProperties);
-            return new SummonerRestTemplateImpl(new RestTemplateBuilder().setConnectTimeout(ONE_SEC)
+            return new SummonerRestTemplateImpl(this.restTemplateBuilder.setConnectTimeout(ONE_SEC)
                     .setReadTimeout(TWO_SEC)
                     .errorHandler(riotErrorHandler)
-                    .additionalInterceptors(riotTokenInterceptor));
+                    .additionalInterceptors(riotTokenInterceptor)
+                    .rootUri(RIOT_HOST_URL));
         }
 
     }

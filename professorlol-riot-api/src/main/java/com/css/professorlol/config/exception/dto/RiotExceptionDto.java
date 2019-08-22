@@ -12,11 +12,11 @@ public class RiotExceptionDto {
 
     private Status status;
 
-    public String getStatusCode(){
+    public String getStatusCode() {
         return this.status.getStatusCode();
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return this.status.getMessage();
     }
 
