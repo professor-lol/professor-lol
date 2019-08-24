@@ -14,6 +14,20 @@ public class MockResponse {
                 "}").toString();
     }
 
+    public static String getSummonerMockBody() {
+        return new JsonParser().parse(
+                "{\n" +
+                        "    \"profileIconId\": 3460,\n" +
+                        "    \"name\": \"뱅기현\",\n" +
+                        "    \"puuid\": \"bFS_eddekovrchWduGsx9vXUs0WkU5jQ5mZeI7WNZ_pg-dXdGOSHKVaHu0twY2mKS6Dv3fIGcW353A\",\n" +
+                        "    \"summonerLevel\": 124,\n" +
+                        "    \"accountId\": \"ZCKKNXiQCxnU6iZItHeoPu8skeTkf2LMZjd8_SxXIBqY\",\n" +
+                        "    \"id\": \"wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCg\",\n" +
+                        "    \"revisionDate\": 1566430195000\n" +
+                        "}"
+        ).toString();
+    }
+
     public static String getLeagueMockBody() {
         return new JsonParser().parse("[\n" +
                 "    {\n" +
@@ -55,1009 +69,1009 @@ public class MockResponse {
                 "{\n" +
                         "    \"matches\": [\n" +
                         "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3725077500,\n" +
-                        "            \"champion\": 24,\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3822675440,\n" +
+                        "            \"champion\": 222,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561799579620,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 13\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3724003832,\n" +
-                        "            \"champion\": 45,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561739744506,\n" +
+                        "            \"timestamp\": 1566453404650,\n" +
                         "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3723917853,\n" +
-                        "            \"champion\": 85,\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3822700720,\n" +
+                        "            \"champion\": 412,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561737669035,\n" +
+                        "            \"timestamp\": 1566451370949,\n" +
                         "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3723859755,\n" +
-                        "            \"champion\": 85,\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3822592922,\n" +
+                        "            \"champion\": 43,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561735495622,\n" +
+                        "            \"timestamp\": 1566446784376,\n" +
                         "            \"queue\": 420,\n" +
                         "            \"role\": \"DUO_SUPPORT\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3719751013,\n" +
-                        "            \"champion\": 85,\n" +
+                        "            \"gameId\": 3822602147,\n" +
+                        "            \"champion\": 17,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561469229560,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 13\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3719071403,\n" +
-                        "            \"champion\": 45,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561399253656,\n" +
+                        "            \"timestamp\": 1566446314106,\n" +
                         "            \"queue\": 420,\n" +
                         "            \"role\": \"DUO\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3719056731,\n" +
-                        "            \"champion\": 85,\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3822549423,\n" +
+                        "            \"champion\": 122,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561397230517,\n" +
+                        "            \"timestamp\": 1566444595092,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3822536840,\n" +
+                        "            \"champion\": 555,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566442616419,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"NONE\",\n" +
+                        "            \"gameId\": 3820546304,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566306362099,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3820452945,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566303657251,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3820371911,\n" +
+                        "            \"champion\": 67,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566301144227,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3820361324,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566299051301,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3819959210,\n" +
+                        "            \"champion\": 222,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566283239602,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3819934753,\n" +
+                        "            \"champion\": 122,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566281342140,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3819960801,\n" +
+                        "            \"champion\": 555,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566279557666,\n" +
                         "            \"queue\": 420,\n" +
                         "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3818679807,\n" +
+                        "            \"champion\": 555,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566206948476,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3818635141,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566205307548,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3818275049,\n" +
+                        "            \"champion\": 122,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566179306964,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3818263240,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566177325191,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3818261346,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566175315568,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3818228924,\n" +
+                        "            \"champion\": 51,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1566173453689,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3814059502,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565990473918,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3814037735,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565988146966,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3814035725,\n" +
+                        "            \"champion\": 555,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565986052162,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3805398558,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565595885996,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3805379039,\n" +
+                        "            \"champion\": 122,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565593690533,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"JUNGLE\",\n" +
+                        "            \"gameId\": 3805343704,\n" +
+                        "            \"champion\": 28,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565591720565,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"NONE\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"JUNGLE\",\n" +
+                        "            \"gameId\": 3805305787,\n" +
+                        "            \"champion\": 64,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565589711812,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"NONE\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"NONE\",\n" +
+                        "            \"gameId\": 3805301635,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565588451044,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3804334455,\n" +
+                        "            \"champion\": 81,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565532435185,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3804280397,\n" +
+                        "            \"champion\": 555,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565530001182,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3804128856,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565527611190,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3795849554,\n" +
+                        "            \"champion\": 122,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565151274354,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3795862564,\n" +
+                        "            \"champion\": 81,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565148625192,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3795828504,\n" +
+                        "            \"champion\": 555,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565146822073,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3795834066,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1565144780366,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3791780503,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564941944678,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3791745805,\n" +
+                        "            \"champion\": 67,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564940162954,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3790445725,\n" +
+                        "            \"champion\": 12,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564905593903,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3790414578,\n" +
+                        "            \"champion\": 122,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564903712777,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3790344683,\n" +
+                        "            \"champion\": 67,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564901772480,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3790293464,\n" +
+                        "            \"champion\": 81,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564899580534,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3790233275,\n" +
+                        "            \"champion\": 51,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564897373261,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"NONE\",\n" +
+                        "            \"gameId\": 3790165830,\n" +
+                        "            \"champion\": 555,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564895678447,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"MID\",\n" +
+                        "            \"gameId\": 3790129151,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564894057926,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3790103485,\n" +
+                        "            \"champion\": 89,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564892309691,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3790046767,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564890091115,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3787987863,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564797415199,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3788013476,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564795314763,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3784127366,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564589284112,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3784131270,\n" +
+                        "            \"champion\": 51,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564587649152,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3782724764,\n" +
+                        "            \"champion\": 81,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564539897159,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3782710405,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564537475330,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"NONE\",\n" +
+                        "            \"gameId\": 3782409655,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564536965551,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3781163352,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1564477573662,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"NONE\",\n" +
+                        "            \"gameId\": 3768592502,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1563872963410,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3768265778,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1563866239496,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"NONE\",\n" +
+                        "            \"gameId\": 3767465533,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1563810141151,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3756222011,\n" +
+                        "            \"champion\": 122,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1563332201381,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3749962239,\n" +
+                        "            \"champion\": 51,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1563017512795,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"NONE\",\n" +
+                        "            \"gameId\": 3737804742,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1562411692431,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3734529721,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1562260764583,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3734524541,\n" +
+                        "            \"champion\": 51,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1562258825246,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"MID\",\n" +
+                        "            \"gameId\": 3734510280,\n" +
+                        "            \"champion\": 51,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1562257235601,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3734423896,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1562255076343,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3734361972,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1562252159062,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3730822043,\n" +
+                        "            \"champion\": 122,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1562074595356,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3730770264,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1562072263743,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3725077500,\n" +
+                        "            \"champion\": 555,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561799579620,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"MID\",\n" +
+                        "            \"gameId\": 3721550045,\n" +
+                        "            \"champion\": 15,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561574701759,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"lane\": \"MID\",\n" +
                         "            \"gameId\": 3719032853,\n" +
-                        "            \"champion\": 63,\n" +
+                        "            \"champion\": 15,\n" +
                         "            \"platformId\": \"KR\",\n" +
                         "            \"timestamp\": 1561394351729,\n" +
                         "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"role\": \"DUO\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
                         "            \"gameId\": 3718977216,\n" +
-                        "            \"champion\": 24,\n" +
+                        "            \"champion\": 25,\n" +
                         "            \"platformId\": \"KR\",\n" +
                         "            \"timestamp\": 1561391855895,\n" +
                         "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO\",\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
                         "            \"gameId\": 3718971997,\n" +
-                        "            \"champion\": 8,\n" +
+                        "            \"champion\": 43,\n" +
                         "            \"platformId\": \"KR\",\n" +
                         "            \"timestamp\": 1561389895067,\n" +
                         "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
                         "            \"gameId\": 3718943736,\n" +
-                        "            \"champion\": 24,\n" +
+                        "            \"champion\": 89,\n" +
                         "            \"platformId\": \"KR\",\n" +
                         "            \"timestamp\": 1561387692257,\n" +
                         "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
                         "            \"gameId\": 3718819698,\n" +
-                        "            \"champion\": 78,\n" +
+                        "            \"champion\": 555,\n" +
                         "            \"platformId\": \"KR\",\n" +
                         "            \"timestamp\": 1561385823744,\n" +
                         "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO\",\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
                         "            \"gameId\": 3718716278,\n" +
-                        "            \"champion\": 78,\n" +
+                        "            \"champion\": 25,\n" +
                         "            \"platformId\": \"KR\",\n" +
                         "            \"timestamp\": 1561382242896,\n" +
                         "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 13\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3717832804,\n" +
-                        "            \"champion\": 39,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561311040215,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 13\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3717786398,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561308069375,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 13\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3717774018,\n" +
-                        "            \"champion\": 45,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561306660212,\n" +
-                        "            \"queue\": 420,\n" +
                         "            \"role\": \"DUO_SUPPORT\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3717718599,\n" +
-                        "            \"champion\": 45,\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3717830729,\n" +
+                        "            \"champion\": 15,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1561304558962,\n" +
+                        "            \"timestamp\": 1561309822674,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3717766204,\n" +
+                        "            \"champion\": 67,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561307426859,\n" +
                         "            \"queue\": 420,\n" +
                         "            \"role\": \"DUO\",\n" +
                         "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3468886722,\n" +
-                        "            \"champion\": 78,\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3717751828,\n" +
+                        "            \"champion\": 555,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1545587378275,\n" +
+                        "            \"timestamp\": 1561305446046,\n" +
                         "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO_CARRY\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3468903395,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1545585546205,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3463758559,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1545238723047,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3462570436,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1545142362221,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3462480375,\n" +
-                        "            \"champion\": 131,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1545139480378,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3462442498,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1545137505834,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3462395767,\n" +
-                        "            \"champion\": 105,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1545135859095,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3462367114,\n" +
-                        "            \"champion\": 84,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1545133802081,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3462327668,\n" +
-                        "            \"champion\": 12,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1545131399843,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3459152525,\n" +
-                        "            \"champion\": 516,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544897309969,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3459136925,\n" +
-                        "            \"champion\": 85,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544895111655,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3459079420,\n" +
-                        "            \"champion\": 131,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544892338846,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3459048383,\n" +
-                        "            \"champion\": 131,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544891744404,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3457661615,\n" +
-                        "            \"champion\": 24,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544806704541,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3453461246,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544465667344,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3453378747,\n" +
-                        "            \"champion\": 84,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544463403234,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3452301470,\n" +
-                        "            \"champion\": 202,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544368387569,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3452233219,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544365370233,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3452213758,\n" +
-                        "            \"champion\": 102,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544363251347,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3452145250,\n" +
-                        "            \"champion\": 14,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544361118602,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3452066134,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544358809415,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3449420775,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544206075270,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3449247401,\n" +
-                        "            \"champion\": 236,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544204419349,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_CARRY\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3449222297,\n" +
-                        "            \"champion\": 13,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544201955677,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3449170851,\n" +
-                        "            \"champion\": 236,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544198740252,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_CARRY\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3447922029,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544112340278,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"JUNGLE\",\n" +
-                        "            \"gameId\": 3446887775,\n" +
-                        "            \"champion\": 104,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544031335948,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"NONE\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3446864793,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1544029029365,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3445779706,\n" +
-                        "            \"champion\": 101,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543941825399,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3445760652,\n" +
-                        "            \"champion\": 102,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543937373534,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3445725153,\n" +
-                        "            \"champion\": 102,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543935451547,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3445668892,\n" +
-                        "            \"champion\": 20,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543933380655,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3445092342,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543913959892,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO_CARRY\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3444763698,\n" +
-                        "            \"champion\": 81,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543854123445,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_CARRY\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"JUNGLE\",\n" +
-                        "            \"gameId\": 3443708237,\n" +
-                        "            \"champion\": 104,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543772635736,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"NONE\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3443713820,\n" +
-                        "            \"champion\": 104,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543769748877,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3443681529,\n" +
-                        "            \"champion\": 102,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543767668320,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"JUNGLE\",\n" +
-                        "            \"gameId\": 3443627829,\n" +
-                        "            \"champion\": 104,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543762586301,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"NONE\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3443547394,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543759077837,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3443496898,\n" +
-                        "            \"champion\": 39,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543756489999,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3443391201,\n" +
-                        "            \"champion\": 13,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543750546936,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3439810461,\n" +
-                        "            \"champion\": 7,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543509904531,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3439785013,\n" +
-                        "            \"champion\": 91,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543507269698,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3439728519,\n" +
-                        "            \"champion\": 136,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543504682362,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3439721603,\n" +
-                        "            \"champion\": 105,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543502333784,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3438699667,\n" +
-                        "            \"champion\": 1,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543419296342,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3438701897,\n" +
-                        "            \"champion\": 45,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543416363012,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3438662867,\n" +
-                        "            \"champion\": 20,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543413650396,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3436672494,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543249313977,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3435715064,\n" +
-                        "            \"champion\": 19,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543164645476,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3435692171,\n" +
-                        "            \"champion\": 81,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543162509941,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_CARRY\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3435624251,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543159916938,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3435591465,\n" +
-                        "            \"champion\": 120,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543158474182,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3434275338,\n" +
-                        "            \"champion\": 91,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543080992137,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3434300014,\n" +
-                        "            \"champion\": 91,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543079415957,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3434231787,\n" +
-                        "            \"champion\": 8,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543076350216,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3434172651,\n" +
-                        "            \"champion\": 39,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1543073739020,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3431665731,\n" +
-                        "            \"champion\": 37,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542906578135,\n" +
-                        "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"JUNGLE\",\n" +
-                        "            \"gameId\": 3431609498,\n" +
-                        "            \"champion\": 120,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542903045633,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"NONE\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"JUNGLE\",\n" +
-                        "            \"gameId\": 3429476640,\n" +
-                        "            \"champion\": 120,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542730808539,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"NONE\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3427374244,\n" +
-                        "            \"champion\": 8,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542557618153,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3427327779,\n" +
-                        "            \"champion\": 516,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542554838385,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"JUNGLE\",\n" +
-                        "            \"gameId\": 3427288217,\n" +
-                        "            \"champion\": 104,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542551646451,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"NONE\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"JUNGLE\",\n" +
-                        "            \"gameId\": 3427228203,\n" +
-                        "            \"champion\": 163,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542548968232,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"NONE\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3424623227,\n" +
-                        "            \"champion\": 6,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542396705644,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3424602337,\n" +
-                        "            \"champion\": 12,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542395249349,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3424559043,\n" +
-                        "            \"champion\": 63,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542392538524,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3424554461,\n" +
-                        "            \"champion\": 164,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542389849287,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3424529252,\n" +
-                        "            \"champion\": 78,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542387796336,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3423340575,\n" +
-                        "            \"champion\": 81,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542298651410,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3423293652,\n" +
-                        "            \"champion\": 202,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542295904345,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_CARRY\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3423270029,\n" +
-                        "            \"champion\": 105,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542294464606,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3422142270,\n" +
-                        "            \"champion\": 112,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542213590739,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"NONE\",\n" +
-                        "            \"gameId\": 3422130325,\n" +
-                        "            \"champion\": 80,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542212365960,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3422064852,\n" +
-                        "            \"champion\": 63,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542210128919,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_SUPPORT\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"JUNGLE\",\n" +
-                        "            \"gameId\": 3421787026,\n" +
-                        "            \"champion\": 64,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542207347879,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"NONE\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"BOTTOM\",\n" +
-                        "            \"gameId\": 3421677843,\n" +
-                        "            \"champion\": 498,\n" +
-                        "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1542204476393,\n" +
-                        "            \"queue\": 440,\n" +
-                        "            \"role\": \"DUO_CARRY\",\n" +
-                        "            \"season\": 12\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3418572733,\n" +
+                        "            \"gameId\": 3717706606,\n" +
                         "            \"champion\": 43,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1541952812722,\n" +
+                        "            \"timestamp\": 1561303717405,\n" +
                         "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 11\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3418555444,\n" +
-                        "            \"champion\": 43,\n" +
+                        "            \"gameId\": 3716704419,\n" +
+                        "            \"champion\": 8,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1541950592027,\n" +
+                        "            \"timestamp\": 1561271628412,\n" +
                         "            \"queue\": 420,\n" +
                         "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 11\n" +
+                        "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3418488740,\n" +
-                        "            \"champion\": 78,\n" +
+                        "            \"gameId\": 3716645418,\n" +
+                        "            \"champion\": 420,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1541948259615,\n" +
+                        "            \"timestamp\": 1561269075106,\n" +
                         "            \"queue\": 420,\n" +
                         "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 11\n" +
+                        "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3418470773,\n" +
-                        "            \"champion\": 80,\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3716578174,\n" +
+                        "            \"champion\": 25,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1541946163184,\n" +
+                        "            \"timestamp\": 1561266674695,\n" +
                         "            \"queue\": 420,\n" +
-                        "            \"role\": \"DUO\",\n" +
-                        "            \"season\": 11\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"lane\": \"TOP\",\n" +
-                        "            \"gameId\": 3418396836,\n" +
-                        "            \"champion\": 13,\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3716591510,\n" +
+                        "            \"champion\": 15,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1541943331653,\n" +
+                        "            \"timestamp\": 1561264659533,\n" +
                         "            \"queue\": 420,\n" +
-                        "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 11\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"lane\": \"MID\",\n" +
-                        "            \"gameId\": 3418334024,\n" +
-                        "            \"champion\": 245,\n" +
+                        "            \"gameId\": 3714032168,\n" +
+                        "            \"champion\": 25,\n" +
                         "            \"platformId\": \"KR\",\n" +
-                        "            \"timestamp\": 1541940876555,\n" +
+                        "            \"timestamp\": 1561115881138,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3713806527,\n" +
+                        "            \"champion\": 15,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561113705077,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3713449706,\n" +
+                        "            \"champion\": 81,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561086975306,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3713466900,\n" +
+                        "            \"champion\": 555,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561084986134,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"NONE\",\n" +
+                        "            \"gameId\": 3713446238,\n" +
+                        "            \"champion\": 81,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561083406150,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3713482684,\n" +
+                        "            \"champion\": 51,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561080169235,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3713432602,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561077970143,\n" +
                         "            \"queue\": 420,\n" +
                         "            \"role\": \"SOLO\",\n" +
-                        "            \"season\": 11\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3713451234,\n" +
+                        "            \"champion\": 122,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561076123542,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"MID\",\n" +
+                        "            \"gameId\": 3712846224,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561026244014,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3712851050,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561024460867,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"NONE\",\n" +
+                        "            \"gameId\": 3712797193,\n" +
+                        "            \"champion\": 43,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1561023149832,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3707090449,\n" +
+                        "            \"champion\": 145,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1560610777687,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3707060816,\n" +
+                        "            \"champion\": 51,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1560608885465,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"JUNGLE\",\n" +
+                        "            \"gameId\": 3697911328,\n" +
+                        "            \"champion\": 8,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1560012332658,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"NONE\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3692663745,\n" +
+                        "            \"champion\": 412,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1559755959814,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3692566874,\n" +
+                        "            \"champion\": 81,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1559753692368,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"DUO_CARRY\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"TOP\",\n" +
+                        "            \"gameId\": 3692508374,\n" +
+                        "            \"champion\": 122,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1559751470271,\n" +
+                        "            \"queue\": 440,\n" +
+                        "            \"role\": \"SOLO\",\n" +
+                        "            \"season\": 13\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"lane\": \"BOTTOM\",\n" +
+                        "            \"gameId\": 3692453404,\n" +
+                        "            \"champion\": 25,\n" +
+                        "            \"platformId\": \"KR\",\n" +
+                        "            \"timestamp\": 1559748198475,\n" +
+                        "            \"queue\": 420,\n" +
+                        "            \"role\": \"DUO_SUPPORT\",\n" +
+                        "            \"season\": 13\n" +
                         "        }\n" +
                         "    ],\n" +
                         "    \"endIndex\": 100,\n" +
                         "    \"startIndex\": 0,\n" +
-                        "    \"totalGames\": 475\n" +
+                        "    \"totalGames\": 734\n" +
                         "}").toString();
     }
 
@@ -1066,209 +1080,209 @@ public class MockResponse {
                 "{\n" +
                         "    \"seasonId\": 13,\n" +
                         "    \"queueId\": 420,\n" +
-                        "    \"gameId\": 3724003832,\n" +
+                        "    \"gameId\": 3822675440,\n" +
                         "    \"participantIdentities\": [\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"최미남찬\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/200931747\",\n" +
+                        "                \"summonerName\": \"다리우스꽝\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/1984888306855360\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"CUPQJhA6e9DC3Qs_NbAJNBbBp959Yq1dSa70FE-JFghZPsg\",\n" +
-                        "                \"profileIcon\": 4027,\n" +
-                        "                \"summonerId\": \"vhsQO8zQ0BN3WihHBd2ecVR3_U0VWIfrGGr7OuuAFW-uDag\",\n" +
-                        "                \"accountId\": \"CUPQJhA6e9DC3Qs_NbAJNBbBp959Yq1dSa70FE-JFghZPsg\"\n" +
+                        "                \"currentAccountId\": \"6STDKvS9UjqRq_u54_3kigPfRAL_z9ClJNr-aA0r4RcW4ceRDZNEJTFw\",\n" +
+                        "                \"profileIcon\": 3546,\n" +
+                        "                \"summonerId\": \"h105m4wLKwZbpIJI4bfcc2bgsVOL16lxl3vTZQ2xCO-g2D0\",\n" +
+                        "                \"accountId\": \"6STDKvS9UjqRq_u54_3kigPfRAL_z9ClJNr-aA0r4RcW4ceRDZNEJTFw\"\n" +
                         "            },\n" +
                         "            \"participantId\": 1\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"hzi\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/202001024\",\n" +
+                        "                \"summonerName\": \"가물칭\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/879658\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"dM8bHLggs2n8mWwk6yQ0pry7zTYf35kPBs8pcXSmo77MamQ\",\n" +
-                        "                \"profileIcon\": 3865,\n" +
-                        "                \"summonerId\": \"Eo954IbNnJPpW6hkw3YR9yvwJI7byFdT1imHnMX3Mkh-PqM\",\n" +
-                        "                \"accountId\": \"dM8bHLggs2n8mWwk6yQ0pry7zTYf35kPBs8pcXSmo77MamQ\"\n" +
+                        "                \"currentAccountId\": \"nMhMWfQhhbvncVt9RyGjjnywv9wpcqsHCDgOiK52KHQ\",\n" +
+                        "                \"profileIcon\": 4270,\n" +
+                        "                \"summonerId\": \"9N-ziT3_0gJOm8WuSUvcaRCdt1fy0y0HT5MTBoV8bJ-hjQ\",\n" +
+                        "                \"accountId\": \"nMhMWfQhhbvncVt9RyGjjnywv9wpcqsHCDgOiK52KHQ\"\n" +
                         "            },\n" +
                         "            \"participantId\": 2\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"유아림\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/206788619\",\n" +
+                        "                \"summonerName\": \"흑 9\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/2540713\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"gOUl6k-lJCzY2CKCzGIbcr75aE4J-JlJbmKdDwqe-vJ8yz8\",\n" +
-                        "                \"profileIcon\": 871,\n" +
-                        "                \"summonerId\": \"29jBmpTWYwNXDOOyV8coM652CjqrWP5BnI6CjH5aC917oUI\",\n" +
-                        "                \"accountId\": \"gOUl6k-lJCzY2CKCzGIbcr75aE4J-JlJbmKdDwqe-vJ8yz8\"\n" +
+                        "                \"currentAccountId\": \"5z9k7tGAzC1DEd9ss-gPVVsXYOdPslmUM5atIEmAQmkS\",\n" +
+                        "                \"profileIcon\": 3595,\n" +
+                        "                \"summonerId\": \"Io3j2RpO4lMhKd3o_ScK_qnq8vvtNAAcjsMbggGti67ukA\",\n" +
+                        "                \"accountId\": \"5z9k7tGAzC1DEd9ss-gPVVsXYOdPslmUM5atIEmAQmkS\"\n" +
                         "            },\n" +
                         "            \"participantId\": 3\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"이상한새기\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/3389489\",\n" +
+                        "                \"summonerName\": \"충북대한요한\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/7881117\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv\",\n" +
-                        "                \"profileIcon\": 2095,\n" +
-                        "                \"summonerId\": \"zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ\",\n" +
-                        "                \"accountId\": \"w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv\"\n" +
+                        "                \"currentAccountId\": \"e6nEaXb1EcJOQ-klh473ez7NVOWOj-czW2sNQopkLgvd\",\n" +
+                        "                \"profileIcon\": 1301,\n" +
+                        "                \"summonerId\": \"bR-apoA8jw6JlDHf7YbajqG3qDVpGtX80N5KlQcvuiPz6wU\",\n" +
+                        "                \"accountId\": \"e6nEaXb1EcJOQ-klh473ez7NVOWOj-czW2sNQopkLgvd\"\n" +
                         "            },\n" +
                         "            \"participantId\": 4\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"이쁜말만쓸래여\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/2579944\",\n" +
+                        "                \"summonerName\": \"LOVESJH\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/3605961\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"nVL89tBICK_QzjS2Aee1qsNMx33RNL2oZ4_xregy50m0\",\n" +
-                        "                \"profileIcon\": 4088,\n" +
-                        "                \"summonerId\": \"Abfs_JcaatQ-Yfxdl08aiI4zu4lmEmY0g7XveriEMA5caQ\",\n" +
-                        "                \"accountId\": \"nVL89tBICK_QzjS2Aee1qsNMx33RNL2oZ4_xregy50m0\"\n" +
+                        "                \"currentAccountId\": \"5U0wCuVx6iCTC2ZfEv2O4Rt5nJhpLoW69lzcgY1KC5hT\",\n" +
+                        "                \"profileIcon\": 3003,\n" +
+                        "                \"summonerId\": \"i1PMtaYAhiJj7Ha_-ZqGaIF1EaY7ArXAcipWeiHZ0HKjUw\",\n" +
+                        "                \"accountId\": \"5U0wCuVx6iCTC2ZfEv2O4Rt5nJhpLoW69lzcgY1KC5hT\"\n" +
                         "            },\n" +
                         "            \"participantId\": 5\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"편하게들어\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/1270046\",\n" +
+                        "                \"summonerName\": \"라면and김치\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/6211012\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"eDa50WgPOkyzVjAb6IogGYEigv0UXYPsAsHFvInkhfTr\",\n" +
-                        "                \"profileIcon\": 3478,\n" +
-                        "                \"summonerId\": \"ZVNR1Lzd8zHm8SykrrULrwaaLbLkqjtaHuaS8sYz1fORsg\",\n" +
-                        "                \"accountId\": \"eDa50WgPOkyzVjAb6IogGYEigv0UXYPsAsHFvInkhfTr\"\n" +
+                        "                \"currentAccountId\": \"4M3Ot9weAlqLf7wysBkQTylfHtXghvn_y9Rod8A1guJz\",\n" +
+                        "                \"profileIcon\": 4057,\n" +
+                        "                \"summonerId\": \"fouR9X58xVInxU6pfCyOPky53WK-yb1hy1Sg_IUjeVb22w\",\n" +
+                        "                \"accountId\": \"4M3Ot9weAlqLf7wysBkQTylfHtXghvn_y9Rod8A1guJz\"\n" +
                         "            },\n" +
                         "            \"participantId\": 6\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"나연58\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/6974211\",\n" +
+                        "                \"summonerName\": \"xiao tuzi\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/1969160499720096\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"eNyMO3FYwRgW5SwdaHbnvond1nh5e0ESoiJN0x64fjJl\",\n" +
-                        "                \"profileIcon\": 3860,\n" +
-                        "                \"summonerId\": \"dcSIBDdtY9p4Uo4UoTHpx0xE5rxS9M7JUTcH_PxFtYDcxYg\",\n" +
-                        "                \"accountId\": \"eNyMO3FYwRgW5SwdaHbnvond1nh5e0ESoiJN0x64fjJl\"\n" +
+                        "                \"currentAccountId\": \"-DYzsJZFwwyVNSGs5O8O8AhfnheRb14tOGOymV167I1o_X1RMcVPXg_b\",\n" +
+                        "                \"profileIcon\": 1425,\n" +
+                        "                \"summonerId\": \"_R4OSd1j4cs6hAZ3EgOWLBqMCJHnp8HAAXt5e08i4mRzBSI\",\n" +
+                        "                \"accountId\": \"-DYzsJZFwwyVNSGs5O8O8AhfnheRb14tOGOymV167I1o_X1RMcVPXg_b\"\n" +
                         "            },\n" +
                         "            \"participantId\": 7\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"픽은 자유\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/200486630\",\n" +
+                        "                \"summonerName\": \"젖탱이파티손명욱\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/7205796\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"xzDD0gJHuUYTNVk7rJtBK8QXpYDWlzVSqi9MEr82idjaoYk\",\n" +
-                        "                \"profileIcon\": 715,\n" +
-                        "                \"summonerId\": \"roIDxkr_cfk0LrAfuNwGnOlKYA2PC8bmdImO29RQyhFEado\",\n" +
-                        "                \"accountId\": \"xzDD0gJHuUYTNVk7rJtBK8QXpYDWlzVSqi9MEr82idjaoYk\"\n" +
+                        "                \"currentAccountId\": \"JnJmltkOrPQDXBEtOP0GkHe5SsRj3RXc87zyjjX0qhmE\",\n" +
+                        "                \"profileIcon\": 3163,\n" +
+                        "                \"summonerId\": \"8PnfURU7X0D9QDePk86TBZDjVZyplQy-fwv7nkJgfr5k46o\",\n" +
+                        "                \"accountId\": \"JnJmltkOrPQDXBEtOP0GkHe5SsRj3RXc87zyjjX0qhmE\"\n" +
                         "            },\n" +
                         "            \"participantId\": 8\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"Clumsy1\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/208530283\",\n" +
+                        "                \"summonerName\": \"랭전용케\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/204606804\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"EPET47JcxdA6rVr5DcAs9SAJmNzGQ6_l9Jofql_hdJ31Dck\",\n" +
-                        "                \"profileIcon\": 4080,\n" +
-                        "                \"summonerId\": \"BQIzevAYGSU4NOq2UcSN8TV_afPk2f0HOI9NwoFq-wJG8iU\",\n" +
-                        "                \"accountId\": \"EPET47JcxdA6rVr5DcAs9SAJmNzGQ6_l9Jofql_hdJ31Dck\"\n" +
+                        "                \"currentAccountId\": \"0SYQ9ArmP8iH3yMo-v6NJz1-xbR3FmyYMdtEc0Sog-zwltY\",\n" +
+                        "                \"profileIcon\": 4249,\n" +
+                        "                \"summonerId\": \"ujoMoTK2QkyBU7__WYIUH9mGYt-ae2uTQ0u201IFzBUsXh8\",\n" +
+                        "                \"accountId\": \"0SYQ9ArmP8iH3yMo-v6NJz1-xbR3FmyYMdtEc0Sog-zwltY\"\n" +
                         "            },\n" +
                         "            \"participantId\": 9\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"player\": {\n" +
                         "                \"currentPlatformId\": \"KR\",\n" +
-                        "                \"summonerName\": \"riven만팔게요\",\n" +
-                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/205380290\",\n" +
+                        "                \"summonerName\": \"뱅기현\",\n" +
+                        "                \"matchHistoryUri\": \"/v1/stats/player_history/KR/4979928\",\n" +
                         "                \"platformId\": \"KR\",\n" +
-                        "                \"currentAccountId\": \"i98PpbBGDg1_U47pnJrD-d9CDiNxUdyHpuTB0q0h4XBMEbc\",\n" +
-                        "                \"profileIcon\": 1383,\n" +
-                        "                \"summonerId\": \"bDICl76UPE_0s__gI3t1dBRwkxxXGs-8CZyQ81pqyB5APTs\",\n" +
-                        "                \"accountId\": \"i98PpbBGDg1_U47pnJrD-d9CDiNxUdyHpuTB0q0h4XBMEbc\"\n" +
+                        "                \"currentAccountId\": \"ZCKKNXiQCxnU6iZItHeoPu8skeTkf2LMZjd8_SxXIBqY\",\n" +
+                        "                \"profileIcon\": 3460,\n" +
+                        "                \"summonerId\": \"wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCg\",\n" +
+                        "                \"accountId\": \"ZCKKNXiQCxnU6iZItHeoPu8skeTkf2LMZjd8_SxXIBqY\"\n" +
                         "            },\n" +
                         "            \"participantId\": 10\n" +
                         "        }\n" +
                         "    ],\n" +
-                        "    \"gameVersion\": \"9.13.279.7717\",\n" +
+                        "    \"gameVersion\": \"9.16.284.8446\",\n" +
                         "    \"platformId\": \"KR\",\n" +
                         "    \"gameMode\": \"CLASSIC\",\n" +
                         "    \"mapId\": 11,\n" +
                         "    \"gameType\": \"MATCHED_GAME\",\n" +
                         "    \"teams\": [\n" +
                         "        {\n" +
-                        "            \"firstDragon\": false,\n" +
+                        "            \"firstDragon\": true,\n" +
                         "            \"bans\": [\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 1,\n" +
-                        "                    \"championId\": 82\n" +
+                        "                    \"championId\": 84\n" +
                         "                },\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 2,\n" +
-                        "                    \"championId\": 39\n" +
+                        "                    \"championId\": 145\n" +
                         "                },\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 3,\n" +
-                        "                    \"championId\": 59\n" +
+                        "                    \"championId\": 82\n" +
                         "                },\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 4,\n" +
-                        "                    \"championId\": 266\n" +
+                        "                    \"championId\": 81\n" +
                         "                },\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 5,\n" +
-                        "                    \"championId\": 22\n" +
+                        "                    \"championId\": 350\n" +
                         "                }\n" +
                         "            ],\n" +
-                        "            \"firstInhibitor\": true,\n" +
+                        "            \"firstInhibitor\": false,\n" +
                         "            \"win\": \"Win\",\n" +
-                        "            \"firstRiftHerald\": false,\n" +
+                        "            \"firstRiftHerald\": true,\n" +
                         "            \"firstBaron\": true,\n" +
-                        "            \"baronKills\": 1,\n" +
-                        "            \"riftHeraldKills\": 0,\n" +
+                        "            \"baronKills\": 2,\n" +
+                        "            \"riftHeraldKills\": 1,\n" +
                         "            \"firstBlood\": true,\n" +
                         "            \"teamId\": 100,\n" +
                         "            \"firstTower\": true,\n" +
                         "            \"vilemawKills\": 0,\n" +
-                        "            \"inhibitorKills\": 2,\n" +
+                        "            \"inhibitorKills\": 1,\n" +
                         "            \"towerKills\": 8,\n" +
                         "            \"dominionVictoryScore\": 0,\n" +
-                        "            \"dragonKills\": 3\n" +
+                        "            \"dragonKills\": 4\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"firstDragon\": true,\n" +
+                        "            \"firstDragon\": false,\n" +
                         "            \"bans\": [\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 6,\n" +
-                        "                    \"championId\": 350\n" +
+                        "                    \"championId\": 64\n" +
                         "                },\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 7,\n" +
-                        "                    \"championId\": 25\n" +
+                        "                    \"championId\": 28\n" +
                         "                },\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 8,\n" +
-                        "                    \"championId\": 103\n" +
+                        "                    \"championId\": 122\n" +
                         "                },\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 9,\n" +
-                        "                    \"championId\": 113\n" +
+                        "                    \"championId\": 26\n" +
                         "                },\n" +
                         "                {\n" +
                         "                    \"pickTurn\": 10,\n" +
-                        "                    \"championId\": 58\n" +
+                        "                    \"championId\": 7\n" +
                         "                }\n" +
                         "            ],\n" +
-                        "            \"firstInhibitor\": false,\n" +
+                        "            \"firstInhibitor\": true,\n" +
                         "            \"win\": \"Fail\",\n" +
                         "            \"firstRiftHerald\": false,\n" +
                         "            \"firstBaron\": false,\n" +
@@ -1278,319 +1292,27 @@ public class MockResponse {
                         "            \"teamId\": 200,\n" +
                         "            \"firstTower\": false,\n" +
                         "            \"vilemawKills\": 0,\n" +
-                        "            \"inhibitorKills\": 0,\n" +
-                        "            \"towerKills\": 4,\n" +
+                        "            \"inhibitorKills\": 1,\n" +
+                        "            \"towerKills\": 5,\n" +
                         "            \"dominionVictoryScore\": 0,\n" +
-                        "            \"dragonKills\": 1\n" +
+                        "            \"dragonKills\": 0\n" +
                         "        }\n" +
                         "    ],\n" +
                         "    \"participants\": [\n" +
                         "        {\n" +
                         "            \"stats\": {\n" +
-                        "                \"neutralMinionsKilledTeamJungle\": 67,\n" +
-                        "                \"visionScore\": 29,\n" +
-                        "                \"magicDamageDealtToChampions\": 722,\n" +
-                        "                \"largestMultiKill\": 1,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 258,\n" +
-                        "                \"longestTimeSpentLiving\": 477,\n" +
-                        "                \"perk1Var1\": 1446,\n" +
+                        "                \"neutralMinionsKilledTeamJungle\": 73,\n" +
+                        "                \"visionScore\": 17,\n" +
+                        "                \"magicDamageDealtToChampions\": 4288,\n" +
+                        "                \"largestMultiKill\": 2,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 318,\n" +
+                        "                \"longestTimeSpentLiving\": 1498,\n" +
+                        "                \"perk1Var1\": 1905,\n" +
                         "                \"perk1Var3\": 0,\n" +
-                        "                \"perk1Var2\": 380,\n" +
+                        "                \"perk1Var2\": 400,\n" +
                         "                \"tripleKills\": 0,\n" +
-                        "                \"perk5\": 8105,\n" +
-                        "                \"perk4\": 8126,\n" +
-                        "                \"playerScore9\": 0,\n" +
-                        "                \"playerScore8\": 0,\n" +
-                        "                \"kills\": 14,\n" +
-                        "                \"playerScore1\": 0,\n" +
-                        "                \"playerScore0\": 0,\n" +
-                        "                \"playerScore3\": 0,\n" +
-                        "                \"playerScore2\": 0,\n" +
-                        "                \"playerScore5\": 0,\n" +
-                        "                \"playerScore4\": 0,\n" +
-                        "                \"playerScore7\": 0,\n" +
-                        "                \"playerScore6\": 0,\n" +
-                        "                \"perk5Var1\": 16,\n" +
-                        "                \"perk5Var3\": 0,\n" +
-                        "                \"perk5Var2\": 5,\n" +
-                        "                \"totalScoreRank\": 0,\n" +
-                        "                \"neutralMinionsKilled\": 100,\n" +
-                        "                \"statPerk1\": 5008,\n" +
-                        "                \"statPerk0\": 5007,\n" +
-                        "                \"damageDealtToTurrets\": 4523,\n" +
-                        "                \"physicalDamageDealtToChampions\": 17699,\n" +
-                        "                \"damageDealtToObjectives\": 18686,\n" +
-                        "                \"perk2Var2\": 0,\n" +
-                        "                \"perk2Var3\": 0,\n" +
-                        "                \"totalUnitsHealed\": 1,\n" +
-                        "                \"perk2Var1\": 15,\n" +
-                        "                \"perk4Var1\": 774,\n" +
-                        "                \"totalDamageTaken\": 35115,\n" +
-                        "                \"perk4Var3\": 0,\n" +
-                        "                \"wardsKilled\": 8,\n" +
-                        "                \"largestCriticalStrike\": 0,\n" +
-                        "                \"largestKillingSpree\": 4,\n" +
-                        "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 4911,\n" +
-                        "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 3026,\n" +
-                        "                \"item3\": 1037,\n" +
-                        "                \"item0\": 1400,\n" +
-                        "                \"item1\": 3078,\n" +
-                        "                \"item6\": 3364,\n" +
-                        "                \"item4\": 3047,\n" +
-                        "                \"item5\": 3052,\n" +
-                        "                \"perk1\": 9111,\n" +
-                        "                \"perk0\": 8005,\n" +
-                        "                \"perk3\": 8014,\n" +
-                        "                \"perk2\": 9104,\n" +
-                        "                \"perk3Var3\": 0,\n" +
-                        "                \"perk3Var2\": 0,\n" +
-                        "                \"perk3Var1\": 636,\n" +
-                        "                \"damageSelfMitigated\": 28139,\n" +
-                        "                \"magicalDamageTaken\": 8767,\n" +
-                        "                \"perk0Var2\": 930,\n" +
-                        "                \"firstInhibitorKill\": false,\n" +
-                        "                \"trueDamageTaken\": 4616,\n" +
-                        "                \"assists\": 5,\n" +
-                        "                \"perk4Var2\": 0,\n" +
-                        "                \"goldSpent\": 12633,\n" +
-                        "                \"trueDamageDealt\": 28463,\n" +
-                        "                \"participantId\": 1,\n" +
-                        "                \"physicalDamageDealt\": 112276,\n" +
-                        "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 24369,\n" +
-                        "                \"physicalDamageTaken\": 21731,\n" +
-                        "                \"totalPlayerScore\": 0,\n" +
-                        "                \"win\": true,\n" +
-                        "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 145652,\n" +
-                        "                \"neutralMinionsKilledEnemyJungle\": 5,\n" +
-                        "                \"deaths\": 6,\n" +
-                        "                \"wardsPlaced\": 3,\n" +
-                        "                \"perkPrimaryStyle\": 8000,\n" +
-                        "                \"perkSubStyle\": 8100,\n" +
-                        "                \"turretKills\": 2,\n" +
-                        "                \"firstBloodKill\": true,\n" +
-                        "                \"trueDamageDealtToChampions\": 5947,\n" +
-                        "                \"goldEarned\": 14596,\n" +
-                        "                \"killingSprees\": 3,\n" +
-                        "                \"unrealKills\": 0,\n" +
-                        "                \"firstTowerAssist\": false,\n" +
-                        "                \"firstTowerKill\": false,\n" +
-                        "                \"champLevel\": 16,\n" +
-                        "                \"doubleKills\": 0,\n" +
-                        "                \"inhibitorKills\": 1,\n" +
-                        "                \"firstInhibitorAssist\": false,\n" +
-                        "                \"perk0Var1\": 1560,\n" +
-                        "                \"combatPlayerScore\": 0,\n" +
-                        "                \"perk0Var3\": 630,\n" +
-                        "                \"visionWardsBoughtInGame\": 3,\n" +
-                        "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 13688,\n" +
-                        "                \"totalMinionsKilled\": 43,\n" +
-                        "                \"timeCCingOthers\": 31,\n" +
-                        "                \"statPerk2\": 5002\n" +
-                        "            },\n" +
-                        "            \"spell1Id\": 11,\n" +
-                        "            \"participantId\": 1,\n" +
-                        "            \"highestAchievedSeasonTier\": \"SILVER\",\n" +
-                        "            \"spell2Id\": 4,\n" +
-                        "            \"teamId\": 100,\n" +
-                        "            \"timeline\": {\n" +
-                        "                \"lane\": \"JUNGLE\",\n" +
-                        "                \"participantId\": 1,\n" +
-                        "                \"csDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1.3000000000000003,\n" +
-                        "                    \"0-10\": -0.19999999999999998,\n" +
-                        "                    \"10-20\": 0.4\n" +
-                        "                },\n" +
-                        "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 536.5,\n" +
-                        "                    \"0-10\": 286.6,\n" +
-                        "                    \"10-20\": 457.8\n" +
-                        "                },\n" +
-                        "                \"xpDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 262.70000000000005,\n" +
-                        "                    \"0-10\": -127.5,\n" +
-                        "                    \"10-20\": 164.5\n" +
-                        "                },\n" +
-                        "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 2.6,\n" +
-                        "                    \"0-10\": 0.1,\n" +
-                        "                    \"10-20\": 0.8\n" +
-                        "                },\n" +
-                        "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 638.3,\n" +
-                        "                    \"0-10\": 241.20000000000002,\n" +
-                        "                    \"10-20\": 603.5\n" +
-                        "                },\n" +
-                        "                \"role\": \"NONE\",\n" +
-                        "                \"damageTakenDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 178.20000000000005,\n" +
-                        "                    \"0-10\": -65.89999999999995,\n" +
-                        "                    \"10-20\": 343.4\n" +
-                        "                },\n" +
-                        "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1344.1,\n" +
-                        "                    \"0-10\": 650.5,\n" +
-                        "                    \"10-20\": 1172.9\n" +
-                        "                }\n" +
-                        "            },\n" +
-                        "            \"championId\": 164\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"spell1Id\": 14,\n" +
-                        "            \"participantId\": 2,\n" +
-                        "            \"timeline\": {\n" +
-                        "                \"lane\": \"TOP\",\n" +
-                        "                \"participantId\": 2,\n" +
-                        "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 433.1,\n" +
-                        "                    \"0-10\": 295.79999999999995,\n" +
-                        "                    \"10-20\": 357.3\n" +
-                        "                },\n" +
-                        "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1.8,\n" +
-                        "                    \"0-10\": 6.6,\n" +
-                        "                    \"10-20\": 5.6\n" +
-                        "                },\n" +
-                        "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 527.2,\n" +
-                        "                    \"0-10\": 444.4,\n" +
-                        "                    \"10-20\": 477.70000000000005\n" +
-                        "                },\n" +
-                        "                \"role\": \"SOLO\",\n" +
-                        "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1095.2,\n" +
-                        "                    \"0-10\": 453.3,\n" +
-                        "                    \"10-20\": 842.5\n" +
-                        "                }\n" +
-                        "            },\n" +
-                        "            \"spell2Id\": 4,\n" +
-                        "            \"teamId\": 100,\n" +
-                        "            \"stats\": {\n" +
-                        "                \"neutralMinionsKilledTeamJungle\": 4,\n" +
-                        "                \"visionScore\": 21,\n" +
-                        "                \"magicDamageDealtToChampions\": 185,\n" +
-                        "                \"largestMultiKill\": 1,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 143,\n" +
-                        "                \"longestTimeSpentLiving\": 302,\n" +
-                        "                \"perk1Var1\": 754,\n" +
-                        "                \"perk1Var3\": 0,\n" +
-                        "                \"perk1Var2\": 0,\n" +
-                        "                \"tripleKills\": 0,\n" +
-                        "                \"perk5\": 9104,\n" +
-                        "                \"perk4\": 9111,\n" +
-                        "                \"playerScore9\": 0,\n" +
-                        "                \"playerScore8\": 0,\n" +
-                        "                \"kills\": 9,\n" +
-                        "                \"playerScore1\": 0,\n" +
-                        "                \"playerScore0\": 0,\n" +
-                        "                \"playerScore3\": 0,\n" +
-                        "                \"playerScore2\": 0,\n" +
-                        "                \"playerScore5\": 0,\n" +
-                        "                \"playerScore4\": 0,\n" +
-                        "                \"playerScore7\": 0,\n" +
-                        "                \"playerScore6\": 0,\n" +
-                        "                \"perk5Var1\": 16,\n" +
-                        "                \"perk5Var3\": 0,\n" +
-                        "                \"perk5Var2\": 0,\n" +
-                        "                \"totalScoreRank\": 0,\n" +
-                        "                \"neutralMinionsKilled\": 12,\n" +
-                        "                \"statPerk1\": 5008,\n" +
-                        "                \"statPerk0\": 5005,\n" +
-                        "                \"damageDealtToTurrets\": 1540,\n" +
-                        "                \"physicalDamageDealtToChampions\": 31084,\n" +
-                        "                \"damageDealtToObjectives\": 4637,\n" +
-                        "                \"perk2Var2\": 0,\n" +
-                        "                \"perk2Var3\": 0,\n" +
-                        "                \"totalUnitsHealed\": 1,\n" +
-                        "                \"perk2Var1\": 18,\n" +
-                        "                \"perk4Var1\": 1178,\n" +
-                        "                \"totalDamageTaken\": 28879,\n" +
-                        "                \"perk4Var3\": 0,\n" +
-                        "                \"wardsKilled\": 4,\n" +
-                        "                \"largestCriticalStrike\": 905,\n" +
-                        "                \"largestKillingSpree\": 3,\n" +
-                        "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 452,\n" +
-                        "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 3047,\n" +
-                        "                \"item3\": 3031,\n" +
-                        "                \"item0\": 3142,\n" +
-                        "                \"item1\": 3046,\n" +
-                        "                \"item6\": 3364,\n" +
-                        "                \"item4\": 1055,\n" +
-                        "                \"item5\": 1053,\n" +
-                        "                \"perk1\": 8143,\n" +
-                        "                \"perk0\": 8112,\n" +
-                        "                \"perk3\": 8105,\n" +
-                        "                \"perk2\": 8138,\n" +
-                        "                \"perk3Var3\": 0,\n" +
-                        "                \"perk3Var2\": 5,\n" +
-                        "                \"perk3Var1\": 16,\n" +
-                        "                \"damageSelfMitigated\": 14889,\n" +
-                        "                \"magicalDamageTaken\": 6897,\n" +
-                        "                \"perk0Var2\": 0,\n" +
-                        "                \"firstInhibitorKill\": false,\n" +
-                        "                \"trueDamageTaken\": 3496,\n" +
-                        "                \"assists\": 10,\n" +
-                        "                \"perk4Var2\": 380,\n" +
-                        "                \"goldSpent\": 11775,\n" +
-                        "                \"trueDamageDealt\": 1171,\n" +
-                        "                \"participantId\": 2,\n" +
-                        "                \"physicalDamageDealt\": 123583,\n" +
-                        "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 32441,\n" +
-                        "                \"physicalDamageTaken\": 18486,\n" +
-                        "                \"totalPlayerScore\": 0,\n" +
-                        "                \"win\": true,\n" +
-                        "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 125208,\n" +
-                        "                \"neutralMinionsKilledEnemyJungle\": 8,\n" +
-                        "                \"deaths\": 10,\n" +
-                        "                \"wardsPlaced\": 4,\n" +
-                        "                \"perkPrimaryStyle\": 8100,\n" +
-                        "                \"perkSubStyle\": 8000,\n" +
-                        "                \"turretKills\": 1,\n" +
-                        "                \"firstBloodKill\": false,\n" +
-                        "                \"trueDamageDealtToChampions\": 1171,\n" +
-                        "                \"goldEarned\": 13162,\n" +
-                        "                \"killingSprees\": 1,\n" +
-                        "                \"unrealKills\": 0,\n" +
-                        "                \"firstTowerAssist\": false,\n" +
-                        "                \"firstTowerKill\": false,\n" +
-                        "                \"champLevel\": 16,\n" +
-                        "                \"doubleKills\": 0,\n" +
-                        "                \"inhibitorKills\": 0,\n" +
-                        "                \"firstInhibitorAssist\": false,\n" +
-                        "                \"perk0Var1\": 2688,\n" +
-                        "                \"combatPlayerScore\": 0,\n" +
-                        "                \"perk0Var3\": 0,\n" +
-                        "                \"visionWardsBoughtInGame\": 3,\n" +
-                        "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 2300,\n" +
-                        "                \"totalMinionsKilled\": 152,\n" +
-                        "                \"timeCCingOthers\": 42,\n" +
-                        "                \"statPerk2\": 5001\n" +
-                        "            },\n" +
-                        "            \"championId\": 133\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"stats\": {\n" +
-                        "                \"neutralMinionsKilledTeamJungle\": 4,\n" +
-                        "                \"visionScore\": 56,\n" +
-                        "                \"magicDamageDealtToChampions\": 23823,\n" +
-                        "                \"largestMultiKill\": 1,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 219,\n" +
-                        "                \"longestTimeSpentLiving\": 320,\n" +
-                        "                \"perk1Var1\": 250,\n" +
-                        "                \"perk1Var3\": 0,\n" +
-                        "                \"perk1Var2\": 1050,\n" +
-                        "                \"tripleKills\": 0,\n" +
-                        "                \"perk5\": 8313,\n" +
-                        "                \"perk4\": 8347,\n" +
+                        "                \"perk5\": 8473,\n" +
+                        "                \"perk4\": 8446,\n" +
                         "                \"playerScore9\": 0,\n" +
                         "                \"playerScore8\": 0,\n" +
                         "                \"kills\": 10,\n" +
@@ -1602,181 +1324,181 @@ public class MockResponse {
                         "                \"playerScore4\": 0,\n" +
                         "                \"playerScore7\": 0,\n" +
                         "                \"playerScore6\": 0,\n" +
-                        "                \"perk5Var1\": 0,\n" +
+                        "                \"perk5Var1\": 978,\n" +
                         "                \"perk5Var3\": 0,\n" +
                         "                \"perk5Var2\": 0,\n" +
                         "                \"totalScoreRank\": 0,\n" +
-                        "                \"neutralMinionsKilled\": 4,\n" +
+                        "                \"neutralMinionsKilled\": 120,\n" +
                         "                \"statPerk1\": 5008,\n" +
-                        "                \"statPerk0\": 5008,\n" +
-                        "                \"damageDealtToTurrets\": 3838,\n" +
-                        "                \"physicalDamageDealtToChampions\": 1554,\n" +
-                        "                \"damageDealtToObjectives\": 6984,\n" +
-                        "                \"perk2Var2\": 0,\n" +
+                        "                \"statPerk0\": 5005,\n" +
+                        "                \"damageDealtToTurrets\": 12345,\n" +
+                        "                \"physicalDamageDealtToChampions\": 11218,\n" +
+                        "                \"damageDealtToObjectives\": 53267,\n" +
+                        "                \"perk2Var2\": 10,\n" +
                         "                \"perk2Var3\": 0,\n" +
-                        "                \"totalUnitsHealed\": 4,\n" +
-                        "                \"perk2Var1\": 13821,\n" +
-                        "                \"perk4Var1\": 0,\n" +
-                        "                \"totalDamageTaken\": 20084,\n" +
+                        "                \"totalUnitsHealed\": 1,\n" +
+                        "                \"perk2Var1\": 11,\n" +
+                        "                \"perk4Var1\": 2586,\n" +
+                        "                \"totalDamageTaken\": 40745,\n" +
                         "                \"perk4Var3\": 0,\n" +
-                        "                \"wardsKilled\": 8,\n" +
+                        "                \"wardsKilled\": 2,\n" +
                         "                \"largestCriticalStrike\": 0,\n" +
-                        "                \"largestKillingSpree\": 3,\n" +
+                        "                \"largestKillingSpree\": 8,\n" +
                         "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 60181,\n" +
+                        "                \"magicDamageDealt\": 76944,\n" +
                         "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 3157,\n" +
-                        "                \"item3\": 3504,\n" +
-                        "                \"item0\": 3098,\n" +
-                        "                \"item1\": 3174,\n" +
-                        "                \"item6\": 3364,\n" +
-                        "                \"item4\": 3165,\n" +
-                        "                \"item5\": 3020,\n" +
-                        "                \"perk1\": 8226,\n" +
-                        "                \"perk0\": 8214,\n" +
-                        "                \"perk3\": 8237,\n" +
-                        "                \"perk2\": 8234,\n" +
+                        "                \"item2\": 3153,\n" +
+                        "                \"item3\": 3111,\n" +
+                        "                \"item0\": 3078,\n" +
+                        "                \"item1\": 1011,\n" +
+                        "                \"item6\": 3340,\n" +
+                        "                \"item4\": 1401,\n" +
+                        "                \"item5\": 3082,\n" +
+                        "                \"perk1\": 9111,\n" +
+                        "                \"perk0\": 8010,\n" +
+                        "                \"perk3\": 8014,\n" +
+                        "                \"perk2\": 9104,\n" +
                         "                \"perk3Var3\": 0,\n" +
                         "                \"perk3Var2\": 0,\n" +
-                        "                \"perk3Var1\": 624,\n" +
-                        "                \"damageSelfMitigated\": 16897,\n" +
-                        "                \"magicalDamageTaken\": 6665,\n" +
-                        "                \"perk0Var2\": 1464,\n" +
+                        "                \"perk3Var1\": 421,\n" +
+                        "                \"damageSelfMitigated\": 30389,\n" +
+                        "                \"magicalDamageTaken\": 6611,\n" +
+                        "                \"perk0Var2\": 214,\n" +
                         "                \"firstInhibitorKill\": false,\n" +
-                        "                \"trueDamageTaken\": 1561,\n" +
-                        "                \"assists\": 16,\n" +
+                        "                \"trueDamageTaken\": 1464,\n" +
+                        "                \"assists\": 10,\n" +
                         "                \"perk4Var2\": 0,\n" +
-                        "                \"goldSpent\": 12750,\n" +
-                        "                \"trueDamageDealt\": 1572,\n" +
-                        "                \"participantId\": 3,\n" +
-                        "                \"physicalDamageDealt\": 5812,\n" +
+                        "                \"goldSpent\": 14183,\n" +
+                        "                \"trueDamageDealt\": 14372,\n" +
+                        "                \"participantId\": 1,\n" +
+                        "                \"physicalDamageDealt\": 113786,\n" +
                         "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 26877,\n" +
-                        "                \"physicalDamageTaken\": 11857,\n" +
+                        "                \"totalDamageDealtToChampions\": 16949,\n" +
+                        "                \"physicalDamageTaken\": 32668,\n" +
                         "                \"totalPlayerScore\": 0,\n" +
                         "                \"win\": true,\n" +
                         "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 67566,\n" +
-                        "                \"neutralMinionsKilledEnemyJungle\": 0,\n" +
-                        "                \"deaths\": 8,\n" +
-                        "                \"wardsPlaced\": 21,\n" +
-                        "                \"perkPrimaryStyle\": 8200,\n" +
-                        "                \"perkSubStyle\": 8300,\n" +
-                        "                \"turretKills\": 0,\n" +
+                        "                \"totalDamageDealt\": 205103,\n" +
+                        "                \"neutralMinionsKilledEnemyJungle\": 25,\n" +
+                        "                \"deaths\": 4,\n" +
+                        "                \"wardsPlaced\": 9,\n" +
+                        "                \"perkPrimaryStyle\": 8000,\n" +
+                        "                \"perkSubStyle\": 8400,\n" +
+                        "                \"turretKills\": 5,\n" +
                         "                \"firstBloodKill\": false,\n" +
-                        "                \"trueDamageDealtToChampions\": 1500,\n" +
-                        "                \"goldEarned\": 13880,\n" +
-                        "                \"killingSprees\": 3,\n" +
+                        "                \"trueDamageDealtToChampions\": 1442,\n" +
+                        "                \"goldEarned\": 15569,\n" +
+                        "                \"killingSprees\": 2,\n" +
                         "                \"unrealKills\": 0,\n" +
-                        "                \"firstTowerAssist\": true,\n" +
+                        "                \"firstTowerAssist\": false,\n" +
                         "                \"firstTowerKill\": false,\n" +
                         "                \"champLevel\": 16,\n" +
-                        "                \"doubleKills\": 0,\n" +
+                        "                \"doubleKills\": 1,\n" +
                         "                \"inhibitorKills\": 0,\n" +
-                        "                \"firstInhibitorAssist\": true,\n" +
-                        "                \"perk0Var1\": 1896,\n" +
+                        "                \"firstInhibitorAssist\": false,\n" +
+                        "                \"perk0Var1\": 439,\n" +
                         "                \"combatPlayerScore\": 0,\n" +
-                        "                \"perk0Var3\": 0,\n" +
+                        "                \"perk0Var3\": 513,\n" +
                         "                \"visionWardsBoughtInGame\": 2,\n" +
                         "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 3215,\n" +
-                        "                \"totalMinionsKilled\": 56,\n" +
-                        "                \"timeCCingOthers\": 33,\n" +
-                        "                \"statPerk2\": 5002\n" +
+                        "                \"totalHeal\": 14549,\n" +
+                        "                \"totalMinionsKilled\": 73,\n" +
+                        "                \"timeCCingOthers\": 21,\n" +
+                        "                \"statPerk2\": 5001\n" +
                         "            },\n" +
-                        "            \"spell1Id\": 14,\n" +
-                        "            \"participantId\": 3,\n" +
-                        "            \"highestAchievedSeasonTier\": \"GOLD\",\n" +
+                        "            \"spell1Id\": 11,\n" +
+                        "            \"participantId\": 1,\n" +
+                        "            \"highestAchievedSeasonTier\": \"SILVER\",\n" +
                         "            \"spell2Id\": 4,\n" +
                         "            \"teamId\": 100,\n" +
                         "            \"timeline\": {\n" +
-                        "                \"lane\": \"BOTTOM\",\n" +
-                        "                \"participantId\": 3,\n" +
+                        "                \"lane\": \"JUNGLE\",\n" +
+                        "                \"participantId\": 1,\n" +
                         "                \"csDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": -0.3999999999999999,\n" +
-                        "                    \"0-10\": 0.24999999999999978,\n" +
-                        "                    \"10-20\": 0.19999999999999973\n" +
+                        "                    \"20-30\": -1.6,\n" +
+                        "                    \"0-10\": -0.09999999999999998,\n" +
+                        "                    \"10-20\": 2.6999999999999997\n" +
                         "                },\n" +
                         "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 559.5,\n" +
-                        "                    \"0-10\": 271,\n" +
-                        "                    \"10-20\": 411\n" +
+                        "                    \"20-30\": 421.9,\n" +
+                        "                    \"0-10\": 332,\n" +
+                        "                    \"10-20\": 534\n" +
                         "                },\n" +
                         "                \"xpDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": -16.80000000000004,\n" +
-                        "                    \"0-10\": 61.500000000000014,\n" +
-                        "                    \"10-20\": 48.75000000000003\n" +
+                        "                    \"20-30\": -84.70000000000002,\n" +
+                        "                    \"0-10\": -11.799999999999983,\n" +
+                        "                    \"10-20\": 162.3\n" +
                         "                },\n" +
                         "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 2.3,\n" +
-                        "                    \"0-10\": 0.6,\n" +
-                        "                    \"10-20\": 2.3\n" +
+                        "                    \"20-30\": 1.3,\n" +
+                        "                    \"0-10\": 0.9,\n" +
+                        "                    \"10-20\": 3.6\n" +
                         "                },\n" +
                         "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 540.8,\n" +
-                        "                    \"0-10\": 370.2,\n" +
-                        "                    \"10-20\": 487.9\n" +
+                        "                    \"20-30\": 506.79999999999995,\n" +
+                        "                    \"0-10\": 376.9,\n" +
+                        "                    \"10-20\": 527.1\n" +
                         "                },\n" +
-                        "                \"role\": \"DUO_SUPPORT\",\n" +
+                        "                \"role\": \"NONE\",\n" +
                         "                \"damageTakenDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": -144.79999999999995,\n" +
-                        "                    \"0-10\": -175.59999999999997,\n" +
-                        "                    \"10-20\": -137.55\n" +
+                        "                    \"20-30\": 559.1,\n" +
+                        "                    \"0-10\": 81.40000000000003,\n" +
+                        "                    \"10-20\": 175.29999999999995\n" +
                         "                },\n" +
                         "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 879.7,\n" +
-                        "                    \"0-10\": 249.6,\n" +
-                        "                    \"10-20\": 645.8\n" +
+                        "                    \"20-30\": 1644.7,\n" +
+                        "                    \"0-10\": 579.8,\n" +
+                        "                    \"10-20\": 1030.9\n" +
                         "                }\n" +
                         "            },\n" +
-                        "            \"championId\": 43\n" +
+                        "            \"championId\": 24\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"spell1Id\": 4,\n" +
-                        "            \"participantId\": 4,\n" +
+                        "            \"spell1Id\": 14,\n" +
+                        "            \"participantId\": 2,\n" +
                         "            \"timeline\": {\n" +
                         "                \"lane\": \"MIDDLE\",\n" +
-                        "                \"participantId\": 4,\n" +
+                        "                \"participantId\": 2,\n" +
                         "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 310.6,\n" +
-                        "                    \"0-10\": 266.4,\n" +
-                        "                    \"10-20\": 320.2\n" +
+                        "                    \"20-30\": 612,\n" +
+                        "                    \"0-10\": 232.39999999999998,\n" +
+                        "                    \"10-20\": 526.4\n" +
                         "                },\n" +
                         "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 0.9,\n" +
-                        "                    \"0-10\": 7.9,\n" +
-                        "                    \"10-20\": 5.4\n" +
+                        "                    \"20-30\": 3.5999999999999996,\n" +
+                        "                    \"0-10\": 3.7,\n" +
+                        "                    \"10-20\": 7\n" +
                         "                },\n" +
                         "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 496.20000000000005,\n" +
-                        "                    \"0-10\": 472.29999999999995,\n" +
-                        "                    \"10-20\": 416.8\n" +
+                        "                    \"20-30\": 604.8,\n" +
+                        "                    \"0-10\": 354.2,\n" +
+                        "                    \"10-20\": 551.3\n" +
                         "                },\n" +
-                        "                \"role\": \"SOLO\",\n" +
+                        "                \"role\": \"DUO\",\n" +
                         "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 907,\n" +
-                        "                    \"0-10\": 211.8,\n" +
-                        "                    \"10-20\": 680.4\n" +
+                        "                    \"20-30\": 1277.5,\n" +
+                        "                    \"0-10\": 315.8,\n" +
+                        "                    \"10-20\": 378.4\n" +
                         "                }\n" +
                         "            },\n" +
-                        "            \"spell2Id\": 12,\n" +
+                        "            \"spell2Id\": 4,\n" +
                         "            \"teamId\": 100,\n" +
                         "            \"stats\": {\n" +
                         "                \"neutralMinionsKilledTeamJungle\": 0,\n" +
-                        "                \"visionScore\": 24,\n" +
-                        "                \"magicDamageDealtToChampions\": 15887,\n" +
+                        "                \"visionScore\": 28,\n" +
+                        "                \"magicDamageDealtToChampions\": 27727,\n" +
                         "                \"largestMultiKill\": 2,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 108,\n" +
-                        "                \"longestTimeSpentLiving\": 881,\n" +
-                        "                \"perk1Var1\": 250,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 173,\n" +
+                        "                \"longestTimeSpentLiving\": 806,\n" +
+                        "                \"perk1Var1\": 1315,\n" +
                         "                \"perk1Var3\": 0,\n" +
-                        "                \"perk1Var2\": 497,\n" +
+                        "                \"perk1Var2\": 0,\n" +
                         "                \"tripleKills\": 0,\n" +
-                        "                \"perk5\": 8347,\n" +
-                        "                \"perk4\": 8321,\n" +
+                        "                \"perk5\": 8014,\n" +
+                        "                \"perk4\": 9111,\n" +
                         "                \"playerScore9\": 0,\n" +
                         "                \"playerScore8\": 0,\n" +
-                        "                \"kills\": 5,\n" +
+                        "                \"kills\": 12,\n" +
                         "                \"playerScore1\": 0,\n" +
                         "                \"playerScore0\": 0,\n" +
                         "                \"playerScore3\": 0,\n" +
@@ -1785,104 +1507,286 @@ public class MockResponse {
                         "                \"playerScore4\": 0,\n" +
                         "                \"playerScore7\": 0,\n" +
                         "                \"playerScore6\": 0,\n" +
-                        "                \"perk5Var1\": 0,\n" +
+                        "                \"perk5Var1\": 876,\n" +
                         "                \"perk5Var3\": 0,\n" +
                         "                \"perk5Var2\": 0,\n" +
                         "                \"totalScoreRank\": 0,\n" +
-                        "                \"neutralMinionsKilled\": 0,\n" +
-                        "                \"statPerk1\": 5002,\n" +
-                        "                \"statPerk0\": 5008,\n" +
-                        "                \"damageDealtToTurrets\": 500,\n" +
-                        "                \"physicalDamageDealtToChampions\": 2483,\n" +
-                        "                \"damageDealtToObjectives\": 4821,\n" +
+                        "                \"neutralMinionsKilled\": 8,\n" +
+                        "                \"statPerk1\": 5008,\n" +
+                        "                \"statPerk0\": 5005,\n" +
+                        "                \"damageDealtToTurrets\": 2470,\n" +
+                        "                \"physicalDamageDealtToChampions\": 3347,\n" +
+                        "                \"damageDealtToObjectives\": 6285,\n" +
                         "                \"perk2Var2\": 0,\n" +
                         "                \"perk2Var3\": 0,\n" +
                         "                \"totalUnitsHealed\": 1,\n" +
-                        "                \"perk2Var1\": 12696,\n" +
-                        "                \"perk4Var1\": 3,\n" +
-                        "                \"totalDamageTaken\": 21287,\n" +
+                        "                \"perk2Var1\": 30,\n" +
+                        "                \"perk4Var1\": 787,\n" +
+                        "                \"totalDamageTaken\": 22474,\n" +
                         "                \"perk4Var3\": 0,\n" +
-                        "                \"wardsKilled\": 5,\n" +
+                        "                \"wardsKilled\": 3,\n" +
                         "                \"largestCriticalStrike\": 0,\n" +
-                        "                \"largestKillingSpree\": 3,\n" +
+                        "                \"largestKillingSpree\": 5,\n" +
                         "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 63720,\n" +
+                        "                \"magicDamageDealt\": 91727,\n" +
                         "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 3905,\n" +
-                        "                \"item3\": 3047,\n" +
-                        "                \"item0\": 2033,\n" +
-                        "                \"item1\": 2065,\n" +
+                        "                \"item2\": 3157,\n" +
+                        "                \"item3\": 1082,\n" +
+                        "                \"item0\": 3152,\n" +
+                        "                \"item1\": 3100,\n" +
                         "                \"item6\": 3340,\n" +
-                        "                \"item4\": 3165,\n" +
-                        "                \"item5\": 0,\n" +
-                        "                \"perk1\": 8226,\n" +
-                        "                \"perk0\": 8214,\n" +
-                        "                \"perk3\": 8237,\n" +
-                        "                \"perk2\": 8234,\n" +
+                        "                \"item4\": 3089,\n" +
+                        "                \"item5\": 3020,\n" +
+                        "                \"perk1\": 8143,\n" +
+                        "                \"perk0\": 8112,\n" +
+                        "                \"perk3\": 8135,\n" +
+                        "                \"perk2\": 8138,\n" +
                         "                \"perk3Var3\": 0,\n" +
-                        "                \"perk3Var2\": 0,\n" +
-                        "                \"perk3Var1\": 399,\n" +
-                        "                \"damageSelfMitigated\": 10952,\n" +
-                        "                \"magicalDamageTaken\": 6190,\n" +
-                        "                \"perk0Var2\": 58,\n" +
+                        "                \"perk3Var2\": 5,\n" +
+                        "                \"perk3Var1\": 3304,\n" +
+                        "                \"damageSelfMitigated\": 14329,\n" +
+                        "                \"magicalDamageTaken\": 7590,\n" +
+                        "                \"perk0Var2\": 0,\n" +
                         "                \"firstInhibitorKill\": false,\n" +
-                        "                \"trueDamageTaken\": 1129,\n" +
-                        "                \"assists\": 8,\n" +
-                        "                \"perk4Var2\": 0,\n" +
-                        "                \"goldSpent\": 9400,\n" +
-                        "                \"trueDamageDealt\": 300,\n" +
-                        "                \"participantId\": 4,\n" +
-                        "                \"physicalDamageDealt\": 12640,\n" +
+                        "                \"trueDamageTaken\": 946,\n" +
+                        "                \"assists\": 16,\n" +
+                        "                \"perk4Var2\": 560,\n" +
+                        "                \"goldSpent\": 14225,\n" +
+                        "                \"trueDamageDealt\": 7781,\n" +
+                        "                \"participantId\": 2,\n" +
+                        "                \"physicalDamageDealt\": 16160,\n" +
                         "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 18430,\n" +
-                        "                \"physicalDamageTaken\": 13967,\n" +
+                        "                \"totalDamageDealtToChampions\": 32440,\n" +
+                        "                \"physicalDamageTaken\": 13938,\n" +
                         "                \"totalPlayerScore\": 0,\n" +
                         "                \"win\": true,\n" +
                         "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 76661,\n" +
-                        "                \"neutralMinionsKilledEnemyJungle\": 0,\n" +
-                        "                \"deaths\": 6,\n" +
-                        "                \"wardsPlaced\": 13,\n" +
-                        "                \"perkPrimaryStyle\": 8200,\n" +
-                        "                \"perkSubStyle\": 8300,\n" +
-                        "                \"turretKills\": 0,\n" +
+                        "                \"totalDamageDealt\": 115669,\n" +
+                        "                \"neutralMinionsKilledEnemyJungle\": 4,\n" +
+                        "                \"deaths\": 5,\n" +
+                        "                \"wardsPlaced\": 10,\n" +
+                        "                \"perkPrimaryStyle\": 8100,\n" +
+                        "                \"perkSubStyle\": 8000,\n" +
+                        "                \"turretKills\": 1,\n" +
                         "                \"firstBloodKill\": false,\n" +
-                        "                \"trueDamageDealtToChampions\": 60,\n" +
-                        "                \"goldEarned\": 10310,\n" +
-                        "                \"killingSprees\": 1,\n" +
+                        "                \"trueDamageDealtToChampions\": 1366,\n" +
+                        "                \"goldEarned\": 15797,\n" +
+                        "                \"killingSprees\": 3,\n" +
+                        "                \"unrealKills\": 0,\n" +
+                        "                \"firstTowerAssist\": true,\n" +
+                        "                \"firstTowerKill\": false,\n" +
+                        "                \"champLevel\": 17,\n" +
+                        "                \"doubleKills\": 1,\n" +
+                        "                \"inhibitorKills\": 0,\n" +
+                        "                \"firstInhibitorAssist\": false,\n" +
+                        "                \"perk0Var1\": 1725,\n" +
+                        "                \"combatPlayerScore\": 0,\n" +
+                        "                \"perk0Var3\": 0,\n" +
+                        "                \"visionWardsBoughtInGame\": 1,\n" +
+                        "                \"pentaKills\": 0,\n" +
+                        "                \"totalHeal\": 5624,\n" +
+                        "                \"totalMinionsKilled\": 144,\n" +
+                        "                \"timeCCingOthers\": 17,\n" +
+                        "                \"statPerk2\": 5003\n" +
+                        "            },\n" +
+                        "            \"championId\": 105\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"spell1Id\": 7,\n" +
+                        "            \"participantId\": 3,\n" +
+                        "            \"timeline\": {\n" +
+                        "                \"lane\": \"BOTTOM\",\n" +
+                        "                \"participantId\": 3,\n" +
+                        "                \"csDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": -1.6,\n" +
+                        "                    \"0-10\": 1.15,\n" +
+                        "                    \"10-20\": -0.75\n" +
+                        "                },\n" +
+                        "                \"goldPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 500.2,\n" +
+                        "                    \"0-10\": 325.4,\n" +
+                        "                    \"10-20\": 344.2\n" +
+                        "                },\n" +
+                        "                \"xpDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": -14.800000000000011,\n" +
+                        "                    \"0-10\": 22.85000000000001,\n" +
+                        "                    \"10-20\": -13.400000000000034\n" +
+                        "                },\n" +
+                        "                \"creepsPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 4.1,\n" +
+                        "                    \"0-10\": 7.300000000000001,\n" +
+                        "                    \"10-20\": 6.6\n" +
+                        "                },\n" +
+                        "                \"xpPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 600,\n" +
+                        "                    \"0-10\": 273.1,\n" +
+                        "                    \"10-20\": 459.5\n" +
+                        "                },\n" +
+                        "                \"role\": \"DUO_CARRY\",\n" +
+                        "                \"damageTakenDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 333.49999999999994,\n" +
+                        "                    \"0-10\": 78.39999999999999,\n" +
+                        "                    \"10-20\": 262.30000000000007\n" +
+                        "                },\n" +
+                        "                \"damageTakenPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 1027.5,\n" +
+                        "                    \"0-10\": 269.6,\n" +
+                        "                    \"10-20\": 843.6\n" +
+                        "                }\n" +
+                        "            },\n" +
+                        "            \"spell2Id\": 4,\n" +
+                        "            \"teamId\": 100,\n" +
+                        "            \"stats\": {\n" +
+                        "                \"neutralMinionsKilledTeamJungle\": 26,\n" +
+                        "                \"visionScore\": 25,\n" +
+                        "                \"magicDamageDealtToChampions\": 1303,\n" +
+                        "                \"largestMultiKill\": 2,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 102,\n" +
+                        "                \"longestTimeSpentLiving\": 401,\n" +
+                        "                \"perk1Var1\": 779,\n" +
+                        "                \"perk1Var3\": 0,\n" +
+                        "                \"perk1Var2\": 340,\n" +
+                        "                \"tripleKills\": 0,\n" +
+                        "                \"perk5\": 8345,\n" +
+                        "                \"perk4\": 8304,\n" +
+                        "                \"playerScore9\": 0,\n" +
+                        "                \"playerScore8\": 0,\n" +
+                        "                \"kills\": 8,\n" +
+                        "                \"playerScore1\": 0,\n" +
+                        "                \"playerScore0\": 0,\n" +
+                        "                \"playerScore3\": 0,\n" +
+                        "                \"playerScore2\": 0,\n" +
+                        "                \"playerScore5\": 0,\n" +
+                        "                \"playerScore4\": 0,\n" +
+                        "                \"playerScore7\": 0,\n" +
+                        "                \"playerScore6\": 0,\n" +
+                        "                \"perk5Var1\": 3,\n" +
+                        "                \"perk5Var3\": 0,\n" +
+                        "                \"perk5Var2\": 0,\n" +
+                        "                \"totalScoreRank\": 0,\n" +
+                        "                \"neutralMinionsKilled\": 30,\n" +
+                        "                \"statPerk1\": 5008,\n" +
+                        "                \"statPerk0\": 5005,\n" +
+                        "                \"damageDealtToTurrets\": 4688,\n" +
+                        "                \"physicalDamageDealtToChampions\": 15515,\n" +
+                        "                \"damageDealtToObjectives\": 12060,\n" +
+                        "                \"perk2Var2\": 0,\n" +
+                        "                \"perk2Var3\": 0,\n" +
+                        "                \"totalUnitsHealed\": 4,\n" +
+                        "                \"perk2Var1\": 15,\n" +
+                        "                \"perk4Var1\": 9,\n" +
+                        "                \"totalDamageTaken\": 25972,\n" +
+                        "                \"perk4Var3\": 5,\n" +
+                        "                \"wardsKilled\": 1,\n" +
+                        "                \"largestCriticalStrike\": 556,\n" +
+                        "                \"largestKillingSpree\": 4,\n" +
+                        "                \"quadraKills\": 0,\n" +
+                        "                \"magicDamageDealt\": 8177,\n" +
+                        "                \"firstBloodAssist\": false,\n" +
+                        "                \"item2\": 0,\n" +
+                        "                \"item3\": 3508,\n" +
+                        "                \"item0\": 2420,\n" +
+                        "                \"item1\": 3153,\n" +
+                        "                \"item6\": 3363,\n" +
+                        "                \"item4\": 3006,\n" +
+                        "                \"item5\": 3094,\n" +
+                        "                \"perk1\": 9111,\n" +
+                        "                \"perk0\": 8005,\n" +
+                        "                \"perk3\": 8014,\n" +
+                        "                \"perk2\": 9104,\n" +
+                        "                \"perk3Var3\": 0,\n" +
+                        "                \"perk3Var2\": 0,\n" +
+                        "                \"perk3Var1\": 501,\n" +
+                        "                \"damageSelfMitigated\": 13757,\n" +
+                        "                \"magicalDamageTaken\": 4802,\n" +
+                        "                \"perk0Var2\": 713,\n" +
+                        "                \"firstInhibitorKill\": false,\n" +
+                        "                \"trueDamageTaken\": 923,\n" +
+                        "                \"assists\": 9,\n" +
+                        "                \"perk4Var2\": 4,\n" +
+                        "                \"goldSpent\": 11325,\n" +
+                        "                \"trueDamageDealt\": 16036,\n" +
+                        "                \"participantId\": 3,\n" +
+                        "                \"physicalDamageDealt\": 146624,\n" +
+                        "                \"sightWardsBoughtInGame\": 0,\n" +
+                        "                \"totalDamageDealtToChampions\": 17261,\n" +
+                        "                \"physicalDamageTaken\": 20247,\n" +
+                        "                \"totalPlayerScore\": 0,\n" +
+                        "                \"win\": true,\n" +
+                        "                \"objectivePlayerScore\": 0,\n" +
+                        "                \"totalDamageDealt\": 170838,\n" +
+                        "                \"neutralMinionsKilledEnemyJungle\": 0,\n" +
+                        "                \"deaths\": 8,\n" +
+                        "                \"wardsPlaced\": 12,\n" +
+                        "                \"perkPrimaryStyle\": 8000,\n" +
+                        "                \"perkSubStyle\": 8300,\n" +
+                        "                \"turretKills\": 1,\n" +
+                        "                \"firstBloodKill\": true,\n" +
+                        "                \"trueDamageDealtToChampions\": 442,\n" +
+                        "                \"goldEarned\": 13953,\n" +
+                        "                \"killingSprees\": 3,\n" +
                         "                \"unrealKills\": 0,\n" +
                         "                \"firstTowerAssist\": false,\n" +
                         "                \"firstTowerKill\": false,\n" +
                         "                \"champLevel\": 16,\n" +
                         "                \"doubleKills\": 1,\n" +
                         "                \"inhibitorKills\": 0,\n" +
-                        "                \"firstInhibitorAssist\": true,\n" +
-                        "                \"perk0Var1\": 1695,\n" +
+                        "                \"firstInhibitorAssist\": false,\n" +
+                        "                \"perk0Var1\": 956,\n" +
                         "                \"combatPlayerScore\": 0,\n" +
-                        "                \"perk0Var3\": 0,\n" +
-                        "                \"visionWardsBoughtInGame\": 2,\n" +
+                        "                \"perk0Var3\": 243,\n" +
+                        "                \"visionWardsBoughtInGame\": 3,\n" +
                         "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 1266,\n" +
-                        "                \"totalMinionsKilled\": 144,\n" +
-                        "                \"timeCCingOthers\": 34,\n" +
-                        "                \"statPerk2\": 5001\n" +
+                        "                \"totalHeal\": 4598,\n" +
+                        "                \"totalMinionsKilled\": 187,\n" +
+                        "                \"timeCCingOthers\": 4,\n" +
+                        "                \"statPerk2\": 5002\n" +
                         "            },\n" +
-                        "            \"championId\": 45\n" +
+                        "            \"championId\": 236\n" +
                         "        },\n" +
                         "        {\n" +
+                        "            \"spell1Id\": 4,\n" +
+                        "            \"participantId\": 4,\n" +
+                        "            \"timeline\": {\n" +
+                        "                \"lane\": \"MIDDLE\",\n" +
+                        "                \"participantId\": 4,\n" +
+                        "                \"goldPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 292.8,\n" +
+                        "                    \"0-10\": 293,\n" +
+                        "                    \"10-20\": 414.6\n" +
+                        "                },\n" +
+                        "                \"creepsPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 2.5,\n" +
+                        "                    \"0-10\": 6,\n" +
+                        "                    \"10-20\": 3.5\n" +
+                        "                },\n" +
+                        "                \"xpPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 391.9,\n" +
+                        "                    \"0-10\": 503.4,\n" +
+                        "                    \"10-20\": 406.70000000000005\n" +
+                        "                },\n" +
+                        "                \"role\": \"DUO\",\n" +
+                        "                \"damageTakenPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 1859.4,\n" +
+                        "                    \"0-10\": 351.6,\n" +
+                        "                    \"10-20\": 800.9\n" +
+                        "                }\n" +
+                        "            },\n" +
+                        "            \"spell2Id\": 12,\n" +
+                        "            \"teamId\": 100,\n" +
                         "            \"stats\": {\n" +
-                        "                \"neutralMinionsKilledTeamJungle\": 16,\n" +
-                        "                \"visionScore\": 22,\n" +
-                        "                \"magicDamageDealtToChampions\": 233,\n" +
-                        "                \"largestMultiKill\": 2,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 34,\n" +
-                        "                \"longestTimeSpentLiving\": 301,\n" +
-                        "                \"perk1Var1\": 1203,\n" +
+                        "                \"neutralMinionsKilledTeamJungle\": 8,\n" +
+                        "                \"visionScore\": 7,\n" +
+                        "                \"magicDamageDealtToChampions\": 7343,\n" +
+                        "                \"largestMultiKill\": 1,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 295,\n" +
+                        "                \"longestTimeSpentLiving\": 1111,\n" +
+                        "                \"perk1Var1\": 1011,\n" +
                         "                \"perk1Var3\": 0,\n" +
-                        "                \"perk1Var2\": 400,\n" +
+                        "                \"perk1Var2\": 0,\n" +
                         "                \"tripleKills\": 0,\n" +
-                        "                \"perk5\": 8236,\n" +
-                        "                \"perk4\": 8226,\n" +
+                        "                \"perk5\": 9104,\n" +
+                        "                \"perk4\": 9111,\n" +
                         "                \"playerScore9\": 0,\n" +
                         "                \"playerScore8\": 0,\n" +
                         "                \"kills\": 7,\n" +
@@ -1894,152 +1798,261 @@ public class MockResponse {
                         "                \"playerScore4\": 0,\n" +
                         "                \"playerScore7\": 0,\n" +
                         "                \"playerScore6\": 0,\n" +
-                        "                \"perk5Var1\": 28,\n" +
+                        "                \"perk5Var1\": 14,\n" +
                         "                \"perk5Var3\": 0,\n" +
                         "                \"perk5Var2\": 0,\n" +
                         "                \"totalScoreRank\": 0,\n" +
-                        "                \"neutralMinionsKilled\": 26,\n" +
-                        "                \"statPerk1\": 5008,\n" +
+                        "                \"neutralMinionsKilled\": 12,\n" +
+                        "                \"statPerk1\": 5002,\n" +
                         "                \"statPerk0\": 5005,\n" +
-                        "                \"damageDealtToTurrets\": 10899,\n" +
-                        "                \"physicalDamageDealtToChampions\": 26013,\n" +
-                        "                \"damageDealtToObjectives\": 26826,\n" +
+                        "                \"damageDealtToTurrets\": 4248,\n" +
+                        "                \"physicalDamageDealtToChampions\": 16615,\n" +
+                        "                \"damageDealtToObjectives\": 23409,\n" +
                         "                \"perk2Var2\": 0,\n" +
                         "                \"perk2Var3\": 0,\n" +
-                        "                \"totalUnitsHealed\": 3,\n" +
-                        "                \"perk2Var1\": 11,\n" +
-                        "                \"perk4Var1\": 250,\n" +
-                        "                \"totalDamageTaken\": 24469,\n" +
+                        "                \"totalUnitsHealed\": 1,\n" +
+                        "                \"perk2Var1\": 1037,\n" +
+                        "                \"perk4Var1\": 1006,\n" +
+                        "                \"totalDamageTaken\": 33785,\n" +
                         "                \"perk4Var3\": 0,\n" +
-                        "                \"wardsKilled\": 4,\n" +
-                        "                \"largestCriticalStrike\": 1067,\n" +
-                        "                \"largestKillingSpree\": 3,\n" +
+                        "                \"wardsKilled\": 0,\n" +
+                        "                \"largestCriticalStrike\": 0,\n" +
+                        "                \"largestKillingSpree\": 5,\n" +
                         "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 894,\n" +
+                        "                \"magicDamageDealt\": 20931,\n" +
                         "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 3006,\n" +
-                        "                \"item3\": 3046,\n" +
-                        "                \"item0\": 3072,\n" +
-                        "                \"item1\": 2421,\n" +
-                        "                \"item6\": 3363,\n" +
-                        "                \"item4\": 3031,\n" +
-                        "                \"item5\": 3508,\n" +
-                        "                \"perk1\": 9111,\n" +
-                        "                \"perk0\": 8008,\n" +
-                        "                \"perk3\": 8014,\n" +
-                        "                \"perk2\": 9104,\n" +
+                        "                \"item2\": 3748,\n" +
+                        "                \"item3\": 1031,\n" +
+                        "                \"item0\": 1028,\n" +
+                        "                \"item1\": 1054,\n" +
+                        "                \"item6\": 3364,\n" +
+                        "                \"item4\": 3078,\n" +
+                        "                \"item5\": 3047,\n" +
+                        "                \"perk1\": 8401,\n" +
+                        "                \"perk0\": 8437,\n" +
+                        "                \"perk3\": 8451,\n" +
+                        "                \"perk2\": 8473,\n" +
                         "                \"perk3Var3\": 0,\n" +
                         "                \"perk3Var2\": 0,\n" +
-                        "                \"perk3Var1\": 595,\n" +
-                        "                \"damageSelfMitigated\": 17543,\n" +
-                        "                \"magicalDamageTaken\": 7733,\n" +
-                        "                \"perk0Var2\": 50,\n" +
-                        "                \"firstInhibitorKill\": true,\n" +
-                        "                \"trueDamageTaken\": 430,\n" +
-                        "                \"assists\": 13,\n" +
-                        "                \"perk4Var2\": 927,\n" +
-                        "                \"goldSpent\": 15000,\n" +
-                        "                \"trueDamageDealt\": 1094,\n" +
-                        "                \"participantId\": 5,\n" +
-                        "                \"physicalDamageDealt\": 226358,\n" +
+                        "                \"perk3Var1\": 211,\n" +
+                        "                \"damageSelfMitigated\": 43240,\n" +
+                        "                \"magicalDamageTaken\": 6983,\n" +
+                        "                \"perk0Var2\": 1338,\n" +
+                        "                \"firstInhibitorKill\": false,\n" +
+                        "                \"trueDamageTaken\": 779,\n" +
+                        "                \"assists\": 15,\n" +
+                        "                \"perk4Var2\": 440,\n" +
+                        "                \"goldSpent\": 10283,\n" +
+                        "                \"trueDamageDealt\": 18852,\n" +
+                        "                \"participantId\": 4,\n" +
+                        "                \"physicalDamageDealt\": 87731,\n" +
                         "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 26494,\n" +
-                        "                \"physicalDamageTaken\": 16305,\n" +
+                        "                \"totalDamageDealtToChampions\": 23958,\n" +
+                        "                \"physicalDamageTaken\": 26022,\n" +
                         "                \"totalPlayerScore\": 0,\n" +
                         "                \"win\": true,\n" +
                         "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 228347,\n" +
-                        "                \"neutralMinionsKilledEnemyJungle\": 8,\n" +
-                        "                \"deaths\": 10,\n" +
-                        "                \"wardsPlaced\": 8,\n" +
-                        "                \"perkPrimaryStyle\": 8000,\n" +
-                        "                \"perkSubStyle\": 8200,\n" +
-                        "                \"turretKills\": 4,\n" +
+                        "                \"totalDamageDealt\": 127515,\n" +
+                        "                \"neutralMinionsKilledEnemyJungle\": 0,\n" +
+                        "                \"deaths\": 7,\n" +
+                        "                \"wardsPlaced\": 3,\n" +
+                        "                \"perkPrimaryStyle\": 8400,\n" +
+                        "                \"perkSubStyle\": 8000,\n" +
+                        "                \"turretKills\": 0,\n" +
                         "                \"firstBloodKill\": false,\n" +
-                        "                \"trueDamageDealtToChampions\": 248,\n" +
-                        "                \"goldEarned\": 15993,\n" +
+                        "                \"trueDamageDealtToChampions\": 0,\n" +
+                        "                \"goldEarned\": 12123,\n" +
                         "                \"killingSprees\": 1,\n" +
                         "                \"unrealKills\": 0,\n" +
                         "                \"firstTowerAssist\": false,\n" +
-                        "                \"firstTowerKill\": true,\n" +
-                        "                \"champLevel\": 15,\n" +
-                        "                \"doubleKills\": 1,\n" +
-                        "                \"inhibitorKills\": 1,\n" +
+                        "                \"firstTowerKill\": false,\n" +
+                        "                \"champLevel\": 16,\n" +
+                        "                \"doubleKills\": 0,\n" +
+                        "                \"inhibitorKills\": 0,\n" +
                         "                \"firstInhibitorAssist\": false,\n" +
-                        "                \"perk0Var1\": 2,\n" +
+                        "                \"perk0Var1\": 1794,\n" +
                         "                \"combatPlayerScore\": 0,\n" +
                         "                \"perk0Var3\": 0,\n" +
-                        "                \"visionWardsBoughtInGame\": 0,\n" +
+                        "                \"visionWardsBoughtInGame\": 2,\n" +
                         "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 4010,\n" +
-                        "                \"totalMinionsKilled\": 202,\n" +
-                        "                \"timeCCingOthers\": 1,\n" +
-                        "                \"statPerk2\": 5002\n" +
+                        "                \"totalHeal\": 3393,\n" +
+                        "                \"totalMinionsKilled\": 139,\n" +
+                        "                \"timeCCingOthers\": 41,\n" +
+                        "                \"statPerk2\": 5001\n" +
                         "            },\n" +
-                        "            \"spell1Id\": 7,\n" +
+                        "            \"championId\": 98\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"stats\": {\n" +
+                        "                \"neutralMinionsKilledTeamJungle\": 0,\n" +
+                        "                \"visionScore\": 47,\n" +
+                        "                \"magicDamageDealtToChampions\": 237,\n" +
+                        "                \"largestMultiKill\": 1,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 131,\n" +
+                        "                \"longestTimeSpentLiving\": 886,\n" +
+                        "                \"perk1Var1\": 924,\n" +
+                        "                \"perk1Var3\": 0,\n" +
+                        "                \"perk1Var2\": 0,\n" +
+                        "                \"tripleKills\": 0,\n" +
+                        "                \"perk5\": 8345,\n" +
+                        "                \"perk4\": 8313,\n" +
+                        "                \"playerScore9\": 0,\n" +
+                        "                \"playerScore8\": 0,\n" +
+                        "                \"kills\": 7,\n" +
+                        "                \"playerScore1\": 0,\n" +
+                        "                \"playerScore0\": 0,\n" +
+                        "                \"playerScore3\": 0,\n" +
+                        "                \"playerScore2\": 0,\n" +
+                        "                \"playerScore5\": 0,\n" +
+                        "                \"playerScore4\": 0,\n" +
+                        "                \"playerScore7\": 0,\n" +
+                        "                \"playerScore6\": 0,\n" +
+                        "                \"perk5Var1\": 3,\n" +
+                        "                \"perk5Var3\": 0,\n" +
+                        "                \"perk5Var2\": 0,\n" +
+                        "                \"totalScoreRank\": 0,\n" +
+                        "                \"neutralMinionsKilled\": 4,\n" +
+                        "                \"statPerk1\": 5002,\n" +
+                        "                \"statPerk0\": 5008,\n" +
+                        "                \"damageDealtToTurrets\": 2435,\n" +
+                        "                \"physicalDamageDealtToChampions\": 5109,\n" +
+                        "                \"damageDealtToObjectives\": 3486,\n" +
+                        "                \"perk2Var2\": 0,\n" +
+                        "                \"perk2Var3\": 0,\n" +
+                        "                \"totalUnitsHealed\": 5,\n" +
+                        "                \"perk2Var1\": 1094,\n" +
+                        "                \"perk4Var1\": 0,\n" +
+                        "                \"totalDamageTaken\": 27350,\n" +
+                        "                \"perk4Var3\": 0,\n" +
+                        "                \"wardsKilled\": 5,\n" +
+                        "                \"largestCriticalStrike\": 0,\n" +
+                        "                \"largestKillingSpree\": 2,\n" +
+                        "                \"quadraKills\": 0,\n" +
+                        "                \"magicDamageDealt\": 237,\n" +
+                        "                \"firstBloodAssist\": false,\n" +
+                        "                \"item2\": 3401,\n" +
+                        "                \"item3\": 2055,\n" +
+                        "                \"item0\": 3142,\n" +
+                        "                \"item1\": 3190,\n" +
+                        "                \"item6\": 3364,\n" +
+                        "                \"item4\": 3117,\n" +
+                        "                \"item5\": 3082,\n" +
+                        "                \"perk1\": 8446,\n" +
+                        "                \"perk0\": 8439,\n" +
+                        "                \"perk3\": 8451,\n" +
+                        "                \"perk2\": 8444,\n" +
+                        "                \"perk3Var3\": 0,\n" +
+                        "                \"perk3Var2\": 0,\n" +
+                        "                \"perk3Var1\": 171,\n" +
+                        "                \"damageSelfMitigated\": 29761,\n" +
+                        "                \"magicalDamageTaken\": 6911,\n" +
+                        "                \"perk0Var2\": 0,\n" +
+                        "                \"firstInhibitorKill\": false,\n" +
+                        "                \"trueDamageTaken\": 300,\n" +
+                        "                \"assists\": 13,\n" +
+                        "                \"perk4Var2\": 0,\n" +
+                        "                \"goldSpent\": 9425,\n" +
+                        "                \"trueDamageDealt\": 12424,\n" +
+                        "                \"participantId\": 5,\n" +
+                        "                \"physicalDamageDealt\": 20491,\n" +
+                        "                \"sightWardsBoughtInGame\": 0,\n" +
+                        "                \"totalDamageDealtToChampions\": 7125,\n" +
+                        "                \"physicalDamageTaken\": 20138,\n" +
+                        "                \"totalPlayerScore\": 0,\n" +
+                        "                \"win\": true,\n" +
+                        "                \"objectivePlayerScore\": 0,\n" +
+                        "                \"totalDamageDealt\": 33153,\n" +
+                        "                \"neutralMinionsKilledEnemyJungle\": 0,\n" +
+                        "                \"deaths\": 6,\n" +
+                        "                \"wardsPlaced\": 18,\n" +
+                        "                \"perkPrimaryStyle\": 8400,\n" +
+                        "                \"perkSubStyle\": 8300,\n" +
+                        "                \"turretKills\": 0,\n" +
+                        "                \"firstBloodKill\": false,\n" +
+                        "                \"trueDamageDealtToChampions\": 1778,\n" +
+                        "                \"goldEarned\": 13490,\n" +
+                        "                \"killingSprees\": 2,\n" +
+                        "                \"unrealKills\": 0,\n" +
+                        "                \"firstTowerAssist\": false,\n" +
+                        "                \"firstTowerKill\": false,\n" +
+                        "                \"champLevel\": 16,\n" +
+                        "                \"doubleKills\": 0,\n" +
+                        "                \"inhibitorKills\": 1,\n" +
+                        "                \"firstInhibitorAssist\": false,\n" +
+                        "                \"perk0Var1\": 306,\n" +
+                        "                \"combatPlayerScore\": 0,\n" +
+                        "                \"perk0Var3\": 0,\n" +
+                        "                \"visionWardsBoughtInGame\": 5,\n" +
+                        "                \"pentaKills\": 0,\n" +
+                        "                \"totalHeal\": 8897,\n" +
+                        "                \"totalMinionsKilled\": 48,\n" +
+                        "                \"timeCCingOthers\": 17,\n" +
+                        "                \"statPerk2\": 5003\n" +
+                        "            },\n" +
+                        "            \"spell1Id\": 4,\n" +
                         "            \"participantId\": 5,\n" +
-                        "            \"highestAchievedSeasonTier\": \"GOLD\",\n" +
-                        "            \"spell2Id\": 4,\n" +
+                        "            \"highestAchievedSeasonTier\": \"SILVER\",\n" +
+                        "            \"spell2Id\": 14,\n" +
                         "            \"teamId\": 100,\n" +
                         "            \"timeline\": {\n" +
                         "                \"lane\": \"BOTTOM\",\n" +
                         "                \"participantId\": 5,\n" +
                         "                \"csDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": -0.3999999999999999,\n" +
-                        "                    \"0-10\": 0.24999999999999978,\n" +
-                        "                    \"10-20\": 0.19999999999999973\n" +
+                        "                    \"20-30\": -1.6,\n" +
+                        "                    \"0-10\": 1.15,\n" +
+                        "                    \"10-20\": -0.75\n" +
                         "                },\n" +
                         "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 461.8,\n" +
-                        "                    \"0-10\": 423.5,\n" +
-                        "                    \"10-20\": 585.5\n" +
+                        "                    \"20-30\": 509.8,\n" +
+                        "                    \"0-10\": 165,\n" +
+                        "                    \"10-20\": 305.1\n" +
                         "                },\n" +
                         "                \"xpDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": -16.80000000000004,\n" +
-                        "                    \"0-10\": 61.500000000000014,\n" +
-                        "                    \"10-20\": 48.75000000000003\n" +
+                        "                    \"20-30\": -14.800000000000011,\n" +
+                        "                    \"0-10\": 22.85000000000001,\n" +
+                        "                    \"10-20\": -13.400000000000034\n" +
                         "                },\n" +
                         "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 4.1,\n" +
-                        "                    \"0-10\": 7.2,\n" +
-                        "                    \"10-20\": 7.699999999999999\n" +
+                        "                    \"20-30\": 1.1,\n" +
+                        "                    \"0-10\": 1.7,\n" +
+                        "                    \"10-20\": 1.6\n" +
                         "                },\n" +
                         "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 476.3,\n" +
-                        "                    \"0-10\": 372.3,\n" +
-                        "                    \"10-20\": 530.8\n" +
+                        "                    \"20-30\": 584.6,\n" +
+                        "                    \"0-10\": 321.20000000000005,\n" +
+                        "                    \"10-20\": 378.9\n" +
                         "                },\n" +
-                        "                \"role\": \"DUO_CARRY\",\n" +
+                        "                \"role\": \"DUO_SUPPORT\",\n" +
                         "                \"damageTakenDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": -144.79999999999995,\n" +
-                        "                    \"0-10\": -175.59999999999997,\n" +
-                        "                    \"10-20\": -137.55\n" +
+                        "                    \"20-30\": 333.49999999999994,\n" +
+                        "                    \"0-10\": 78.39999999999999,\n" +
+                        "                    \"10-20\": 262.30000000000007\n" +
                         "                },\n" +
                         "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1216.9,\n" +
-                        "                    \"0-10\": 384.8,\n" +
-                        "                    \"10-20\": 565.9\n" +
+                        "                    \"20-30\": 1496,\n" +
+                        "                    \"0-10\": 204.4,\n" +
+                        "                    \"10-20\": 649.7\n" +
                         "                }\n" +
                         "            },\n" +
-                        "            \"championId\": 15\n" +
+                        "            \"championId\": 555\n" +
                         "        },\n" +
                         "        {\n" +
                         "            \"stats\": {\n" +
-                        "                \"neutralMinionsKilledTeamJungle\": 24,\n" +
-                        "                \"visionScore\": 28,\n" +
-                        "                \"magicDamageDealtToChampions\": 17277,\n" +
+                        "                \"neutralMinionsKilledTeamJungle\": 9,\n" +
+                        "                \"visionScore\": 10,\n" +
+                        "                \"magicDamageDealtToChampions\": 14736,\n" +
                         "                \"largestMultiKill\": 1,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 417,\n" +
-                        "                \"longestTimeSpentLiving\": 332,\n" +
-                        "                \"perk1Var1\": 9,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 526,\n" +
+                        "                \"longestTimeSpentLiving\": 481,\n" +
+                        "                \"perk1Var1\": 250,\n" +
                         "                \"perk1Var3\": 0,\n" +
-                        "                \"perk1Var2\": 0,\n" +
+                        "                \"perk1Var2\": 297,\n" +
                         "                \"tripleKills\": 0,\n" +
-                        "                \"perk5\": 8210,\n" +
-                        "                \"perk4\": 8226,\n" +
+                        "                \"perk5\": 8304,\n" +
+                        "                \"perk4\": 8347,\n" +
                         "                \"playerScore9\": 0,\n" +
                         "                \"playerScore8\": 0,\n" +
-                        "                \"kills\": 5,\n" +
+                        "                \"kills\": 2,\n" +
                         "                \"playerScore1\": 0,\n" +
                         "                \"playerScore0\": 0,\n" +
                         "                \"playerScore3\": 0,\n" +
@@ -2048,178 +2061,163 @@ public class MockResponse {
                         "                \"playerScore4\": 0,\n" +
                         "                \"playerScore7\": 0,\n" +
                         "                \"playerScore6\": 0,\n" +
-                        "                \"perk5Var1\": 40,\n" +
-                        "                \"perk5Var3\": 0,\n" +
-                        "                \"perk5Var2\": 0,\n" +
+                        "                \"perk5Var1\": 11,\n" +
+                        "                \"perk5Var3\": 5,\n" +
+                        "                \"perk5Var2\": 1,\n" +
                         "                \"totalScoreRank\": 0,\n" +
-                        "                \"neutralMinionsKilled\": 28,\n" +
+                        "                \"neutralMinionsKilled\": 12,\n" +
                         "                \"statPerk1\": 5008,\n" +
                         "                \"statPerk0\": 5008,\n" +
-                        "                \"damageDealtToTurrets\": 1897,\n" +
-                        "                \"physicalDamageDealtToChampions\": 14080,\n" +
-                        "                \"damageDealtToObjectives\": 6566,\n" +
+                        "                \"damageDealtToTurrets\": 1378,\n" +
+                        "                \"physicalDamageDealtToChampions\": 978,\n" +
+                        "                \"damageDealtToObjectives\": 2881,\n" +
                         "                \"perk2Var2\": 0,\n" +
                         "                \"perk2Var3\": 0,\n" +
-                        "                \"totalUnitsHealed\": 4,\n" +
-                        "                \"perk2Var1\": 4,\n" +
-                        "                \"perk4Var1\": 250,\n" +
-                        "                \"totalDamageTaken\": 22843,\n" +
+                        "                \"totalUnitsHealed\": 1,\n" +
+                        "                \"perk2Var1\": 0,\n" +
+                        "                \"perk4Var1\": 0,\n" +
+                        "                \"totalDamageTaken\": 21817,\n" +
                         "                \"perk4Var3\": 0,\n" +
                         "                \"wardsKilled\": 0,\n" +
                         "                \"largestCriticalStrike\": 0,\n" +
                         "                \"largestKillingSpree\": 0,\n" +
                         "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 40367,\n" +
+                        "                \"magicDamageDealt\": 62880,\n" +
                         "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 3042,\n" +
-                        "                \"item3\": 3025,\n" +
-                        "                \"item0\": 2420,\n" +
-                        "                \"item1\": 3020,\n" +
-                        "                \"item6\": 3363,\n" +
-                        "                \"item4\": 3285,\n" +
-                        "                \"item5\": 3156,\n" +
-                        "                \"perk1\": 8304,\n" +
-                        "                \"perk0\": 8359,\n" +
-                        "                \"perk3\": 8347,\n" +
-                        "                \"perk2\": 8345,\n" +
+                        "                \"item2\": 1082,\n" +
+                        "                \"item3\": 3111,\n" +
+                        "                \"item0\": 1056,\n" +
+                        "                \"item1\": 3285,\n" +
+                        "                \"item6\": 3364,\n" +
+                        "                \"item4\": 3001,\n" +
+                        "                \"item5\": 3082,\n" +
+                        "                \"perk1\": 8226,\n" +
+                        "                \"perk0\": 8229,\n" +
+                        "                \"perk3\": 8237,\n" +
+                        "                \"perk2\": 8210,\n" +
                         "                \"perk3Var3\": 0,\n" +
                         "                \"perk3Var2\": 0,\n" +
-                        "                \"perk3Var1\": 0,\n" +
-                        "                \"damageSelfMitigated\": 17293,\n" +
-                        "                \"magicalDamageTaken\": 6233,\n" +
-                        "                \"perk0Var2\": 19,\n" +
+                        "                \"perk3Var1\": 421,\n" +
+                        "                \"damageSelfMitigated\": 24247,\n" +
+                        "                \"magicalDamageTaken\": 7983,\n" +
+                        "                \"perk0Var2\": 0,\n" +
                         "                \"firstInhibitorKill\": false,\n" +
-                        "                \"trueDamageTaken\": 1676,\n" +
-                        "                \"assists\": 16,\n" +
-                        "                \"perk4Var2\": 2357,\n" +
-                        "                \"goldSpent\": 13450,\n" +
-                        "                \"trueDamageDealt\": 1581,\n" +
+                        "                \"trueDamageTaken\": 1597,\n" +
+                        "                \"assists\": 9,\n" +
+                        "                \"perk4Var2\": 0,\n" +
+                        "                \"goldSpent\": 8850,\n" +
+                        "                \"trueDamageDealt\": 8409,\n" +
                         "                \"participantId\": 6,\n" +
-                        "                \"physicalDamageDealt\": 136359,\n" +
+                        "                \"physicalDamageDealt\": 21728,\n" +
                         "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 31613,\n" +
-                        "                \"physicalDamageTaken\": 14933,\n" +
+                        "                \"totalDamageDealtToChampions\": 16588,\n" +
+                        "                \"physicalDamageTaken\": 12236,\n" +
                         "                \"totalPlayerScore\": 0,\n" +
                         "                \"win\": false,\n" +
                         "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 178307,\n" +
-                        "                \"neutralMinionsKilledEnemyJungle\": 4,\n" +
-                        "                \"deaths\": 9,\n" +
-                        "                \"wardsPlaced\": 12,\n" +
-                        "                \"perkPrimaryStyle\": 8300,\n" +
-                        "                \"perkSubStyle\": 8200,\n" +
+                        "                \"totalDamageDealt\": 93018,\n" +
+                        "                \"neutralMinionsKilledEnemyJungle\": 0,\n" +
+                        "                \"deaths\": 11,\n" +
+                        "                \"wardsPlaced\": 7,\n" +
+                        "                \"perkPrimaryStyle\": 8200,\n" +
+                        "                \"perkSubStyle\": 8300,\n" +
                         "                \"turretKills\": 0,\n" +
                         "                \"firstBloodKill\": false,\n" +
-                        "                \"trueDamageDealtToChampions\": 255,\n" +
-                        "                \"goldEarned\": 13808,\n" +
+                        "                \"trueDamageDealtToChampions\": 874,\n" +
+                        "                \"goldEarned\": 9548,\n" +
                         "                \"killingSprees\": 0,\n" +
                         "                \"unrealKills\": 0,\n" +
                         "                \"firstTowerAssist\": false,\n" +
                         "                \"firstTowerKill\": false,\n" +
-                        "                \"champLevel\": 17,\n" +
+                        "                \"champLevel\": 14,\n" +
                         "                \"doubleKills\": 0,\n" +
                         "                \"inhibitorKills\": 0,\n" +
                         "                \"firstInhibitorAssist\": false,\n" +
-                        "                \"perk0Var1\": 530,\n" +
+                        "                \"perk0Var1\": 1313,\n" +
                         "                \"combatPlayerScore\": 0,\n" +
                         "                \"perk0Var3\": 0,\n" +
                         "                \"visionWardsBoughtInGame\": 0,\n" +
                         "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 2587,\n" +
-                        "                \"totalMinionsKilled\": 202,\n" +
-                        "                \"timeCCingOthers\": 10,\n" +
+                        "                \"totalHeal\": 989,\n" +
+                        "                \"totalMinionsKilled\": 148,\n" +
+                        "                \"timeCCingOthers\": 32,\n" +
                         "                \"statPerk2\": 5002\n" +
                         "            },\n" +
-                        "            \"spell1Id\": 4,\n" +
+                        "            \"spell1Id\": 14,\n" +
                         "            \"participantId\": 6,\n" +
                         "            \"highestAchievedSeasonTier\": \"GOLD\",\n" +
-                        "            \"spell2Id\": 7,\n" +
+                        "            \"spell2Id\": 4,\n" +
                         "            \"teamId\": 200,\n" +
                         "            \"timeline\": {\n" +
-                        "                \"lane\": \"BOTTOM\",\n" +
+                        "                \"lane\": \"MIDDLE\",\n" +
                         "                \"participantId\": 6,\n" +
-                        "                \"csDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 0.3999999999999999,\n" +
-                        "                    \"0-10\": -0.24999999999999978,\n" +
-                        "                    \"10-20\": -0.19999999999999973\n" +
-                        "                },\n" +
                         "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 518.6,\n" +
-                        "                    \"0-10\": 288.7,\n" +
-                        "                    \"10-20\": 411.9\n" +
-                        "                },\n" +
-                        "                \"xpDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 16.80000000000004,\n" +
-                        "                    \"0-10\": -61.500000000000014,\n" +
-                        "                    \"10-20\": -48.75000000000003\n" +
+                        "                    \"20-30\": 349.2,\n" +
+                        "                    \"0-10\": 244.60000000000002,\n" +
+                        "                    \"10-20\": 264.2\n" +
                         "                },\n" +
                         "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 4.5,\n" +
-                        "                    \"0-10\": 5.6,\n" +
-                        "                    \"10-20\": 7.6\n" +
+                        "                    \"20-30\": 4.1,\n" +
+                        "                    \"0-10\": 6,\n" +
+                        "                    \"10-20\": 4.7\n" +
                         "                },\n" +
                         "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 605.3,\n" +
-                        "                    \"0-10\": 323.9,\n" +
-                        "                    \"10-20\": 570.7\n" +
+                        "                    \"20-30\": 457.79999999999995,\n" +
+                        "                    \"0-10\": 409.6,\n" +
+                        "                    \"10-20\": 362.2\n" +
                         "                },\n" +
-                        "                \"role\": \"DUO_CARRY\",\n" +
-                        "                \"damageTakenDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 144.79999999999995,\n" +
-                        "                    \"0-10\": 175.59999999999997,\n" +
-                        "                    \"10-20\": 137.55\n" +
-                        "                },\n" +
+                        "                \"role\": \"SOLO\",\n" +
                         "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 822,\n" +
-                        "                    \"0-10\": 461.40000000000003,\n" +
-                        "                    \"10-20\": 619.7\n" +
+                        "                    \"20-30\": 1132.3000000000002,\n" +
+                        "                    \"0-10\": 323.4,\n" +
+                        "                    \"10-20\": 494\n" +
                         "                }\n" +
                         "            },\n" +
-                        "            \"championId\": 81\n" +
+                        "            \"championId\": 54\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"spell1Id\": 4,\n" +
+                        "            \"spell1Id\": 12,\n" +
                         "            \"participantId\": 7,\n" +
                         "            \"timeline\": {\n" +
                         "                \"lane\": \"TOP\",\n" +
                         "                \"participantId\": 7,\n" +
                         "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 393.5,\n" +
-                        "                    \"0-10\": 260,\n" +
-                        "                    \"10-20\": 356\n" +
+                        "                    \"20-30\": 453.8,\n" +
+                        "                    \"0-10\": 173.7,\n" +
+                        "                    \"10-20\": 319.4\n" +
                         "                },\n" +
                         "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 3.9,\n" +
-                        "                    \"0-10\": 5.4,\n" +
-                        "                    \"10-20\": 5.8\n" +
+                        "                    \"20-30\": 3.4000000000000004,\n" +
+                        "                    \"0-10\": 3.9000000000000004,\n" +
+                        "                    \"10-20\": 5.2\n" +
                         "                },\n" +
                         "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 408.4,\n" +
-                        "                    \"0-10\": 405.9,\n" +
-                        "                    \"10-20\": 488.8\n" +
+                        "                    \"20-30\": 586.0999999999999,\n" +
+                        "                    \"0-10\": 328.20000000000005,\n" +
+                        "                    \"10-20\": 340.1\n" +
                         "                },\n" +
-                        "                \"role\": \"DUO\",\n" +
+                        "                \"role\": \"SOLO\",\n" +
                         "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1749.1999999999998,\n" +
-                        "                    \"0-10\": 468.8,\n" +
-                        "                    \"10-20\": 1108.2\n" +
+                        "                    \"20-30\": 1518.3,\n" +
+                        "                    \"0-10\": 485,\n" +
+                        "                    \"10-20\": 858.3\n" +
                         "                }\n" +
                         "            },\n" +
-                        "            \"spell2Id\": 12,\n" +
+                        "            \"spell2Id\": 4,\n" +
                         "            \"teamId\": 200,\n" +
                         "            \"stats\": {\n" +
-                        "                \"neutralMinionsKilledTeamJungle\": 9,\n" +
-                        "                \"visionScore\": 22,\n" +
-                        "                \"magicDamageDealtToChampions\": 1225,\n" +
+                        "                \"neutralMinionsKilledTeamJungle\": 0,\n" +
+                        "                \"visionScore\": 11,\n" +
+                        "                \"magicDamageDealtToChampions\": 2926,\n" +
                         "                \"largestMultiKill\": 1,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 199,\n" +
-                        "                \"longestTimeSpentLiving\": 408,\n" +
-                        "                \"perk1Var1\": 10,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 454,\n" +
+                        "                \"longestTimeSpentLiving\": 358,\n" +
+                        "                \"perk1Var1\": 1345,\n" +
                         "                \"perk1Var3\": 0,\n" +
-                        "                \"perk1Var2\": 3,\n" +
+                        "                \"perk1Var2\": 240,\n" +
                         "                \"tripleKills\": 0,\n" +
-                        "                \"perk5\": 8135,\n" +
-                        "                \"perk4\": 8139,\n" +
+                        "                \"perk5\": 8473,\n" +
+                        "                \"perk4\": 8446,\n" +
                         "                \"playerScore9\": 0,\n" +
                         "                \"playerScore8\": 0,\n" +
                         "                \"kills\": 4,\n" +
@@ -2231,71 +2229,71 @@ public class MockResponse {
                         "                \"playerScore4\": 0,\n" +
                         "                \"playerScore7\": 0,\n" +
                         "                \"playerScore6\": 0,\n" +
-                        "                \"perk5Var1\": 4619,\n" +
+                        "                \"perk5Var1\": 1308,\n" +
                         "                \"perk5Var3\": 0,\n" +
-                        "                \"perk5Var2\": 5,\n" +
+                        "                \"perk5Var2\": 0,\n" +
                         "                \"totalScoreRank\": 0,\n" +
-                        "                \"neutralMinionsKilled\": 17,\n" +
-                        "                \"statPerk1\": 5002,\n" +
+                        "                \"neutralMinionsKilled\": 0,\n" +
+                        "                \"statPerk1\": 5008,\n" +
                         "                \"statPerk0\": 5005,\n" +
-                        "                \"damageDealtToTurrets\": 4239,\n" +
-                        "                \"physicalDamageDealtToChampions\": 9359,\n" +
-                        "                \"damageDealtToObjectives\": 7291,\n" +
-                        "                \"perk2Var2\": 0,\n" +
+                        "                \"damageDealtToTurrets\": 2750,\n" +
+                        "                \"physicalDamageDealtToChampions\": 17859,\n" +
+                        "                \"damageDealtToObjectives\": 3253,\n" +
+                        "                \"perk2Var2\": 40,\n" +
                         "                \"perk2Var3\": 0,\n" +
                         "                \"totalUnitsHealed\": 1,\n" +
-                        "                \"perk2Var1\": 4,\n" +
-                        "                \"perk4Var1\": 1167,\n" +
-                        "                \"totalDamageTaken\": 40323,\n" +
+                        "                \"perk2Var1\": 24,\n" +
+                        "                \"perk4Var1\": 563,\n" +
+                        "                \"totalDamageTaken\": 32620,\n" +
                         "                \"perk4Var3\": 0,\n" +
-                        "                \"wardsKilled\": 4,\n" +
-                        "                \"largestCriticalStrike\": 382,\n" +
-                        "                \"largestKillingSpree\": 0,\n" +
+                        "                \"wardsKilled\": 1,\n" +
+                        "                \"largestCriticalStrike\": 0,\n" +
+                        "                \"largestKillingSpree\": 2,\n" +
                         "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 8044,\n" +
+                        "                \"magicDamageDealt\": 7501,\n" +
                         "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 3144,\n" +
-                        "                \"item3\": 3046,\n" +
-                        "                \"item0\": 2033,\n" +
-                        "                \"item1\": 3022,\n" +
-                        "                \"item6\": 3340,\n" +
-                        "                \"item4\": 3006,\n" +
-                        "                \"item5\": 3124,\n" +
-                        "                \"perk1\": 8304,\n" +
-                        "                \"perk0\": 8359,\n" +
-                        "                \"perk3\": 8352,\n" +
-                        "                \"perk2\": 8345,\n" +
-                        "                \"perk3Var3\": 1232,\n" +
-                        "                \"perk3Var2\": 2650,\n" +
-                        "                \"perk3Var1\": 468,\n" +
-                        "                \"damageSelfMitigated\": 18530,\n" +
-                        "                \"magicalDamageTaken\": 7091,\n" +
-                        "                \"perk0Var2\": 21,\n" +
+                        "                \"item2\": 3071,\n" +
+                        "                \"item3\": 3022,\n" +
+                        "                \"item0\": 2055,\n" +
+                        "                \"item1\": 3143,\n" +
+                        "                \"item6\": 3364,\n" +
+                        "                \"item4\": 0,\n" +
+                        "                \"item5\": 3047,\n" +
+                        "                \"perk1\": 9111,\n" +
+                        "                \"perk0\": 8021,\n" +
+                        "                \"perk3\": 8014,\n" +
+                        "                \"perk2\": 9104,\n" +
+                        "                \"perk3Var3\": 0,\n" +
+                        "                \"perk3Var2\": 0,\n" +
+                        "                \"perk3Var1\": 359,\n" +
+                        "                \"damageSelfMitigated\": 23034,\n" +
+                        "                \"magicalDamageTaken\": 12948,\n" +
+                        "                \"perk0Var2\": 0,\n" +
                         "                \"firstInhibitorKill\": false,\n" +
-                        "                \"trueDamageTaken\": 1228,\n" +
+                        "                \"trueDamageTaken\": 1649,\n" +
                         "                \"assists\": 8,\n" +
                         "                \"perk4Var2\": 0,\n" +
-                        "                \"goldSpent\": 11925,\n" +
-                        "                \"trueDamageDealt\": 39296,\n" +
+                        "                \"goldSpent\": 10825,\n" +
+                        "                \"trueDamageDealt\": 0,\n" +
                         "                \"participantId\": 7,\n" +
-                        "                \"physicalDamageDealt\": 89579,\n" +
+                        "                \"physicalDamageDealt\": 85420,\n" +
                         "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 16767,\n" +
-                        "                \"physicalDamageTaken\": 32003,\n" +
+                        "                \"totalDamageDealtToChampions\": 20785,\n" +
+                        "                \"physicalDamageTaken\": 18022,\n" +
                         "                \"totalPlayerScore\": 0,\n" +
                         "                \"win\": false,\n" +
                         "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 136921,\n" +
-                        "                \"neutralMinionsKilledEnemyJungle\": 4,\n" +
-                        "                \"deaths\": 11,\n" +
-                        "                \"wardsPlaced\": 13,\n" +
-                        "                \"perkPrimaryStyle\": 8300,\n" +
-                        "                \"perkSubStyle\": 8100,\n" +
-                        "                \"turretKills\": 2,\n" +
+                        "                \"totalDamageDealt\": 92922,\n" +
+                        "                \"neutralMinionsKilledEnemyJungle\": 0,\n" +
+                        "                \"deaths\": 12,\n" +
+                        "                \"wardsPlaced\": 7,\n" +
+                        "                \"perkPrimaryStyle\": 8000,\n" +
+                        "                \"perkSubStyle\": 8400,\n" +
+                        "                \"turretKills\": 1,\n" +
                         "                \"firstBloodKill\": false,\n" +
-                        "                \"trueDamageDealtToChampions\": 6182,\n" +
-                        "                \"goldEarned\": 12208,\n" +
-                        "                \"killingSprees\": 0,\n" +
+                        "                \"trueDamageDealtToChampions\": 0,\n" +
+                        "                \"goldEarned\": 11027,\n" +
+                        "                \"killingSprees\": 1,\n" +
                         "                \"unrealKills\": 0,\n" +
                         "                \"firstTowerAssist\": false,\n" +
                         "                \"firstTowerKill\": false,\n" +
@@ -2303,35 +2301,79 @@ public class MockResponse {
                         "                \"doubleKills\": 0,\n" +
                         "                \"inhibitorKills\": 0,\n" +
                         "                \"firstInhibitorAssist\": false,\n" +
-                        "                \"perk0Var1\": 790,\n" +
+                        "                \"perk0Var1\": 1322,\n" +
                         "                \"combatPlayerScore\": 0,\n" +
                         "                \"perk0Var3\": 0,\n" +
                         "                \"visionWardsBoughtInGame\": 3,\n" +
                         "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 10442,\n" +
-                        "                \"totalMinionsKilled\": 171,\n" +
-                        "                \"timeCCingOthers\": 17,\n" +
-                        "                \"statPerk2\": 5001\n" +
+                        "                \"totalHeal\": 2840,\n" +
+                        "                \"totalMinionsKilled\": 129,\n" +
+                        "                \"timeCCingOthers\": 53,\n" +
+                        "                \"statPerk2\": 5002\n" +
                         "            },\n" +
-                        "            \"championId\": 67\n" +
+                        "            \"championId\": 150\n" +
                         "        },\n" +
                         "        {\n" +
+                        "            \"spell1Id\": 11,\n" +
+                        "            \"participantId\": 8,\n" +
+                        "            \"timeline\": {\n" +
+                        "                \"lane\": \"JUNGLE\",\n" +
+                        "                \"participantId\": 8,\n" +
+                        "                \"csDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 1.6,\n" +
+                        "                    \"0-10\": 0.09999999999999998,\n" +
+                        "                    \"10-20\": -2.6999999999999997\n" +
+                        "                },\n" +
+                        "                \"goldPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 561.5,\n" +
+                        "                    \"0-10\": 330,\n" +
+                        "                    \"10-20\": 308.7\n" +
+                        "                },\n" +
+                        "                \"xpDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 84.70000000000002,\n" +
+                        "                    \"0-10\": 11.799999999999983,\n" +
+                        "                    \"10-20\": -162.3\n" +
+                        "                },\n" +
+                        "                \"creepsPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 2.9000000000000004,\n" +
+                        "                    \"0-10\": 1,\n" +
+                        "                    \"10-20\": 0.8999999999999999\n" +
+                        "                },\n" +
+                        "                \"xpPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 591.5,\n" +
+                        "                    \"0-10\": 388.7,\n" +
+                        "                    \"10-20\": 364.79999999999995\n" +
+                        "                },\n" +
+                        "                \"role\": \"NONE\",\n" +
+                        "                \"damageTakenDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": -559.1,\n" +
+                        "                    \"0-10\": -81.40000000000003,\n" +
+                        "                    \"10-20\": -175.29999999999995\n" +
+                        "                },\n" +
+                        "                \"damageTakenPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 1085.6,\n" +
+                        "                    \"0-10\": 498.4,\n" +
+                        "                    \"10-20\": 855.6\n" +
+                        "                }\n" +
+                        "            },\n" +
+                        "            \"spell2Id\": 4,\n" +
+                        "            \"teamId\": 200,\n" +
                         "            \"stats\": {\n" +
-                        "                \"neutralMinionsKilledTeamJungle\": 4,\n" +
-                        "                \"visionScore\": 17,\n" +
-                        "                \"magicDamageDealtToChampions\": 5819,\n" +
+                        "                \"neutralMinionsKilledTeamJungle\": 75,\n" +
+                        "                \"visionScore\": 27,\n" +
+                        "                \"magicDamageDealtToChampions\": 165,\n" +
                         "                \"largestMultiKill\": 1,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 169,\n" +
-                        "                \"longestTimeSpentLiving\": 618,\n" +
-                        "                \"perk1Var1\": 2875,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 111,\n" +
+                        "                \"longestTimeSpentLiving\": 673,\n" +
+                        "                \"perk1Var1\": 504,\n" +
                         "                \"perk1Var3\": 0,\n" +
                         "                \"perk1Var2\": 0,\n" +
                         "                \"tripleKills\": 0,\n" +
-                        "                \"perk5\": 8014,\n" +
-                        "                \"perk4\": 9105,\n" +
-                        "                \"playerScore9\": 6,\n" +
+                        "                \"perk5\": 8321,\n" +
+                        "                \"perk4\": 8304,\n" +
+                        "                \"playerScore9\": 0,\n" +
                         "                \"playerScore8\": 0,\n" +
-                        "                \"kills\": 10,\n" +
+                        "                \"kills\": 9,\n" +
                         "                \"playerScore1\": 0,\n" +
                         "                \"playerScore0\": 0,\n" +
                         "                \"playerScore3\": 0,\n" +
@@ -2340,181 +2382,107 @@ public class MockResponse {
                         "                \"playerScore4\": 0,\n" +
                         "                \"playerScore7\": 0,\n" +
                         "                \"playerScore6\": 0,\n" +
-                        "                \"perk5Var1\": 552,\n" +
+                        "                \"perk5Var1\": 2,\n" +
                         "                \"perk5Var3\": 0,\n" +
                         "                \"perk5Var2\": 0,\n" +
                         "                \"totalScoreRank\": 0,\n" +
-                        "                \"neutralMinionsKilled\": 12,\n" +
+                        "                \"neutralMinionsKilled\": 120,\n" +
                         "                \"statPerk1\": 5008,\n" +
-                        "                \"statPerk0\": 5008,\n" +
-                        "                \"damageDealtToTurrets\": 6470,\n" +
-                        "                \"physicalDamageDealtToChampions\": 13664,\n" +
-                        "                \"damageDealtToObjectives\": 8671,\n" +
+                        "                \"statPerk0\": 5005,\n" +
+                        "                \"damageDealtToTurrets\": 3513,\n" +
+                        "                \"physicalDamageDealtToChampions\": 17797,\n" +
+                        "                \"damageDealtToObjectives\": 9781,\n" +
                         "                \"perk2Var2\": 0,\n" +
                         "                \"perk2Var3\": 0,\n" +
                         "                \"totalUnitsHealed\": 1,\n" +
-                        "                \"perk2Var1\": 2061,\n" +
-                        "                \"perk4Var1\": 16,\n" +
-                        "                \"totalDamageTaken\": 35213,\n" +
-                        "                \"perk4Var3\": 0,\n" +
-                        "                \"wardsKilled\": 3,\n" +
-                        "                \"largestCriticalStrike\": 16,\n" +
-                        "                \"largestKillingSpree\": 6,\n" +
+                        "                \"perk2Var1\": 18,\n" +
+                        "                \"perk4Var1\": 9,\n" +
+                        "                \"totalDamageTaken\": 27279,\n" +
+                        "                \"perk4Var3\": 5,\n" +
+                        "                \"wardsKilled\": 7,\n" +
+                        "                \"largestCriticalStrike\": 802,\n" +
+                        "                \"largestKillingSpree\": 3,\n" +
                         "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 8747,\n" +
+                        "                \"magicDamageDealt\": 165,\n" +
                         "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 3742,\n" +
-                        "                \"item3\": 3111,\n" +
-                        "                \"item0\": 3800,\n" +
-                        "                \"item1\": 3071,\n" +
-                        "                \"item6\": 3340,\n" +
-                        "                \"item4\": 3053,\n" +
-                        "                \"item5\": 3076,\n" +
-                        "                \"perk1\": 8446,\n" +
-                        "                \"perk0\": 8437,\n" +
-                        "                \"perk3\": 8453,\n" +
-                        "                \"perk2\": 8444,\n" +
+                        "                \"item2\": 1037,\n" +
+                        "                \"item3\": 3052,\n" +
+                        "                \"item0\": 3153,\n" +
+                        "                \"item1\": 3031,\n" +
+                        "                \"item6\": 3363,\n" +
+                        "                \"item4\": 3046,\n" +
+                        "                \"item5\": 3006,\n" +
+                        "                \"perk1\": 8143,\n" +
+                        "                \"perk0\": 9923,\n" +
+                        "                \"perk3\": 8105,\n" +
+                        "                \"perk2\": 8138,\n" +
                         "                \"perk3Var3\": 0,\n" +
-                        "                \"perk3Var2\": 79,\n" +
-                        "                \"perk3Var1\": 292,\n" +
-                        "                \"damageSelfMitigated\": 64768,\n" +
-                        "                \"magicalDamageTaken\": 11019,\n" +
-                        "                \"perk0Var2\": 513,\n" +
+                        "                \"perk3Var2\": 5,\n" +
+                        "                \"perk3Var1\": 15,\n" +
+                        "                \"damageSelfMitigated\": 19270,\n" +
+                        "                \"magicalDamageTaken\": 7042,\n" +
+                        "                \"perk0Var2\": 77,\n" +
                         "                \"firstInhibitorKill\": false,\n" +
-                        "                \"trueDamageTaken\": 2597,\n" +
-                        "                \"assists\": 8,\n" +
-                        "                \"perk4Var2\": 40,\n" +
-                        "                \"goldSpent\": 16700,\n" +
-                        "                \"trueDamageDealt\": 5406,\n" +
+                        "                \"trueDamageTaken\": 687,\n" +
+                        "                \"assists\": 7,\n" +
+                        "                \"perk4Var2\": 4,\n" +
+                        "                \"goldSpent\": 12975,\n" +
+                        "                \"trueDamageDealt\": 16318,\n" +
                         "                \"participantId\": 8,\n" +
-                        "                \"physicalDamageDealt\": 143183,\n" +
+                        "                \"physicalDamageDealt\": 158360,\n" +
                         "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 22422,\n" +
-                        "                \"physicalDamageTaken\": 21596,\n" +
+                        "                \"totalDamageDealtToChampions\": 20562,\n" +
+                        "                \"physicalDamageTaken\": 19549,\n" +
                         "                \"totalPlayerScore\": 0,\n" +
                         "                \"win\": false,\n" +
                         "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 157337,\n" +
-                        "                \"neutralMinionsKilledEnemyJungle\": 4,\n" +
-                        "                \"deaths\": 4,\n" +
-                        "                \"wardsPlaced\": 9,\n" +
-                        "                \"perkPrimaryStyle\": 8400,\n" +
-                        "                \"perkSubStyle\": 8000,\n" +
-                        "                \"turretKills\": 0,\n" +
+                        "                \"totalDamageDealt\": 174844,\n" +
+                        "                \"neutralMinionsKilledEnemyJungle\": 12,\n" +
+                        "                \"deaths\": 8,\n" +
+                        "                \"wardsPlaced\": 7,\n" +
+                        "                \"perkPrimaryStyle\": 8100,\n" +
+                        "                \"perkSubStyle\": 8300,\n" +
+                        "                \"turretKills\": 2,\n" +
                         "                \"firstBloodKill\": false,\n" +
-                        "                \"trueDamageDealtToChampions\": 2938,\n" +
-                        "                \"goldEarned\": 15458,\n" +
-                        "                \"killingSprees\": 2,\n" +
+                        "                \"trueDamageDealtToChampions\": 2598,\n" +
+                        "                \"goldEarned\": 13457,\n" +
+                        "                \"killingSprees\": 1,\n" +
                         "                \"unrealKills\": 0,\n" +
                         "                \"firstTowerAssist\": false,\n" +
                         "                \"firstTowerKill\": false,\n" +
-                        "                \"champLevel\": 18,\n" +
+                        "                \"champLevel\": 15,\n" +
                         "                \"doubleKills\": 0,\n" +
                         "                \"inhibitorKills\": 0,\n" +
-                        "                \"firstInhibitorAssist\": false,\n" +
-                        "                \"perk0Var1\": 717,\n" +
+                        "                \"firstInhibitorAssist\": true,\n" +
+                        "                \"perk0Var1\": 45,\n" +
                         "                \"combatPlayerScore\": 0,\n" +
                         "                \"perk0Var3\": 0,\n" +
-                        "                \"visionWardsBoughtInGame\": 0,\n" +
+                        "                \"visionWardsBoughtInGame\": 4,\n" +
                         "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 730,\n" +
-                        "                \"totalMinionsKilled\": 237,\n" +
-                        "                \"timeCCingOthers\": 30,\n" +
+                        "                \"totalHeal\": 6261,\n" +
+                        "                \"totalMinionsKilled\": 52,\n" +
+                        "                \"timeCCingOthers\": 3,\n" +
                         "                \"statPerk2\": 5002\n" +
                         "            },\n" +
-                        "            \"spell1Id\": 14,\n" +
-                        "            \"participantId\": 8,\n" +
-                        "            \"highestAchievedSeasonTier\": \"GOLD\",\n" +
-                        "            \"spell2Id\": 4,\n" +
-                        "            \"teamId\": 200,\n" +
-                        "            \"timeline\": {\n" +
-                        "                \"lane\": \"TOP\",\n" +
-                        "                \"participantId\": 8,\n" +
-                        "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 444,\n" +
-                        "                    \"0-10\": 298.79999999999995,\n" +
-                        "                    \"10-20\": 570.1\n" +
-                        "                },\n" +
-                        "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 4.1,\n" +
-                        "                    \"0-10\": 8.4,\n" +
-                        "                    \"10-20\": 9.7\n" +
-                        "                },\n" +
-                        "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 518.3,\n" +
-                        "                    \"0-10\": 451.3,\n" +
-                        "                    \"10-20\": 663.9\n" +
-                        "                },\n" +
-                        "                \"role\": \"DUO\",\n" +
-                        "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1640.1999999999998,\n" +
-                        "                    \"0-10\": 398.5,\n" +
-                        "                    \"10-20\": 924.7\n" +
-                        "                }\n" +
-                        "            },\n" +
-                        "            \"championId\": 86\n" +
+                        "            \"championId\": 11\n" +
                         "        },\n" +
                         "        {\n" +
-                        "            \"spell1Id\": 4,\n" +
-                        "            \"participantId\": 9,\n" +
-                        "            \"timeline\": {\n" +
-                        "                \"lane\": \"BOTTOM\",\n" +
-                        "                \"participantId\": 9,\n" +
-                        "                \"csDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 0.3999999999999999,\n" +
-                        "                    \"0-10\": -0.24999999999999978,\n" +
-                        "                    \"10-20\": -0.19999999999999973\n" +
-                        "                },\n" +
-                        "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 240,\n" +
-                        "                    \"0-10\": 209.9,\n" +
-                        "                    \"10-20\": 288.8\n" +
-                        "                },\n" +
-                        "                \"xpDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 16.80000000000004,\n" +
-                        "                    \"0-10\": -61.500000000000014,\n" +
-                        "                    \"10-20\": -48.75000000000003\n" +
-                        "                },\n" +
-                        "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 2.7,\n" +
-                        "                    \"0-10\": 1.7000000000000002,\n" +
-                        "                    \"10-20\": 2\n" +
-                        "                },\n" +
-                        "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 445.4,\n" +
-                        "                    \"0-10\": 295.6,\n" +
-                        "                    \"10-20\": 350.5\n" +
-                        "                },\n" +
-                        "                \"role\": \"DUO_SUPPORT\",\n" +
-                        "                \"damageTakenDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 144.79999999999995,\n" +
-                        "                    \"0-10\": 175.59999999999997,\n" +
-                        "                    \"10-20\": 137.55\n" +
-                        "                },\n" +
-                        "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1564.1999999999998,\n" +
-                        "                    \"0-10\": 524.2,\n" +
-                        "                    \"10-20\": 867.1\n" +
-                        "                }\n" +
-                        "            },\n" +
-                        "            \"spell2Id\": 14,\n" +
-                        "            \"teamId\": 200,\n" +
                         "            \"stats\": {\n" +
                         "                \"neutralMinionsKilledTeamJungle\": 0,\n" +
-                        "                \"visionScore\": 49,\n" +
-                        "                \"magicDamageDealtToChampions\": 7426,\n" +
-                        "                \"largestMultiKill\": 2,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 319,\n" +
-                        "                \"longestTimeSpentLiving\": 411,\n" +
-                        "                \"perk1Var1\": 190,\n" +
+                        "                \"visionScore\": 46,\n" +
+                        "                \"magicDamageDealtToChampions\": 9623,\n" +
+                        "                \"largestMultiKill\": 1,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 93,\n" +
+                        "                \"longestTimeSpentLiving\": 480,\n" +
+                        "                \"perk1Var1\": 250,\n" +
                         "                \"perk1Var3\": 0,\n" +
-                        "                \"perk1Var2\": 0,\n" +
+                        "                \"perk1Var2\": 647,\n" +
                         "                \"tripleKills\": 0,\n" +
                         "                \"perk5\": 8347,\n" +
                         "                \"perk4\": 8313,\n" +
                         "                \"playerScore9\": 0,\n" +
                         "                \"playerScore8\": 0,\n" +
-                        "                \"kills\": 4,\n" +
+                        "                \"kills\": 2,\n" +
                         "                \"playerScore1\": 0,\n" +
                         "                \"playerScore0\": 0,\n" +
                         "                \"playerScore3\": 0,\n" +
@@ -2529,145 +2497,146 @@ public class MockResponse {
                         "                \"totalScoreRank\": 0,\n" +
                         "                \"neutralMinionsKilled\": 0,\n" +
                         "                \"statPerk1\": 5008,\n" +
-                        "                \"statPerk0\": 5008,\n" +
-                        "                \"damageDealtToTurrets\": 0,\n" +
-                        "                \"physicalDamageDealtToChampions\": 1669,\n" +
-                        "                \"damageDealtToObjectives\": 1165,\n" +
+                        "                \"statPerk0\": 5007,\n" +
+                        "                \"damageDealtToTurrets\": 715,\n" +
+                        "                \"physicalDamageDealtToChampions\": 1092,\n" +
+                        "                \"damageDealtToObjectives\": 934,\n" +
                         "                \"perk2Var2\": 0,\n" +
                         "                \"perk2Var3\": 0,\n" +
-                        "                \"totalUnitsHealed\": 5,\n" +
-                        "                \"perk2Var1\": 738,\n" +
+                        "                \"totalUnitsHealed\": 1,\n" +
+                        "                \"perk2Var1\": 16,\n" +
                         "                \"perk4Var1\": 0,\n" +
-                        "                \"totalDamageTaken\": 32174,\n" +
+                        "                \"totalDamageTaken\": 16145,\n" +
                         "                \"perk4Var3\": 0,\n" +
-                        "                \"wardsKilled\": 2,\n" +
+                        "                \"wardsKilled\": 3,\n" +
                         "                \"largestCriticalStrike\": 0,\n" +
-                        "                \"largestKillingSpree\": 2,\n" +
+                        "                \"largestKillingSpree\": 0,\n" +
                         "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 29948,\n" +
+                        "                \"magicDamageDealt\": 22976,\n" +
                         "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 2055,\n" +
-                        "                \"item3\": 3068,\n" +
-                        "                \"item0\": 3117,\n" +
-                        "                \"item1\": 3401,\n" +
+                        "                \"item2\": 3092,\n" +
+                        "                \"item3\": 0,\n" +
+                        "                \"item0\": 3157,\n" +
+                        "                \"item1\": 3905,\n" +
                         "                \"item6\": 3364,\n" +
-                        "                \"item4\": 1031,\n" +
-                        "                \"item5\": 1011,\n" +
-                        "                \"perk1\": 8401,\n" +
-                        "                \"perk0\": 8439,\n" +
-                        "                \"perk3\": 8242,\n" +
-                        "                \"perk2\": 8473,\n" +
+                        "                \"item4\": 0,\n" +
+                        "                \"item5\": 3117,\n" +
+                        "                \"perk1\": 8226,\n" +
+                        "                \"perk0\": 8214,\n" +
+                        "                \"perk3\": 8237,\n" +
+                        "                \"perk2\": 8210,\n" +
                         "                \"perk3Var3\": 0,\n" +
                         "                \"perk3Var2\": 0,\n" +
-                        "                \"perk3Var1\": 13,\n" +
-                        "                \"damageSelfMitigated\": 37215,\n" +
-                        "                \"magicalDamageTaken\": 11695,\n" +
-                        "                \"perk0Var2\": 0,\n" +
+                        "                \"perk3Var1\": 394,\n" +
+                        "                \"damageSelfMitigated\": 8027,\n" +
+                        "                \"magicalDamageTaken\": 7047,\n" +
+                        "                \"perk0Var2\": 384,\n" +
                         "                \"firstInhibitorKill\": false,\n" +
-                        "                \"trueDamageTaken\": 1588,\n" +
-                        "                \"assists\": 11,\n" +
+                        "                \"trueDamageTaken\": 601,\n" +
+                        "                \"assists\": 14,\n" +
                         "                \"perk4Var2\": 0,\n" +
-                        "                \"goldSpent\": 8300,\n" +
-                        "                \"trueDamageDealt\": 14885,\n" +
+                        "                \"goldSpent\": 8000,\n" +
+                        "                \"trueDamageDealt\": 398,\n" +
                         "                \"participantId\": 9,\n" +
-                        "                \"physicalDamageDealt\": 12641,\n" +
+                        "                \"physicalDamageDealt\": 3397,\n" +
                         "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 10493,\n" +
-                        "                \"physicalDamageTaken\": 18890,\n" +
+                        "                \"totalDamageDealtToChampions\": 11114,\n" +
+                        "                \"physicalDamageTaken\": 8496,\n" +
                         "                \"totalPlayerScore\": 0,\n" +
                         "                \"win\": false,\n" +
                         "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 57475,\n" +
+                        "                \"totalDamageDealt\": 26773,\n" +
                         "                \"neutralMinionsKilledEnemyJungle\": 0,\n" +
-                        "                \"deaths\": 12,\n" +
-                        "                \"wardsPlaced\": 28,\n" +
-                        "                \"perkPrimaryStyle\": 8400,\n" +
+                        "                \"deaths\": 9,\n" +
+                        "                \"wardsPlaced\": 27,\n" +
+                        "                \"perkPrimaryStyle\": 8200,\n" +
                         "                \"perkSubStyle\": 8300,\n" +
-                        "                \"turretKills\": 0,\n" +
+                        "                \"turretKills\": 1,\n" +
                         "                \"firstBloodKill\": false,\n" +
-                        "                \"trueDamageDealtToChampions\": 1398,\n" +
-                        "                \"goldEarned\": 8650,\n" +
-                        "                \"killingSprees\": 1,\n" +
+                        "                \"trueDamageDealtToChampions\": 398,\n" +
+                        "                \"goldEarned\": 8647,\n" +
+                        "                \"killingSprees\": 0,\n" +
                         "                \"unrealKills\": 0,\n" +
                         "                \"firstTowerAssist\": false,\n" +
                         "                \"firstTowerKill\": false,\n" +
                         "                \"champLevel\": 14,\n" +
-                        "                \"doubleKills\": 1,\n" +
+                        "                \"doubleKills\": 0,\n" +
                         "                \"inhibitorKills\": 0,\n" +
-                        "                \"firstInhibitorAssist\": false,\n" +
-                        "                \"perk0Var1\": 794,\n" +
+                        "                \"firstInhibitorAssist\": true,\n" +
+                        "                \"perk0Var1\": 884,\n" +
                         "                \"combatPlayerScore\": 0,\n" +
                         "                \"perk0Var3\": 0,\n" +
-                        "                \"visionWardsBoughtInGame\": 10,\n" +
+                        "                \"visionWardsBoughtInGame\": 0,\n" +
                         "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 1680,\n" +
-                        "                \"totalMinionsKilled\": 72,\n" +
-                        "                \"timeCCingOthers\": 46,\n" +
-                        "                \"statPerk2\": 5001\n" +
+                        "                \"totalHeal\": 976,\n" +
+                        "                \"totalMinionsKilled\": 29,\n" +
+                        "                \"timeCCingOthers\": 59,\n" +
+                        "                \"statPerk2\": 5002\n" +
                         "            },\n" +
-                        "            \"championId\": 111\n" +
-                        "        },\n" +
-                        "        {\n" +
-                        "            \"spell1Id\": 11,\n" +
-                        "            \"participantId\": 10,\n" +
-                        "            \"timeline\": {\n" +
-                        "                \"lane\": \"JUNGLE\",\n" +
-                        "                \"participantId\": 10,\n" +
-                        "                \"csDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": -1.3000000000000003,\n" +
-                        "                    \"0-10\": 0.19999999999999998,\n" +
-                        "                    \"10-20\": -0.4\n" +
-                        "                },\n" +
-                        "                \"goldPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 458.1,\n" +
-                        "                    \"0-10\": 427.6,\n" +
-                        "                    \"10-20\": 457.5\n" +
-                        "                },\n" +
-                        "                \"xpDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": -262.70000000000005,\n" +
-                        "                    \"0-10\": 127.5,\n" +
-                        "                    \"10-20\": -164.5\n" +
-                        "                },\n" +
-                        "                \"creepsPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1.3,\n" +
-                        "                    \"0-10\": 0.3,\n" +
-                        "                    \"10-20\": 0.4\n" +
-                        "                },\n" +
-                        "                \"xpPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 375.59999999999997,\n" +
-                        "                    \"0-10\": 368.70000000000005,\n" +
-                        "                    \"10-20\": 439\n" +
-                        "                },\n" +
-                        "                \"role\": \"NONE\",\n" +
-                        "                \"damageTakenDiffPerMinDeltas\": {\n" +
-                        "                    \"20-30\": -178.20000000000005,\n" +
-                        "                    \"0-10\": 65.89999999999995,\n" +
-                        "                    \"10-20\": -343.4\n" +
-                        "                },\n" +
-                        "                \"damageTakenPerMinDeltas\": {\n" +
-                        "                    \"20-30\": 1165.9,\n" +
-                        "                    \"0-10\": 716.4,\n" +
-                        "                    \"10-20\": 829.5\n" +
-                        "                }\n" +
-                        "            },\n" +
+                        "            \"spell1Id\": 14,\n" +
+                        "            \"participantId\": 9,\n" +
+                        "            \"highestAchievedSeasonTier\": \"SILVER\",\n" +
                         "            \"spell2Id\": 4,\n" +
                         "            \"teamId\": 200,\n" +
+                        "            \"timeline\": {\n" +
+                        "                \"lane\": \"BOTTOM\",\n" +
+                        "                \"participantId\": 9,\n" +
+                        "                \"csDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 1.6,\n" +
+                        "                    \"0-10\": -1.15,\n" +
+                        "                    \"10-20\": 0.75\n" +
+                        "                },\n" +
+                        "                \"goldPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 360.70000000000005,\n" +
+                        "                    \"0-10\": 172.4,\n" +
+                        "                    \"10-20\": 210.9\n" +
+                        "                },\n" +
+                        "                \"xpDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 14.800000000000011,\n" +
+                        "                    \"0-10\": -22.85000000000001,\n" +
+                        "                    \"10-20\": 13.400000000000034\n" +
+                        "                },\n" +
+                        "                \"creepsPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 1.2000000000000002,\n" +
+                        "                    \"0-10\": 0.30000000000000004,\n" +
+                        "                    \"10-20\": 1.2\n" +
+                        "                },\n" +
+                        "                \"xpPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 475.59999999999997,\n" +
+                        "                    \"0-10\": 244.3,\n" +
+                        "                    \"10-20\": 381.9\n" +
+                        "                },\n" +
+                        "                \"role\": \"DUO_SUPPORT\",\n" +
+                        "                \"damageTakenDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": -333.49999999999994,\n" +
+                        "                    \"0-10\": -78.39999999999999,\n" +
+                        "                    \"10-20\": -262.30000000000007\n" +
+                        "                },\n" +
+                        "                \"damageTakenPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 674.5,\n" +
+                        "                    \"0-10\": 164.8,\n" +
+                        "                    \"10-20\": 550.8\n" +
+                        "                }\n" +
+                        "            },\n" +
+                        "            \"championId\": 25\n" +
+                        "        },\n" +
+                        "        {\n" +
                         "            \"stats\": {\n" +
-                        "                \"neutralMinionsKilledTeamJungle\": 58,\n" +
-                        "                \"visionScore\": 28,\n" +
-                        "                \"magicDamageDealtToChampions\": 2219,\n" +
+                        "                \"neutralMinionsKilledTeamJungle\": 19,\n" +
+                        "                \"visionScore\": 17,\n" +
+                        "                \"magicDamageDealtToChampions\": 1459,\n" +
                         "                \"largestMultiKill\": 2,\n" +
-                        "                \"totalTimeCrowdControlDealt\": 133,\n" +
-                        "                \"longestTimeSpentLiving\": 761,\n" +
-                        "                \"perk1Var1\": 648,\n" +
+                        "                \"totalTimeCrowdControlDealt\": 98,\n" +
+                        "                \"longestTimeSpentLiving\": 837,\n" +
+                        "                \"perk1Var1\": 1087,\n" +
                         "                \"perk1Var3\": 0,\n" +
-                        "                \"perk1Var2\": 0,\n" +
+                        "                \"perk1Var2\": 480,\n" +
                         "                \"tripleKills\": 0,\n" +
-                        "                \"perk5\": 8232,\n" +
-                        "                \"perk4\": 8275,\n" +
+                        "                \"perk5\": 8233,\n" +
+                        "                \"perk4\": 8236,\n" +
                         "                \"playerScore9\": 0,\n" +
                         "                \"playerScore8\": 0,\n" +
-                        "                \"kills\": 17,\n" +
+                        "                \"kills\": 13,\n" +
                         "                \"playerScore1\": 0,\n" +
                         "                \"playerScore0\": 0,\n" +
                         "                \"playerScore3\": 0,\n" +
@@ -2676,93 +2645,138 @@ public class MockResponse {
                         "                \"playerScore4\": 0,\n" +
                         "                \"playerScore7\": 0,\n" +
                         "                \"playerScore6\": 0,\n" +
-                        "                \"perk5Var1\": 5,\n" +
+                        "                \"perk5Var1\": 23,\n" +
                         "                \"perk5Var3\": 0,\n" +
-                        "                \"perk5Var2\": 20,\n" +
+                        "                \"perk5Var2\": 40,\n" +
                         "                \"totalScoreRank\": 0,\n" +
-                        "                \"neutralMinionsKilled\": 99,\n" +
-                        "                \"statPerk1\": 5008,\n" +
-                        "                \"statPerk0\": 5008,\n" +
-                        "                \"damageDealtToTurrets\": 0,\n" +
-                        "                \"physicalDamageDealtToChampions\": 20144,\n" +
-                        "                \"damageDealtToObjectives\": 13358,\n" +
-                        "                \"perk2Var2\": 2,\n" +
-                        "                \"perk2Var3\": 1,\n" +
-                        "                \"totalUnitsHealed\": 1,\n" +
-                        "                \"perk2Var1\": 1,\n" +
-                        "                \"perk4Var1\": 14,\n" +
-                        "                \"totalDamageTaken\": 30685,\n" +
+                        "                \"neutralMinionsKilled\": 23,\n" +
+                        "                \"statPerk1\": 5002,\n" +
+                        "                \"statPerk0\": 5005,\n" +
+                        "                \"damageDealtToTurrets\": 7678,\n" +
+                        "                \"physicalDamageDealtToChampions\": 36058,\n" +
+                        "                \"damageDealtToObjectives\": 7678,\n" +
+                        "                \"perk2Var2\": 30,\n" +
+                        "                \"perk2Var3\": 0,\n" +
+                        "                \"totalUnitsHealed\": 4,\n" +
+                        "                \"perk2Var1\": 21,\n" +
+                        "                \"perk4Var1\": 28,\n" +
+                        "                \"totalDamageTaken\": 20886,\n" +
                         "                \"perk4Var3\": 0,\n" +
-                        "                \"wardsKilled\": 7,\n" +
-                        "                \"largestCriticalStrike\": 0,\n" +
-                        "                \"largestKillingSpree\": 10,\n" +
+                        "                \"wardsKilled\": 0,\n" +
+                        "                \"largestCriticalStrike\": 732,\n" +
+                        "                \"largestKillingSpree\": 11,\n" +
                         "                \"quadraKills\": 0,\n" +
-                        "                \"magicDamageDealt\": 6136,\n" +
+                        "                \"magicDamageDealt\": 3403,\n" +
                         "                \"firstBloodAssist\": false,\n" +
-                        "                \"item2\": 3047,\n" +
-                        "                \"item3\": 3147,\n" +
-                        "                \"item0\": 1412,\n" +
-                        "                \"item1\": 3142,\n" +
-                        "                \"item6\": 3364,\n" +
-                        "                \"item4\": 3812,\n" +
-                        "                \"item5\": 1031,\n" +
-                        "                \"perk1\": 8143,\n" +
-                        "                \"perk0\": 8112,\n" +
-                        "                \"perk3\": 8105,\n" +
-                        "                \"perk2\": 8120,\n" +
+                        "                \"item2\": 3094,\n" +
+                        "                \"item3\": 3072,\n" +
+                        "                \"item0\": 3031,\n" +
+                        "                \"item1\": 3085,\n" +
+                        "                \"item6\": 3363,\n" +
+                        "                \"item4\": 3026,\n" +
+                        "                \"item5\": 3006,\n" +
+                        "                \"perk1\": 9111,\n" +
+                        "                \"perk0\": 8005,\n" +
+                        "                \"perk3\": 8014,\n" +
+                        "                \"perk2\": 9103,\n" +
                         "                \"perk3Var3\": 0,\n" +
-                        "                \"perk3Var2\": 5,\n" +
-                        "                \"perk3Var1\": 15,\n" +
-                        "                \"damageSelfMitigated\": 20042,\n" +
-                        "                \"magicalDamageTaken\": 7428,\n" +
-                        "                \"perk0Var2\": 0,\n" +
-                        "                \"firstInhibitorKill\": false,\n" +
-                        "                \"trueDamageTaken\": 2072,\n" +
-                        "                \"assists\": 8,\n" +
+                        "                \"perk3Var2\": 0,\n" +
+                        "                \"perk3Var1\": 818,\n" +
+                        "                \"damageSelfMitigated\": 11490,\n" +
+                        "                \"magicalDamageTaken\": 7566,\n" +
+                        "                \"perk0Var2\": 940,\n" +
+                        "                \"firstInhibitorKill\": true,\n" +
+                        "                \"trueDamageTaken\": 492,\n" +
+                        "                \"assists\": 11,\n" +
                         "                \"perk4Var2\": 0,\n" +
-                        "                \"goldSpent\": 14275,\n" +
-                        "                \"trueDamageDealt\": 4108,\n" +
+                        "                \"goldSpent\": 16950,\n" +
+                        "                \"trueDamageDealt\": 1044,\n" +
                         "                \"participantId\": 10,\n" +
-                        "                \"physicalDamageDealt\": 110011,\n" +
+                        "                \"physicalDamageDealt\": 184066,\n" +
                         "                \"sightWardsBoughtInGame\": 0,\n" +
-                        "                \"totalDamageDealtToChampions\": 22823,\n" +
-                        "                \"physicalDamageTaken\": 21183,\n" +
+                        "                \"totalDamageDealtToChampions\": 38060,\n" +
+                        "                \"physicalDamageTaken\": 12827,\n" +
                         "                \"totalPlayerScore\": 0,\n" +
                         "                \"win\": false,\n" +
                         "                \"objectivePlayerScore\": 0,\n" +
-                        "                \"totalDamageDealt\": 120256,\n" +
-                        "                \"neutralMinionsKilledEnemyJungle\": 17,\n" +
-                        "                \"deaths\": 10,\n" +
-                        "                \"wardsPlaced\": 3,\n" +
-                        "                \"perkPrimaryStyle\": 8100,\n" +
+                        "                \"totalDamageDealt\": 188513,\n" +
+                        "                \"neutralMinionsKilledEnemyJungle\": 0,\n" +
+                        "                \"deaths\": 4,\n" +
+                        "                \"wardsPlaced\": 9,\n" +
+                        "                \"perkPrimaryStyle\": 8000,\n" +
                         "                \"perkSubStyle\": 8200,\n" +
-                        "                \"turretKills\": 0,\n" +
+                        "                \"turretKills\": 1,\n" +
                         "                \"firstBloodKill\": false,\n" +
-                        "                \"trueDamageDealtToChampions\": 459,\n" +
-                        "                \"goldEarned\": 14829,\n" +
-                        "                \"killingSprees\": 4,\n" +
+                        "                \"trueDamageDealtToChampions\": 542,\n" +
+                        "                \"goldEarned\": 17361,\n" +
+                        "                \"killingSprees\": 1,\n" +
                         "                \"unrealKills\": 0,\n" +
                         "                \"firstTowerAssist\": false,\n" +
                         "                \"firstTowerKill\": false,\n" +
-                        "                \"champLevel\": 15,\n" +
-                        "                \"doubleKills\": 4,\n" +
-                        "                \"inhibitorKills\": 0,\n" +
+                        "                \"champLevel\": 16,\n" +
+                        "                \"doubleKills\": 1,\n" +
+                        "                \"inhibitorKills\": 1,\n" +
                         "                \"firstInhibitorAssist\": false,\n" +
-                        "                \"perk0Var1\": 1844,\n" +
+                        "                \"perk0Var1\": 1779,\n" +
                         "                \"combatPlayerScore\": 0,\n" +
-                        "                \"perk0Var3\": 0,\n" +
-                        "                \"visionWardsBoughtInGame\": 4,\n" +
+                        "                \"perk0Var3\": 838,\n" +
+                        "                \"visionWardsBoughtInGame\": 0,\n" +
                         "                \"pentaKills\": 0,\n" +
-                        "                \"totalHeal\": 8641,\n" +
-                        "                \"totalMinionsKilled\": 21,\n" +
-                        "                \"timeCCingOthers\": 8,\n" +
-                        "                \"statPerk2\": 5002\n" +
+                        "                \"totalHeal\": 3483,\n" +
+                        "                \"totalMinionsKilled\": 223,\n" +
+                        "                \"timeCCingOthers\": 24,\n" +
+                        "                \"statPerk2\": 5001\n" +
                         "            },\n" +
-                        "            \"championId\": 121\n" +
+                        "            \"spell1Id\": 7,\n" +
+                        "            \"participantId\": 10,\n" +
+                        "            \"highestAchievedSeasonTier\": \"GOLD\",\n" +
+                        "            \"spell2Id\": 4,\n" +
+                        "            \"teamId\": 200,\n" +
+                        "            \"timeline\": {\n" +
+                        "                \"lane\": \"BOTTOM\",\n" +
+                        "                \"participantId\": 10,\n" +
+                        "                \"csDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 1.6,\n" +
+                        "                    \"0-10\": -1.15,\n" +
+                        "                    \"10-20\": 0.75\n" +
+                        "                },\n" +
+                        "                \"goldPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 807.2,\n" +
+                        "                    \"0-10\": 248.7,\n" +
+                        "                    \"10-20\": 518.2\n" +
+                        "                },\n" +
+                        "                \"xpDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 14.800000000000011,\n" +
+                        "                    \"0-10\": -22.85000000000001,\n" +
+                        "                    \"10-20\": 13.400000000000034\n" +
+                        "                },\n" +
+                        "                \"creepsPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 7.2,\n" +
+                        "                    \"0-10\": 6.4,\n" +
+                        "                    \"10-20\": 8.5\n" +
+                        "                },\n" +
+                        "                \"xpPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 738.6,\n" +
+                        "                    \"0-10\": 304.29999999999995,\n" +
+                        "                    \"10-20\": 483.29999999999995\n" +
+                        "                },\n" +
+                        "                \"role\": \"DUO_CARRY\",\n" +
+                        "                \"damageTakenDiffPerMinDeltas\": {\n" +
+                        "                    \"20-30\": -333.49999999999994,\n" +
+                        "                    \"0-10\": -78.39999999999999,\n" +
+                        "                    \"10-20\": -262.30000000000007\n" +
+                        "                },\n" +
+                        "                \"damageTakenPerMinDeltas\": {\n" +
+                        "                    \"20-30\": 1182,\n" +
+                        "                    \"0-10\": 152.4,\n" +
+                        "                    \"10-20\": 417.9\n" +
+                        "                }\n" +
+                        "            },\n" +
+                        "            \"championId\": 222\n" +
                         "        }\n" +
                         "    ],\n" +
-                        "    \"gameDuration\": 1994,\n" +
-                        "    \"gameCreation\": 1561739744506\n" +
+                        "    \"gameDuration\": 1943,\n" +
+                        "    \"gameCreation\": 1566453404650\n" +
                         "}"
         ).toString();
     }

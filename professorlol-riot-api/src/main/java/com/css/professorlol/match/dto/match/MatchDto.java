@@ -16,14 +16,14 @@ public class MatchDto {
     Integer queueId;
     Long gameId;
     List<ParticipantIdentityDto> participantIdentities;
-    String gameVersion;
-    String platformId;
-    String gameMode;
-    Integer mapId;
-    String gameType;
-    List<TeamStatsDto> teams;
     List<ParticipantDto> participants;
-    Long gameDuration;
-    Long gameCreation;
+//    String gameVersion;
+//    String platformId;
+//    String gameMode;
+//    Integer mapId;
+//    String gameType;
+//    List<TeamStatsDto> teams;
+//    Long gameDuration;
+//    Long gameCreation;
 
 }

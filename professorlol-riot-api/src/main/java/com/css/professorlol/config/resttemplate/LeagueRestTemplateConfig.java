@@ -5,6 +5,7 @@ import com.css.professorlol.config.interceptor.RiotTokenInterceptor;
 import com.css.professorlol.config.properties.XRiotTokenProperties;
 import com.css.professorlol.league.LeagueRestTemplate;
 import com.css.professorlol.league.impl.LeagueRestTemplateImpl;
+import com.css.professorlol.league.impl.LeagueRestTemplateStubImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -21,14 +22,13 @@ public class LeagueRestTemplateConfig {
     @Profile("dev")
     @RequiredArgsConstructor
     @Configuration
-    public class LeagueRestTemplateConfiguration {
+    public static class LeagueRestTemplateConfiguration {
         private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
 
         private final Duration ONE_SEC = Duration.ofMillis(1000);
         private final Duration TWO_SEC = Duration.ofMillis(2000);
 
         private final XRiotTokenProperties xRiotTokenProperties;
-
         private final RestTemplateBuilder restTemplateBuilder;
 
         @Bean
@@ -41,8 +41,19 @@ public class LeagueRestTemplateConfig {
                     .additionalInterceptors(riotTokenInterceptor)
                     .rootUri(RIOT_HOST_URL));
         }
+
     }
 
-    //TODO : make stub bean
+    @Profile("stub")
+    @RequiredArgsConstructor
+    @Configuration
+    public static class LeagueRestTemplateStubConfiguration {
 
+        @Bean
+        public LeagueRestTemplate leagueRestTemplate() {
+            log.info("League RestTemplate Stub Bean created");
+            return new LeagueRestTemplateStubImpl();
+        }
+
+    }
 }

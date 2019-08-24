@@ -10,12 +10,12 @@ public class ParticipantDto {
 
     ParticipantStatsDto stats;
     Integer participantId;
-    ParticipantTimelineDto timeline;
     Integer teamId;
-    Integer spell2Id;
-    String highestAchievedSeasonTier;
-    Integer spell1Id;
     Integer championId;
+//    ParticipantTimelineDto timeline;
+//    Integer spell2Id;
+//    String highestAchievedSeasonTier;
+//    Integer spell1Id;
     //    List<MasteryDto> masteries;  // 레거시에서만 존재하는 필드
     //    List<RuneDto> runes;  // 레거시에서만 존재하는 필드
 

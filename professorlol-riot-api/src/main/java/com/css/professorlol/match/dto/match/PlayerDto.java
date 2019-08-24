@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PlayerDto {
 
-    String currentPlatformId;
     String summonerName;
-    String matchHistoryUri;
-    String platformId;
     String currentAccountId;
-    Integer profileIcon;
     String summonerId;
     String accountId;
+    //    String currentPlatformId;
+    //    String matchHistoryUri;
+//    String platformId;
+    //    Integer profileIcon;
 }
+

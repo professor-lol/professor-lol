@@ -54,7 +54,7 @@ public class LeagueRestTemplateImplMockTest {
     @Test
     public void getLeagueEntries_정상조회() {
         //given
-        String encodedSummonerId = "wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCg";
+        String encodedSummonerId = "CaCXBYf1LRYJ_45q8pxteN3FzJwE5NZavjyLVXXt6UP5";
         String mockBody = MockResponse.getLeagueMockBody();
 
         this.mockServer.expect(requestTo(LOL_LEAGUE_V_4_ENTRIES_BY_SUMMONER + encodedSummonerId))

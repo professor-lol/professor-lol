@@ -5,6 +5,7 @@ import com.css.professorlol.config.interceptor.RiotTokenInterceptor;
 import com.css.professorlol.config.properties.XRiotTokenProperties;
 import com.css.professorlol.match.MatchRestTemplate;
 import com.css.professorlol.match.impl.MatchRestTemplateImpl;
+import com.css.professorlol.match.impl.MatchRestTemplateStubImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -21,14 +22,13 @@ public class MatchRestTemplateConfig {
     @Profile("dev")
     @Configuration
     @RequiredArgsConstructor
-    public class MatchRestTemplateConfiguration {
+    public static class MatchRestTemplateConfiguration {
         private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
 
         private final Duration ONE_SEC = Duration.ofMillis(1000);
         private final Duration TWO_SEC = Duration.ofMillis(2000);
 
         private final XRiotTokenProperties xRiotTokenProperties;
-
         private final RestTemplateBuilder restTemplateBuilder;
 
         @Bean
@@ -41,8 +41,20 @@ public class MatchRestTemplateConfig {
                     .errorHandler(riotErrorHandler).setConnectTimeout(ONE_SEC)
                     .setReadTimeout(TWO_SEC));
         }
+
     }
 
-    //TODO : make stub bean
+    @Profile("stub")
+    @Configuration
+    @RequiredArgsConstructor
+    public static class MatchRestTemplateStubConfiguration {
+
+        @Bean
+        public MatchRestTemplate matchRestTemplate() {
+            log.info("Match RestTemplate Stub Bean created");
+            return new MatchRestTemplateStubImpl();
+        }
+
+    }
 
 }

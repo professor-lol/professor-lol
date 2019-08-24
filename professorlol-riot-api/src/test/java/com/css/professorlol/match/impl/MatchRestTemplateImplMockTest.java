@@ -10,9 +10,13 @@ import com.css.professorlol.match.domain.Queue;
 import com.css.professorlol.match.dto.match.MatchDto;
 import com.css.professorlol.match.dto.matchList.MatchQueryParam;
 import com.css.professorlol.match.dto.matchList.MatchlistDto;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.http.HttpStatus;
@@ -27,6 +31,9 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 @RestClientTest(value = {XRiotTokenProperties.class, MatchRestTemplateConfig.class})
 @RunWith(SpringRunner.class)
 public class MatchRestTemplateImplMockTest {
+
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Logger log = LoggerFactory.getLogger(MatchRestTemplateImplMockTest.class);
 
     private static final String MATCH_LIST_BY_ACCOUNT_URL = "/lol/match/v4/matchlists/by-account/";
     private static final String DEFAULT_QUEUE = "?queue=" + Queue.SOLO.getValue() + "&queue=" + Queue.FREE.getValue();
@@ -65,6 +72,7 @@ public class MatchRestTemplateImplMockTest {
         assertThat(matchlistDto).isNotNull();
         assertThat(matchlistDto.getMatches()).isNotNull();
         assertThat(matchlistDto.getMatches()).isNotEmpty();
+        log.info(gson.toJson(matchlistDto));
     }
 
     @Test(expected = BadRequestException.class)
@@ -118,6 +126,7 @@ public class MatchRestTemplateImplMockTest {
         assertThat(match).isNotNull();
         assertThat(match.getParticipants()).isNotNull();
         assertThat(match.getParticipants()).isNotEmpty();
+        log.info(gson.toJson(match));
     }
 
     @Test(expected = ClientException.class)

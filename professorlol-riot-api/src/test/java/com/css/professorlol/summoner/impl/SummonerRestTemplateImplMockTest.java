@@ -1,5 +1,6 @@
 package com.css.professorlol.summoner.impl;
 
+import com.css.professorlol.MockResponse;
 import com.css.professorlol.config.exception.BadRequestException;
 import com.css.professorlol.config.exception.ClientException;
 import com.css.professorlol.config.properties.XRiotTokenProperties;
@@ -8,8 +9,6 @@ import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,23 +50,15 @@ public class SummonerRestTemplateImplMockTest {
     @Test
     public void getSummonerDto_정상입력() {
         //given
-        String summonerName = "이상한새기";
-        String encodedName = "%EC%9D%B4%EC%83%81%ED%95%9C%EC%83%88%EA%B8%B0";
+        String summonerName = "뱅기현";
+        String encodedName = "%EB%B1%85%EA%B8%B0%ED%98%84";
 
         SummonerDto expectSummonerDto = SummonerDto.stubBuilder()
-                .accountId("w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv")
-                .summonerId("zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ")
+                .accountId("ZCKKNXiQCxnU6iZItHeoPu8skeTkf2LMZjd8_SxXIBqY")
+                .summonerId("wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCg")
                 .build();
 
-        String expectBody = "{\n" +
-                "    \"profileIconId\": 2095,\n" +
-                "    \"name\": \"이상한새기\",\n" +
-                "    \"puuid\": \"0unup92CswoD3CGo6qwydHzATD4pePmpi3XhZA-kX2urduks6nJke6nlnSpmJn0hEUPgHzuo0d5Tgg\",\n" +
-                "    \"summonerLevel\": 97,\n" +
-                "    \"accountId\": \"w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv\",\n" +
-                "    \"id\": \"zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ\",\n" +
-                "    \"revisionDate\": 1561881475000\n" +
-                "}";
+        String expectBody = MockResponse.getSummonerMockBody();
 
         this.mockServer.expect(requestTo(SUMMONER_BY_NAME_URL + encodedName))
                 .andRespond(withSuccess(expectBody, MediaType.APPLICATION_JSON_UTF8));
@@ -86,17 +77,12 @@ public class SummonerRestTemplateImplMockTest {
         //given
         String summonerName = "이상한새기";
         String encodedName = "%EC%9D%B4%EC%83%81%ED%95%9C%EC%83%88%EA%B8%B0";
-        String exceptBody =
-                "{\n" +
-                        "    \"status\": {\n" +
-                        "        \"status_code\": 400,\n" +
-                        "        \"message\": \"Bad Request\"\n" +
-                        "    }\n" +
-                        "}";
-        JsonObject expectJson = new JsonParser().parse(exceptBody).getAsJsonObject();
+
+        String exceptBody = MockResponse.getExceptionResponseBody("Bad Request", HttpStatus.BAD_REQUEST);
+
         this.mockServer.expect(requestTo(SUMMONER_BY_NAME_URL + encodedName))
                 .andRespond(withBadRequest()
-                        .body(expectJson.toString())
+                        .body(exceptBody)
                         .contentType(MediaType.APPLICATION_JSON_UTF8));
 
         //when
@@ -108,17 +94,11 @@ public class SummonerRestTemplateImplMockTest {
     public void getSummonerDto_결과값_없음() {
         //given
         String summonerName = "@";
-        String exceptBody =
-                "{\n" +
-                        "    \"status\": {\n" +
-                        "        \"status_code\": 404,\n" +
-                        "        \"message\": \"Data not found - summoner not found\"\n" +
-                        "    }\n" +
-                        "}";
-        JsonObject expectJson = new JsonParser().parse(exceptBody).getAsJsonObject();
+        String exceptBody = MockResponse.getExceptionResponseBody("Data not found - summoner not found", HttpStatus.BAD_REQUEST);
+
         this.mockServer.expect(requestTo(SUMMONER_BY_NAME_URL + summonerName))
                 .andRespond(withStatus(HttpStatus.NOT_FOUND)
-                        .body(expectJson.toString())
+                        .body(exceptBody)
                         .contentType(MediaType.APPLICATION_JSON_UTF8));
 
         //when
