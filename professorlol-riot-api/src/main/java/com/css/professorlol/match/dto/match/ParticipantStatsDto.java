@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ParticipantStatsDto {
-    boolean win;
+    private boolean win;
 //    boolean firstBloodAssist;
 //    Long visionScore;
 //    Long magicDamageDealtToChampions;

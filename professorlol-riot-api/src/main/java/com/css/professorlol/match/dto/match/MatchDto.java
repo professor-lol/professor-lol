@@ -12,11 +12,11 @@ import java.util.List;
 @ToString
 public class MatchDto {
 
-    Integer seasonId;
-    Integer queueId;
-    Long gameId;
-    List<ParticipantIdentityDto> participantIdentities;
-    List<ParticipantDto> participants;
+    private Integer seasonId;
+    private Integer queueId;
+    private Long gameId;
+    private List<ParticipantIdentityDto> participantIdentities;
+    private List<ParticipantDto> participants;
 //    String gameVersion;
 //    String platformId;
 //    String gameMode;

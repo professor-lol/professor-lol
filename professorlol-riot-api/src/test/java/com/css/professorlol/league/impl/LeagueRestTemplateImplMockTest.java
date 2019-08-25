@@ -10,7 +10,6 @@ import com.css.professorlol.summoner.impl.SummonerRestTemplateImplMockTest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
 
@@ -31,6 +31,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @RestClientTest(value = {LeagueRestTemplateConfig.class, XRiotTokenProperties.class})
 @RunWith(SpringRunner.class)
+@ActiveProfiles("dev")
 public class LeagueRestTemplateImplMockTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplateImplMockTest.class);
@@ -39,23 +40,16 @@ public class LeagueRestTemplateImplMockTest {
     private static final String LOL_LEAGUE_V_4_ENTRIES_BY_SUMMONER = "/lol/league/v4/entries/by-summoner/";
 
     @Autowired
-    private LeagueRestTemplateConfig.LeagueRestTemplateConfiguration leagueRestTemplateConfiguration;
-
-    @Autowired
     private MockRestServiceServer mockServer;
 
+    @Autowired
     private LeagueRestTemplate leagueRestTemplate;
-
-    @Before
-    public void setUp() throws Exception {
-        leagueRestTemplate = leagueRestTemplateConfiguration.leagueRestTemplate();
-    }
 
     @Test
     public void getLeagueEntries_정상조회() {
         //given
-        String encodedSummonerId = "CaCXBYf1LRYJ_45q8pxteN3FzJwE5NZavjyLVXXt6UP5";
-        String mockBody = MockResponse.getLeagueMockBody();
+        final String encodedSummonerId = "CaCXBYf1LRYJ_45q8pxteN3FzJwE5NZavjyLVXXt6UP5";
+        final String mockBody = MockResponse.getLeagueMockBody();
 
         this.mockServer.expect(requestTo(LOL_LEAGUE_V_4_ENTRIES_BY_SUMMONER + encodedSummonerId))
                 .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));

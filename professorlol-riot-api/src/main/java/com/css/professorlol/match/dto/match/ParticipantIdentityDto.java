@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ParticipantIdentityDto {
 
-    PlayerDto player;
-    Integer participantId;
+    private PlayerDto player;
+    private Integer participantId;
 }

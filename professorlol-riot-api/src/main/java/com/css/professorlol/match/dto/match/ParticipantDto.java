@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ParticipantDto {
 
-    ParticipantStatsDto stats;
-    Integer participantId;
-    Integer teamId;
-    Integer championId;
+    private ParticipantStatsDto stats;
+    private Integer participantId;
+    private Integer teamId;
+    private Integer championId;
 //    ParticipantTimelineDto timeline;
 //    Integer spell2Id;
 //    String highestAchievedSeasonTier;

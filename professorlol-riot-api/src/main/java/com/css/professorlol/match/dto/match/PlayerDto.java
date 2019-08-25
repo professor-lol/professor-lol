@@ -8,10 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class PlayerDto {
 
-    String summonerName;
-    String currentAccountId;
-    String summonerId;
-    String accountId;
+    private String summonerName;
+    private String currentAccountId;
+    private String summonerId;
+    private String accountId;
     //    String currentPlatformId;
     //    String matchHistoryUri;
 //    String platformId;

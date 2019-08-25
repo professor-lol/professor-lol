@@ -9,7 +9,6 @@ import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -35,17 +34,10 @@ public class SummonerRestTemplateImplMockTest {
     private static final String SUMMONER_BY_NAME_URL = "/lol/summoner/v4/summoners/by-name/";
 
     @Autowired
-    private SummonerRestTemplateConfig.SummonerRestTemplateConfiguration summonerRestTemplateConfiguration;
-
-    @Autowired
     private MockRestServiceServer mockServer;
 
+    @Autowired
     private SummonerRestTemplate summonerRestTemplate;
-
-    @Before
-    public void setUp() throws Exception {
-        summonerRestTemplate = summonerRestTemplateConfiguration.summonerRestTemplate();
-    }
 
     @Test
     public void getSummonerDto_정상입력() {

@@ -12,7 +12,6 @@ import com.css.professorlol.match.dto.matchList.MatchQueryParam;
 import com.css.professorlol.match.dto.matchList.MatchlistDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -40,18 +39,12 @@ public class MatchRestTemplateImplMockTest {
     private static final String NO_QUERY_PARAMETER = "&season=&endTime=&beginTime=&endIndex=&beginIndex=";
     private static final String MATCH_URL = "/lol/match/v4/matches/";
 
-    @Autowired
-    private MatchRestTemplateConfig.MatchRestTemplateConfiguration matchRestTemplateConfiguration;
 
     @Autowired
     private MockRestServiceServer mockServer;
 
+    @Autowired
     private MatchRestTemplate matchRestTemplate;
-
-    @Before
-    public void setUp() throws Exception {
-        matchRestTemplate = matchRestTemplateConfiguration.matchRestTemplate();
-    }
 
     @Test
     public void getMatchList_정상입력_파라미터_없음() {
@@ -133,7 +126,7 @@ public class MatchRestTemplateImplMockTest {
     public void getMatch_없는경기() {
         //given
         Long matchId = 3724003831L;
-        String mockNotFoundBody = MockResponse.getExceptionResponseBody("Not found", HttpStatus.NOT_FOUND);
+        String mockNotFoundBody = MockResponse.getExceptionResponseBody("Not found!!", HttpStatus.NOT_FOUND);
 
         mockServer.expect(requestTo(MATCH_URL + matchId))
                 .andRespond(withStatus(HttpStatus.NOT_FOUND).body(mockNotFoundBody).contentType(MediaType.APPLICATION_JSON_UTF8));

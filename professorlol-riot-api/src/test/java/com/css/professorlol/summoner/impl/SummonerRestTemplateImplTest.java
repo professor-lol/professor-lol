@@ -19,6 +19,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Ignore
 @SpringBootTest
@@ -62,14 +63,13 @@ public class SummonerRestTemplateImplTest {
         SummonerDto summonerDto = this.summonerRestTemplate.getSummonerDto(summonerName);
     }
 
-    @Test(expected = BadRequestException.class)
+    @Test
     public void getSummonerDto_올바르지_않은_값_입력() {
         //given
-        String summonerName = null;
-
         //when
         //then (400 BAD REQUEST)
-        SummonerDto summonerDto = this.summonerRestTemplate.getSummonerDto(summonerName);
+        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDto(null))
+                .isInstanceOf(BadRequestException.class);
     }
 
 

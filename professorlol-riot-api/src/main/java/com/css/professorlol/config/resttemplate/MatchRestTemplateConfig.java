@@ -1,7 +1,6 @@
 package com.css.professorlol.config.resttemplate;
 
-import com.css.professorlol.config.exception.handler.RiotErrorHandler;
-import com.css.professorlol.config.interceptor.RiotTokenInterceptor;
+import com.css.professorlol.config.RiotRestTemplateBuilder;
 import com.css.professorlol.config.properties.XRiotTokenProperties;
 import com.css.professorlol.match.MatchRestTemplate;
 import com.css.professorlol.match.impl.MatchRestTemplateImpl;
@@ -23,7 +22,6 @@ public class MatchRestTemplateConfig {
     @Configuration
     @RequiredArgsConstructor
     public static class MatchRestTemplateConfiguration {
-        private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
 
         private final Duration ONE_SEC = Duration.ofMillis(1000);
         private final Duration TWO_SEC = Duration.ofMillis(2000);
@@ -34,11 +32,8 @@ public class MatchRestTemplateConfig {
         @Bean
         public MatchRestTemplate matchRestTemplate() {
             log.info("Match RestTemplate Bean created");
-            RiotErrorHandler riotErrorHandler = new RiotErrorHandler();
-            RiotTokenInterceptor riotTokenInterceptor = new RiotTokenInterceptor(xRiotTokenProperties);
-            return new MatchRestTemplateImpl(restTemplateBuilder.rootUri(RIOT_HOST_URL)
-                    .additionalInterceptors(riotTokenInterceptor)
-                    .errorHandler(riotErrorHandler).setConnectTimeout(ONE_SEC)
+            RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.xRiotTokenProperties);
+            return new MatchRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
                     .setReadTimeout(TWO_SEC));
         }
 

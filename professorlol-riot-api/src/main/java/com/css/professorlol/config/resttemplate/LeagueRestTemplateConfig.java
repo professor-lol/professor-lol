@@ -1,7 +1,6 @@
 package com.css.professorlol.config.resttemplate;
 
-import com.css.professorlol.config.exception.handler.RiotErrorHandler;
-import com.css.professorlol.config.interceptor.RiotTokenInterceptor;
+import com.css.professorlol.config.RiotRestTemplateBuilder;
 import com.css.professorlol.config.properties.XRiotTokenProperties;
 import com.css.professorlol.league.LeagueRestTemplate;
 import com.css.professorlol.league.impl.LeagueRestTemplateImpl;
@@ -19,11 +18,10 @@ import java.time.Duration;
 @Slf4j
 public class LeagueRestTemplateConfig {
 
-    @Profile("dev")
+    @Profile({"major", "dev"})
     @RequiredArgsConstructor
     @Configuration
     public static class LeagueRestTemplateConfiguration {
-        private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
 
         private final Duration ONE_SEC = Duration.ofMillis(1000);
         private final Duration TWO_SEC = Duration.ofMillis(2000);
@@ -33,18 +31,15 @@ public class LeagueRestTemplateConfig {
 
         @Bean
         public LeagueRestTemplate leagueRestTemplate() {
-            RiotErrorHandler riotErrorHandler = new RiotErrorHandler();
-            RiotTokenInterceptor riotTokenInterceptor = new RiotTokenInterceptor(xRiotTokenProperties);
-            return new LeagueRestTemplateImpl(this.restTemplateBuilder.setConnectTimeout(ONE_SEC)
-                    .setReadTimeout(TWO_SEC)
-                    .errorHandler(riotErrorHandler)
-                    .additionalInterceptors(riotTokenInterceptor)
-                    .rootUri(RIOT_HOST_URL));
+            log.info("League RestTemplate Builder created");
+            RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.xRiotTokenProperties);
+            return new LeagueRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
+                    .setReadTimeout(TWO_SEC));
         }
 
     }
 
-    @Profile("stub")
+    @Profile({"local", "test", "stub"})
     @RequiredArgsConstructor
     @Configuration
     public static class LeagueRestTemplateStubConfiguration {
