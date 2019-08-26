@@ -31,7 +31,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @RestClientTest(value = {LeagueRestTemplateConfig.class, XRiotTokenProperties.class})
 @RunWith(SpringRunner.class)
-@ActiveProfiles("dev")
+@ActiveProfiles("major")
 public class LeagueRestTemplateImplMockTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplateImplMockTest.class);
@@ -88,7 +88,7 @@ public class LeagueRestTemplateImplMockTest {
         //given
         String encodedSummonerId = "wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCga";
 
-        String badRequestBody = MockResponse.getExceptionResponseBody("Bad Request - Exception decrypting wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCga", HttpStatus.BAD_REQUEST);
+        String badRequestBody = MockResponse.getExceptionResponseBody("Bad Request! - Exception decrypting wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCga", HttpStatus.BAD_REQUEST);
 
         this.mockServer.expect(requestTo(LOL_LEAGUE_V_4_ENTRIES_BY_SUMMONER + encodedSummonerId))
                 .andRespond(withBadRequest()

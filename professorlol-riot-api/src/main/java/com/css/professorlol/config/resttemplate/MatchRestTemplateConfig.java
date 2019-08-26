@@ -18,10 +18,10 @@ import java.time.Duration;
 @Slf4j
 public class MatchRestTemplateConfig {
 
-    @Profile("dev")
+    @Profile("major")
     @Configuration
     @RequiredArgsConstructor
-    public static class MatchRestTemplateConfiguration {
+    public static class MajorMatchConfig {
 
         private final Duration ONE_SEC = Duration.ofMillis(1000);
         private final Duration TWO_SEC = Duration.ofMillis(2000);
@@ -31,7 +31,7 @@ public class MatchRestTemplateConfig {
 
         @Bean
         public MatchRestTemplate matchRestTemplate() {
-            log.info("Match RestTemplate Bean created");
+            log.debug("Match RestTemplate Bean created");
             RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.xRiotTokenProperties);
             return new MatchRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
                     .setReadTimeout(TWO_SEC));
@@ -39,14 +39,14 @@ public class MatchRestTemplateConfig {
 
     }
 
-    @Profile("stub")
+    @Profile({"local", "test"})
     @Configuration
     @RequiredArgsConstructor
-    public static class MatchRestTemplateStubConfiguration {
+    public static class LocalMatchConfig {
 
         @Bean
         public MatchRestTemplate matchRestTemplate() {
-            log.info("Match RestTemplate Stub Bean created");
+            log.debug("Match RestTemplate Stub Bean created");
             return new MatchRestTemplateStubImpl();
         }
 

@@ -18,10 +18,10 @@ import java.time.Duration;
 @Slf4j
 public class LeagueRestTemplateConfig {
 
-    @Profile({"major", "dev"})
+    @Profile({"major"})
     @RequiredArgsConstructor
     @Configuration
-    public static class LeagueRestTemplateConfiguration {
+    public static class MajorLeagueConfig {
 
         private final Duration ONE_SEC = Duration.ofMillis(1000);
         private final Duration TWO_SEC = Duration.ofMillis(2000);
@@ -31,7 +31,7 @@ public class LeagueRestTemplateConfig {
 
         @Bean
         public LeagueRestTemplate leagueRestTemplate() {
-            log.info("League RestTemplate Builder created");
+            log.debug("League RestTemplate Builder created");
             RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.xRiotTokenProperties);
             return new LeagueRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
                     .setReadTimeout(TWO_SEC));
@@ -39,14 +39,14 @@ public class LeagueRestTemplateConfig {
 
     }
 
-    @Profile({"local", "test", "stub"})
+    @Profile({"local", "test"})
     @RequiredArgsConstructor
     @Configuration
-    public static class LeagueRestTemplateStubConfiguration {
+    public static class LocalLeagueConfig {
 
         @Bean
         public LeagueRestTemplate leagueRestTemplate() {
-            log.info("League RestTemplate Stub Bean created");
+            log.debug("League RestTemplate Stub Bean created");
             return new LeagueRestTemplateStubImpl();
         }
 

@@ -9,7 +9,6 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 @Slf4j
 public class RiotRestTemplateBuilder {
 
-
     public static RestTemplateBuilder get(RestTemplateBuilder restTemplateBuilder, XRiotTokenProperties xRiotTokenProperties) {
         RiotErrorHandler riotErrorHandler = new RiotErrorHandler();
         RiotTokenInterceptor riotTokenInterceptor = new RiotTokenInterceptor(xRiotTokenProperties);

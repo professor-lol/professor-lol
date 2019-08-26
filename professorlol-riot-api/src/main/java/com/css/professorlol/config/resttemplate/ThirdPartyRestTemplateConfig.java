@@ -19,10 +19,10 @@ import java.time.Duration;
 public class ThirdPartyRestTemplateConfig {
     private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
 
-    @Profile("dev")
+    @Profile({"major"})
     @Configuration
     @RequiredArgsConstructor
-    public static class ThirdPartyRestTemplateConfiguration {
+    public static class MajorThirdConfig {
         private final Duration ONE_SEC = Duration.ofMillis(1000);
         private final Duration TWO_SEC = Duration.ofMillis(2000);
 
@@ -31,6 +31,7 @@ public class ThirdPartyRestTemplateConfig {
 
         @Bean
         public ThirdPartyRestTemplate thirdPartyRestTemplate() {
+            log.debug("ThirdParty RestTemplate Bean created.");
             RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.xRiotTokenProperties);
             restTemplateBuilder = restTemplateBuilder.rootUri(RIOT_HOST_URL)
                     .setConnectTimeout(ONE_SEC)
@@ -40,13 +41,14 @@ public class ThirdPartyRestTemplateConfig {
 
     }
 
-    @Profile("stub")
+    @Profile({"local", "test"})
     @Configuration
     @RequiredArgsConstructor
-    public static class ThirdPartyRestTemplateStubConfiguration {
+    public static class LocalThirdConfig {
 
         @Bean
         public ThirdPartyRestTemplate thirdPartyRestTemplate() {
+            log.debug("ThirdParty RestTemplate Stub Bean created.");
             return new ThirdPartyRestTemplateStubImpl();
         }
 

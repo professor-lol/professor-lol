@@ -25,20 +25,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Ignore
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ActiveProfiles("dev")
+@ActiveProfiles("major")
 public class LeagueRestTemplateImplTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplateImplMockTest.class);
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Autowired
-    private LeagueRestTemplateConfig.LeagueRestTemplateConfiguration leagueRestTemplateConfiguration;
+    private LeagueRestTemplateConfig.MajorLeagueConfig majorLeagueConfig;
 
     private LeagueRestTemplate leagueRestTemplate;
 
     @Before
     public void setUp() throws Exception {
-        leagueRestTemplate = leagueRestTemplateConfiguration.leagueRestTemplate();
+        leagueRestTemplate = majorLeagueConfig.leagueRestTemplate();
     }
 
     @Test

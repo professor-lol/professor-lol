@@ -25,20 +25,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Ignore
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ActiveProfiles("dev")
+@ActiveProfiles("major")
 public class MatchRestTemplateImplTest {
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     private static final Logger log = LoggerFactory.getLogger(MatchRestTemplateImplTest.class);
 
     @Autowired
-    private MatchRestTemplateConfig.MatchRestTemplateConfiguration matchRestTemplateConfiguration;
+    private MatchRestTemplateConfig.MajorMatchConfig majorMatchConfig;
 
     private MatchRestTemplate matchRestTemplate;
 
     @Before
     public void setUp() throws Exception {
-        matchRestTemplate = matchRestTemplateConfiguration.matchRestTemplate();
+        matchRestTemplate = majorMatchConfig.matchRestTemplate();
     }
 
     @Test

@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "riot.token")
 @Component
 @Getter
-@Setter //이거 세터 없이 만드는 방법 없음??
+@Setter
 public class XRiotTokenProperties {
     public static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
-    private String key;
+    public static final String KEY = "X-Riot-Token";
     private String value;
 }

@@ -17,7 +17,7 @@ public class RiotTokenInterceptor implements ClientHttpRequestInterceptor {
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
         request.getHeaders()
-                .set(xRiotTokenProperties.getKey(), xRiotTokenProperties.getValue());
+                .set(XRiotTokenProperties.KEY, xRiotTokenProperties.getValue());
         return execution.execute(request, body);
     }
 }

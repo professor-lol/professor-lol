@@ -18,10 +18,10 @@ import java.time.Duration;
 @Slf4j
 public class SummonerRestTemplateConfig {
 
-    @Profile("dev")
+    @Profile("major")
     @RequiredArgsConstructor
     @Configuration
-    public static class SummonerRestTemplateConfiguration {
+    public static class MajorSummonerConfig {
 
         private static final Duration ONE_SEC = Duration.ofMillis(1000);
         private static final Duration TWO_SEC = Duration.ofMillis(2000);
@@ -31,7 +31,7 @@ public class SummonerRestTemplateConfig {
 
         @Bean
         public SummonerRestTemplate summonerRestTemplate() {
-            log.info("Summoner RestTemplate Bean created");
+            log.debug("Summoner RestTemplate Bean created");
             RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.xRiotTokenProperties);
             return new SummonerRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
                     .setReadTimeout(TWO_SEC));
@@ -39,14 +39,14 @@ public class SummonerRestTemplateConfig {
 
     }
 
-    @Profile("stub")
+    @Profile({"local", "test"})
     @RequiredArgsConstructor
     @Configuration
-    public static class SummonerRestTemplateStubConfiguration {
+    public static class LocalSummonerConfig {
 
         @Bean
         public SummonerRestTemplate summonerRestTemplate() {
-            log.info("Summoner RestTemplate Stub Bean created");
+            log.debug("Summoner RestTemplate Stub Bean created");
             return new SummonerRestTemplateStubImpl();
         }
 

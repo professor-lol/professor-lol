@@ -1,4 +1,3 @@
 riot:
   token:
-    key: X-Riot-Token
-    value: a
+    value:

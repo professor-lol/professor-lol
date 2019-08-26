@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
 
@@ -29,6 +30,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 @RestClientTest(value = {XRiotTokenProperties.class, MatchRestTemplateConfig.class})
 @RunWith(SpringRunner.class)
+@ActiveProfiles("major")
 public class MatchRestTemplateImplMockTest {
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();

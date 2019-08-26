@@ -24,20 +24,20 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @Ignore
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@ActiveProfiles("dev")
+@ActiveProfiles("major")
 public class SummonerRestTemplateImplTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplate.class);
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Autowired
-    private SummonerRestTemplateConfig.SummonerRestTemplateConfiguration summonerRestTemplateConfiguration;
+    private SummonerRestTemplateConfig.MajorSummonerConfig majorSummonerConfig;
 
     private SummonerRestTemplate summonerRestTemplate;
 
     @Before
     public void setUp() throws Exception {
-        this.summonerRestTemplate = summonerRestTemplateConfiguration.summonerRestTemplate();
+        this.summonerRestTemplate = majorSummonerConfig.summonerRestTemplate();
     }
 
     @Test
