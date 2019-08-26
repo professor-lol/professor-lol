@@ -21,6 +21,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Ignore
 @SpringBootTest
@@ -58,7 +59,7 @@ public class MatchRestTemplateImplTest {
         log.info(gson.toJson(matchlistDto));
     }
 
-    @Test(expected = BadRequestException.class)
+    @Test
     public void getMatchList_잘못된_종료_시간값으로_요청() {
         //given
         String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
@@ -68,12 +69,13 @@ public class MatchRestTemplateImplTest {
                 .build();
 
         //when
-        matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam);
-
         //then exception
+        assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam))
+                .isInstanceOf(BadRequestException.class);
+
     }
 
-    @Test(expected = ClientException.class)
+    @Test
     public void getMatchList_잘못된_시작_시간값으로_요청() {
         //given
         String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
@@ -82,9 +84,9 @@ public class MatchRestTemplateImplTest {
                 .build();
 
         //when
-        matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam);
-
         //then exception
+        assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam))
+                .isInstanceOf(ClientException.class);
     }
 
     @Test
@@ -101,15 +103,15 @@ public class MatchRestTemplateImplTest {
         assertThat(match.getParticipants()).isNotEmpty();
     }
 
-    @Test(expected = ClientException.class)
+    @Test
     public void getMatch_없는경기() {
         //given
         Long matchId = 3724003831L;
 
         //when
-        matchRestTemplate.getMatch(matchId);
-
         //then exception
+        assertThatThrownBy(() -> matchRestTemplate.getMatch(matchId))
+                .isInstanceOf(ClientException.class);
     }
 
 }

@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 public class ThirdPartyRestTemplateStubImpl implements ThirdPartyRestTemplate {
 
     public ThirdPartyRestTemplateStubImpl() {
-        log.info("ThirdPartyRestTemplate created.");
+        log.debug("ThirdPartyRestTemplate created.");
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.css.professorlol.config.resttemplate;
 
-import com.css.professorlol.config.RiotRestTemplateBuilder;
 import com.css.professorlol.config.properties.XRiotTokenProperties;
 import com.css.professorlol.match.MatchRestTemplate;
 import com.css.professorlol.match.impl.MatchRestTemplateImpl;

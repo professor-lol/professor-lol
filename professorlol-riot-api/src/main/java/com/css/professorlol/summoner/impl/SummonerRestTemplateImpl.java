@@ -1,5 +1,6 @@
 package com.css.professorlol.summoner.impl;
 
+import com.css.professorlol.config.exception.BadRequestException;
 import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
 import lombok.extern.slf4j.Slf4j;
@@ -13,14 +14,21 @@ public class SummonerRestTemplateImpl implements SummonerRestTemplate {
 
     private final RestTemplate restTemplate;
 
-    public SummonerRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
-        log.info("SummonerRestTemplate created.");
+    public SummonerRestTemplateImpl(final RestTemplateBuilder restTemplateBuilder) {
+        log.debug("SummonerRestTemplate created.");
         this.restTemplate = restTemplateBuilder.build();
     }
 
     @Override
-    public SummonerDto getSummonerDto(String summonerName) {
+    public SummonerDto getSummonerDto(final String summonerName) {
+        validateSummonerName(summonerName);
         return restTemplate.getForObject(SUMMONER_BY_NAME_URL, SummonerDto.class, summonerName);
+    }
+
+    private void validateSummonerName(final String summonerName) {
+        if (summonerName == null || summonerName.isEmpty()) {
+            throw new BadRequestException("The Summoner name must be entered.");
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package com.css.professorlol.third.impl;
 
+import com.css.professorlol.config.exception.BadRequestException;
 import com.css.professorlol.third.ThirdPartyRestTemplate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -12,13 +13,20 @@ public class ThirdPartyRestTemplateImpl implements ThirdPartyRestTemplate {
     private static final String THIRD_PARTY_CODE_URL = "/lol/platform/v4/third-party-code/by-summoner/{encryptedSummonerId}";
     private final RestTemplate restTemplate;
 
-    public ThirdPartyRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
-        log.info("ThirdPartyRestTemplate created.");
+    public ThirdPartyRestTemplateImpl(final RestTemplateBuilder restTemplateBuilder) {
+        log.debug("ThirdPartyRestTemplate created.");
         this.restTemplate = restTemplateBuilder.build();
     }
 
     @Override
     public String getThirdPartyCode(final String encryptedSummonerId) {
+        validateSummonerId(encryptedSummonerId);
         return restTemplate.getForObject(THIRD_PARTY_CODE_URL, String.class);
+    }
+
+    private void validateSummonerId(final String encryptedSummonerId) {
+        if (encryptedSummonerId == null || encryptedSummonerId.isEmpty()) {
+            throw new BadRequestException("The Summoner name must be entered.");
+        }
     }
 }

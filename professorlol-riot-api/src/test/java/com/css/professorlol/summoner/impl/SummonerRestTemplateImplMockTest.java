@@ -22,6 +22,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
 
@@ -66,7 +67,7 @@ public class SummonerRestTemplateImplMockTest {
         log.info(gson.toJson(resultSummonerDto));
     }
 
-    @Test(expected = BadRequestException.class)
+    @Test
     public void getSummonerDto_잘못된_입력값() {
         //given
         String summonerName = "이상한새기";
@@ -81,10 +82,11 @@ public class SummonerRestTemplateImplMockTest {
 
         //when
         //then
-        summonerRestTemplate.getSummonerDto(summonerName);
+        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
+                .isInstanceOf(BadRequestException.class);
     }
 
-    @Test(expected = ClientException.class)
+    @Test
     public void getSummonerDto_결과값_없음() {
         //given
         String summonerName = "@";
@@ -97,7 +99,37 @@ public class SummonerRestTemplateImplMockTest {
 
         //when
         //then
-        summonerRestTemplate.getSummonerDto(summonerName);
+        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
+                .isInstanceOf(ClientException.class);
     }
 
+    @Test
+    public void getSummonerDto_널_입력() {
+        //given
+        String summonerName = null;
+
+        this.mockServer.expect(requestTo(SUMMONER_BY_NAME_URL + summonerName))
+                .andRespond(withSuccess("expectBody", MediaType.APPLICATION_JSON_UTF8));
+
+        //when
+        //then
+        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
+                .isInstanceOf(BadRequestException.class)
+                .hasMessage("The Summoner name must be entered.");
+    }
+
+    @Test
+    public void getSummonerDto_공백_입력() {
+        //given
+        String summonerName = "";
+
+        this.mockServer.expect(requestTo(SUMMONER_BY_NAME_URL + summonerName))
+                .andRespond(withSuccess("expectBody", MediaType.APPLICATION_JSON_UTF8));
+
+        //when
+        //then
+        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
+                .isInstanceOf(BadRequestException.class)
+                .hasMessage("The Summoner name must be entered.");
+    }
 }

@@ -25,6 +25,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withBadRequest;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
@@ -83,7 +84,7 @@ public class LeagueRestTemplateImplMockTest {
         log.info(gson.toJson(leagueEntryDtoSet));
     }
 
-    @Test(expected = BadRequestException.class)
+    @Test
     public void getSummonerDto_잘못된_입력값() {
         //given
         String encodedSummonerId = "wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCga";
@@ -96,9 +97,33 @@ public class LeagueRestTemplateImplMockTest {
                         .contentType(MediaType.APPLICATION_JSON_UTF8));
 
         //when
-        leagueRestTemplate.getLeagueEntries(encodedSummonerId);
-
         //then
+        assertThatThrownBy(() -> leagueRestTemplate.getLeagueEntries(encodedSummonerId))
+                .isInstanceOf(BadRequestException.class);
+    }
+
+    @Test
+    public void getLeagueEntries_널값_입력시() {
+        //given
+        final String encodedSummonerId = null;
+
+        //when
+        //then
+        assertThatThrownBy(() -> leagueRestTemplate.getLeagueEntries(encodedSummonerId))
+                .isInstanceOf(BadRequestException.class)
+                .hasMessage("The Summoner ID must be entered.");
+    }
+
+    @Test
+    public void getLeagueEntries_공백_입력시() {
+        //given
+        final String encodedSummonerId = "";
+
+        //when
+        //then
+        assertThatThrownBy(() -> leagueRestTemplate.getLeagueEntries(encodedSummonerId))
+                .isInstanceOf(BadRequestException.class)
+                .hasMessage("The Summoner ID must be entered.");
     }
 
 }

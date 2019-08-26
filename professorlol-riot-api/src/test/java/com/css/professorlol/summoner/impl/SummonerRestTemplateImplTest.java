@@ -53,14 +53,15 @@ public class SummonerRestTemplateImplTest {
         log.info(gson.toJson(summonerDto));
     }
 
-    @Test(expected = ClientException.class)
+    @Test
     public void getSummonerDto_결과없음() {
         //given
         String summonerName = "@";
 
         //when
         //then (404 NOT FOUND)
-        SummonerDto summonerDto = this.summonerRestTemplate.getSummonerDto(summonerName);
+        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDto(summonerName))
+                .isInstanceOf(ClientException.class);
     }
 
     @Test
@@ -71,6 +72,5 @@ public class SummonerRestTemplateImplTest {
         assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDto(null))
                 .isInstanceOf(BadRequestException.class);
     }
-
 
 }

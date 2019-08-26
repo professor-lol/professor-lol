@@ -1,4 +1,4 @@
-package com.css.professorlol.config;
+package com.css.professorlol.config.resttemplate;
 
 import com.css.professorlol.config.exception.handler.RiotErrorHandler;
 import com.css.professorlol.config.interceptor.RiotTokenInterceptor;

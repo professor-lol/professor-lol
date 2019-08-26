@@ -25,6 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
 
@@ -51,17 +52,17 @@ public class MatchRestTemplateImplMockTest {
     @Test
     public void getMatchList_정상입력_파라미터_없음() {
         //given
-        String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
+        String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
         MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
                 .build();
 
         String mockBody = MockResponse.getMatchListMockBody();
 
-        mockServer.expect(requestTo(MATCH_LIST_BY_ACCOUNT_URL + encryptedSummonerId + DEFAULT_QUEUE + NO_QUERY_PARAMETER))
+        mockServer.expect(requestTo(MATCH_LIST_BY_ACCOUNT_URL + encryptedAccountId + DEFAULT_QUEUE + NO_QUERY_PARAMETER))
                 .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
 
         //when
-        MatchlistDto matchlistDto = matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam);
+        MatchlistDto matchlistDto = matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam);
 
         //then
         assertThat(matchlistDto).isNotNull();
@@ -70,40 +71,41 @@ public class MatchRestTemplateImplMockTest {
         log.info(gson.toJson(matchlistDto));
     }
 
-    @Test(expected = BadRequestException.class)
+    @Test
     public void getMatchList_잘못된_종료_시간값으로_요청() {
         //given
-        String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
+        String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
         String badRequestBody = MockResponse.getExceptionResponseBody("Bad Request", HttpStatus.BAD_REQUEST);
         MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
                 .endTime(0L)
                 .build();
 
-        mockServer.expect(requestTo(MATCH_LIST_BY_ACCOUNT_URL + encryptedSummonerId + DEFAULT_QUEUE + "&season=&endTime=0&beginTime=&endIndex=&beginIndex="))
+        mockServer.expect(requestTo(MATCH_LIST_BY_ACCOUNT_URL + encryptedAccountId + DEFAULT_QUEUE + "&season=&endTime=0&beginTime=&endIndex=&beginIndex="))
                 .andRespond(withBadRequest().body(badRequestBody).contentType(MediaType.APPLICATION_JSON_UTF8));
 
         //when
-        matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam);
-
         //then exception
+        assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam))
+                .isInstanceOf(BadRequestException.class);
     }
 
-    @Test(expected = ClientException.class)
+    @Test
     public void getMatchList_잘못된_시작_시간값으로_요청() {
         //given
-        String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
+        String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
         String badRequestBody = MockResponse.getExceptionResponseBody("Not found", HttpStatus.NOT_FOUND);
         MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
                 .beginTime(15617397445077L)
                 .build();
 
-        mockServer.expect(requestTo(MATCH_LIST_BY_ACCOUNT_URL + encryptedSummonerId + DEFAULT_QUEUE + "&season=&endTime=&beginTime=15617397445077&endIndex=&beginIndex="))
+        mockServer.expect(requestTo(MATCH_LIST_BY_ACCOUNT_URL + encryptedAccountId + DEFAULT_QUEUE + "&season=&endTime=&beginTime=15617397445077&endIndex=&beginIndex="))
                 .andRespond(withStatus(HttpStatus.NOT_FOUND).body(badRequestBody).contentType(MediaType.APPLICATION_JSON_UTF8));
 
         //when
-        matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam);
-
         //then exception
+        assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam))
+                .isInstanceOf(ClientException.class);
+
     }
 
     @Test
@@ -124,7 +126,7 @@ public class MatchRestTemplateImplMockTest {
         log.info(gson.toJson(match));
     }
 
-    @Test(expected = ClientException.class)
+    @Test
     public void getMatch_없는경기() {
         //given
         Long matchId = 3724003831L;
@@ -134,9 +136,59 @@ public class MatchRestTemplateImplMockTest {
                 .andRespond(withStatus(HttpStatus.NOT_FOUND).body(mockNotFoundBody).contentType(MediaType.APPLICATION_JSON_UTF8));
 
         //when
-        matchRestTemplate.getMatch(matchId);
-
         //then exception
+        assertThatThrownBy(() -> matchRestTemplate.getMatch(matchId))
+                .isInstanceOf(ClientException.class);
+
     }
 
+    @Test
+    public void getMatchList_널값_입력시() {
+        //given
+        String encryptedAccountId = null;
+        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+                .build();
+
+        mockServer.expect(requestTo(MATCH_LIST_BY_ACCOUNT_URL + encryptedAccountId + DEFAULT_QUEUE + NO_QUERY_PARAMETER))
+                .andRespond(withSuccess("mockBody", MediaType.APPLICATION_JSON_UTF8));
+
+        //when
+        //then
+        assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam))
+                .isInstanceOf(BadRequestException.class)
+                .hasMessage("The Account ID must be entered.");
+    }
+
+    @Test
+    public void getMatchList_공백_입력시() {
+        //given
+        String encryptedAccountId = "";
+        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+                .build();
+
+        mockServer.expect(requestTo(MATCH_LIST_BY_ACCOUNT_URL + encryptedAccountId + DEFAULT_QUEUE + NO_QUERY_PARAMETER))
+                .andRespond(withSuccess("mockBody", MediaType.APPLICATION_JSON_UTF8));
+
+        //when
+        //then
+        assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam))
+                .isInstanceOf(BadRequestException.class)
+                .hasMessage("The Account ID must be entered.");
+    }
+
+    @Test
+    public void getMatch_0_보다_작은값_입력시() {
+        //given
+        Long matchId = -1L;
+
+        mockServer.expect(requestTo(MATCH_URL + matchId))
+                .andRespond(withSuccess("mockBody", MediaType.APPLICATION_JSON_UTF8));
+
+        //when
+        //then
+        assertThatThrownBy(() -> matchRestTemplate.getMatch(matchId))
+                .isInstanceOf(BadRequestException.class)
+                .hasMessage("The Match ID can not be less than 0.");
+
+    }
 }

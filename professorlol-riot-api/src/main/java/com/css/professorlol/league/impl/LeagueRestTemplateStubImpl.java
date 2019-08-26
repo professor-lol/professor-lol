@@ -12,7 +12,7 @@ import java.util.Set;
 public class LeagueRestTemplateStubImpl implements LeagueRestTemplate {
 
     public LeagueRestTemplateStubImpl() {
-        log.info("Stub LeagueRestTemplate created.");
+        log.debug("Stub LeagueRestTemplate created.");
     }
 
     @Override

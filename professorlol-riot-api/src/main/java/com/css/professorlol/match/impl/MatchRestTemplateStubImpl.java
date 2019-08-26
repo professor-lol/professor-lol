@@ -15,7 +15,7 @@ import javax.validation.constraints.NotBlank;
 public class MatchRestTemplateStubImpl implements MatchRestTemplate {
 
     public MatchRestTemplateStubImpl() {
-        log.info("Stub MatchRestTemplate created.");
+        log.debug("Stub MatchRestTemplate created.");
     }
 
     @Override

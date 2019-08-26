@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 public class SummonerRestTemplateStubImpl implements SummonerRestTemplate {
 
     public SummonerRestTemplateStubImpl() {
-        log.info("Stub SummonerRestTemplate created.");
+        log.debug("Stub SummonerRestTemplate created.");
     }
 
     @Override

@@ -21,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Ignore
 @SpringBootTest
@@ -75,8 +76,8 @@ public class LeagueRestTemplateImplTest {
         String encodedSummonerId = "w";
 
         //when
-        leagueRestTemplate.getLeagueEntries(encodedSummonerId);
-
         //then
+        assertThatThrownBy(() -> leagueRestTemplate.getLeagueEntries(encodedSummonerId))
+                .isInstanceOf(BadRequestException.class);
     }
 }

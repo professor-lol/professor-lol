@@ -1,5 +1,6 @@
 package com.css.professorlol.match.impl;
 
+import com.css.professorlol.config.exception.BadRequestException;
 import com.css.professorlol.match.MatchRestTemplate;
 import com.css.professorlol.match.dto.match.MatchDto;
 import com.css.professorlol.match.dto.matchList.MatchQueryParam;
@@ -23,20 +24,35 @@ public class MatchRestTemplateImpl implements MatchRestTemplate {
 
     private final RestTemplate restTemplate;
 
-    public MatchRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
-        log.info("MatchRestTemplate created.");
+    public MatchRestTemplateImpl(final RestTemplateBuilder restTemplateBuilder) {
+        log.debug("MatchRestTemplate created.");
         this.restTemplate = restTemplateBuilder.build();
     }
 
     @Override
-    public MatchlistDto getMatchList(@NotBlank final String encryptedAccountId, MatchQueryParam queryParam) {
+    public MatchlistDto getMatchList(@NotBlank final String encryptedAccountId, final MatchQueryParam queryParam) {
+        validateAccountId(encryptedAccountId);
         Map<String, Object> params = queryParam.getQueryParam();
         params.put("encryptedAccountId", encryptedAccountId);
         return restTemplate.getForObject(MATCH_LIST_BY_ACCOUNT_URL, MatchlistDto.class, params);
     }
 
     @Override
-    public MatchDto getMatch(Long matchId) {
+    public MatchDto getMatch(final Long matchId) {
+        validateMatchId(matchId);
         return restTemplate.getForObject(MATCH_URL, MatchDto.class, matchId);
     }
+
+    private void validateAccountId(final String encryptedAccountId) {
+        if (encryptedAccountId == null || encryptedAccountId.isEmpty()) {
+            throw new BadRequestException("The Account ID must be entered.");
+        }
+    }
+
+    private void validateMatchId(final Long matchId) {
+        if (matchId <= 0) {
+            throw new BadRequestException("The Match ID can not be less than 0.");
+        }
+    }
+
 }
