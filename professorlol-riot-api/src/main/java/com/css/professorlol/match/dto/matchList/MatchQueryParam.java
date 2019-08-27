@@ -39,7 +39,6 @@ public class MatchQueryParam {
     public Map<String, Object> getQueryParam() {
         Map<String, Object> queryParam = new HashMap<>();
         queryParam.put(Queue.SOLO.getName(), Queue.SOLO.getValue());
-        queryParam.put(Queue.FREE.getName(), Queue.FREE.getValue());
         queryParam.put(SEASON, season);
         queryParam.put(END_TIME, endTime);
         queryParam.put(BEGIN_TIME, beginTime);

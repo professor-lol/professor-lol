@@ -16,7 +16,7 @@ import java.util.Map;
 public class MatchRestTemplateImpl implements MatchRestTemplate {
 
     private static final String MATCH_LIST_BY_ACCOUNT_URL = "/lol/match/v4/matchlists/by-account/{encryptedAccountId}" +
-            "?queue={soloQueue}&queue={freeQueue}" +
+            "?queue={soloQueue}" +
             "&season={season}" +
             "&endTime={endTime}&beginTime={beginTime}" +
             "&endIndex={endIndex}&beginIndex={beginIndex}";
