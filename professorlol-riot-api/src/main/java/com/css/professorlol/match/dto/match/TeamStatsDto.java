@@ -10,21 +10,21 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class TeamStatsDto {
 
-    boolean firstDragon;
-    boolean firstInhibitor;
-    List<TeamBansDto> bans;
-    Integer baronKills;
-    boolean firstRiftHerald;
-    boolean firstBaron;
-    Integer riftHeraldKills;
-    boolean firstBlood;
-    Integer teamId;
-    boolean firstTower;
-    Integer vilemawKills;
-    Integer inhibitorKills;
-    Integer towerKills;
-    Integer dominionVictoryScore;
-    String win;
-    Integer dragonKills;
+    private boolean firstDragon;
+    private boolean firstInhibitor;
+    private List<TeamBansDto> bans;
+    private Integer baronKills;
+    private boolean firstRiftHerald;
+    private boolean firstBaron;
+    private Integer riftHeraldKills;
+    private boolean firstBlood;
+    private Integer teamId;
+    private boolean firstTower;
+    private Integer vilemawKills;
+    private Integer inhibitorKills;
+    private Integer towerKills;
+    private Integer dominionVictoryScore;
+    private String win;
+    private Integer dragonKills;
 
 }

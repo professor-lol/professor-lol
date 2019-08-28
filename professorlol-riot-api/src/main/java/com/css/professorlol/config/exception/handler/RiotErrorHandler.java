@@ -29,14 +29,14 @@ public class RiotErrorHandler implements ResponseErrorHandler {
     public void handleError(ClientHttpResponse response) throws IOException {
         RiotExceptionDto exceptionDto = parseRiotExceptionBody(response);
         if (isBadRequest(response)) {
-            log.error("[Bad Request Exception] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
+            log.error("[BadRequestException] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
             throw new BadRequestException(exceptionDto.getMessage());
         }
         if (isClientError(response)) {
-            log.error("[Client Exception] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
+            log.error("[ClientException] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
             throw new ClientException(exceptionDto.getMessage());
         }
-        log.error("[Server Exception] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
+        log.error("[ServerException] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
         throw new ServerException(exceptionDto.getMessage());
     }
 

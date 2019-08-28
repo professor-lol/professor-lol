@@ -35,6 +35,7 @@ public class SummonerRestTemplateImplMockTest {
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     private static final String SUMMONER_BY_NAME_URL = "/lol/summoner/v4/summoners/by-name/";
+    private static final String SUMMONER_BY_ID_URL = "/lol/summoner/v4/summoners/";
 
     @Autowired
     private MockRestServiceServer mockServer;
@@ -115,7 +116,7 @@ public class SummonerRestTemplateImplMockTest {
         //then
         assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
                 .isInstanceOf(BadRequestException.class)
-                .hasMessage("The Summoner name must be entered.");
+                .hasMessage("The Summoner Identifier must be entered.");
     }
 
     @Test
@@ -130,6 +131,54 @@ public class SummonerRestTemplateImplMockTest {
         //then
         assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
                 .isInstanceOf(BadRequestException.class)
-                .hasMessage("The Summoner name must be entered.");
+                .hasMessage("The Summoner Identifier must be entered.");
+    }
+
+    @Test
+    public void getSummonerDtoBySummonerId_정상입력() {
+        //given
+        String summonerId = "zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ";
+
+        SummonerDto expectSummonerDto = SummonerDto.stubBuilder()
+                .accountId("ZCKKNXiQCxnU6iZItHeoPu8skeTkf2LMZjd8_SxXIBqY")
+                .summonerId("wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCg")
+                .build();
+
+        this.mockServer.expect(requestTo(SUMMONER_BY_ID_URL + summonerId))
+                .andRespond(withSuccess(gson.toJson(expectSummonerDto), MediaType.APPLICATION_JSON_UTF8));
+
+        //when
+        SummonerDto summonerDto = this.summonerRestTemplate.getSummonerDtoBySummonerId(summonerId);
+
+        //then
+        assertThat(summonerDto).isNotNull();
+        log.info(gson.toJson(summonerDto));
+    }
+
+    @Test
+    public void getSummonerDtoBySummonerId_올바르지_않은_값_입력_NOT_NULL() {
+        //given
+        String summonerId = "zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQasdf";
+
+        String exceptBody = MockResponse.getExceptionResponseBody("Bad Request - Exception decrypting zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQasdf", HttpStatus.BAD_REQUEST);
+
+        this.mockServer.expect(requestTo(SUMMONER_BY_ID_URL + summonerId))
+                .andRespond(withBadRequest().body(exceptBody).contentType(MediaType.APPLICATION_JSON_UTF8));
+
+        //when
+        //then (400)
+        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(summonerId))
+                .isInstanceOf(BadRequestException.class);
+    }
+
+    @Test
+    public void getSummonerDtoBySummonerId_올바르지_않은_값_입력_NULL() {
+        //given
+        this.mockServer.expect(requestTo(SUMMONER_BY_ID_URL + null))
+                .andRespond(withBadRequest().body("The Summoner Identifier must be entered.").contentType(MediaType.APPLICATION_JSON_UTF8));
+        //when
+        //then (400 BAD REQUEST)
+        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(null))
+                .isInstanceOf(BadRequestException.class);
     }
 }

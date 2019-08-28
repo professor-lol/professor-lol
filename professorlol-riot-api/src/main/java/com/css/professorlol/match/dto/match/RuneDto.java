@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RuneDto {
-    Integer runeId;
-    Integer rank;
+    private Integer runeId;
+    private Integer rank;
 }

@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class SummonerRestTemplateImpl implements SummonerRestTemplate {
 
     private static final String SUMMONER_BY_NAME_URL = "/lol/summoner/v4/summoners/by-name/{summonerName}";
+    private static final String SUMMONER_BY_ID_URL = "/lol/summoner/v4/summoners/{encryptedSummonerId}";
 
     private final RestTemplate restTemplate;
 
@@ -21,13 +22,19 @@ public class SummonerRestTemplateImpl implements SummonerRestTemplate {
 
     @Override
     public SummonerDto getSummonerDto(final String summonerName) {
-        validateSummonerName(summonerName);
+        validateSummonerIdentifier(summonerName);
         return restTemplate.getForObject(SUMMONER_BY_NAME_URL, SummonerDto.class, summonerName);
     }
 
-    private void validateSummonerName(final String summonerName) {
-        if (summonerName == null || summonerName.isEmpty()) {
-            throw new BadRequestException("The Summoner name must be entered.");
+    @Override
+    public SummonerDto getSummonerDtoBySummonerId(String encryptedSummonerId) {
+        validateSummonerIdentifier(encryptedSummonerId);
+        return restTemplate.getForObject(SUMMONER_BY_ID_URL, SummonerDto.class, encryptedSummonerId);
+    }
+
+    private void validateSummonerIdentifier(final String summonerIdentifier) {
+        if (summonerIdentifier == null || summonerIdentifier.isEmpty()) {
+            throw new BadRequestException("The Summoner Identifier must be entered.");
         }
     }
 

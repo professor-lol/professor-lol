@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class MasteryDto {
-    Integer masteryId;
-    Integer rank;
+    private Integer masteryId;
+    private Integer rank;
 }

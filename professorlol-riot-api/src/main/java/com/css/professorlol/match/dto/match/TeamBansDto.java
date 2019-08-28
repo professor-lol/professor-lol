@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class TeamBansDto {
-    Integer pickTurn;
-    Integer championId;
+    private Integer pickTurn;
+    private Integer championId;
 }

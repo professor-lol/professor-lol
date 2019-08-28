@@ -73,4 +73,37 @@ public class SummonerRestTemplateImplTest {
                 .isInstanceOf(BadRequestException.class);
     }
 
+    @Test
+    public void getSummonerDtoBySummonerId_정상입력() {
+        //given
+        String summonerId = "zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ";
+
+        //when
+        SummonerDto summonerDto = this.summonerRestTemplate.getSummonerDtoBySummonerId(summonerId);
+
+        //then
+        assertThat(summonerDto).isNotNull();
+        log.info(gson.toJson(summonerDto));
+    }
+
+    @Test
+    public void getSummonerDtoBySummonerId_올바르지_않은_값_입력_NOT_NULL() {
+        //given
+        String summonerId = "zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fBasdf";
+
+        //when
+        //then (404 NOT FOUND)
+        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(summonerId))
+                .isInstanceOf(BadRequestException.class);
+    }
+
+    @Test
+    public void getSummonerDtoBySummonerId_올바르지_않은_값_입력_NULL() {
+        //given
+        //when
+        //then (400 BAD REQUEST)
+        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(null))
+                .isInstanceOf(BadRequestException.class);
+    }
+
 }
