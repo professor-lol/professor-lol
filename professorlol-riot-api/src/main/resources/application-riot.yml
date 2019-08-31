@@ -1,3 +1,4 @@
 riot:
+  host: https://kr.api.riotgames.com
   token:
-    value: RGAPI-5abf2230-e308-4327-9f38-051fc9fb1eed
+    value: RGAPI-c01b8c83-a875-41a5-a64f-c4d4737e6f2f

@@ -1,7 +1,7 @@
 package com.css.professorlol.summoner.impl;
 
-import com.css.professorlol.config.exception.BadRequestException;
-import com.css.professorlol.config.exception.ClientException;
+import com.css.professorlol.config.exception.NotCorrectInputException;
+import com.css.professorlol.config.exception.RiotClientException;
 import com.css.professorlol.config.resttemplate.SummonerRestTemplateConfig;
 import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
@@ -46,7 +46,7 @@ public class SummonerRestTemplateImplTest {
         String summonerName = "이상한새기";
 
         //when
-        SummonerDto summonerDto = this.summonerRestTemplate.getSummonerDto(summonerName);
+        SummonerDto summonerDto = this.summonerRestTemplate.getSummonerDtoBySummonerName(summonerName);
 
         //then
         assertThat(summonerDto).isNotNull();
@@ -60,8 +60,8 @@ public class SummonerRestTemplateImplTest {
 
         //when
         //then (404 NOT FOUND)
-        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDto(summonerName))
-                .isInstanceOf(ClientException.class);
+        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerName(summonerName))
+                .isInstanceOf(RiotClientException.class);
     }
 
     @Test
@@ -69,8 +69,8 @@ public class SummonerRestTemplateImplTest {
         //given
         //when
         //then (400 BAD REQUEST)
-        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDto(null))
-                .isInstanceOf(BadRequestException.class);
+        assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerName(null))
+                .isInstanceOf(NotCorrectInputException.class);
     }
 
     @Test
@@ -94,7 +94,7 @@ public class SummonerRestTemplateImplTest {
         //when
         //then (404 NOT FOUND)
         assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(summonerId))
-                .isInstanceOf(BadRequestException.class);
+                .isInstanceOf(NotCorrectInputException.class);
     }
 
     @Test
@@ -103,7 +103,7 @@ public class SummonerRestTemplateImplTest {
         //when
         //then (400 BAD REQUEST)
         assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(null))
-                .isInstanceOf(BadRequestException.class);
+                .isInstanceOf(NotCorrectInputException.class);
     }
 
 }

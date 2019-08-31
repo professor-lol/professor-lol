@@ -1,9 +1,9 @@
 package com.css.professorlol.third.impl;
 
-import com.css.professorlol.config.exception.BadRequestException;
+import com.css.professorlol.config.exception.NotCorrectInputException;
 import com.css.professorlol.third.ThirdPartyRestTemplate;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 //TODO : TEST CODE 작성하기
@@ -13,20 +13,20 @@ public class ThirdPartyRestTemplateImpl implements ThirdPartyRestTemplate {
     private static final String THIRD_PARTY_CODE_URL = "/lol/platform/v4/third-party-code/by-summoner/{encryptedSummonerId}";
     private final RestTemplate restTemplate;
 
-    public ThirdPartyRestTemplateImpl(final RestTemplateBuilder restTemplateBuilder) {
+    public ThirdPartyRestTemplateImpl(final RestTemplate restTemplate) {
         log.debug("ThirdPartyRestTemplate created.");
-        this.restTemplate = restTemplateBuilder.build();
+        this.restTemplate = restTemplate;
     }
 
     @Override
-    public String getThirdPartyCode(final String encryptedSummonerId) {
+    public String getThirdPartyCodeBySummonerId(final String encryptedSummonerId) {
         validateSummonerId(encryptedSummonerId);
         return restTemplate.getForObject(THIRD_PARTY_CODE_URL, String.class);
     }
 
     private void validateSummonerId(final String encryptedSummonerId) {
-        if (encryptedSummonerId == null || encryptedSummonerId.isEmpty()) {
-            throw new BadRequestException("The Summoner name must be entered.");
+        if (StringUtils.isEmpty(encryptedSummonerId)) {
+            throw new NotCorrectInputException("The Summoner name must be entered.");
         }
     }
 }

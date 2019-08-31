@@ -1,7 +1,7 @@
 package com.css.professorlol.match.impl;
 
-import com.css.professorlol.config.exception.BadRequestException;
-import com.css.professorlol.config.exception.ClientException;
+import com.css.professorlol.config.exception.NotCorrectInputException;
+import com.css.professorlol.config.exception.RiotClientException;
 import com.css.professorlol.config.resttemplate.MatchRestTemplateConfig;
 import com.css.professorlol.match.MatchRestTemplate;
 import com.css.professorlol.match.dto.match.MatchDto;
@@ -46,7 +46,7 @@ public class MatchRestTemplateImplTest {
     public void getMatchList_정상입력() {
         //given
         String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .build();
 
         //when
@@ -64,14 +64,14 @@ public class MatchRestTemplateImplTest {
         //given
         String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
 
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .endTime(0L)
                 .build();
 
         //when
         //then exception
         assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam))
-                .isInstanceOf(BadRequestException.class);
+                .isInstanceOf(NotCorrectInputException.class);
 
     }
 
@@ -79,14 +79,14 @@ public class MatchRestTemplateImplTest {
     public void getMatchList_잘못된_시작_시간값으로_요청() {
         //given
         String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .beginTime(15617397445077L)
                 .build();
 
         //when
         //then exception
         assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam))
-                .isInstanceOf(ClientException.class);
+                .isInstanceOf(RiotClientException.class);
     }
 
     @Test
@@ -95,7 +95,7 @@ public class MatchRestTemplateImplTest {
         Long matchId = 3724003832L;
 
         //when
-        MatchDto match = matchRestTemplate.getMatch(matchId);
+        MatchDto match = matchRestTemplate.getMatchByMatchId(matchId);
 
         //then
         assertThat(match).isNotNull();
@@ -110,8 +110,8 @@ public class MatchRestTemplateImplTest {
 
         //when
         //then exception
-        assertThatThrownBy(() -> matchRestTemplate.getMatch(matchId))
-                .isInstanceOf(ClientException.class);
+        assertThatThrownBy(() -> matchRestTemplate.getMatchByMatchId(matchId))
+                .isInstanceOf(RiotClientException.class);
     }
 
 }

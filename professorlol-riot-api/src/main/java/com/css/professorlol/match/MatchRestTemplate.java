@@ -7,5 +7,5 @@ import com.css.professorlol.match.dto.matchList.MatchlistDto;
 public interface MatchRestTemplate {
     MatchlistDto getMatchList(final String encryptedAccountId, MatchQueryParam queryParam);
 
-    MatchDto getMatch(Long matchId);
+    MatchDto getMatchByMatchId(Long matchId);
 }

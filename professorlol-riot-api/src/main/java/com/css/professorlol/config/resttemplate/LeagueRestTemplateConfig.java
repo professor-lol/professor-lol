@@ -1,6 +1,6 @@
 package com.css.professorlol.config.resttemplate;
 
-import com.css.professorlol.config.properties.XRiotTokenProperties;
+import com.css.professorlol.config.properties.RiotProperties;
 import com.css.professorlol.league.LeagueRestTemplate;
 import com.css.professorlol.league.impl.LeagueRestTemplateImpl;
 import com.css.professorlol.league.impl.LeagueRestTemplateStubImpl;
@@ -25,15 +25,16 @@ public class LeagueRestTemplateConfig {
         private static final Duration ONE_SEC = Duration.ofMillis(1000);
         private static final Duration TWO_SEC = Duration.ofMillis(2000);
 
-        private final XRiotTokenProperties xRiotTokenProperties;
+        private final RiotProperties riotProperties;
         private final RestTemplateBuilder restTemplateBuilder;
 
         @Bean
         public LeagueRestTemplate leagueRestTemplate() {
             log.debug("League RestTemplate Builder created");
-            RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.xRiotTokenProperties);
+            RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.riotProperties);
             return new LeagueRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
-                    .setReadTimeout(TWO_SEC));
+                    .setReadTimeout(TWO_SEC)
+                    .build());
         }
 
     }

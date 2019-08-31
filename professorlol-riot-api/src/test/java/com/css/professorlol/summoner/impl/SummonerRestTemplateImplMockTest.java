@@ -1,47 +1,52 @@
 package com.css.professorlol.summoner.impl;
 
 import com.css.professorlol.MockResponse;
-import com.css.professorlol.config.exception.BadRequestException;
-import com.css.professorlol.config.exception.ClientException;
-import com.css.professorlol.config.properties.XRiotTokenProperties;
-import com.css.professorlol.config.resttemplate.SummonerRestTemplateConfig;
+import com.css.professorlol.config.exception.NotCorrectInputException;
+import com.css.professorlol.config.exception.RiotClientException;
+import com.css.professorlol.config.properties.RiotProperties;
+import com.css.professorlol.config.resttemplate.RiotRestTemplateBuilder;
 import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
+import org.springframework.web.client.RestTemplate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
 
-@RestClientTest(value = {SummonerRestTemplateConfig.class, XRiotTokenProperties.class})
-@RunWith(SpringRunner.class)
-@ActiveProfiles("major")
 public class SummonerRestTemplateImplMockTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplateImplMockTest.class);
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    private static final String SUMMONER_BY_NAME_URL = "/lol/summoner/v4/summoners/by-name/";
-    private static final String SUMMONER_BY_ID_URL = "/lol/summoner/v4/summoners/";
+    private static final String SUMMONER_BY_NAME_URL = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
+    private static final String SUMMONER_BY_ID_URL = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/";
 
-    @Autowired
     private MockRestServiceServer mockServer;
 
-    @Autowired
     private SummonerRestTemplate summonerRestTemplate;
+
+    @Before
+    public void setUp() throws Exception {
+        RiotProperties riotProperties = new RiotProperties();
+        riotProperties.setToken(new RiotProperties.Token());
+        riotProperties.getToken().setValue("value");
+        RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(new RestTemplateBuilder(), riotProperties);
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        mockServer = MockRestServiceServer.createServer(restTemplate);
+        summonerRestTemplate = new SummonerRestTemplateImpl(restTemplate);
+    }
+
 
     @Test
     public void getSummonerDto_정상입력() {
@@ -60,7 +65,7 @@ public class SummonerRestTemplateImplMockTest {
                 .andRespond(withSuccess(expectBody, MediaType.APPLICATION_JSON_UTF8));
 
         //when
-        SummonerDto resultSummonerDto = summonerRestTemplate.getSummonerDto(summonerName);
+        SummonerDto resultSummonerDto = summonerRestTemplate.getSummonerDtoBySummonerName(summonerName);
 
         //then
         assertThat(resultSummonerDto.getAccountId()).isEqualTo(expectSummonerDto.getAccountId());
@@ -83,15 +88,15 @@ public class SummonerRestTemplateImplMockTest {
 
         //when
         //then
-        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
-                .isInstanceOf(BadRequestException.class);
+        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDtoBySummonerName(summonerName))
+                .isInstanceOf(NotCorrectInputException.class);
     }
 
     @Test
     public void getSummonerDto_결과값_없음() {
         //given
         String summonerName = "@";
-        String exceptBody = MockResponse.getExceptionResponseBody("Data not found - summoner not found", HttpStatus.BAD_REQUEST);
+        String exceptBody = MockResponse.getExceptionResponseBody("Data not found - summoner not found", HttpStatus.NOT_FOUND);
 
         this.mockServer.expect(requestTo(SUMMONER_BY_NAME_URL + summonerName))
                 .andRespond(withStatus(HttpStatus.NOT_FOUND)
@@ -100,8 +105,8 @@ public class SummonerRestTemplateImplMockTest {
 
         //when
         //then
-        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
-                .isInstanceOf(ClientException.class);
+        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDtoBySummonerName(summonerName))
+                .isInstanceOf(RiotClientException.class);
     }
 
     @Test
@@ -114,8 +119,8 @@ public class SummonerRestTemplateImplMockTest {
 
         //when
         //then
-        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
-                .isInstanceOf(BadRequestException.class)
+        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDtoBySummonerName(summonerName))
+                .isInstanceOf(NotCorrectInputException.class)
                 .hasMessage("The Summoner Identifier must be entered.");
     }
 
@@ -129,8 +134,8 @@ public class SummonerRestTemplateImplMockTest {
 
         //when
         //then
-        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDto(summonerName))
-                .isInstanceOf(BadRequestException.class)
+        assertThatThrownBy(() -> summonerRestTemplate.getSummonerDtoBySummonerName(summonerName))
+                .isInstanceOf(NotCorrectInputException.class)
                 .hasMessage("The Summoner Identifier must be entered.");
     }
 
@@ -141,7 +146,7 @@ public class SummonerRestTemplateImplMockTest {
 
         SummonerDto expectSummonerDto = SummonerDto.stubBuilder()
                 .accountId("ZCKKNXiQCxnU6iZItHeoPu8skeTkf2LMZjd8_SxXIBqY")
-                .summonerId("wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCg")
+                .summonerId("zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ")
                 .build();
 
         this.mockServer.expect(requestTo(SUMMONER_BY_ID_URL + summonerId))
@@ -151,7 +156,7 @@ public class SummonerRestTemplateImplMockTest {
         SummonerDto summonerDto = this.summonerRestTemplate.getSummonerDtoBySummonerId(summonerId);
 
         //then
-        assertThat(summonerDto).isNotNull();
+        assertThat(summonerDto.getSummonerId()).isEqualTo(summonerId);
         log.info(gson.toJson(summonerDto));
     }
 
@@ -168,7 +173,7 @@ public class SummonerRestTemplateImplMockTest {
         //when
         //then (400)
         assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(summonerId))
-                .isInstanceOf(BadRequestException.class);
+                .isInstanceOf(NotCorrectInputException.class);
     }
 
     @Test
@@ -179,6 +184,6 @@ public class SummonerRestTemplateImplMockTest {
         //when
         //then (400 BAD REQUEST)
         assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(null))
-                .isInstanceOf(BadRequestException.class);
+                .isInstanceOf(NotCorrectInputException.class);
     }
 }

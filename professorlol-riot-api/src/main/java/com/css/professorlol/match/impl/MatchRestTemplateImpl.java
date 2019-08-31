@@ -1,12 +1,12 @@
 package com.css.professorlol.match.impl;
 
-import com.css.professorlol.config.exception.BadRequestException;
+import com.css.professorlol.config.exception.NotCorrectInputException;
 import com.css.professorlol.match.MatchRestTemplate;
 import com.css.professorlol.match.dto.match.MatchDto;
 import com.css.professorlol.match.dto.matchList.MatchQueryParam;
 import com.css.professorlol.match.dto.matchList.MatchlistDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.constraints.NotBlank;
@@ -24,9 +24,9 @@ public class MatchRestTemplateImpl implements MatchRestTemplate {
 
     private final RestTemplate restTemplate;
 
-    public MatchRestTemplateImpl(final RestTemplateBuilder restTemplateBuilder) {
+    public MatchRestTemplateImpl(final RestTemplate restTemplate) {
         log.debug("MatchRestTemplate created.");
-        this.restTemplate = restTemplateBuilder.build();
+        this.restTemplate = restTemplate;
     }
 
     @Override
@@ -38,20 +38,20 @@ public class MatchRestTemplateImpl implements MatchRestTemplate {
     }
 
     @Override
-    public MatchDto getMatch(final Long matchId) {
+    public MatchDto getMatchByMatchId(final Long matchId) {
         validateMatchId(matchId);
         return restTemplate.getForObject(MATCH_URL, MatchDto.class, matchId);
     }
 
     private void validateAccountId(final String encryptedAccountId) {
-        if (encryptedAccountId == null || encryptedAccountId.isEmpty()) {
-            throw new BadRequestException("The Account ID must be entered.");
+        if (StringUtils.isEmpty(encryptedAccountId)) {
+            throw new NotCorrectInputException("The Account ID must be entered.");
         }
     }
 
     private void validateMatchId(final Long matchId) {
         if (matchId <= 0) {
-            throw new BadRequestException("The Match ID can not be less than 0.");
+            throw new NotCorrectInputException("The Match ID can not be less than 0.");
         }
     }
 

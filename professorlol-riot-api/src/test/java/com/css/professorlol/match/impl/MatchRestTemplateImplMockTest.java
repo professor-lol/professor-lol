@@ -1,27 +1,25 @@
 package com.css.professorlol.match.impl;
 
 import com.css.professorlol.MockResponse;
-import com.css.professorlol.config.exception.BadRequestException;
-import com.css.professorlol.config.exception.ClientException;
-import com.css.professorlol.config.properties.XRiotTokenProperties;
-import com.css.professorlol.config.resttemplate.MatchRestTemplateConfig;
+import com.css.professorlol.config.exception.NotCorrectInputException;
+import com.css.professorlol.config.exception.RiotClientException;
+import com.css.professorlol.config.properties.RiotProperties;
+import com.css.professorlol.config.resttemplate.RiotRestTemplateBuilder;
 import com.css.professorlol.match.MatchRestTemplate;
 import com.css.professorlol.match.dto.match.MatchDto;
 import com.css.professorlol.match.dto.matchList.MatchQueryParam;
 import com.css.professorlol.match.dto.matchList.MatchlistDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Map;
@@ -31,9 +29,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
 
-@RestClientTest(value = {XRiotTokenProperties.class, MatchRestTemplateConfig.class})
-@RunWith(SpringRunner.class)
-@ActiveProfiles("major")
 public class MatchRestTemplateImplMockTest {
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -42,10 +37,8 @@ public class MatchRestTemplateImplMockTest {
     private static final String MATCH_LIST_URI = "/lol/match/v4/matchlists/by-account/{encryptedAccountId}?queue={soloQueue}&season={season}&endTime={endTime}&beginTime={beginTime}&endIndex={endIndex}&beginIndex={beginIndex}";
     private static final String MATCH_URI = "/lol/match/v4/matches/{matchId}";
 
-    @Autowired
     private MockRestServiceServer mockServer;
 
-    @Autowired
     private MatchRestTemplate matchRestTemplate;
 
     private static String getMatchListUri(MatchQueryParam matchQueryParam, String encryptedAccountId) {
@@ -53,6 +46,8 @@ public class MatchRestTemplateImplMockTest {
         params.put("encryptedAccountId", encryptedAccountId);
 
         return UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("kr.api.riotgames.com")
                 .path(MATCH_LIST_URI)
                 .buildAndExpand(params)
                 .toUriString();
@@ -60,16 +55,29 @@ public class MatchRestTemplateImplMockTest {
 
     private static String getMatchUri(Long matchId) {
         return UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("kr.api.riotgames.com")
                 .path(MATCH_URI)
                 .buildAndExpand(matchId)
                 .toUriString();
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        RiotProperties riotProperties = new RiotProperties();
+        riotProperties.setToken(new RiotProperties.Token());
+        riotProperties.getToken().setValue("value");
+        RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(new RestTemplateBuilder(), riotProperties);
+        RestTemplate restTemplate = restTemplateBuilder.build();
+        mockServer = MockRestServiceServer.createServer(restTemplate);
+        matchRestTemplate = new MatchRestTemplateImpl(restTemplate);
     }
 
     @Test
     public void getMatchList_정상입력_파라미터_없음() {
         //given
         String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .build();
 
         String mockBody = MockResponse.getMatchListMockBody();
@@ -94,7 +102,7 @@ public class MatchRestTemplateImplMockTest {
         //given
         String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
         String badRequestBody = MockResponse.getExceptionResponseBody("Bad Request", HttpStatus.BAD_REQUEST);
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .endTime(0L)
                 .build();
 
@@ -107,7 +115,7 @@ public class MatchRestTemplateImplMockTest {
         //when
         //then exception
         assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam))
-                .isInstanceOf(BadRequestException.class);
+                .isInstanceOf(NotCorrectInputException.class);
     }
 
     @Test
@@ -115,7 +123,7 @@ public class MatchRestTemplateImplMockTest {
         //given
         String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
         String badRequestBody = MockResponse.getExceptionResponseBody("Not found", HttpStatus.NOT_FOUND);
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .beginTime(15617397445077L)
                 .build();
 
@@ -127,7 +135,7 @@ public class MatchRestTemplateImplMockTest {
         //when
         //then exception
         assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam))
-                .isInstanceOf(ClientException.class);
+                .isInstanceOf(RiotClientException.class);
 
     }
 
@@ -142,7 +150,7 @@ public class MatchRestTemplateImplMockTest {
         mockServer.expect(requestTo(uri))
                 .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
         //when
-        MatchDto match = matchRestTemplate.getMatch(matchId);
+        MatchDto match = matchRestTemplate.getMatchByMatchId(matchId);
 
         //then
         assertThat(match).isNotNull();
@@ -164,8 +172,8 @@ public class MatchRestTemplateImplMockTest {
 
         //when
         //then exception
-        assertThatThrownBy(() -> matchRestTemplate.getMatch(matchId))
-                .isInstanceOf(ClientException.class);
+        assertThatThrownBy(() -> matchRestTemplate.getMatchByMatchId(matchId))
+                .isInstanceOf(RiotClientException.class);
 
     }
 
@@ -173,7 +181,7 @@ public class MatchRestTemplateImplMockTest {
     public void getMatchList_널값_입력시() {
         //given
         String encryptedAccountId = null;
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .build();
 
         String uri = getMatchListUri(matchQueryParam, encryptedAccountId);
@@ -184,7 +192,7 @@ public class MatchRestTemplateImplMockTest {
         //when
         //then
         assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam))
-                .isInstanceOf(BadRequestException.class)
+                .isInstanceOf(NotCorrectInputException.class)
                 .hasMessage("The Account ID must be entered.");
     }
 
@@ -192,7 +200,7 @@ public class MatchRestTemplateImplMockTest {
     public void getMatchList_공백_입력시() {
         //given
         String encryptedAccountId = "";
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .build();
 
         String uri = getMatchListUri(matchQueryParam, encryptedAccountId);
@@ -203,7 +211,7 @@ public class MatchRestTemplateImplMockTest {
         //when
         //then
         assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam))
-                .isInstanceOf(BadRequestException.class)
+                .isInstanceOf(NotCorrectInputException.class)
                 .hasMessage("The Account ID must be entered.");
     }
 
@@ -219,8 +227,8 @@ public class MatchRestTemplateImplMockTest {
 
         //when
         //then
-        assertThatThrownBy(() -> matchRestTemplate.getMatch(matchId))
-                .isInstanceOf(BadRequestException.class)
+        assertThatThrownBy(() -> matchRestTemplate.getMatchByMatchId(matchId))
+                .isInstanceOf(NotCorrectInputException.class)
                 .hasMessage("The Match ID can not be less than 0.");
 
     }

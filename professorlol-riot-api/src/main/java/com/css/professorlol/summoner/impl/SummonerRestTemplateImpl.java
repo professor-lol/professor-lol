@@ -1,10 +1,10 @@
 package com.css.professorlol.summoner.impl;
 
-import com.css.professorlol.config.exception.BadRequestException;
+import com.css.professorlol.config.exception.NotCorrectInputException;
 import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 @Slf4j
@@ -15,26 +15,26 @@ public class SummonerRestTemplateImpl implements SummonerRestTemplate {
 
     private final RestTemplate restTemplate;
 
-    public SummonerRestTemplateImpl(final RestTemplateBuilder restTemplateBuilder) {
+    public SummonerRestTemplateImpl(final RestTemplate restTemplate) {
         log.debug("SummonerRestTemplate created.");
-        this.restTemplate = restTemplateBuilder.build();
+        this.restTemplate = restTemplate;
     }
 
     @Override
-    public SummonerDto getSummonerDto(final String summonerName) {
+    public SummonerDto getSummonerDtoBySummonerName(final String summonerName) {
         validateSummonerIdentifier(summonerName);
         return restTemplate.getForObject(SUMMONER_BY_NAME_URL, SummonerDto.class, summonerName);
     }
 
     @Override
-    public SummonerDto getSummonerDtoBySummonerId(String encryptedSummonerId) {
+    public SummonerDto getSummonerDtoBySummonerId(final String encryptedSummonerId) {
         validateSummonerIdentifier(encryptedSummonerId);
         return restTemplate.getForObject(SUMMONER_BY_ID_URL, SummonerDto.class, encryptedSummonerId);
     }
 
     private void validateSummonerIdentifier(final String summonerIdentifier) {
-        if (summonerIdentifier == null || summonerIdentifier.isEmpty()) {
-            throw new BadRequestException("The Summoner Identifier must be entered.");
+        if (StringUtils.isEmpty(summonerIdentifier)) {
+            throw new NotCorrectInputException("The Summoner Identifier must be entered.");
         }
     }
 

@@ -1,6 +1,6 @@
 package com.css.professorlol.config.interceptor;
 
-import com.css.professorlol.config.properties.XRiotTokenProperties;
+import com.css.professorlol.config.properties.RiotProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
@@ -12,12 +12,12 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class RiotTokenInterceptor implements ClientHttpRequestInterceptor {
 
-    private final XRiotTokenProperties xRiotTokenProperties;
+    private final RiotProperties riotProperties;
 
     @Override
     public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
         request.getHeaders()
-                .set(XRiotTokenProperties.KEY, xRiotTokenProperties.getValue());
+                .set(RiotProperties.Token.KEY, riotProperties.getToken().getValue());
         return execution.execute(request, body);
     }
 }

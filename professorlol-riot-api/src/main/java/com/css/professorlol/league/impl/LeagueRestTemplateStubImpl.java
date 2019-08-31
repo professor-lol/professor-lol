@@ -16,7 +16,7 @@ public class LeagueRestTemplateStubImpl implements LeagueRestTemplate {
     }
 
     @Override
-    public Set<LeagueEntryDto> getLeagueEntries(String encryptedSummonerId) {
+    public Set<LeagueEntryDto> getLeagueEntriesBySummonerId(String encryptedSummonerId) {
         LeagueEntryDto solo = LeagueEntryDto.stubBuilder()
                 .queueType("RANKED_SOLO_5x5")
                 .summonerName("뱅기현")

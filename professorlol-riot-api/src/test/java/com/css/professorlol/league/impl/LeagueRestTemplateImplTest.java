@@ -1,6 +1,6 @@
 package com.css.professorlol.league.impl;
 
-import com.css.professorlol.config.exception.BadRequestException;
+import com.css.professorlol.config.exception.NotCorrectInputException;
 import com.css.professorlol.config.resttemplate.LeagueRestTemplateConfig;
 import com.css.professorlol.league.LeagueRestTemplate;
 import com.css.professorlol.league.dto.LeagueEntryDto;
@@ -48,7 +48,7 @@ public class LeagueRestTemplateImplTest {
         String encodedSummonerId = "wUIpM_FpV6kGdN15plnbstnSBbh33CFxoHJgdkhbaa4GCg";
 
         //when
-        Set<LeagueEntryDto> leagueEntries = leagueRestTemplate.getLeagueEntries(encodedSummonerId);
+        Set<LeagueEntryDto> leagueEntries = leagueRestTemplate.getLeagueEntriesBySummonerId(encodedSummonerId);
 
         //then
         assertThat(leagueEntries).isNotNull();
@@ -62,7 +62,7 @@ public class LeagueRestTemplateImplTest {
         String encodedSummonerId = "ssgqMEzI5DLXfQGYyYVJKZUqMpT-qvjbwJqw_CaRJl6i0A";
 
         //when
-        Set<LeagueEntryDto> leagueEntryDtoSet = leagueRestTemplate.getLeagueEntries(encodedSummonerId);
+        Set<LeagueEntryDto> leagueEntryDtoSet = leagueRestTemplate.getLeagueEntriesBySummonerId(encodedSummonerId);
 
         //then
         assertThat(leagueEntryDtoSet).isNotNull();
@@ -70,14 +70,14 @@ public class LeagueRestTemplateImplTest {
         log.info(gson.toJson(leagueEntryDtoSet));
     }
 
-    @Test(expected = BadRequestException.class)
+    @Test
     public void getLeagueEntries() {
         //given
         String encodedSummonerId = "w";
 
         //when
         //then
-        assertThatThrownBy(() -> leagueRestTemplate.getLeagueEntries(encodedSummonerId))
-                .isInstanceOf(BadRequestException.class);
+        assertThatThrownBy(() -> leagueRestTemplate.getLeagueEntriesBySummonerId(encodedSummonerId))
+                .isInstanceOf(NotCorrectInputException.class);
     }
 }

@@ -10,7 +10,7 @@ public class LeagueEntryDto {
     private String queueType;
     private String summonerName;
     private boolean hotStreak;
-    //    private MiniSeriesDto miniSeries;
+    private MiniSeriesDto miniSeries;
     private Integer wins;
     private boolean veteran;
     private Integer losses;
@@ -23,8 +23,9 @@ public class LeagueEntryDto {
     private Integer leaguePoints;
 
     @Builder(builderMethodName = "stubBuilder")
-    private LeagueEntryDto(String queueType, String summonerName, boolean hotStreak, Integer wins, boolean veteran, Integer losses, String rank, String leagueId, boolean inactive, boolean freshBlood, String tier, String summonerId, Integer leaguePoints) {
+    private LeagueEntryDto(String queueType, MiniSeriesDto miniSeries, String summonerName, boolean hotStreak, Integer wins, boolean veteran, Integer losses, String rank, String leagueId, boolean inactive, boolean freshBlood, String tier, String summonerId, Integer leaguePoints) {
         this.queueType = queueType;
+        this.miniSeries = miniSeries;
         this.summonerName = summonerName;
         this.hotStreak = hotStreak;
         this.wins = wins;

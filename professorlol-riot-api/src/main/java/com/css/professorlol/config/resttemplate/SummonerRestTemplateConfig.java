@@ -1,6 +1,6 @@
 package com.css.professorlol.config.resttemplate;
 
-import com.css.professorlol.config.properties.XRiotTokenProperties;
+import com.css.professorlol.config.properties.RiotProperties;
 import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.impl.SummonerRestTemplateImpl;
 import com.css.professorlol.summoner.impl.SummonerRestTemplateStubImpl;
@@ -25,15 +25,16 @@ public class SummonerRestTemplateConfig {
         private static final Duration ONE_SEC = Duration.ofMillis(1000);
         private static final Duration TWO_SEC = Duration.ofMillis(2000);
 
-        private final XRiotTokenProperties xRiotTokenProperties;
+        private final RiotProperties riotProperties;
         private final RestTemplateBuilder restTemplateBuilder;
 
         @Bean
         public SummonerRestTemplate summonerRestTemplate() {
             log.debug("Summoner RestTemplate Bean created");
-            RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.xRiotTokenProperties);
+            RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.riotProperties);
             return new SummonerRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
-                    .setReadTimeout(TWO_SEC));
+                    .setReadTimeout(TWO_SEC)
+                    .build());
         }
 
     }

@@ -12,7 +12,7 @@ public class ThirdPartyRestTemplateStubImpl implements ThirdPartyRestTemplate {
     }
 
     @Override
-    public String getThirdPartyCode(final String encryptedSummonerId) {
+    public String getThirdPartyCodeBySummonerId(final String encryptedSummonerId) {
         return null;
     }
 

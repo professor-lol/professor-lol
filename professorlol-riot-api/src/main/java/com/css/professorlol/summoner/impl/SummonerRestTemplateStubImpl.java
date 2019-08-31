@@ -12,7 +12,7 @@ public class SummonerRestTemplateStubImpl implements SummonerRestTemplate {
     }
 
     @Override
-    public SummonerDto getSummonerDto(String summonerName) {
+    public SummonerDto getSummonerDtoBySummonerName(String summonerName) {
         return SummonerDto.stubBuilder()
                 .summonerId("zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fQ")
                 .accountId("w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv")

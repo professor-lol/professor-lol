@@ -2,7 +2,7 @@ package com.css.professorlol.config.resttemplate;
 
 import com.css.professorlol.config.exception.handler.RiotErrorHandler;
 import com.css.professorlol.config.interceptor.RiotTokenInterceptor;
-import com.css.professorlol.config.properties.XRiotTokenProperties;
+import com.css.professorlol.config.properties.RiotProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 
@@ -10,9 +10,9 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 public class RiotRestTemplateBuilder {
     private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
 
-    public static RestTemplateBuilder get(RestTemplateBuilder restTemplateBuilder, XRiotTokenProperties xRiotTokenProperties) {
+    public static RestTemplateBuilder get(RestTemplateBuilder restTemplateBuilder, RiotProperties riotProperties) {
         RiotErrorHandler riotErrorHandler = new RiotErrorHandler();
-        RiotTokenInterceptor riotTokenInterceptor = new RiotTokenInterceptor(xRiotTokenProperties);
+        RiotTokenInterceptor riotTokenInterceptor = new RiotTokenInterceptor(riotProperties);
         return restTemplateBuilder.rootUri(RIOT_HOST_URL)
                 .additionalInterceptors(riotTokenInterceptor)
                 .errorHandler(riotErrorHandler);

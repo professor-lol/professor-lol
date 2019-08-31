@@ -27,7 +27,7 @@ public class MatchQueryParam {
     private Integer endIndex;
     private Integer beginIndex;
 
-    @Builder(builderMethodName = "testBuilder")
+    @Builder
     private MatchQueryParam(Integer season, Integer endIndex, Integer beginIndex, Long endTime, Long beginTime) {
         this.season = season;
         this.endTime = endTime;
