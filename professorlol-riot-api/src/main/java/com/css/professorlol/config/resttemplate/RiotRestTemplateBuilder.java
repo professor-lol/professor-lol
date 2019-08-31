@@ -8,11 +8,12 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 
 @Slf4j
 public class RiotRestTemplateBuilder {
+    private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
 
     public static RestTemplateBuilder get(RestTemplateBuilder restTemplateBuilder, XRiotTokenProperties xRiotTokenProperties) {
         RiotErrorHandler riotErrorHandler = new RiotErrorHandler();
         RiotTokenInterceptor riotTokenInterceptor = new RiotTokenInterceptor(xRiotTokenProperties);
-        return restTemplateBuilder.rootUri(XRiotTokenProperties.RIOT_HOST_URL)
+        return restTemplateBuilder.rootUri(RIOT_HOST_URL)
                 .additionalInterceptors(riotTokenInterceptor)
                 .errorHandler(riotErrorHandler);
     }

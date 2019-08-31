@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 public class XRiotTokenProperties {
-    public static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
     public static final String KEY = "X-Riot-Token";
     private String value;
 }
