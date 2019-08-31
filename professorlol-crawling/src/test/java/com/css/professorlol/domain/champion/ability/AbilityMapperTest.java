@@ -1,6 +1,5 @@
 package com.css.professorlol.domain.champion.ability;
 
-import com.css.professorlol.util.DocumentUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -8,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
 
 import static com.css.professorlol.domain.champion.ability.attribute.AttributeFactoryTest.ATTRIBUTE_FACTORY_FILE_PATH;
 import static com.css.professorlol.util.DocumentUtil.convertFromHtmlFile;

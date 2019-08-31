@@ -5,7 +5,6 @@ import org.jsoup.nodes.Element;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
 
 import static com.css.professorlol.domain.champion.ability.AbilityFactoryTest.ABILITY_FACTORY_FILE_PATH;
 import static com.css.professorlol.util.DocumentUtil.convertFromHtmlFile;

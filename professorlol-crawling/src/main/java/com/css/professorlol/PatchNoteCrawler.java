@@ -1,11 +1,9 @@
 package com.css.professorlol;
 
-import com.css.professorlol.domain.champion.ChampionFactory;
+import com.css.professorlol.domain.champion.Champion;
 
-import java.io.File;
-import java.io.IOException;
+import java.util.List;
 
 public interface PatchNoteCrawler {
-
-    ChampionFactory getChampionPatchById(Long id);
+    List<Champion> getChampionPatchById(Long id);
 }
