@@ -1,11 +1,9 @@
 package com.css.professorlol.domain.champion.ability;
 
-import com.css.professorlol.util.DocumentUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.File;
 import java.util.List;
