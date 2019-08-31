@@ -22,8 +22,8 @@ public class ThirdPartyRestTemplateConfig {
     @RequiredArgsConstructor
     public static class MajorThirdConfig {
 
-        private final Duration ONE_SEC = Duration.ofMillis(1000);
-        private final Duration TWO_SEC = Duration.ofMillis(2000);
+        private static final Duration ONE_SEC = Duration.ofMillis(1000);
+        private static final Duration TWO_SEC = Duration.ofMillis(2000);
 
         private final XRiotTokenProperties xRiotTokenProperties;
         private final RestTemplateBuilder restTemplateBuilder;
