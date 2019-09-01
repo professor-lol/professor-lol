@@ -3,8 +3,7 @@ import axios from 'axios';
 
 router.beforeEach(async (to, from, next) => {
   try {
-    if (to.path === '/login'
-    ) {
+    if (to.path === '/login') {
       next();
     }
     const response = await
