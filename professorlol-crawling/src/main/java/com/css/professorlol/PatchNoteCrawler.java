@@ -1,6 +1,6 @@
 package com.css.professorlol;
 
-import com.css.professorlol.domain.champion.Champion;
+import com.css.professorlol.dto.champion.Champion;
 
 import java.util.List;
 

@@ -10,4 +10,9 @@ public class RiotMockProperties extends RiotPageProperties {
     public String getHost() {
         return String.format("http://localhost:%d/", PORT);
     }
+
+    @Override
+    public int getTimeout() {
+        return 3000;
+    }
 }

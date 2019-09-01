@@ -1,6 +1,7 @@
 import com.css.professorlol.PatchNoteCrawler;
-import com.css.professorlol.PatchNoteCrawlerImpl;
-import com.css.professorlol.domain.champion.Champion;
+import com.css.professorlol.RiotPageJsoupConnection;
+import com.css.professorlol.RiotPagePatchNoteCrawler;
+import com.css.professorlol.dto.champion.Champion;
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import support.RiotMockProperties;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockserver.model.HttpRequest.request;
@@ -21,12 +23,12 @@ public class PatchNoteCrawlerMockTest {
     private ClientAndServer clientAndServer;
 
     @Before
-    public void startMockServer() throws IOException {
+    public void startMockServer() {
         clientAndServer = ClientAndServer.startClientAndServer(RiotMockProperties.PORT);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         clientAndServer.stop();
     }
 
@@ -34,12 +36,12 @@ public class PatchNoteCrawlerMockTest {
     public void 패치노트__크롤링하면_챔피언_리스트반환() throws IOException {
         //given
         final Long id = 1L;
-        RiotMockProperties riotMockProperties = new RiotMockProperties();
-        byte[] response = IOUtils.toByteArray(getClass().getClassLoader().getResourceAsStream("com/css/professorlol/PatchNote_9_12.html"));
+        byte[] response = readFile();
+
         createPatchNoteServer(id, response);
 
         //when
-        PatchNoteCrawler patchNoteCrawler = new PatchNoteCrawlerImpl(riotMockProperties);
+        PatchNoteCrawler patchNoteCrawler = new RiotPagePatchNoteCrawler(createMockJsoupConnection());
         List<Champion> champions = patchNoteCrawler.getChampionPatchById(id);
 
         //then
@@ -48,7 +50,17 @@ public class PatchNoteCrawlerMockTest {
         assertEquals("죽은 자의 세상에서 귀환한 멈출 수 없는 돌격형 전사인 모데카이저가 9.12 패치에서 산 자의 세상을 정복하기 위한 준비를 마쳤습니다! 업데이트된 모데카이저와 다양한 스킨의 고화질 일러스트를 LoL 디스플레이에서도 감상해 보세요!",
                 champions.get(0).getContext());
         assertEquals("./PatchNote_9_12_files/image(1)", champions.get(0).getImage());
+    }
 
+    private byte[] readFile() throws IOException {
+        return IOUtils.toByteArray(Objects.requireNonNull(getClass()
+                .getClassLoader()
+                .getResourceAsStream("support/PatchNote_9_12.html")));
+    }
+
+    private RiotPageJsoupConnection createMockJsoupConnection() {
+        RiotMockProperties riotMockProperties = new RiotMockProperties();
+        return new RiotPageJsoupConnection(riotMockProperties);
     }
 
     private void createPatchNoteServer(Long noteId, byte[] response) {
@@ -56,7 +68,7 @@ public class PatchNoteCrawlerMockTest {
                 .when(
                         request()
                                 .withMethod("GET")
-                                .withQueryStringParameter(String.format(PatchNoteCrawlerImpl.PATCH_NOTE_QUERY, noteId))
+                                .withQueryStringParameter(String.format(RiotPagePatchNoteCrawler.PATCH_NOTE_QUERY, noteId))
                 )
                 .respond(
                         response()
@@ -64,5 +76,6 @@ public class PatchNoteCrawlerMockTest {
                                 .withBody(response)
                 );
     }
+
 
 }
