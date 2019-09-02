@@ -1,7 +1,6 @@
 .DS_Store
-### X-RIOT-KEY ###
-**/application-riot.yml
 
+professorlol-riot-api/src/main/resources/application-riot.yml
 
 HELP.md
 .gradle

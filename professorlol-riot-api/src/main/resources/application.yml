@@ -1,6 +1,5 @@
 spring:
   profiles:
-    active: dev
+    active: test
     include: >
-      riot,
-      uri
+      riot

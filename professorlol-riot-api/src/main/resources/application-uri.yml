@@ -1,8 +1,0 @@
-riot:
-  uri:
-    host: https://kr.api.riotgames.com
-    league-entry-by-summoner: /lol/league/v4/entries/by-summoner/{encryptedSummonerId}
-    summoner-by-name: /lol/summoner/v4/summoners/by-name/{summonerName}
-    match-list-by-account: /lol/match/v4/matchlists/by-account/{encryptedAccountId}
-    match-by-match-id: /lol/match/v4/matches/{matchId}
-    thrid-party-code: /lol/platform/v4/third-party-code/by-summoner/{encryptedSummonerId}

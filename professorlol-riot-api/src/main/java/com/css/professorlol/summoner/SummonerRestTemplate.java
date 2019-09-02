@@ -3,5 +3,7 @@ package com.css.professorlol.summoner;
 import com.css.professorlol.summoner.dto.SummonerDto;
 
 public interface SummonerRestTemplate {
-    SummonerDto getSummonerDto(String summonerName);
+    SummonerDto getSummonerDtoBySummonerName(String summonerName);
+
+    SummonerDto getSummonerDtoBySummonerId(String summonerId);
 }

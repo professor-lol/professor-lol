@@ -1,9 +1,6 @@
 package com.css.professorlol.league.dto;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @ToString
 @Getter
@@ -24,4 +21,22 @@ public class LeagueEntryDto {
     private String tier;
     private String summonerId;
     private Integer leaguePoints;
+
+    @Builder(builderMethodName = "stubBuilder")
+    private LeagueEntryDto(String queueType, MiniSeriesDto miniSeries, String summonerName, boolean hotStreak, Integer wins, boolean veteran, Integer losses, String rank, String leagueId, boolean inactive, boolean freshBlood, String tier, String summonerId, Integer leaguePoints) {
+        this.queueType = queueType;
+        this.miniSeries = miniSeries;
+        this.summonerName = summonerName;
+        this.hotStreak = hotStreak;
+        this.wins = wins;
+        this.veteran = veteran;
+        this.losses = losses;
+        this.rank = rank;
+        this.leagueId = leagueId;
+        this.inactive = inactive;
+        this.freshBlood = freshBlood;
+        this.tier = tier;
+        this.summonerId = summonerId;
+        this.leaguePoints = leaguePoints;
+    }
 }

@@ -1,121 +1,117 @@
 package com.css.professorlol.match.impl;
 
+import com.css.professorlol.config.exception.NotCorrectInputException;
+import com.css.professorlol.config.exception.RiotClientException;
+import com.css.professorlol.config.resttemplate.MatchRestTemplateConfig;
 import com.css.professorlol.match.MatchRestTemplate;
-import com.css.professorlol.match.dto.MatchQueryParam;
-import com.css.professorlol.match.dto.MatchReferenceDto;
-import com.css.professorlol.match.dto.MatchlistDto;
+import com.css.professorlol.match.dto.match.MatchDto;
+import com.css.professorlol.match.dto.matchList.MatchQueryParam;
+import com.css.professorlol.match.dto.matchList.MatchlistDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.util.MultiValueMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+@Ignore
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@ActiveProfiles("major")
 public class MatchRestTemplateImplTest {
 
-    private static final Logger log = LoggerFactory.getLogger(MatchRestTemplateImplTest.class);
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Logger log = LoggerFactory.getLogger(MatchRestTemplateImplTest.class);
 
     @Autowired
+    private MatchRestTemplateConfig.MajorMatchConfig majorMatchConfig;
+
     private MatchRestTemplate matchRestTemplate;
 
-    @Test
-    public void getMatchlist_성공_쿼리파라미터_없이() {
-        //given
-        String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
-                .build();
-
-        log.info(gson.toJson(matchQueryParam));
-
-        //when
-        MatchlistDto matchlist = matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam);
-
-        //then
-        log.info(gson.toJson(matchlist));
-        assertThat(matchlist).isNotNull();
-        assertThat(matchlist.getMatches()).isNotNull();
-        assertThat(matchlist.getMatches()).isNotEmpty();
+    @Before
+    public void setUp() throws Exception {
+        matchRestTemplate = majorMatchConfig.matchRestTemplate();
     }
 
     @Test
-    public void getMatchlist_성공_시작인덱스_100() {
+    public void getMatchList_정상입력() {
         //given
-        String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
-                .beginIndex(100)
+        String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .build();
 
-        log.info(gson.toJson(matchQueryParam));
-
-        MultiValueMap param = matchQueryParam.getQueryParam();
-
         //when
-        MatchlistDto matchlist = matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam);
+        MatchlistDto matchlistDto = matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam);
 
         //then
-        log.info(gson.toJson(matchlist));
-        assertThat(matchlist.getStartIndex()).isEqualTo(100);
-        assertThat(matchlist.getEndIndex()).isEqualTo(200);
+        assertThat(matchlistDto).isNotNull();
+        assertThat(matchlistDto.getMatches()).isNotNull();
+        assertThat(matchlistDto.getMatches()).isNotEmpty();
+        log.info(gson.toJson(matchlistDto));
     }
 
     @Test
-    public void getMatchlist_성공_특정_시즌만() {
+    public void getMatchList_잘못된_종료_시간값으로_요청() {
         //given
-        String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
-        Integer season13 = 13;
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
-                .season(season13)
+        String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
+
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
+                .endTime(0L)
                 .build();
 
-        log.info(gson.toJson(matchQueryParam));
-
-        MultiValueMap param = matchQueryParam.getQueryParam();
-
         //when
-        MatchlistDto matchlist = matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam);
+        //then exception
+        assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam))
+                .isInstanceOf(NotCorrectInputException.class);
 
-        //then
-        log.info(gson.toJson(matchlist));
-        int originalSize = matchlist.getMatches().size();
-        int filteredSize = (int) matchlist.getMatches().stream()
-                .map(MatchReferenceDto::getSeason)
-                .filter(season -> season.equals(13))
-                .count();
-        assertThat(originalSize).isEqualTo(filteredSize);
     }
 
     @Test
-    public void getMatchlist_성공_특정_큐만() {
+    public void getMatchList_잘못된_시작_시간값으로_요청() {
         //given
-        String encryptedAccountId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
-        Integer soloQueue = 420;
-        MatchQueryParam matchQueryParam = MatchQueryParam.testBuilder()
-                .queue(soloQueue)
+        String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
+        MatchQueryParam matchQueryParam = MatchQueryParam.builder()
+                .beginTime(15617397445077L)
                 .build();
 
-        log.info(gson.toJson(matchQueryParam));
+        //when
+        //then exception
+        assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam))
+                .isInstanceOf(RiotClientException.class);
+    }
 
-        MultiValueMap param = matchQueryParam.getQueryParam();
+    @Test
+    public void getMatch_정상입력() {
+        //given
+        Long matchId = 3724003832L;
 
         //when
-        MatchlistDto matchlist = matchRestTemplate.getMatchList(encryptedAccountId, matchQueryParam);
+        MatchDto match = matchRestTemplate.getMatchByMatchId(matchId);
 
         //then
-        log.info(gson.toJson(matchlist));
-        int originalSize = matchlist.getMatches().size();
-        int filteredSize = (int) matchlist.getMatches().stream()
-                .map(MatchReferenceDto::getQueue)
-                .filter(queue -> queue.equals(420))
-                .count();
-        assertThat(originalSize).isEqualTo(filteredSize);
+        assertThat(match).isNotNull();
+        assertThat(match.getParticipants()).isNotNull();
+        assertThat(match.getParticipants()).isNotEmpty();
     }
+
+    @Test
+    public void getMatch_없는경기() {
+        //given
+        Long matchId = 3724003831L;
+
+        //when
+        //then exception
+        assertThatThrownBy(() -> matchRestTemplate.getMatchByMatchId(matchId))
+                .isInstanceOf(RiotClientException.class);
+    }
+
 }

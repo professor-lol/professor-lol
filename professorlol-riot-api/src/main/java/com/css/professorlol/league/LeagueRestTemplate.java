@@ -6,5 +6,5 @@ import java.util.Set;
 
 public interface LeagueRestTemplate {
 
-    Set<LeagueEntryDto> getLeagueEntries(String encryptedSummonerId);
+    Set<LeagueEntryDto> getLeagueEntriesBySummonerId(String encryptedSummonerId);
 }
