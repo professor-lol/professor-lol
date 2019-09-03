@@ -1,36 +1,44 @@
 import com.css.professorlol.PatchNoteCrawler;
-import com.css.professorlol.PatchNoteCrawlerImpl;
-import com.css.professorlol.domain.champion.ChampionFactory;
+import com.css.professorlol.RiotPageJsoupConnection;
+import com.css.professorlol.RiotPagePatchNoteCrawler;
+import com.css.professorlol.RiotPageProperties;
+import com.css.professorlol.dto.champion.Champion;
+import com.css.professorlol.dto.champion.ChampionFactory;
 import org.jsoup.nodes.Document;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.List;
 
-import static com.css.professorlol.util.DocumentUtil.convertFromHtmlFile;
-import static com.css.professorlol.util.DocumentUtilTest.getFileFromPath;
 import static org.junit.Assert.assertEquals;
+import static support.DocumentTestUtil.convertFromHtmlFile;
+import static support.DocumentTestUtil.getFileFromPath;
 
 
 public class PatchNoteCrawlerTest {
 
-    private final String PATCH_NOTE_0912_HTML = "com/css/professorlol/PatchNote_9_12.html";
-    private final long PATCH_NOTE_0912_ID = 262330;
+    private static final String PATCH_NOTE_0912_HTML = "PatchNote_9_12.html";
+    private static final long PATCH_NOTE_0912_ID = 262330;
 
     @Test
     @Ignore
     public void id에_따른_CONNECTION_크롤링_성공_객체생성_확인() {
         //given
-        PatchNoteCrawler patchNoteCrawler = new PatchNoteCrawlerImpl();
+        PatchNoteCrawler patchNoteCrawler = new RiotPagePatchNoteCrawler(createJsoupConnection());
 
-        ChampionFactory championFactory = patchNoteCrawler.getChampionPatchById(PATCH_NOTE_0912_ID);
+        List<Champion> champions = patchNoteCrawler.findChampionPatchById(PATCH_NOTE_0912_ID);
         //then
-        assertEquals(18, championFactory.getChampions().size());
+        assertEquals(18, champions.size());
+    }
+
+    private RiotPageJsoupConnection createJsoupConnection() {
+        RiotPageProperties riotMockProperties = new RiotPageProperties();
+        return new RiotPageJsoupConnection(riotMockProperties);
     }
 
     @Test
-    public void html_로_크롤링_성공_객체생성_확인()  {
+    public void html_로_크롤링_성공_객체생성_확인() {
         //given
         File resourceFile = getFileFromPath(PATCH_NOTE_0912_HTML);
         Document document = convertFromHtmlFile(resourceFile);
@@ -38,4 +46,6 @@ public class PatchNoteCrawlerTest {
         //then
         assertEquals(18, championFactory.getChampions().size());
     }
+
+
 }
