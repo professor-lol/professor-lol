@@ -42,7 +42,7 @@ public class PatchNoteCrawlerMockTest {
 
         //when
         PatchNoteCrawler patchNoteCrawler = new RiotPagePatchNoteCrawler(createMockJsoupConnection());
-        List<Champion> champions = patchNoteCrawler.getChampionPatchById(id);
+        List<Champion> champions = patchNoteCrawler.findChampionPatchById(id);
 
         //then
         assertEquals("모데카이저", champions.get(0).getName());

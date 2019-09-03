@@ -13,7 +13,7 @@ public class RiotPagePatchNoteCrawler implements PatchNoteCrawler {
     private final RiotPageJsoupConnection riotPageJsoupConnection;
 
     @Override
-    public List<Champion> getChampionPatchById(Long id) {
+    public List<Champion> findChampionPatchById(Long id) {
         String url = String.format(PATCH_NOTE_QUERY, id);
         Document document = riotPageJsoupConnection.getForDocument(url);
         return new ChampionFactory(document).getChampions();

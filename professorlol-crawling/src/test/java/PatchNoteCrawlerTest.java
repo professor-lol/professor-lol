@@ -27,7 +27,7 @@ public class PatchNoteCrawlerTest {
         //given
         PatchNoteCrawler patchNoteCrawler = new RiotPagePatchNoteCrawler(createJsoupConnection());
 
-        List<Champion> champions = patchNoteCrawler.getChampionPatchById(PATCH_NOTE_0912_ID);
+        List<Champion> champions = patchNoteCrawler.findChampionPatchById(PATCH_NOTE_0912_ID);
         //then
         assertEquals(18, champions.size());
     }
@@ -41,7 +41,6 @@ public class PatchNoteCrawlerTest {
     public void html_로_크롤링_성공_객체생성_확인() {
         //given
         File resourceFile = getFileFromPath(PATCH_NOTE_0912_HTML);
-        System.out.println(resourceFile.getAbsoluteFile());
         Document document = convertFromHtmlFile(resourceFile);
         ChampionFactory championFactory = new ChampionFactory(document);
         //then
