@@ -1,5 +1,6 @@
-package com.css.professorlol.subscribe.domain;
+package com.css.professorlol.patch;
 
+import com.css.professorlol.lolInfo.domain.LolInfo;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChampionHistory extends Info {
+public class ChampionHistory extends LolInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -1,4 +1,4 @@
-package com.css.professorlol.subscribe.domain;
+package com.css.professorlol.patch;
 
 public class ChampionChangeHistory {
     private AbilityType abilityType;

@@ -1,4 +1,4 @@
-package com.css.professorlol.subscribe.domain;
+package com.css.professorlol.patch;
 
 import lombok.Getter;
 

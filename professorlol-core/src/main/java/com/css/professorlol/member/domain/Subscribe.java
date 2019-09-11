@@ -1,7 +1,6 @@
-package com.css.professorlol.subscribe.domain;
+package com.css.professorlol.member.domain;
 
-import com.css.professorlol.common.RowStatus;
-import com.css.professorlol.member.domain.Member;
+import com.css.professorlol.lolInfo.domain.LolInfo;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +17,7 @@ public class Subscribe {
     @ManyToOne
     private Member member;
     @ManyToOne
-    private Info info;
+    private LolInfo lolInfo;
     @Enumerated(value = EnumType.STRING)
-    private RowStatus active;
+    private boolean active;
 }
