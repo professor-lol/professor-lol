@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
-//TODO : TEST CODE 작성하기
 @Slf4j
 public class ThirdPartyRestTemplateImpl implements ThirdPartyRestTemplate {
 
