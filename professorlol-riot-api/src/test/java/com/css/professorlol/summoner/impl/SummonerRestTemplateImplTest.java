@@ -2,7 +2,7 @@ package com.css.professorlol.summoner.impl;
 
 import com.css.professorlol.config.exception.NotCorrectInputException;
 import com.css.professorlol.config.exception.RiotClientException;
-import com.css.professorlol.config.resttemplate.SummonerRestTemplateConfig;
+import com.css.professorlol.config.restTemplate.SummonerRestTemplateConfig;
 import com.css.professorlol.summoner.SummonerRestTemplate;
 import com.css.professorlol.summoner.dto.SummonerDto;
 import com.google.gson.Gson;

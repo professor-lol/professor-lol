@@ -21,7 +21,7 @@ public class ThirdPartyRestTemplateImpl implements ThirdPartyRestTemplate {
     @Override
     public String getThirdPartyCodeBySummonerId(final String encryptedSummonerId) {
         validateSummonerId(encryptedSummonerId);
-        return restTemplate.getForObject(THIRD_PARTY_CODE_URL, String.class);
+        return restTemplate.getForObject(THIRD_PARTY_CODE_URL, String.class, encryptedSummonerId);
     }
 
     private void validateSummonerId(final String encryptedSummonerId) {

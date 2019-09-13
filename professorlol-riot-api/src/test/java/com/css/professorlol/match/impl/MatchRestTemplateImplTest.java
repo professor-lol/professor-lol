@@ -2,7 +2,7 @@ package com.css.professorlol.match.impl;
 
 import com.css.professorlol.config.exception.NotCorrectInputException;
 import com.css.professorlol.config.exception.RiotClientException;
-import com.css.professorlol.config.resttemplate.MatchRestTemplateConfig;
+import com.css.professorlol.config.restTemplate.MatchRestTemplateConfig;
 import com.css.professorlol.match.MatchRestTemplate;
 import com.css.professorlol.match.dto.match.MatchDto;
 import com.css.professorlol.match.dto.matchList.MatchQueryParam;

@@ -4,7 +4,7 @@ import com.css.professorlol.MockResponse;
 import com.css.professorlol.config.exception.NotCorrectInputException;
 import com.css.professorlol.config.exception.RiotClientException;
 import com.css.professorlol.config.properties.RiotProperties;
-import com.css.professorlol.config.resttemplate.RiotRestTemplateBuilder;
+import com.css.professorlol.config.restTemplate.RiotRestTemplateBuilder;
 import com.css.professorlol.match.MatchRestTemplate;
 import com.css.professorlol.match.dto.match.MatchDto;
 import com.css.professorlol.match.dto.matchList.MatchQueryParam;

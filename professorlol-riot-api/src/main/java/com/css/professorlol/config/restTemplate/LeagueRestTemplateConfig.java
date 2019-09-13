@@ -1,9 +1,9 @@
-package com.css.professorlol.config.resttemplate;
+package com.css.professorlol.config.restTemplate;
 
 import com.css.professorlol.config.properties.RiotProperties;
-import com.css.professorlol.summoner.SummonerRestTemplate;
-import com.css.professorlol.summoner.impl.SummonerRestTemplateImpl;
-import com.css.professorlol.summoner.impl.SummonerRestTemplateStubImpl;
+import com.css.professorlol.league.LeagueRestTemplate;
+import com.css.professorlol.league.impl.LeagueRestTemplateImpl;
+import com.css.professorlol.league.impl.LeagueRestTemplateStubImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -15,12 +15,12 @@ import java.time.Duration;
 
 @Configuration
 @Slf4j
-public class SummonerRestTemplateConfig {
+public class LeagueRestTemplateConfig {
 
-    @Profile("major")
+    @Profile({"major"})
     @RequiredArgsConstructor
     @Configuration
-    public static class MajorSummonerConfig {
+    public static class MajorLeagueConfig {
 
         private static final Duration ONE_SEC = Duration.ofMillis(1000);
         private static final Duration TWO_SEC = Duration.ofMillis(2000);
@@ -29,10 +29,10 @@ public class SummonerRestTemplateConfig {
         private final RestTemplateBuilder restTemplateBuilder;
 
         @Bean
-        public SummonerRestTemplate summonerRestTemplate() {
-            log.debug("Summoner RestTemplate Bean created");
+        public LeagueRestTemplate leagueRestTemplate() {
+            log.debug("League RestTemplate Builder created");
             RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(this.restTemplateBuilder, this.riotProperties);
-            return new SummonerRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
+            return new LeagueRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
                     .setReadTimeout(TWO_SEC)
                     .build());
         }
@@ -42,14 +42,13 @@ public class SummonerRestTemplateConfig {
     @Profile({"local", "test"})
     @RequiredArgsConstructor
     @Configuration
-    public static class LocalSummonerConfig {
+    public static class LocalLeagueConfig {
 
         @Bean
-        public SummonerRestTemplate summonerRestTemplate() {
-            log.debug("Summoner RestTemplate Stub Bean created");
-            return new SummonerRestTemplateStubImpl();
+        public LeagueRestTemplate leagueRestTemplate() {
+            log.debug("League RestTemplate Stub Bean created");
+            return new LeagueRestTemplateStubImpl();
         }
 
     }
-
 }

@@ -1,4 +1,4 @@
-package com.css.professorlol.config.resttemplate;
+package com.css.professorlol.config.restTemplate;
 
 import com.css.professorlol.config.properties.RiotProperties;
 import com.css.professorlol.match.MatchRestTemplate;

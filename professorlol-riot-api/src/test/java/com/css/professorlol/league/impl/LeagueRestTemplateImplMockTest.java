@@ -3,7 +3,7 @@ package com.css.professorlol.league.impl;
 import com.css.professorlol.MockResponse;
 import com.css.professorlol.config.exception.NotCorrectInputException;
 import com.css.professorlol.config.properties.RiotProperties;
-import com.css.professorlol.config.resttemplate.RiotRestTemplateBuilder;
+import com.css.professorlol.config.restTemplate.RiotRestTemplateBuilder;
 import com.css.professorlol.league.LeagueRestTemplate;
 import com.css.professorlol.league.dto.LeagueEntryDto;
 import com.google.gson.Gson;
