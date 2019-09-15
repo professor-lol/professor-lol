@@ -1,11 +1,17 @@
 package com.css.professorlol.member.domain;
 
-import com.css.professorlol.lolInfo.domain.LolInfo;
+import com.css.professorlol.lolInfo.domain.LoLInfo;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Getter
@@ -17,7 +23,7 @@ public class Subscribe {
     @ManyToOne
     private Member member;
     @ManyToOne
-    private LolInfo lolInfo;
+    private LoLInfo lolInfo;
     @Enumerated(value = EnumType.STRING)
     private boolean active;
 }
