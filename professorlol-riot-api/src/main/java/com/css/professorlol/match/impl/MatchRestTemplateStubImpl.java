@@ -41,7 +41,7 @@ public class MatchRestTemplateStubImpl implements MatchRestTemplate {
 
     private String getMatchListStubBody() {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(ResourceUtils.getFile("classpath:mock/MatchListMockBody.json")));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(ResourceUtils.getFile("classpath:stub/MatchListStubBody.json")));
             Gson gson = new Gson();
             Object json = gson.fromJson(bufferedReader, Object.class);
             return gson.toJson(json);
@@ -52,7 +52,7 @@ public class MatchRestTemplateStubImpl implements MatchRestTemplate {
 
     private String getMatchStubBody() {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(ResourceUtils.getFile("classpath:mock/MatchMockBody.json")));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(ResourceUtils.getFile("classpath:stub/MatchStubBody.json")));
             Gson gson = new Gson();
             Object json = gson.fromJson(bufferedReader, Object.class);
             return gson.toJson(json);
