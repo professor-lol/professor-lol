@@ -1,7 +1,12 @@
 package com.ccs.professorlol.dto.bug;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 
+@AllArgsConstructor
+@Builder
+@Getter
 public class BugFix {
-    private List<Bug> bugs;
+    private String context; //버그 설명 <li>
 }

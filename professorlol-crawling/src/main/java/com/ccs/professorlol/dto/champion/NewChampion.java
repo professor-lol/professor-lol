@@ -1,17 +1,28 @@
 package com.ccs.professorlol.dto.champion;
 
-import com.ccs.professorlol.dto.champion.ability.Ability;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
+
 
 import java.util.List;
 
-public class NewChampion extends Champion {
+@Getter
+@ToString
+public class NewChampion { // 신챔같은 경우는 attribute가 없어서 일단 상속관계는 뺏음
 
-    private List<LinkGroup> linkGroups; // 신챔일 경우 href 연결 > 상속으로 풀기
+    private String name;
+    private String image;
+    private String summary;
+    private String context;
+    private List<LinkGroup> linkGroups;
 
-    public NewChampion(String name, String image, String summary, String context, List<Ability> abilities, List<LinkGroup> linkGroups) {
-        super(name, image, summary, context, abilities);
+    @Builder
+    public NewChampion(String name, String image, String summary, String context, List<LinkGroup> linkGroups) {
+        this.name = name;
+        this.image = image;
+        this.summary = summary;
+        this.context = context;
         this.linkGroups = linkGroups;
     }
-
-
 }
