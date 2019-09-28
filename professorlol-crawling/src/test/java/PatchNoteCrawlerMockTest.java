@@ -47,6 +47,9 @@ public class PatchNoteCrawlerMockTest {
         List<Champion> champions = patchResponseDtos.getPatch();
         System.out.println(champions.toString());
 
+        champions.stream()
+                .forEach(champion -> System.out.println(champion.toString()));
+
         //then
         assertEquals("모데카이저", champions.get(0).getName());
         assertEquals("강철의 망령", champions.get(0).getSummary());
