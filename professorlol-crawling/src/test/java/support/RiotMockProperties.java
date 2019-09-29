@@ -1,6 +1,6 @@
 package support;
 
-import com.css.professorlol.RiotPageProperties;
+import com.ccs.professorlol.RiotPageProperties;
 
 public class RiotMockProperties extends RiotPageProperties {
 
