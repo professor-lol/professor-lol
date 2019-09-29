@@ -1,25 +1,25 @@
-package com.css.professorlol.ddragon.dto;
+package com.ccs.professorlol.ddragon.dto;
+
+import lombok.Getter;
 
 import java.util.List;
 
-public class Champion {
+@Getter
+public class ChampionDto {
 
-    private Aatrox aatrox;
+    private Stats stats;
+    private String partype;
+    private List<String> tags;
+    private Image image;
+    private Info info;
+    private String blurb;
+    private String title;
+    private String name;
+    private String key;
+    private String id;
+    private String version;
 
-    public static class Aatrox {
-        private Stats stats;
-        private String partype;
-        private List<String> tags;
-        private Image image;
-        private Info info;
-        private String blurb;
-        private String title;
-        private String name;
-        private String key;
-        private String id;
-        private String version;
-    }
-
+    @Getter
     public static class Stats {
         private double attackspeed;
         private double attackspeedperlevel;
@@ -43,6 +43,7 @@ public class Champion {
         private int hp;
     }
 
+    @Getter
     public static class Image {
         private int h;
         private int w;
@@ -53,6 +54,7 @@ public class Champion {
         private String full;
     }
 
+    @Getter
     public static class Info {
         private int difficulty;
         private int magic;

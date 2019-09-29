@@ -1,4 +1,4 @@
-package com.css.professorlol.lolInfo.domain.champion;
+package com.ccs.professorlol.lolInfo.domain.champion;
 
 import lombok.Getter;
 

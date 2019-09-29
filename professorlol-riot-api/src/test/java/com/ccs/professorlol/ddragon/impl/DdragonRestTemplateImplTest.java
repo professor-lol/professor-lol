@@ -1,10 +1,9 @@
-package com.css.professorlol.ddragon.impl;
+package com.ccs.professorlol.ddragon.impl;
 
-import com.css.professorlol.config.resttemplate.DdragonRestTemplateConfing;
-import com.css.professorlol.ddragon.DdragonRestTemplate;
-import com.css.professorlol.ddragon.dto.ChampionsDto;
-import com.css.professorlol.ddragon.dto.RealmsDto;
-import com.css.professorlol.summoner.SummonerRestTemplate;
+import com.ccs.professorlol.config.resttemplate.DdragonRestTemplateConfing;
+import com.ccs.professorlol.ddragon.DdragonRestTemplate;
+import com.ccs.professorlol.ddragon.dto.RealmsDto;
+import com.ccs.professorlol.summoner.SummonerRestTemplate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,7 +46,6 @@ public class DdragonRestTemplateImplTest {
     public void 챔피언_리스트_가져오기() {
         //given
         //when
-        ChampionsDto champions = this.ddragonRestTemplate.getChampions("9.19.1", "ko_KR");
         //then
     }
 }

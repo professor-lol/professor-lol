@@ -1,8 +1,8 @@
-package com.css.professorlol.ddragon.impl;
+package com.ccs.professorlol.ddragon.impl;
 
-import com.css.professorlol.ddragon.DdragonRestTemplate;
-import com.css.professorlol.ddragon.dto.ChampionsDto;
-import com.css.professorlol.ddragon.dto.RealmsDto;
+import com.ccs.professorlol.ddragon.DdragonRestTemplate;
+import com.ccs.professorlol.ddragon.dto.ChampionDataDto;
+import com.ccs.professorlol.ddragon.dto.RealmsDto;
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.client.RestTemplate;
@@ -22,8 +22,8 @@ public class DdragonRestTemplateImpl implements DdragonRestTemplate {
     }
 
     @Override
-    public ChampionsDto getChampions(String version, String language) {
-        return restTemplate.getForObject(CHAMPIONS, ChampionsDto.class, version, language);
+    public ChampionDataDto getChampions(String version, String language) {
+        return restTemplate.getForObject(CHAMPIONS, ChampionDataDto.class, version, language);
     }
 
     @Override

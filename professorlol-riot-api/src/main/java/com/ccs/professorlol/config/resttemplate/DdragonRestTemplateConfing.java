@@ -1,8 +1,8 @@
-package com.css.professorlol.config.resttemplate;
+package com.ccs.professorlol.config.resttemplate;
 
-import com.css.professorlol.config.properties.RiotProperties;
-import com.css.professorlol.ddragon.DdragonRestTemplate;
-import com.css.professorlol.ddragon.impl.DdragonRestTemplateImpl;
+import com.ccs.professorlol.config.properties.RiotProperties;
+import com.ccs.professorlol.ddragon.DdragonRestTemplate;
+import com.ccs.professorlol.ddragon.impl.DdragonRestTemplateImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.client.RestTemplateBuilder;

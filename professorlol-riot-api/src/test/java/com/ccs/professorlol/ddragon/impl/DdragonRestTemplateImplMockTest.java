@@ -1,10 +1,10 @@
-package com.css.professorlol.ddragon.impl;
+package com.ccs.professorlol.ddragon.impl;
 
-import com.css.professorlol.MockResponse;
-import com.css.professorlol.config.properties.RiotProperties;
-import com.css.professorlol.config.resttemplate.RiotRestTemplateBuilder;
-import com.css.professorlol.ddragon.DdragonRestTemplate;
-import com.css.professorlol.ddragon.dto.ChampionsDto;
+import com.ccs.professorlol.MockResponse;
+import com.ccs.professorlol.config.properties.RiotProperties;
+import com.ccs.professorlol.config.resttemplate.RiotRestTemplateBuilder;
+import com.ccs.professorlol.ddragon.DdragonRestTemplate;
+import com.ccs.professorlol.ddragon.dto.ChampionDataDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
@@ -15,6 +15,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
@@ -51,7 +52,7 @@ public class DdragonRestTemplateImplMockTest {
     @Test
     public void getChampions_챔피언_리스트_가져오기() {
         //given
-        String version = "9.19.1";
+        String version = "9.18.1";
         String language = "ko_KR";
         String uri = getChampionsURI(version, language);
 
@@ -60,9 +61,11 @@ public class DdragonRestTemplateImplMockTest {
         this.mockServer.expect(requestTo(uri))
                 .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
         //when
-        ChampionsDto championsDto = ddragonRestTemplate.getChampions(version, language);
+        ChampionDataDto champions = ddragonRestTemplate.getChampions(version, language);
 
         //then
-        System.out.println(gson.toJson(championsDto));
+        assertThat(champions.getVersion()).isEqualTo(version);
+        assertThat(champions.getChampionDtos().get(0).getId()).isEqualTo("Aatrox");
+        System.out.println(gson.toJson(champions));
     }
 }

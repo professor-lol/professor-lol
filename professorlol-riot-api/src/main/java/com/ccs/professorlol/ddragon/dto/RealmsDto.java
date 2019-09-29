@@ -1,4 +1,4 @@
-package com.css.professorlol.ddragon.dto;
+package com.ccs.professorlol.ddragon.dto;
 
 import lombok.Getter;
 
