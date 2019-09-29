@@ -1,11 +1,16 @@
 package com.css.professorlol.member.domain;
 
-import com.css.professorlol.common.RowStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
@@ -18,8 +23,6 @@ public class Member {
     private String email;
     @Enumerated(value = EnumType.STRING)
     private MemberType memberType;
-    @Enumerated(value = EnumType.STRING)
-    private RowStatus active;
 
     @OneToMany(mappedBy = "member")
     private List<Subscribe> subscribes;
