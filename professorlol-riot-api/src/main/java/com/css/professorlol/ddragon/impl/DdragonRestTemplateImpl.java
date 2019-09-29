@@ -1,6 +1,7 @@
 package com.css.professorlol.ddragon.impl;
 
 import com.css.professorlol.ddragon.DdragonRestTemplate;
+import com.css.professorlol.ddragon.dto.ChampionsDto;
 import com.css.professorlol.ddragon.dto.RealmsDto;
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,8 @@ public class DdragonRestTemplateImpl implements DdragonRestTemplate {
     }
 
     @Override
-    public JsonObject getChampions(String version, String language) {
-        return restTemplate.getForObject(CHAMPIONS, JsonObject.class, version, language);
+    public ChampionsDto getChampions(String version, String language) {
+        return restTemplate.getForObject(CHAMPIONS, ChampionsDto.class, version, language);
     }
 
     @Override

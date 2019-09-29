@@ -2,9 +2,9 @@ package com.css.professorlol.ddragon.impl;
 
 import com.css.professorlol.config.resttemplate.DdragonRestTemplateConfing;
 import com.css.professorlol.ddragon.DdragonRestTemplate;
+import com.css.professorlol.ddragon.dto.ChampionsDto;
 import com.css.professorlol.ddragon.dto.RealmsDto;
 import com.css.professorlol.summoner.SummonerRestTemplate;
-import com.google.gson.JsonObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,8 +47,7 @@ public class DdragonRestTemplateImplTest {
     public void 챔피언_리스트_가져오기() {
         //given
         //when
-        JsonObject champions = this.ddragonRestTemplate.getChampions("9.19.1", "ko_KR");
+        ChampionsDto champions = this.ddragonRestTemplate.getChampions("9.19.1", "ko_KR");
         //then
-        assertThat(champions.keySet().size()).isEqualTo(10);
     }
 }
