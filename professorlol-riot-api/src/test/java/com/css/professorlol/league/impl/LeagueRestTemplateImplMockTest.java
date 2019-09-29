@@ -86,9 +86,6 @@ public class LeagueRestTemplateImplMockTest {
         log.info(gson.toJson(leagueEntryDtoSet));
     }
 
-    private static class LeagueEntrySet extends HashSet<LeagueEntryDto> {
-    }
-
     @Test
     public void getLeagueEntries_정상조회_결과없음() {
         //given
@@ -149,6 +146,9 @@ public class LeagueRestTemplateImplMockTest {
         assertThatThrownBy(() -> leagueRestTemplate.getLeagueEntriesBySummonerId(encodedSummonerId))
                 .isInstanceOf(NotCorrectInputException.class)
                 .hasMessage("The Summoner ID must be entered.");
+    }
+
+    private static class LeagueEntrySet extends HashSet<LeagueEntryDto> {
     }
 
 }

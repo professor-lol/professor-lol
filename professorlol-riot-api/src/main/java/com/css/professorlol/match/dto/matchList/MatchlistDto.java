@@ -1,6 +1,10 @@
 package com.css.professorlol.match.dto.matchList;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
