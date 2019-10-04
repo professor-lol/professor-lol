@@ -37,7 +37,7 @@ public class DdragonRestTemplateImplTest {
     public void ddragon_버전_정보_가져오기() {
         //given
         //when
-        RealmsDto realmsDto = this.ddragonRestTemplate.getCurrentRealms("kr");
+        RealmsDto realmsDto = this.ddragonRestTemplate.getCurrentRealms();
         //then
         assertThat(realmsDto.getN().getChampion()).isEqualTo("9.19.1");
     }

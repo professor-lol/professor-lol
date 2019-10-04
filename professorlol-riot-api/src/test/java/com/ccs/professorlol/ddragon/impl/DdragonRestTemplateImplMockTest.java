@@ -29,12 +29,12 @@ public class DdragonRestTemplateImplMockTest {
 
     private DdragonRestTemplate ddragonRestTemplate;
 
-    private static String getChampionsURI(String version, String language) {
+    private static String getChampionsURI(String version) {
         return UriComponentsBuilder.newInstance()
                 .scheme("https")
                 .host("ddragon.leagueoflegends.com")
                 .path(CHAMPIONS)
-                .buildAndExpand(version, language)
+                .buildAndExpand(version)
                 .toUriString();
     }
 
@@ -49,19 +49,19 @@ public class DdragonRestTemplateImplMockTest {
         ddragonRestTemplate = new DdragonRestTemplateImpl(restTemplate);
     }
 
+
     @Test
     public void getChampions_챔피언_리스트_가져오기() {
         //given
         String version = "9.18.1";
-        String language = "ko_KR";
-        String uri = getChampionsURI(version, language);
+        String uri = getChampionsURI(version);
 
         String mockBody = MockResponse.getChampionsDtoMockBody();
 
         this.mockServer.expect(requestTo(uri))
                 .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
         //when
-        ChampionDataDto champions = ddragonRestTemplate.getChampions(version, language);
+        ChampionDataDto champions = ddragonRestTemplate.getChampions(version);
 
         //then
         assertThat(champions.getVersion()).isEqualTo(version);
