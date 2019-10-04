@@ -1,14 +1,14 @@
 package com.ccs.professorlol.ddragon;
 
 import com.ccs.professorlol.ddragon.dto.ChampionDataDto;
+import com.ccs.professorlol.ddragon.dto.ChampionDto;
 import com.ccs.professorlol.ddragon.dto.RealmsDto;
-import com.google.gson.JsonObject;
 
 public interface DdragonRestTemplate {
     //ddragon의 버전정보
-    RealmsDto getCurrentRealms(String language);
+    RealmsDto getCurrentRealms();
 
-    ChampionDataDto getChampions(String version, String language);
+    ChampionDataDto getChampions(String version);
 
-    JsonObject getIndividualChampion(String version, String language, String championName);
+    ChampionDto getIndividualChampion(String version, String championName);
 }
