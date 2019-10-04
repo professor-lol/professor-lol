@@ -2,7 +2,7 @@ package com.ccs.professorlol.service;
 
 import com.ccs.professorlol.crawler.PatchResponseDto;
 import com.ccs.professorlol.lolInfo.domain.LolInfo;
-import com.ccs.professorlol.patch.PatchHistoryRepository;
+import com.ccs.professorlol.patch.champion.PatchHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +19,9 @@ public class PatchHistoryValidator<T> {
         if (lolInfos.size() != patch.size()) {
             throw new RuntimeException();
         }
-        ;
 
         if (!patchHistoryRepository.existsByPatchVersion(responseDto.getPatchVersion())) {
             throw new RuntimeException();
         }
-        ;
     }
 }

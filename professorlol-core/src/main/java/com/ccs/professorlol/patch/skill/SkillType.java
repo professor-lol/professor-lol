@@ -1,4 +1,4 @@
-package com.ccs.professorlol.patch;
+package com.ccs.professorlol.patch.skill;
 
 import lombok.Getter;
 

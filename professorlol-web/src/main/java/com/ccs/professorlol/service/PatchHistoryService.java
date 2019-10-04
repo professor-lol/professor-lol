@@ -1,11 +1,12 @@
 package com.ccs.professorlol.service;
 
+
 import com.ccs.professorlol.crawler.PatchNoteCrawler;
 import com.ccs.professorlol.crawler.PatchResponseDto;
 import com.ccs.professorlol.dto.champion.Champion;
 import com.ccs.professorlol.lolInfo.domain.LolInfo;
 import com.ccs.professorlol.lolInfo.domain.LolInfoRepository;
-import com.ccs.professorlol.patch.PatchHistoryRepository;
+import com.ccs.professorlol.patch.champion.PatchHistoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

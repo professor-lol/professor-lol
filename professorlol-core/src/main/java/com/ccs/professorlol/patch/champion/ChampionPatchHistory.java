@@ -1,7 +1,8 @@
-package com.ccs.professorlol.patch;
+package com.ccs.professorlol.patch.champion;
 
 
 import com.ccs.professorlol.lolInfo.domain.LolInfo;
+import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

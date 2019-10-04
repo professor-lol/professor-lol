@@ -1,4 +1,4 @@
-package com.ccs.professorlol.patch;
+package com.ccs.professorlol.patch.champion;
 
 import com.ccs.professorlol.lolInfo.domain.LolInfo;
 import lombok.AccessLevel;
