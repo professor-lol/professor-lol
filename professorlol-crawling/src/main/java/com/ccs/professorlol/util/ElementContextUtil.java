@@ -13,7 +13,8 @@ public class ElementContextUtil {
 
     public static final String EMPTY_STRING = "";
     public static final String IMAGE_LINK_ATTRIBUTE_KEY = "src";
-    private static final String URL_LINK_ATTRIBUTE_KEY = "href";
+    private static final String URL_VALUE_ATTRIBUTE_KEY = "href";
+    private static final String LINK_ATTRIBUTE_KEY = "a";
 
     public static String getTextFromElement(Elements elements) {
         return elements.isEmpty() ? EMPTY_STRING : elements.text();
@@ -39,14 +40,9 @@ public class ElementContextUtil {
         return getUrlFromElement(elements.select(cssSelector));
     }
 
-    public static List<LinkGroup> getUrlListFromCssSelector(Element element, String cssSelector) {
-        List<LinkGroup> urlList = new ArrayList<>();
-        element.select(cssSelector).forEach(liElement -> urlList.add(
-                LinkGroup.builder()
-                        .content(liElement.text())
-                        .url(liElement.select("a").attr(URL_LINK_ATTRIBUTE_KEY))
-                        .build()));
-        return urlList;
-
+    public static String getLinkElement(Element element){
+        Elements liElements = element.select(LINK_ATTRIBUTE_KEY);
+        return liElements.isEmpty() ? "" : liElements.select(LINK_ATTRIBUTE_KEY).attr(URL_VALUE_ATTRIBUTE_KEY);
     }
+
 }

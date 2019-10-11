@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 import com.ccs.professorlol.crawler.*;
 import com.ccs.professorlol.dto.champion.Champion;
 import com.ccs.professorlol.dto.champion.ChampionFactory;
+=======
+import com.css.professorlol.PatchNoteCrawler;
+import com.css.professorlol.RiotPageJsoupConnection;
+import com.css.professorlol.RiotPagePatchNoteCrawler;
+import com.css.professorlol.RiotPageProperties;
+import com.css.professorlol.dto.champion.Champion;
+import com.css.professorlol.dto.champion.ChampionParser;
+>>>>>>> 리뷰 반영
 import org.jsoup.nodes.Document;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,9 +50,9 @@ public class PatchNoteCrawlerTest {
         //given
         File resourceFile = getFileFromPath(PATCH_NOTE_0912_HTML);
         Document document = convertFromHtmlFile(resourceFile);
-        ChampionFactory championFactory = new ChampionFactory(document);
+        ChampionParser championParser = new ChampionParser(document);
         //then
-        assertEquals(18, championFactory.getChampions().size());
+        assertEquals(18, championParser.getChampions().size());
     }
 
 
