@@ -1,5 +1,6 @@
 package com.ccs.professorlol.dto.champion.ability;
 
+import com.ccs.professorlol.parser.element.AbilityParser;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.junit.Before;
@@ -12,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static support.DocumentTestUtil.convertFromHtmlFile;
 import static support.DocumentTestUtil.getFileFromPath;
 
-public class AbilityFactoryTest {
+public class AbilityParserTest {
 
     public static final String ABILITY_FACTORY_FILE_PATH = "AbilityElements";
 
@@ -27,7 +28,7 @@ public class AbilityFactoryTest {
 
     @Test
     public void 여러개의_Ability_생성_확인() {
-        List<Ability> abilities = AbilityFactory.of(select);
+        List<Ability> abilities = AbilityParser.of(select);
         assertEquals(5, abilities.size());
     }
 }

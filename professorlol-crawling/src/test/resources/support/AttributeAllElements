@@ -26,5 +26,9 @@
     <span class="attribute"><span class="removed">삭제</span>전이된 폭탄:</span>
     <span class="attribute-removed">이제 스킬을 사용해 전이 표식이 남은 적을 처치해도 주변의 모든 적에게 전이 표식을 남기지 않습니다.</span>
 </div>
+<div class="attribute-change">
+      <span class="attribute">시각 효과:</span>
+      <span class="attribute-after">발사체와 적중 효과가 보라색으로 새롭게 변경되었습니다.</span>
+</div>
 </body>
 </html>

@@ -1,13 +1,8 @@
 package com.ccs.professorlol.util;
 
 
-import com.ccs.professorlol.dto.champion.LinkGroup;
-
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ElementContextUtil {
 
@@ -42,7 +37,7 @@ public class ElementContextUtil {
 
     public static String getLinkElement(Element element){
         Elements liElements = element.select(LINK_ATTRIBUTE_KEY);
-        return liElements.isEmpty() ? "" : liElements.select(LINK_ATTRIBUTE_KEY).attr(URL_VALUE_ATTRIBUTE_KEY);
+        return liElements.isEmpty() ? EMPTY_STRING : liElements.attr(URL_VALUE_ATTRIBUTE_KEY);
     }
 
 }

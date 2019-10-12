@@ -28,12 +28,10 @@ public class AbilityMapperTest {
 
     @Test
     public void 하나의_Ability_생성_확인() {
-        Ability ability = AbilityMapper.convert(select);
+        Ability ability = Ability.of(select);
         assertEquals("W - 룬 감옥", ability.getTitle());
         assertEquals("./PatchNote_9_12_files/image(4)", ability.getImage());
-        assertEquals(2, ability.getRemoves().size());
-        assertEquals(1, ability.getNews().size());
-        assertEquals(2, ability.getChanges().size());
+        assertEquals(5, ability.getAttributes().size());
     }
 
     @Test

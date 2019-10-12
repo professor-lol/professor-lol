@@ -1,7 +1,7 @@
-import com.ccs.professorlol.crawler.PatchNoteCrawler;
-import com.ccs.professorlol.crawler.PatchResponseDto;
-import com.ccs.professorlol.crawler.RiotPageJsoupConnection;
-import com.ccs.professorlol.crawler.RiotPagePatchNoteCrawler;
+import com.ccs.professorlol.PatchNoteCrawler;
+import com.ccs.professorlol.PatchResponseDto;
+import com.ccs.professorlol.RiotPageJsoupConnection;
+import com.ccs.professorlol.RiotPagePatchNoteCrawler;
 import com.ccs.professorlol.dto.champion.Champion;
 import org.apache.commons.io.IOUtils;
 import org.junit.After;

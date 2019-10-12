@@ -1,11 +1,11 @@
-package com.css.professorlol.dto.champion;
+package com.ccs.professorlol;
 
+import com.ccs.professorlol.parser.ChampionParser;
 import org.jsoup.nodes.Document;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 import static support.DocumentTestUtil.convertFromHtmlFile;
@@ -18,14 +18,14 @@ public class ChampionParserTest {
     private Document document;
 
     @Before
-    public void setUp() throws IOException {
+    public void setUp() {
         File resourceFile = getFileFromPath(CHAMPION_FACTORY_PATCH_FILE);
         document = convertFromHtmlFile(resourceFile);
     }
 
     @Test
     public void 여러개의_Champion_생성_확인() {
-        ChampionParser championParser = new ChampionParser(document);
-        assertEquals(18, championParser.getChampions().size());
+        ChampionParser championParser = new ChampionParser();
+        assertEquals(18, championParser.parse(document).size());
     }
 }

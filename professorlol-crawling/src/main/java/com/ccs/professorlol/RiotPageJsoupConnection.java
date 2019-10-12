@@ -1,4 +1,4 @@
-package com.ccs.professorlol.crawler;
+package com.ccs.professorlol;
 
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;

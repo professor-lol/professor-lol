@@ -1,5 +1,6 @@
-package com.ccs.professorlol.dto.champion.ability;
+package com.ccs.professorlol.parser.element;
 
+import com.ccs.professorlol.dto.champion.ability.Ability;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 
@@ -8,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AbilityFactory {
+public class AbilityParser {
 
     static final String SIBLING_DELIMITER = "<hr class=\"divider\">";
     static final String UNNECESSARY_STRING = "</body>";
@@ -17,7 +18,7 @@ public class AbilityFactory {
     public static List<Ability> of(Element element) {
         return pretreatmentHtml(element).stream()
                 .map(abilityString -> Jsoup.parse(abilityString).children())
-                .map(AbilityMapper::convert)
+                .map(Ability::of)
                 .collect(Collectors.toList());
     }
 

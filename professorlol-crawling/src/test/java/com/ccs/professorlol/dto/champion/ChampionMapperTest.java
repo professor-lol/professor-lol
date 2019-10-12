@@ -23,7 +23,7 @@ public class ChampionMapperTest {
         Element select = document.child(0);
 
         //when
-        Champion champion = ChampionMapper.convert(select);
+        Champion champion = Champion.of(select);
 
         //then
         assertEquals("라이즈", champion.getName());

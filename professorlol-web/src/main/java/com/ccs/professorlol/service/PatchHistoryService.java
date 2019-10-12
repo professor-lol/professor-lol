@@ -1,8 +1,8 @@
 package com.ccs.professorlol.service;
 
 
-import com.ccs.professorlol.crawler.PatchNoteCrawler;
-import com.ccs.professorlol.crawler.PatchResponseDto;
+import com.ccs.professorlol.PatchNoteCrawler;
+import com.ccs.professorlol.PatchResponseDto;
 import com.ccs.professorlol.dto.champion.Champion;
 import com.ccs.professorlol.lolInfo.domain.LolInfo;
 import com.ccs.professorlol.lolInfo.domain.LolInfoRepository;
