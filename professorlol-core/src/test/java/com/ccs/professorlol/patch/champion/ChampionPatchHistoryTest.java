@@ -6,7 +6,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +25,9 @@ public class ChampionPatchHistoryTest {
     @Autowired
     ChampionPatchHistoryRepository championPatchHistoryRepository;
 
+    @Autowired
+    private EntityManager entityManager;
+
     static String championName = "라이즈";
     static String summary1 = "Q - 과부하 최고 스킬 레벨이 감소하고 보호막이 삭제되며 추가 피해량이 R - 공간 왜곡에 따라 증가합니다.";
     static String context1 = "라이즈로 최적의 플레이를 펼칠 경우 약점을 찾기가 너무나 힘듭니다. 또한 라이즈는 사전 구성된 팀에서 아주 강한 위력을 발휘합니다.";
@@ -33,6 +39,7 @@ public class ChampionPatchHistoryTest {
 
         //when
         patchHistoryRepository.save(patchHistory);
+        entityManager.clear();
 
         ChampionPatchHistory championPatchHistory = championPatchHistoryRepository.findAll().get(0);
 
@@ -42,7 +49,10 @@ public class ChampionPatchHistoryTest {
         assertThat(championPatchHistory.getChampionName()).isEqualTo(championName);
         assertThat(championPatchHistory.getContext()).isEqualTo(context1);
         assertThat(championPatchHistory.getChampionAbilityHistories().size()).isEqualTo(3);
+        assertThat(championPatchHistory.getChampionAbilityHistories().get(0).getAttribute()).isEqualTo("보호막");
+
     }
+
 
     @Test
     public void 패치_히스토리가_내클래스로저장시_ChampionPatchHistory_테이블로__만들어지는지_확인() {
@@ -51,6 +61,8 @@ public class ChampionPatchHistoryTest {
 
         //when
         championPatchHistoryRepository.save(patchHistory);
+        entityManager.clear();
+
 
         ChampionPatchHistory championPatchHistory = championPatchHistoryRepository.findAll().get(0);
 

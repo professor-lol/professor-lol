@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -24,6 +26,9 @@ public class RemoveAbilityTest {
     @Autowired
     RemoveAbilityRepository removeAbilityRepository;
 
+    @Autowired
+    private EntityManager entityManager;
+
 
     @Test
     public void DiscriminatorValue에따른_RemoveAbility_부모클래스로save_확인() {
@@ -34,6 +39,7 @@ public class RemoveAbilityTest {
                 .build();
 
         championAbilityHistoryRepository.save(championAbilityHistory3);
+        entityManager.clear();
 
         RemoveAbility removeAbility = removeAbilityRepository.findAll().get(0);
         assertThat(removeAbility.getAttribute()).isEqualTo(attribute1);
@@ -52,6 +58,7 @@ public class RemoveAbilityTest {
                 .build();
 
         removeAbilityRepository.save(championAbilityHistory3);
+        entityManager.clear();
 
         RemoveAbility removeAbility = removeAbilityRepository.findAll().get(0);
         assertThat(removeAbility.getAttribute()).isEqualTo(attribute2);

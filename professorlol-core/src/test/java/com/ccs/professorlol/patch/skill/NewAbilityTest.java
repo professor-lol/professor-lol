@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -27,6 +29,9 @@ public class NewAbilityTest {
     @Autowired
     NewAbilityRepository newAbilityRepository;
 
+    @Autowired
+    private EntityManager entityManager;
+
     @Test
     public void DiscriminatorValue에따른_NewAbility_부모클래스로_save_확인_() {
         ChampionAbilityHistory championAbilityHistory3 = NewAbility.builder()
@@ -36,6 +41,7 @@ public class NewAbilityTest {
                 .build();
 
         championAbilityHistoryRepository.save(championAbilityHistory3);
+        entityManager.clear();
 
         NewAbility newAbility = newAbilityRepository.findAll().get(0);
         assertThat(newAbility.getAttribute()).isEqualTo(attribute1);
@@ -54,6 +60,7 @@ public class NewAbilityTest {
                 .build();
 
         newAbilityRepository.save(championAbilityHistory3);
+        entityManager.clear();
 
         NewAbility newAbility = newAbilityRepository.findAll().get(0);
         assertThat(newAbility.getAttribute()).isEqualTo(attribute2);

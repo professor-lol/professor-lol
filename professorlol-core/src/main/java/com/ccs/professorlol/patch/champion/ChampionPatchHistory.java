@@ -8,10 +8,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +21,7 @@ public class ChampionPatchHistory extends PatchHistory {
     private String summary;
     private String context;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "championPatchHistory")
     private List<ChampionAbilityHistory> championAbilityHistories;
 
     @Builder
@@ -33,10 +30,11 @@ public class ChampionPatchHistory extends PatchHistory {
         this.championName = championName;
         this.summary = summary;
         this.context = context;
-        this.championAbilityHistories = championAbilityHistories.stream().map(championAbilityHistory -> {
-            championAbilityHistory.setChampionPatchHistory(this);
-            return championAbilityHistory;
-        })
+        this.championAbilityHistories = championAbilityHistories.stream()
+                .map(championAbilityHistory -> {
+                    championAbilityHistory.setChampionPatchHistory(this);
+                    return championAbilityHistory;
+                })
                 .collect(Collectors.toList());
     }
 

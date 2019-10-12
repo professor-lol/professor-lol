@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -20,6 +22,9 @@ public class ChampionAbilityHistoryTest {
 
     @Autowired
     NewAbilityRepository newAbilityRepository;
+
+    @Autowired
+    private EntityManager entityManager;
 
     private List<ChampionAbilityHistory> saveInitAbility() {
 
@@ -59,6 +64,7 @@ public class ChampionAbilityHistoryTest {
         list.add(championAbilityHistory3);
 
         championAbilityHistoryRepository.saveAll(list);
+        entityManager.clear();
 
         return list;
     }
@@ -69,12 +75,15 @@ public class ChampionAbilityHistoryTest {
 
         RemoveAbility removeAbility = (RemoveAbility) championAbilityHistoryRepository.findAll().get(0);
 
-        assertThat(removeAbility).isSameAs(championAbilityHistories.get(0));
+        assertThat(removeAbility.getAttribute()).isSameAs(championAbilityHistories.get(0).getAttribute());
     }
 
-    @Test(expected = ClassCastException.class)
+    @Test
     public void championAbilityHistory로_검색시_잘못된타입인데_casting_되는지_확인() {
         saveInitAbility();
-        ChangeAbility removeAbility2 = (ChangeAbility) championAbilityHistoryRepository.findAll().get(0);
+
+        assertThatThrownBy(()-> {
+            ChangeAbility changeAbility = (ChangeAbility) championAbilityHistoryRepository.findAll().get(0);
+        }).isInstanceOf(ClassCastException.class);
     }
 }
