@@ -2,6 +2,7 @@ package com.ccs.professorlol.ddragon;
 
 import com.ccs.professorlol.ddragon.dto.ChampionDataDto;
 import com.ccs.professorlol.ddragon.dto.ChampionDto;
+import com.ccs.professorlol.ddragon.dto.ItemDataDto;
 import com.ccs.professorlol.ddragon.dto.RealmsDto;
 
 public interface DdragonRestTemplate {
@@ -11,4 +12,6 @@ public interface DdragonRestTemplate {
     ChampionDataDto getChampions(String version);
 
     ChampionDto getIndividualChampion(String version, String championName);
+
+    ItemDataDto getItems(String version);
 }
