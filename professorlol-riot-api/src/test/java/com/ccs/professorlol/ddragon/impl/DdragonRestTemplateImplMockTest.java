@@ -5,6 +5,8 @@ import com.ccs.professorlol.config.properties.RiotProperties;
 import com.ccs.professorlol.config.resttemplate.RiotRestTemplateBuilder;
 import com.ccs.professorlol.ddragon.DdragonRestTemplate;
 import com.ccs.professorlol.ddragon.dto.ChampionDataDto;
+import com.ccs.professorlol.ddragon.dto.ItemDataDto;
+import com.ccs.professorlol.ddragon.dto.RealmsDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
@@ -23,20 +25,15 @@ public class DdragonRestTemplateImplMockTest {
 
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    private static final String CHAMPIONS = "/cdn/{version}/data/{language}/champion.json";
+    private static final String REALMS = "/realms/kr.json";
+
+    private static final String CHAMPIONS = "/cdn/{version}/data/ko_KR/champion.json";
+
+    private static final String ITEMS = "/cdn/{version}/data/ko_KR/item.json";
 
     private MockRestServiceServer mockServer;
 
     private DdragonRestTemplate ddragonRestTemplate;
-
-    private static String getChampionsURI(String version) {
-        return UriComponentsBuilder.newInstance()
-                .scheme("https")
-                .host("ddragon.leagueoflegends.com")
-                .path(CHAMPIONS)
-                .buildAndExpand(version)
-                .toUriString();
-    }
 
     @Before
     public void setUp() throws Exception {
@@ -49,6 +46,13 @@ public class DdragonRestTemplateImplMockTest {
         ddragonRestTemplate = new DdragonRestTemplateImpl(restTemplate);
     }
 
+    private static String getRealmsURI() {
+        return UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("ddragon.leagueoflegends.com")
+                .path(REALMS)
+                .toUriString();
+    }
 
     @Test
     public void getChampions_챔피언_리스트_가져오기() {
@@ -67,5 +71,57 @@ public class DdragonRestTemplateImplMockTest {
         assertThat(champions.getVersion()).isEqualTo(version);
         assertThat(champions.getChampionDtos().get(0).getId()).isEqualTo("Aatrox");
         System.out.println(gson.toJson(champions));
+    }
+
+    private static String getChampionsURI(String version) {
+        return UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("ddragon.leagueoflegends.com")
+                .path(CHAMPIONS)
+                .buildAndExpand(version)
+                .toUriString();
+    }
+
+    private static String getItemsURI(String version) {
+        return UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("ddragon.leagueoflegends.com")
+                .path(ITEMS)
+                .buildAndExpand(version)
+                .toUriString();
+    }
+
+    @Test
+    public void getCurrentRealms_ddragon_버전_정보_가져오기() {
+        //given
+        String uri = getRealmsURI();
+
+        String mockBody = MockResponse.getRealmsDtoMockBody();
+
+        this.mockServer.expect(requestTo(uri))
+                .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
+        //when
+        RealmsDto realmsDto = ddragonRestTemplate.getCurrentRealms();
+        //then
+        assertThat(realmsDto.getL()).isEqualTo("ko_KR");
+        assertThat(realmsDto.getN().getChampion()).isEqualTo("9.19.1");
+    }
+
+    @Test
+    public void getItems_아이템_리스트_가져오기() {
+        //given
+        String version = "9.19.1";
+        String uri = getItemsURI(version);
+
+        String mockBody = MockResponse.getItemsDtoMockBody();
+
+        this.mockServer.expect(requestTo(uri))
+                .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
+        //when
+        ItemDataDto items = ddragonRestTemplate.getItems(version);
+        //then
+        assertThat(items.getVersion()).isEqualTo(version);
+        assertThat(items.getItems().get(0).getName()).isEqualTo("속도의 장화");
+        assertThat(items.getItems().get(0).getStats().getFlatMovementSpeedMod()).isEqualTo(25);
     }
 }
