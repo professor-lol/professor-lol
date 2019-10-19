@@ -12,7 +12,8 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
-        enable_lazy_load_no_trans: true
+        #이옵션은 안티패턴 설명을 위해 넣었다
+        #enable_lazy_load_no_trans: true
         id.new_generator_mappings: false
         hbm2ddl:
           auto: validate

@@ -1,14 +1,16 @@
 package com.ccs.professorlol.patch.champion;
 
 import com.ccs.professorlol.patch.skill.*;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,25 +20,28 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @DataJpaTest    //spring context 안띄고 test!
+@Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class PatchHistoryTest {
-    static String championName = "라이즈";
-    static String summary1 = "Q - 과부하 최고 스킬 레벨이 감소하고 보호막이 삭제되며 추가 피해량이 R - 공간 왜곡에 따라 증가합니다.";
-    static String context1 = "라이즈로 최적의 플레이를 펼칠 경우 약점을 찾기가 너무나 힘듭니다. 또한 라이즈는 사전 구성된 팀에서 아주 강한 위력을 발휘합니다.";
+    private final static String CHAMPION_NAME = "라이즈";
+    private final static String SUMMARY = "Q - 과부하 최고 스킬 레벨이 감소하고 보호막이 삭제되며 추가 피해량이 R - 공간 왜곡에 따라 증가합니다.";
+    private final static String CONTEXT = "라이즈로 최적의 플레이를 펼칠 경우 약점을 찾기가 너무나 힘듭니다. 또한 라이즈는 사전 구성된 팀에서 아주 강한 위력을 발휘합니다.";
     @Autowired
     PatchHistoryRepository patchHistoryRepository;
     @Autowired
     ChampionPatchHistoryRepository championPatchHistoryRepository;
-    @Autowired
-    private EntityManager entityManager;
+
+    @After
+    public void tearDown() throws Exception {
+        patchHistoryRepository.deleteAll();
+    }
+
     @Test
     public void PatchHistory로_검색시_casting_되는지_확인() {
         List<ChampionAbilityHistory> saveAbilityList = makeAbilityList();
         ChampionPatchHistory savePatchHistory = makeChampionPatchHistory(saveAbilityList);
 
+        patchHistoryRepository.save(savePatchHistory);
 
-        championPatchHistoryRepository.save(savePatchHistory);
-
-        entityManager.clear();
         ChampionPatchHistory championPatchHistory = (ChampionPatchHistory) patchHistoryRepository.findAll().get(0);
 
         assertThat(championPatchHistory.getChampionName()).isSameAs(savePatchHistory.getChampionName());
@@ -49,7 +54,6 @@ public class PatchHistoryTest {
 
         championPatchHistoryRepository.save(savePatchHistory);
 
-        entityManager.clear();
         ChampionPatchHistory championPatchHistory = championPatchHistoryRepository.findAll().get(0);
 
         assertThat(championPatchHistory.getChampionAbilityHistories().size()).isEqualTo(3);
@@ -62,32 +66,31 @@ public class PatchHistoryTest {
 
         championPatchHistoryRepository.save(savePatchHistory);
 
-        entityManager.clear();
         ChampionPatchHistory championPatchHistory = championPatchHistoryRepository.findAll().get(0);
 
         assertThat(championPatchHistory.getChampionAbilityHistories().size()).isEqualTo(3);
 
         List<ChampionAbilityHistory> championAbilityHistories = championPatchHistory.getChampionAbilityHistories();
 
-        assertThat(championAbilityHistories.get(0)
-                .getChampionPatchHistory()).isSameAs(championPatchHistory);
-        assertThat(championAbilityHistories.get(1)
-                .getChampionPatchHistory()).isSameAs(championPatchHistory);
-        assertThat(championAbilityHistories.get(2)
-                .getChampionPatchHistory()).isSameAs(championPatchHistory);
+        assertBindHistory(championAbilityHistories.get(0).getChampionPatchHistory());
+        assertBindHistory(championAbilityHistories.get(1).getChampionPatchHistory());
+        assertBindHistory(championAbilityHistories.get(2).getChampionPatchHistory());
+    }
+
+    private void assertBindHistory(ChampionPatchHistory championPatchHistory) {
+        assertThat(championPatchHistory.getChampionName()).isEqualTo(CHAMPION_NAME);
+        assertThat(championPatchHistory.getContext()).isEqualTo(CONTEXT);
+        assertThat(championPatchHistory.getSummary()).isEqualTo(SUMMARY);
     }
 
     private ChampionPatchHistory makeChampionPatchHistory(List<ChampionAbilityHistory> championAbilityHistories) {
-
-        ChampionPatchHistory patchHistory = ChampionPatchHistory.builder()
+        return ChampionPatchHistory.builder()
                 .patchVersion("1v")
                 .championAbilityHistories(championAbilityHistories)
-                .championName(championName)
-                .summary(summary1)
-                .context(context1)
+                .championName(CHAMPION_NAME)
+                .summary(SUMMARY)
+                .context(CONTEXT)
                 .build();
-
-        return patchHistory;
     }
 
     private List<ChampionAbilityHistory> makeAbilityList() {

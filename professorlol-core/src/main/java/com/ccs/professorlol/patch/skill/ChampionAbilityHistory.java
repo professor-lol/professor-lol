@@ -21,7 +21,7 @@ public abstract class ChampionAbilityHistory {
     private SkillType skillType;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "patch_history_id")
     @Setter
     private ChampionPatchHistory championPatchHistory;

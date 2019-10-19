@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @DiscriminatorValue("CHAMPION")
@@ -30,12 +29,8 @@ public class ChampionPatchHistory extends PatchHistory {
         this.championName = championName;
         this.summary = summary;
         this.context = context;
-        this.championAbilityHistories = championAbilityHistories.stream()
-                .map(championAbilityHistory -> {
-                    championAbilityHistory.setChampionPatchHistory(this);
-                    return championAbilityHistory;
-                })
-                .collect(Collectors.toList());
+        this.championAbilityHistories = championAbilityHistories;
+        championAbilityHistories.forEach(championAbilityHistory -> championAbilityHistory.setChampionPatchHistory(this));
     }
 
 }

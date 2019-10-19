@@ -1,13 +1,15 @@
 package com.ccs.professorlol.patch.skill;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +19,16 @@ import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @DataJpaTest
+@Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class ChampionAbilityHistoryTest {
 
     @Autowired
     ChampionAbilityHistoryRepository<ChampionAbilityHistory> championAbilityHistoryRepository;
 
-    @Autowired
-    private EntityManager entityManager;
+    @After
+    public void tearDown() throws Exception {
+        championAbilityHistoryRepository.deleteAll();
+    }
 
     private List<ChampionAbilityHistory> saveInitAbility() {
 
@@ -63,7 +68,6 @@ public class ChampionAbilityHistoryTest {
         list.add(championAbilityHistory3);
 
         championAbilityHistoryRepository.saveAll(list);
-        entityManager.clear();
 
         return list;
     }
