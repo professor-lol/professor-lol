@@ -4,12 +4,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
+@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class RemoveAbilityTest {
@@ -22,9 +24,6 @@ public class RemoveAbilityTest {
 
     @Autowired
     ChampionAbilityHistoryRepository championAbilityHistoryRepository;
-
-    @Autowired
-    RemoveAbilityRepository removeAbilityRepository;
 
     @Autowired
     private EntityManager entityManager;
@@ -41,7 +40,7 @@ public class RemoveAbilityTest {
         championAbilityHistoryRepository.save(championAbilityHistory3);
         entityManager.clear();
 
-        RemoveAbility removeAbility = removeAbilityRepository.findAll().get(0);
+        RemoveAbility removeAbility = (RemoveAbility) championAbilityHistoryRepository.findAll().get(0);
         assertThat(removeAbility.getAttribute()).isEqualTo(attribute1);
         assertThat(removeAbility.getSkillType()).isEqualTo(SkillType.E);
         assertThat(removeAbility.getRemoveContent()).isEqualTo(removeContent1);
@@ -57,10 +56,10 @@ public class RemoveAbilityTest {
                 .skillType(SkillType.E)
                 .build();
 
-        removeAbilityRepository.save(championAbilityHistory3);
+        championAbilityHistoryRepository.save(championAbilityHistory3);
         entityManager.clear();
 
-        RemoveAbility removeAbility = removeAbilityRepository.findAll().get(0);
+        RemoveAbility removeAbility = (RemoveAbility) championAbilityHistoryRepository.findAll().get(0);
         assertThat(removeAbility.getAttribute()).isEqualTo(attribute2);
         assertThat(removeAbility.getSkillType()).isEqualTo(SkillType.E);
         assertThat(removeAbility.getRemoveContent()).isEqualTo(removeContent2);

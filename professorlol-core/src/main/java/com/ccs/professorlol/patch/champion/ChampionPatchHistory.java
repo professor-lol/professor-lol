@@ -21,7 +21,7 @@ public class ChampionPatchHistory extends PatchHistory {
     private String summary;
     private String context;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "championPatchHistory")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "championPatchHistory")
     private List<ChampionAbilityHistory> championAbilityHistories;
 
     @Builder

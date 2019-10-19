@@ -4,12 +4,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
+@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class ChangeAbilityTest {
@@ -27,9 +29,6 @@ public class ChangeAbilityTest {
     ChampionAbilityHistoryRepository championAbilityHistoryRepository;
 
     @Autowired
-    ChangeAbilityRepository changeAbilityRepository;
-
-    @Autowired
     private EntityManager entityManager;
 
     @Test
@@ -44,7 +43,7 @@ public class ChangeAbilityTest {
         championAbilityHistoryRepository.save(championAbilityHistory3);
         entityManager.clear();
 
-        ChangeAbility changeAbility = changeAbilityRepository.findAll().get(0);
+        ChangeAbility changeAbility = (ChangeAbility) championAbilityHistoryRepository.findAll().get(0);
         assertThat(changeAbility.getAttribute()).isEqualTo(attribute1);
         assertThat(changeAbility.getSkillType()).isEqualTo(SkillType.E);
         assertThat(changeAbility.getBeforeContent()).isEqualTo(changeContent11);
@@ -63,10 +62,10 @@ public class ChangeAbilityTest {
                 .skillType(SkillType.E)
                 .build();
 
-        changeAbilityRepository.save(championAbilityHistory3);
+        championAbilityHistoryRepository.save(championAbilityHistory3);
         entityManager.clear();
 
-        ChangeAbility changeAbility = changeAbilityRepository.findAll().get(0);
+        ChangeAbility changeAbility = (ChangeAbility) championAbilityHistoryRepository.findAll().get(0);
         assertThat(changeAbility.getAttribute()).isEqualTo(attribute2);
         assertThat(changeAbility.getSkillType()).isEqualTo(SkillType.E);
         assertThat(changeAbility.getBeforeContent()).isEqualTo(changeContent21);

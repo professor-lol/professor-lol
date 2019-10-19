@@ -10,12 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-        discriminatorType = DiscriminatorType.INTEGER,
-        name = "ability_type",
-        columnDefinition = "TINYINT(1)"
-)
+@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class ChampionAbilityHistory {

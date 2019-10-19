@@ -4,12 +4,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
+@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class NewAbilityTest {
@@ -27,9 +29,6 @@ public class NewAbilityTest {
     ChampionAbilityHistoryRepository championAbilityHistoryRepository;
 
     @Autowired
-    NewAbilityRepository newAbilityRepository;
-
-    @Autowired
     private EntityManager entityManager;
 
     @Test
@@ -43,7 +42,7 @@ public class NewAbilityTest {
         championAbilityHistoryRepository.save(championAbilityHistory3);
         entityManager.clear();
 
-        NewAbility newAbility = newAbilityRepository.findAll().get(0);
+        NewAbility newAbility = (NewAbility) championAbilityHistoryRepository.findAll().get(0);
         assertThat(newAbility.getAttribute()).isEqualTo(attribute1);
         assertThat(newAbility.getSkillType()).isEqualTo(SkillType.E);
         assertThat(newAbility.getNewContent()).isEqualTo(newContent1);
@@ -59,10 +58,10 @@ public class NewAbilityTest {
                 .skillType(SkillType.E)
                 .build();
 
-        newAbilityRepository.save(championAbilityHistory3);
+        championAbilityHistoryRepository.save(championAbilityHistory3);
         entityManager.clear();
 
-        NewAbility newAbility = newAbilityRepository.findAll().get(0);
+        NewAbility newAbility = (NewAbility) championAbilityHistoryRepository.findAll().get(0);
         assertThat(newAbility.getAttribute()).isEqualTo(attribute2);
         assertThat(newAbility.getSkillType()).isEqualTo(SkillType.E);
         assertThat(newAbility.getNewContent()).isEqualTo(newContent2);

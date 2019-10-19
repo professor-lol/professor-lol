@@ -19,7 +19,7 @@ public abstract class PatchHistory {
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "lol_info_id")
     private LolInfo lolInfo;
 

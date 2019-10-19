@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.EntityManager;
@@ -14,7 +15,7 @@ import java.util.List;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 
-
+@ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @DataJpaTest    //spring context 안띄고 test!
 public class PatchHistoryTest {
@@ -52,10 +53,6 @@ public class PatchHistoryTest {
         ChampionPatchHistory championPatchHistory = championPatchHistoryRepository.findAll().get(0);
 
         assertThat(championPatchHistory.getChampionAbilityHistories().size()).isEqualTo(3);
-
-//        assertThat(championPatchHistory.getChampionAbilityHistories().get(0)).isSameAs(saveAbilityList.get(0));
-//        assertThat(championPatchHistory.getChampionAbilityHistories().get(1)).isSameAs(saveAbilityList.get(1));
-//        assertThat(championPatchHistory.getChampionAbilityHistories().get(2)).isSameAs(saveAbilityList.get(2));
     }
 
     @Test

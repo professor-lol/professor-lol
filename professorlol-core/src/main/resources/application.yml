@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    pool-name: lol-pool
+    driver-class-name: org.mariadb.jdbc.Driver
+    minimum-idle: 5
+    maximum-pool-size: 50
+    connection-timeout: 3000
+    idle-timeout: 600000
+    max-lifetime: 1800000
+    transaction-isolation: TRANSACTION_READ_COMMITTED
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+        enable_lazy_load_no_trans: true
+        id.new_generator_mappings: false
+        hbm2ddl:
+          auto: validate
+    show-sql: true
+  profiles:
+    active: local
+
+---
+spring.profiles: local
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    jdbc-url: jdbc:h2:mem:lol-professor;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: false
+        hbm2ddl:
+          auto: update
+
+---
+spring.profiles: test
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    jdbc-url: jdbc:h2:mem:lol-professor;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    properties:
+      hibernate:
+        format_sql: false
+        hbm2ddl:
+          auto: create
