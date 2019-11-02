@@ -85,6 +85,17 @@ public class MockResponse {
         }
     }
 
+    public static String getChampionFullsDtoMockBody() {
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(ResourceUtils.getFile("classpath:mock/ChampionFullsMockBody.json")));
+            Gson gson = new Gson();
+            Object json = gson.fromJson(bufferedReader, Object.class);
+            return gson.toJson(json);
+        } catch (Exception e) {
+            throw new RuntimeException("mock error");
+        }
+    }
+
     public static String getItemsDtoMockBody() {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(ResourceUtils.getFile("classpath:mock/ItemsMockBody.json")));

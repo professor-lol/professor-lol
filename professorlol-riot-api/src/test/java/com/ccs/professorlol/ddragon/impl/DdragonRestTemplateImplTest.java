@@ -25,6 +25,8 @@ public class DdragonRestTemplateImplTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplate.class);
 
+    private static final String VERSION = "9.21.1";
+
     @Autowired
     private DdragonRestTemplateConfing.MajorDdragonConfig majorDdragonConfig;
 
@@ -41,13 +43,13 @@ public class DdragonRestTemplateImplTest {
         //when
         RealmsDto realmsDto = this.ddragonRestTemplate.getCurrentRealms();
         //then
-        assertThat(realmsDto.getN().getChampion()).isEqualTo("9.20.1");
+        assertThat(realmsDto.getN().getChampion()).isEqualTo(VERSION);
     }
 
     @Test
     public void 챔피언_리스트_가져오기() {
         //given
-        ChampionDataDto championDataDto = this.ddragonRestTemplate.getChampions("9.19.1");
+        ChampionDataDto championDataDto = this.ddragonRestTemplate.getChampions(VERSION);
         List<ChampionDto> champions = championDataDto.getChampionDtos();
         //when
         //then
@@ -55,9 +57,22 @@ public class DdragonRestTemplateImplTest {
     }
 
     @Test
+    public void 챔피언_스펠_포함_리스트_가져오기() {
+        ChampionFullDataDto championFullDataDto = this.ddragonRestTemplate.getChampionFulls(VERSION);
+        List<ChampionFullDto> championFulls = championFullDataDto.getChampionFullDtos();
+
+        assertThat(championFulls.size()).isEqualTo(145);
+
+        assertThat(championFulls.get(0).getName()).isEqualTo("아트록스");
+        assertThat(championFulls.get(0).getPartype()).isEqualTo("피의 샘");
+        assertThat(championFulls.get(0).getInfo().getDifficulty()).isEqualTo(4);
+        assertThat(championFulls.get(0).getSpells().get(0).getName()).isEqualTo("다르킨의 검");
+    }
+
+    @Test
     public void 아이템_리스트_가져오기() {
         //given
-        ItemDataDto itemDataDto = this.ddragonRestTemplate.getItems("9.19.1");
+        ItemDataDto itemDataDto = this.ddragonRestTemplate.getItems(VERSION);
         List<ItemDto> itemDtos = itemDataDto.getItems();
         //when
         //then

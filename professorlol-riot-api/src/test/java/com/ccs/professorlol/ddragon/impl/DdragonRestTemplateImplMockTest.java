@@ -5,6 +5,7 @@ import com.ccs.professorlol.config.properties.RiotProperties;
 import com.ccs.professorlol.config.resttemplate.RiotRestTemplateBuilder;
 import com.ccs.professorlol.ddragon.DdragonRestTemplate;
 import com.ccs.professorlol.ddragon.dto.ChampionDataDto;
+import com.ccs.professorlol.ddragon.dto.ChampionFullDataDto;
 import com.ccs.professorlol.ddragon.dto.ItemDataDto;
 import com.ccs.professorlol.ddragon.dto.RealmsDto;
 import com.google.gson.Gson;
@@ -28,6 +29,8 @@ public class DdragonRestTemplateImplMockTest {
     private static final String REALMS = "/realms/kr.json";
 
     private static final String CHAMPIONS = "/cdn/{version}/data/ko_KR/champion.json";
+
+    private static final String CHAMPION_FULLS = "/cdn/{version}/data/ko_KR/championFull.json";
 
     private static final String ITEMS = "/cdn/{version}/data/ko_KR/item.json";
 
@@ -71,6 +74,31 @@ public class DdragonRestTemplateImplMockTest {
         assertThat(champions.getVersion()).isEqualTo(version);
         assertThat(champions.getChampionDtos().get(0).getId()).isEqualTo("Aatrox");
         System.out.println(gson.toJson(champions));
+    }
+
+    @Test
+    public void getChampionFulls_스탯_스펠_있는_챔피언_리스트_가져오기() {
+        //given
+        String version = "9.21.1";
+        String uri = getChampionFullsURI(version);
+
+        String mockBody = MockResponse.getChampionFullsDtoMockBody();
+
+        this.mockServer.expect(requestTo(uri))
+                .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
+        //when
+        ChampionFullDataDto championFulls = ddragonRestTemplate.getChampionFulls(version);
+        //then
+        assertThat(championFulls.getChampionFullDtos().size()).isEqualTo(14);
+    }
+
+    private String getChampionFullsURI(String version) {
+        return UriComponentsBuilder.newInstance()
+                .scheme("https")
+                .host("ddragon.leagueoflegends.com")
+                .path(CHAMPION_FULLS)
+                .buildAndExpand(version)
+                .toUriString();
     }
 
     private static String getChampionsURI(String version) {
