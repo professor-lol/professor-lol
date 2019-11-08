@@ -35,7 +35,7 @@ deploy:
     wait-until-deployed: true
     on:
       repo: professor-lol/professor-lol #Github 주소
-      branch: master
+      branch: feature/professor-lol-51
 
   - provider: codedeploy
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
@@ -49,4 +49,4 @@ deploy:
     wait-until-deployed: true
     on:
       repo: professor-lol/professor-lol
-      branch: master
+      branch: feature/professor-lol-51
