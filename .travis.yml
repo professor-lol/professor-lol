@@ -1,0 +1,52 @@
+language: java
+jdk:
+  - openjdk8
+
+branches:
+  only:
+    - feature/professor-lol-51
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.gradle'
+
+script: "./gradlew clean build"
+
+before_deploy:
+  - zip -r professor-lol appspec.yml deploy
+  - mkdir -p app
+  - mv professor-lol.zip app/professor-lol.zip
+
+deploy:
+  - provider: script
+    script: bash docker-deploy.sh
+    skip_cleanup: true
+    on:
+      repo: professor-lol/professor-lol
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_ACCESS_KEY # Travis repo settings에 설정된 값
+    bucket: professor-lol # 6-3-3에서 생성한 S3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: public_read
+    local_dir: app # before_deploy에서 생성한 디렉토리
+    wait-until-deployed: true
+    on:
+      repo: professor-lol/professor-lol #Github 주소
+      branch: master
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
+    secret_access_key: $AWS_SECRET_ACCESS_KEY # Travis repo settings에 설정된 값
+    bucket: professor-lol # S3 버킷
+    key: professor-lol.zip # S3 버킷에 저장된 springboot-webservice.zip 파일을 EC2로 배포
+    bundle_type: zip
+    application: EC2-INPLACE-PROFESSOR-LOL # 웹 콘솔에서 등록한 CodeDeploy 어플리케이션
+    deployment_group: Dpg-EC2-Inplace-ProfessorLol # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
+    region: ap-northeast-2
+    wait-until-deployed: true
+    on:
+      repo: professor-lol/professor-lol
+      branch: master
