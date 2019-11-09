@@ -1,6 +1,7 @@
 package com.ccs.professorlol.dto.champion.ability.attribute;
 
 import com.ccs.professorlol.type.AttributeType;
+import com.ccs.professorlol.type.SkillType;
 import lombok.Builder;
 import lombok.Getter;
 import org.jsoup.nodes.Element;
@@ -23,8 +24,8 @@ public class Attribute {
 
     @Builder
     private Attribute(AttributeType attributeType, String attribute, String beforeContent, String afterContent) {
-        this.attributeType = attributeType;
         this.attribute = attribute;
+        this.attributeType = attributeType;
         this.beforeContent = beforeContent;
         this.afterContent = afterContent;
     }

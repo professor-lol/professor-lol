@@ -2,7 +2,7 @@ package com.ccs.professorlol.patch.champion;
 
 import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
 import com.ccs.professorlol.patch.skill.ChampionAttributeHistory;
-import com.ccs.professorlol.patch.skill.SkillType;
+import com.ccs.professorlol.type.SkillType;
 import com.ccs.professorlol.type.AttributeType;
 import org.junit.After;
 import org.junit.Test;

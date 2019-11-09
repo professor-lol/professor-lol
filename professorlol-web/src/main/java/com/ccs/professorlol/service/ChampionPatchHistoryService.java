@@ -20,7 +20,6 @@ public class ChampionPatchHistoryService {
 
     private final PatchNoteCrawler patchNoteCrawler;
 
-    //챔피언 리파지토리
     private final ChampionRepository championRepository;
 
     private final ChampionPatchHistoryConverter patchHistoryConverter;

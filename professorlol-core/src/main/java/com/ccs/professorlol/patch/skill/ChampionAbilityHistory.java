@@ -2,6 +2,7 @@ package com.ccs.professorlol.patch.skill;
 
 
 import com.ccs.professorlol.patch.champion.ChampionPatchHistory;
+import com.ccs.professorlol.type.SkillType;
 import lombok.*;
 
 import javax.persistence.*;
