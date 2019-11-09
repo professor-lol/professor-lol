@@ -1,8 +1,8 @@
 .DS_Store
 
 professorlol-riot-api/src/main/resources/application-riot.yml
-professorlol-riot-api/src/main/resources/static
-professorlol-riot-api/src/main/resources/favicon.ico
+professorlol-web/src/main/resources/static
+professorlol-web/src/main/resources/favicon.ico
 
 HELP.md
 .gradle
