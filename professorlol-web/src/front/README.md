@@ -1,236 +1,195 @@
-# [Vuetify Material Dashboard](https://www.creative-tim.com/vuetify-material-dashboard) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)](https://twitter.com/home?status=Vuetify%20Material%20Dashboard%20-%20Admin%20Template%20for%20Vue.js%20https%3A//www.creative-tim.com/product/vuetify-material-dashboard%20%23vuejs%20%23vuex%20%23dashboard%20%23vuetify%20%23vuetify%20material%20%20%40creativetim)
+# CoreUI Vue - Free Bootstrap Admin Template [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=CoreUI%20-%20Free%20Vue%20Admin%20Template%20&url=http://coreui.io/vue/&hashtags=bootstrap,admin,template,dashboard,panel,free,angular,react,vue)
 
+### Check out our Vue Admin Templates and support CoreUI Development
 
-![version](https://img.shields.io/badge/version-2.0.0-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/vuetify-material-dashboard.svg)](https://github.com/creativetimofficial/vuetify-material-dashboard/issues?q=is%3Aopen+is%3Aissue) [![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/creativetimofficial/vuetify-material-dashboard.svg?maxAge=259200)](https://github.com/creativetimofficial/vuetify-material-dashboard/issues?q=is%3Aissue+is%3Aclosed) [![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)](https://gitter.im/creative-tim/material-dashboard) [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
+[![Bootstrap Admin Templates Bundle](https://genesisui.com/img/bundle2.png)](https://genesisui.com/bundle.html?support=1)
 
-![Product Gif](./public/img/vuetify-material-dashboard.gif)
+[Check out Bootstrap Admin Templates Bundle](https://genesisui.com/bundle.html?support=1)
 
-Vuetify Material Dashboard is a beautiful resource built over [Vuetify](https://vuetifyjs.com/en/) and [Vuex](https://vuex.vuejs.org/installation.html). It will help you get started developing dashboards in no time. Vuetify Material Dashboard is the official Vuejs version of the Original [Material Dashboard](https://www.creative-tim.com/product/material-dashboard). Using the Dashboard is pretty simple but requires basic knowledge of Javascript, [Vue](https://vuejs.org/v2/guide/), [Vuex](https://vuex.vuejs.org/installation.html) and [Vue-Router](https://router.vuejs.org/en/).
+This is Vue.js version of our Bootstrap 4 admin template [CoreUI](https://github.com/coreui/coreui-free-bootstrap-admin-template).
 
-## Getting Started
-- Install Nodejs from [Nodejs Official Page](https://nodejs.org/en/)
-- Open your terminal
-- Navigate to the project
-- Run `npm install` or `yarn install` if you use [Yarn](https://yarnpkg.com/en/)
-- Run `npm run dev` or `yarn serve` to start a local development server
-- A new tab will be opened in your browser
+Please help us on [Product Hunt](https://www.producthunt.com/posts/coreui-open-source-bootstrap-4-admin-template-with-angular-2-react-js-vue-js-support) & [Designer News](https://www.designernews.co/stories/81127). Thanks in advance!
 
-You can also run additional npm tasks such as
-- `npm run build` to build your app for production
-- `npm run lint` to run linting.
+Why I decided to create CoreUI? Please read this article: [Jack of all trades, master of none. Why Boostrap Admin Templates suck.](https://medium.com/@lukaszholeczek/jack-of-all-trades-master-of-none-5ea53ef8a1f#.7eqx1bcd8)
 
-## Vuetify
-Vuetify is developed exactly according to Material Design spec. Every component is hand crafted to bring you the best possible UI tools to your next great app. The development doesn't stop at the core components outlined in Google's spec. Through the support of community members and sponsors, additional components will be designed and made available for everyone to enjoy.
+CoreUI is an Open Source Vue & Bootstrap Admin Template. But CoreUI is not just another Admin Template. It goes way beyond hitherto admin templates thanks to transparent code and file structure. And if that's not enough, let’s just add that CoreUI consists bunch of unique features and over 1000 high quality icons.
 
+CoreUI is based on Bootstrap 4 and offers 6 versions: [HTML5 AJAX](https://github.com/coreui/coreui-free-bootstrap-admin-template-ajax), [HTML5 Static](https://github.com/coreui/coreui-free-bootstrap-admin-template), [AngularJS](https://github.com/mrholek/CoreUI-AngularJS), [Angular 2+](https://github.com/coreui/coreui-free-angular-admin-template), [React.js](https://github.com/coreui/coreui-free-react-admin-template) & [Vue.js](https://github.com/coreui/coreui-free-vue-admin-template).
 
-## Vuex
+CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
 
-Vuex is a state management pattern + library for Vue.js applications. It serves as a centralized store for all the components in an application, with rules ensuring that the state can only be mutated in a predictable fashion. It also integrates with Vue's official [devtools](https://github.com/vuejs/vue-devtools) extension to provide advanced features such as zero-config time-travel debugging and state snapshot export / import.
+[![CoreUI Vue Free Bootstrap Admin Template](http://coreui.io/assets/img/coreui.png "CoreUI Vue Free Bootstrap Admin Template")](http://coreui.io)
 
-## Vue-cli
+**NOTE:** Please remember to **STAR** this project and **FOLLOW** [my Github](https://github.com/coreui) to keep you update with this template.
 
-We used the latest 3.x [Vue CLI](https://github.com/vuejs/vue-cli) which aims to reduce project configuration
-to as little as possible. Almost everything is inside `package.json` + some other related files such as
-`.babel.config.js`, `.eslintrc.js` and `.postcssrc.js`.
+## Demo
 
-Let us know what you think and what we can improve below. And good luck with development!
-
-
-#### Special thanks
-During the development of this dashboard, we have used many existing resources from awesome developers. We want to thank them for providing their tools open source:
-- [Vuetify](https://vuetifyjs.com/en/) for the wonderful framework
-
-
-Let us know your thoughts below. And good luck with development!
+A fully functional demo is available at [CoreUI](http://coreui.io/)
 
 ## Table of Contents
 
 * [Versions](#versions)
-* [Demo](#demo)
-* [Quick Start](#quick-start)
+* [CoreUI Pro](#coreui-pro)
+* [Admin Templates built on top of CoreUI Pro](#admin-templates-built-on-top-of-coreui-pro)
+* [Installation](#installation)
+* [Usage](#usage)
+* [What's included](#whats-included)
 * [Documentation](#documentation)
-* [File Structure](#file-structure)
-* [Browser Support](#browser-support)
-* [Resources](#resources)
-* [Reporting Issues](#reporting-issues)
-* [Technical Support or Questions](#technical-support-or-questions)
-* [Licensing](#licensing)
-* [Useful Links](#useful-links)
-
+* [Contributing](#contributing)
+* [Versioning](#versioning)
+* [Creators](#creators)
+* [Community](#community)
+* [Community Projects](#community-projects)
+* [License](#license)
+* [Support CoreUI Development](#support-coreui-development)
 
 ## Versions
 
+CoreUI is built on top of Bootstrap 4 and supports popular frameworks.
 
+* [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
+* [CoreUI Free Bootstrap Admin Template (Ajax)](https://github.com/coreui/coreui-free-bootstrap-admin-template-ajax)
+* [CoreUI Free Angular 2+ Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
+* 🚧 [CoreUI Free .NET Core 2 Admin Template](https://github.com/mrholek/CoreUI-NET) (Available Soon)
+* [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
+* 🚧 [CoreUI Free Vue.js Admin Template](https://github.com/coreui/coreui-free-vue-admin-template)
 
-[<img src="https://pbs.twimg.com/profile_images/900908683927982080/GWykKJ7r_400x400.jpg" width="60" height="60" />](https://www.creative-tim.com/product/vuetify-material-dashboard)
-[<img src="https://s3.amazonaws.com/creativetim_bucket/github/html.png" width="60" height="60" />](https://www.creative-tim.com/product/material-dashboard-pro)
-[<img src="https://s3.amazonaws.com/creativetim_bucket/github/react.svg" width="60" height="60" />](https://www.creative-tim.com/product/material-dashboard-pro-react)
-[<img src="https://s3.amazonaws.com/creativetim_bucket/github/vuejs.png" width="60" height="60" />](https://www.creative-tim.com/product/vue-material-dashboard-pro)
-[<img src="https://s3.amazonaws.com/creativetim_bucket/github/angular.png" width="60" height="60" />](https://www.creative-tim.com/product/material-dashboard-pro-angular2)
+## CoreUI Pro
 
+* 💪  [CoreUI Pro Bootstrap Admin Template](https://coreui.io/pro/)
+* 💪  [CoreUI Pro Bootstrap Admin Template (Ajax)](https://coreui.io/pro/)
+* 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/pro/angular)
+* 💪  [CoreUI Pro React Admin Template](https://coreui.io/pro/react)
+* 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/pro/vue)
 
-Vuetify | Vue | React | Angular | HTML |
+## Admin Templates built on top of CoreUI Pro
+
+| CoreUI Pro | Prime | Root | Alba | Leaf |
 | --- | --- | --- | --- | --- |
-| [![Vuetify Material Dashboard](https://s3.amazonaws.com/creativetim_bucket/products/100/original/opt_md_vuetify_thumbnail.jpg)](https://www.creative-tim.com/product/vuetify-material-dashboard-pro) | [![Vue Material Dashboard](https://s3.amazonaws.com/creativetim_bucket/products/81/original/opt_md_vue_thumbnail.jpg)](https://www.creative-tim.com/product/vue-material-dashboard) | [![Material Dashboard React](https://s3.amazonaws.com/creativetim_bucket/products/71/original/opt_mdr_thumbnail.jpg)](https://www.creative-tim.com/product/material-dashboard-react)  | [![Material Dashboard Angular](https://s3.amazonaws.com/creativetim_bucket/products/53/original/opt_md_angular_thumbnail.jpg)](https://www.creative-tim.com/product/material-dashboard-angular2) | [![Material Dashboard HTML](https://s3.amazonaws.com/creativetim_bucket/products/50/original/opt_md_thumbnail.jpg)](https://www.creative-tim.com/product/material-dashboard)
+| [![CoreUI Pro Admin Template](https://coreui.io/assets/img/example-coureui.jpg)](https://coreui.io/pro/) | [![Prime Admin Template](https://genesisui.com/assets/img/templates/prime1280.jpg)](https://genesisui.com/admin-templates/bootstrap/prime/?support=1) | [![Root Admin Template](https://genesisui.com/assets/img/templates/root1280.jpg)](https://genesisui.com/admin-templates/bootstrap/root/?support=1) | [![Alba Admin Template](https://genesisui.com/assets/img/templates/alba1280.jpg)](https://genesisui.com/admin-templates/bootstrap/alba/?support=1) | [![Leaf Admin Template](https://genesisui.com/assets/img/templates/leaf1280.jpg)](https://genesisui.com/admin-templates/bootstrap/leaf/?support=1)
 
-## Demo
+## Installation
 
-- [Start page](https://demos.creative-tim.com/vuetify-material-dashboard)
-- [Notifications page](https://demos.creative-tim.com/vuetify-material-dashboard/#/notifications)
+### Clone repo
 
-[View More](https://demos.creative-tim.com/vue-material-dashboard-pro).
+``` bash
+# clone the repo
+$ git clone https://github.com/coreui/coreui-free-vue-admin-template.git CoreUI-Vue
 
+# go into app's directory
+$ cd CoreUI-Vue
 
-## Quick start
+# install app's dependencies
+$ npm install
+```
 
-Quick start options:
+## Usage
 
-- Download from [Creative Tim](https://www.creative-tim.com/product/vuetify-material-dashboard)
+``` bash
+# serve with hot reload at localhost:8080
+npm run serve
 
+# build for production with minification
+npm run build
 
-## Documentation
-The documentation for the Vuetify Material Dashboard is hosted at our [website](https://demos.creative-tim.com/vuetify-material-dashboard/documentation).
+# run linter
+npm run lint
 
+# run unit tests
+npm run test:unit
 
-## File Structure
+# run e2e tests
+npm run test:e2e
+
+```
+
+For a detailed explanation on how things work, check out the [Vue CLI Guide](https://cli.vuejs.org/guide/).
+
+## What's included
 
 Within the download you'll find the following directories and files:
 
 ```
-vuetify-material-dashboard
-├── ISSUE_TEMPLATE.md
-├── LICENSE.md
+CoreUI-Vue/
+├── public/              # pure static assets (directly copied)
+│   └── index.html           # index.html template
+├── src/                 # project root
+│   ├── assets/                 # module assets (processed by webpack)
+│   │   └── scss/               # user styles
+│   ├── components/             # ui components
+│   ├── containers/             # ui containers
+│   ├── router/                 # routing 
+│   ├── shared/                 # utils
+│   ├── views/                  # ui views
+│   ├── _nav.js                 # sidebar nav config
+│   ├── App.vue                 # main app component
+│   └── main.js                 # app entry file
+├── test/
+│   └── unit/            # unit tests
+│   └── e2e/             # e2e tests
+├── .eslintrc.js         # eslint config
+├── .gitignore           # defaults for gitignore
+├── .postcssrc.js        # postcss config
+├── CHANGELOG.md
 ├── README.md
-├── babel.config.js
-├── cypress.json
-├── jest.config.js
-├── package.json
-├── postcss.config.js
-├── public
-│   ├── favicon.ico
-│   ├── img
-│   └── index.html
-├── src
-│   ├── App.vue
-│   ├── assets
-│   │   └── vuetify.svg
-│   ├── components
-│   │   ├── base
-│   │   │   └── Card.vue
-│   │   ├── core
-│   │   │   ├── AppBar.vue
-│   │   │   ├── Drawer.vue
-│   │   │   ├── Filter.vue
-│   │   │   ├── Footer.vue
-│   │   │   └── View.vue
-│   │   ├── helper
-│   │   │   └── Offset.vue
-│   │   └── material
-│   │       ├── Card.vue
-│   │       ├── ChartCard.vue
-│   │       ├── Notification.vue
-│   │       └── StatsCard.vue
-│   ├── main.js
-│   ├── plugins
-│   │   ├── axios.js
-│   │   ├── base.js
-│   │   ├── chartist.js
-│   │   ├── components.js
-│   │   ├── index.js
-│   │   └── vuetify.js
-│   ├── router
-│   │   ├── index.js
-│   │   └── paths.js
-│   ├── store
-│   │   ├── actions.js
-│   │   ├── getters.js
-│   │   ├── index.js
-│   │   ├── modules
-│   │   │   ├── app
-│   │   │   │   ├── mutations.js
-│   │   │   │   └── state.js
-│   │   │   └── index.js
-│   │   ├── mutations.js
-│   │   └── state.js
-│   ├── utils
-│   │   └── vuex.js
-│   └── views
-│       ├── Dashboard.vue
-│       ├── Icons.vue
-│       ├── Maps.vue
-│       ├── Notifications.vue
-│       ├── TableList.vue
-│       ├── Typography.vue
-│       ├── Upgrade.vue
-│       └── UserProfile.vue
-├── tests
-│   ├── e2e
-│   │   ├── plugins
-│   │   │   └── index.js
-│   │   ├── specs
-│   │   │   └── test.js
-│   │   └── support
-│   │       ├── commands.js
-│   │       └── index.js
-│   └── unit
-│       └── example.spec.js
-├── vue.config.js
-└── yarn.lock
+├── babel.config.js      # babel config
+├── jest.config.js       # jest config
+├── vue.config.js        # vue-cli config
+├── LICENSE
+└── package.json         # build scripts and dependencies
 ```
 
-## Browser Support
+## Bugs and feature requests
 
-At present, we officially aim to support the last two versions of the following browsers:
+Have a bug or a feature request? [Please open a new issue](https://github.com/coreui/coreui-free-vue-admin-template/issues).
 
-<img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/chrome.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/firefox.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/edge.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/safari.png" width="64" height="64"> <img src="https://s3.amazonaws.com/creativetim_bucket/github/browser/opera.png" width="64" height="64">
+## Documentation
 
+CoreUI's documentation, is hosted on our website [CoreUI](http://coreui.io/)
 
-## Resources
-- [Live Preview](https://demos.creative-tim.com/vuetify-material-dashboard)
-- Download Page: https://www.creative-tim.com/product/vuetify-material-dashboard
-- Documentation is [here](https://demos.creative-tim.com/vuetify-material-dashboard/documentation)
-- License Agreement: https://www.creative-tim.com/license
-- Support: https://www.creative-tim.com/contact-us
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/vuetify-material-dashboard/issues)
-- Vue Material Dashboard - [demo](https://www.creative-tim.com/product/vue-material-dashboard?ref=github-md-pro)
-- For Front End Development - [Material Kit Pro ](https://www.creative-tim.com/product/material-kit-pro?ref=github-md-pro)
+## Contributing
 
-## Reporting Issues
-We use GitHub Issues as the official bug tracker for the Vuetify Material Dashboard. Here are some advices for our users that want to report an issue:
+Please read through our [contributing guidelines](https://github.com/coreui/coreui-free-bootstrap-admin-template/blob/master/CONTRIBUTING.md). Included are directions for opening issues, coding standards, and notes on development.
 
-1. Make sure that you are using the latest version of the Vuetify Material Dashboard. Check the CHANGELOG from your dashboard on our [website](https://www.creative-tim.com/).
-2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
-3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
+Editor preferences are available in the [editor config](https://github.com/coreui/coreui-free-vue-admin-template/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
 
-## Technical Support or Questions
+## Versioning
 
-If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us) instead of opening an issue.
+For transparency into our release cycle and in striving to maintain backward compatibility,CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 
-## Licensing
+See [the Releases section of our project](https://github.com/coreui/coreui-free-vue-admin-template/releases) for changelogs for each release version.
 
-- Copyright 2018 Creative Tim (https://www.creative-tim.com)
-- Creative Tim [license](https://www.creative-tim.com/license)
+## Creators
 
-## Useful Links
+**Łukasz Holeczek**
 
-- [More products](https://www.creative-tim.com/bootstrap-themes) from Creative Tim
+* <https://twitter.com/lukaszholeczek>
+* <https://github.com/mrholek>
 
-- [Vue products](https://www.creative-tim.com/bootstrap-themes/vuejs-themes) from Creative Tim
+**Andrzej Kopański**
 
-- [Tutorials](https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w)
+* <https://github.com/xidedix>
 
-- [Freebies](https://www.creative-tim.com/bootstrap-themes/free) from Creative Tim
+## Community
 
-- [Affiliate Program](https://www.creative-tim.com/affiliates/new) (earn money)
+Get updates on CoreUI's development and chat with the project maintainers and community members.
 
-##### Social Media
+- Follow [@core_ui on Twitter](https://twitter.com/core_ui).
+- Read and subscribe to [CoreUI Blog](https://coreui.ui/blog/).
 
-Twitter: <https://twitter.com/CreativeTim>
+### Community Projects
 
-Facebook: <https://www.facebook.com/CreativeTim>
+Some of projects created by community but not maintained by CoreUI team.
 
-Dribbble: <https://dribbble.com/creativetim>
+* [NuxtJS + Vue CoreUI](https://github.com/muhibbudins/nuxt-coreui)
+* [Colmena](https://github.com/colmena/colmena)
 
-Google+: <https://plus.google.com/+CreativetimPage>
+## Copyright and license
 
-Instagram: <https://instagram.com/creativetimofficial>
+copyright 2017 creativeLabs Łukasz Holeczek. Code released under [the MIT license](https://github.com/coreui/coreui-free-vue-admin-template/blob/master/LICENSE).
+There is only one limitation you cannot re-distribute the `CoreUI` as stock nor if you modify the `CoreUI`. In the past we faced some problems with persons who tried to sell `CoreUI` based templates.
+
+## Support CoreUI Development
+CoreUI is an MIT licensed open source project and completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by donating on [PayPal](https://www.paypal.me/holeczek), buying [CoreUI Pro Version](https://coreui.io/pro) or buying one of our [premium admin templates](https://genesisui.com/?support=1).
+
+As of now I am exploring the possibility of working on CoreUI fulltime - if you are a business that is building core products using CoreUI, I am also open to conversations regarding custom sponsorship / consulting arrangements. Get in touch on [Twitter](https://twitter.com/lukaszholeczek).
