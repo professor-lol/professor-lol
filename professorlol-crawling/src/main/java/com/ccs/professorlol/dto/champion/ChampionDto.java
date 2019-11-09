@@ -22,7 +22,7 @@ import static com.ccs.professorlol.util.ElementContextUtil.getUrlFromCssSelector
 @Builder
 @AllArgsConstructor
 @Getter
-public class Champion { // .header-primary : 제목이 나온다 (여기 id 값에 champions 가 포함되면 이 도메인 사용)
+public class ChampionDto { // .header-primary : 제목이 나온다 (여기 id 값에 champions 가 포함되면 이 도메인 사용)
     private String name;                // 챔피온 이름 .change-title #name
     private String image;               // 챔피온 이미지 .reference-link img src
     private String summary;             // 챔피온 변경사항 요약  .summary
@@ -37,8 +37,8 @@ public class Champion { // .header-primary : 제목이 나온다 (여기 id 값�
                 "\nabilities : " + abilities.toString();
     }
 
-    public static Champion of(Element element) {
-        return Champion.builder()
+    public static ChampionDto of(Element element) {
+        return ChampionDto.builder()
                 .name(getTextFromCssSelector(element, NAME.getCssQuery()))
                 .summary(getTextFromCssSelector(element, SUMMARY.getCssQuery()))
                 .context(getTextFromCssSelector(element, CONTEXT.getCssQuery()))

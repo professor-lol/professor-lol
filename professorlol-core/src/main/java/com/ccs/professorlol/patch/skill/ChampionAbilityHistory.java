@@ -2,32 +2,38 @@ package com.ccs.professorlol.patch.skill;
 
 
 import com.ccs.professorlol.patch.champion.ChampionPatchHistory;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public abstract class ChampionAbilityHistory {
+public class ChampionAbilityHistory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String attribute;
+    private String title;
+    private String image;
     private SkillType skillType;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "championAbilityHistory")
+    private List<ChampionAttributeHistory> championAttributeHistories;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "patch_history_id")
     @Setter
     private ChampionPatchHistory championPatchHistory;
 
-    protected ChampionAbilityHistory(String attribute, SkillType skillType) {
-        this.attribute = attribute;
+    @Builder
+    private ChampionAbilityHistory(String title, String image, SkillType skillType, List<ChampionAttributeHistory> championAttributeHistories, ChampionPatchHistory championPatchHistory) {
+        this.title = title;
+        this.image = image;
         this.skillType = skillType;
+        this.championAttributeHistories = championAttributeHistories;
+        this.championPatchHistory = championPatchHistory;
+        this.championAttributeHistories.forEach(championAttributeHistory -> championAttributeHistory.setChampionAbilityHistory(this));
     }
 }

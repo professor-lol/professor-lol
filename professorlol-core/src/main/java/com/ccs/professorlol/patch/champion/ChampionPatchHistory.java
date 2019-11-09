@@ -2,6 +2,7 @@ package com.ccs.professorlol.patch.champion;
 
 
 import com.ccs.professorlol.lolInfo.LolInfo;
+import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -28,8 +29,8 @@ public class ChampionPatchHistory extends PatchHistory {
     private List<ChampionAbilityHistory> championAbilityHistories;
 
     @Builder
-    private ChampionPatchHistory(LolInfo lolInfo, String patchVersion, String championName, String summary, String context, List<ChampionAbilityHistory> championAbilityHistories) {
-        super(lolInfo, patchVersion);
+    private ChampionPatchHistory(Champion champion, String patchVersion, String championName, String summary, String context, List<ChampionAbilityHistory> championAbilityHistories) {
+        super(champion, patchVersion);
         this.championName = championName;
         this.summary = summary;
         this.context = context;

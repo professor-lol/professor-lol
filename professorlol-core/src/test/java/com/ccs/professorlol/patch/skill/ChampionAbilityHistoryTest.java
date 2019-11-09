@@ -1,5 +1,6 @@
 package com.ccs.professorlol.patch.skill;
 
+import com.ccs.professorlol.type.AttributeType;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
-import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
@@ -23,14 +23,17 @@ import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
 public class ChampionAbilityHistoryTest {
 
     @Autowired
-    ChampionAbilityHistoryRepository<ChampionAbilityHistory> championAbilityHistoryRepository;
+    ChampionAbilityHistoryRepository championAbilityHistoryRepository;
 
     @After
     public void tearDown() throws Exception {
         championAbilityHistoryRepository.deleteAll();
     }
 
-    private List<ChampionAbilityHistory> saveInitAbility() {
+    private ChampionAbilityHistory makeAbilityList() {
+
+        String title = "큐스킬";
+        String image = "src";
 
         String attribute1 = "보호막";
         String removeContent1 = "이제 룬이 2개 방출되어도 라이즈에게 보호막을 씌우지 않습니다.";
@@ -42,51 +45,50 @@ public class ChampionAbilityHistoryTest {
         String attribute3 = "멀리 멀리 퍼져라";
         String newContent1 = "이제 첫 번째 대상 주변의 적에게 항상 전이 표식을 남깁니다.";
 
-        List<ChampionAbilityHistory> list = new ArrayList<>();
+        List<ChampionAttributeHistory> championAttributeHistories = new ArrayList<>();
 
-        ChampionAbilityHistory championAbilityHistory1 = RemoveAbility.builder()
+        ChampionAttributeHistory championAttributeHistory1 = ChampionAttributeHistory.builder()
                 .attribute(attribute1)
-                .removeContent(removeContent1)
-                .skillType(SkillType.Q)
+                .afterContent(removeContent1)
+                .beforeContent(null)
+                .attributeType(AttributeType.REMOVE)
                 .build();
 
-        ChampionAbilityHistory championAbilityHistory2 = ChangeAbility.builder()
+        ChampionAttributeHistory championAttributeHistory2 = ChampionAttributeHistory.builder()
                 .attribute(attribute2)
-                .beforeContent(changeContent1)
-                .afterContent(changeContent2)
+                .afterContent(changeContent1)
+                .beforeContent(changeContent2)
+                .attributeType(AttributeType.CHANGE)
+                .build();
+
+        ChampionAttributeHistory championAttributeHistory3 = ChampionAttributeHistory.builder()
+                .attribute(attribute3)
+                .afterContent(newContent1)
+                .beforeContent(null)
+                .attributeType(AttributeType.NEW)
+                .build();
+
+        championAttributeHistories.add(championAttributeHistory1);
+        championAttributeHistories.add(championAttributeHistory2);
+        championAttributeHistories.add(championAttributeHistory3);
+
+        return ChampionAbilityHistory.builder()
+                .title(title)
+                .image(image)
+                .championAttributeHistories(championAttributeHistories)
                 .skillType(SkillType.Q)
                 .build();
-
-        ChampionAbilityHistory championAbilityHistory3 = NewAbility.builder()
-                .attribute(attribute3)
-                .newContent(newContent1)
-                .skillType(SkillType.E)
-                .build();
-
-        list.add(championAbilityHistory1);
-        list.add(championAbilityHistory2);
-        list.add(championAbilityHistory3);
-
-        championAbilityHistoryRepository.saveAll(list);
-
-        return list;
     }
 
-    @Test
-    public void championAbilityHistory로_검색시_casting_되는지_확인() {
-        List<ChampionAbilityHistory> championAbilityHistories = saveInitAbility();
-
-        RemoveAbility removeAbility = (RemoveAbility) championAbilityHistoryRepository.findAll().get(0);
-
-        assertThat(removeAbility.getAttribute()).isSameAs(championAbilityHistories.get(0).getAttribute());
-    }
 
     @Test
-    public void championAbilityHistory로_검색시_잘못된타입인데_casting_되는지_확인() {
-        saveInitAbility();
+    public void 어빌리티_생성() {
+        ChampionAbilityHistory championAbilityHistories = makeAbilityList();
 
-        assertThatThrownBy(()-> {
-            ChangeAbility changeAbility = (ChangeAbility) championAbilityHistoryRepository.findAll().get(0);
-        }).isInstanceOf(ClassCastException.class);
+        championAbilityHistoryRepository.save(championAbilityHistories);
+        ChampionAbilityHistory ability = championAbilityHistoryRepository.findAll().get(0);
+
+        assertThat(ability.getTitle()).isEqualTo("큐스킬");
+        assertThat(ability.getChampionAttributeHistories().size()).isEqualTo(3);
     }
 }

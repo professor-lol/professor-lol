@@ -3,10 +3,10 @@
 <body>
 <div class="patch-change-block white-stone accent-before">
     <div>
-        <a class="reference-link" href="http://gameinfo.leagueoflegends.co.kr/ko/game-info/champions/ryze/"><img
+        <a class="reference-link" href="http://gameinfo.leagueoflegends.co.kr/ko/game-info/championDtos/ryze/"><img
                 src="./PatchNote_9_12_files/image(2)"></a>
         <h3 class="change-title" id="patch-ryze"><a
-                href="http://gameinfo.leagueoflegends.co.kr/ko/game-info/champions/ryze/">라이즈</a></h3>
+                href="http://gameinfo.leagueoflegends.co.kr/ko/game-info/championDtos/ryze/">라이즈</a></h3>
         <p class="summary">Q - 과부하 최고 스킬 레벨이 감소하고 보호막이 삭제되며 추가 피해량이 R - 공간 왜곡에 따라 증가합니다. 이제 W - 룬 감옥이 둔화 효과를 적용하고, E -
             주문 전이로 전이 표식을 남긴 적에게는 둔화 대신 속박 효과가 적용됩니다.</p>
         <blockquote class="blockquote context">

@@ -48,6 +48,7 @@ project(':professorlol-web') {   //application 모듈
         compile project(':professorlol-riot-api')   // 독립 모듈
         compile project(':professorlol-core')       // 공통 모듈
         compile project(':professorlol-crawling')
+        compile project(':professorlol-common')
     }
 }
 

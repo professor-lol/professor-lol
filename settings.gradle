@@ -9,3 +9,5 @@ include 'professorlol-web'
 include 'professorlol-riot-api'
 include 'professorlol-core'
 include 'professorlol-crawling'
+include 'professorlol-common'
+

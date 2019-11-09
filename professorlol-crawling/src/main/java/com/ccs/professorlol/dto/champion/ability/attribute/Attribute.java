@@ -1,5 +1,6 @@
 package com.ccs.professorlol.dto.champion.ability.attribute;
 
+import com.ccs.professorlol.type.AttributeType;
 import lombok.Builder;
 import lombok.Getter;
 import org.jsoup.nodes.Element;
