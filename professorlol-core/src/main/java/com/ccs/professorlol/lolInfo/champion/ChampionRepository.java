@@ -1,6 +1,5 @@
 package com.ccs.professorlol.lolInfo.champion;
 
-import com.ccs.professorlol.lolInfo.domain.LolInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

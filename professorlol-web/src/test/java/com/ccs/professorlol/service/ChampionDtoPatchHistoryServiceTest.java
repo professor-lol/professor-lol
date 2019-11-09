@@ -5,8 +5,8 @@ import com.ccs.professorlol.PatchResponseDto;
 import com.ccs.professorlol.dto.champion.ChampionDto;
 import com.ccs.professorlol.dto.champion.ability.Ability;
 import com.ccs.professorlol.dto.champion.ability.attribute.Attribute;
-import com.ccs.professorlol.lolInfo.domain.LolInfo;
-import com.ccs.professorlol.lolInfo.domain.LolInfoRepository;
+import com.ccs.professorlol.lolInfo.champion.Champion;
+import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.patch.champion.ChampionPatchHistory;
 import com.ccs.professorlol.patch.champion.ChampionPatchHistoryRepository;
 import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
@@ -38,13 +38,13 @@ public class ChampionDtoPatchHistoryServiceTest {
     private ChampionPatchHistoryRepository patchHistoryRepository;
 
     @Autowired
-    private LolInfoRepository lolInfoRepository;
+    private ChampionRepository championRepository;
 
 
     @After
     public void tearDown() {
         patchHistoryRepository.deleteAll();
-        lolInfoRepository.deleteAll();
+        championRepository.deleteAll();
     }
 
     @Test
@@ -59,7 +59,7 @@ public class ChampionDtoPatchHistoryServiceTest {
         given(patchNoteCrawler.findChampionPatchById(version))
                 .willReturn(new PatchResponseDto<>("1", Collections.singletonList(champion(championName, abilityTitle, attribute))));
 
-        lolInfoRepository.save(new LolInfo("1", championName));
+        championRepository.save(Champion.builder().name(championName).build());
         championPatchHistoryService.createPatchHistory(version);
 
         //then

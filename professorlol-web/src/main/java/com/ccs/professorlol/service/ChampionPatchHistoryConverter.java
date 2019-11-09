@@ -3,7 +3,6 @@ package com.ccs.professorlol.service;
 import com.ccs.professorlol.PatchResponseDto;
 import com.ccs.professorlol.dto.champion.ChampionDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.domain.LolInfo;
 import com.ccs.professorlol.patch.champion.ChampionPatchHistory;
 import com.ccs.professorlol.patch.champion.PatchHistoryRepository;
 import lombok.RequiredArgsConstructor;
