@@ -1,9 +1,6 @@
-import com.css.professorlol.PatchNoteCrawler;
-import com.css.professorlol.RiotPageJsoupConnection;
-import com.css.professorlol.RiotPagePatchNoteCrawler;
-import com.css.professorlol.RiotPageProperties;
-import com.css.professorlol.dto.champion.Champion;
-import com.css.professorlol.dto.champion.ChampionFactory;
+import com.ccs.professorlol.crawler.*;
+import com.ccs.professorlol.dto.champion.Champion;
+import com.ccs.professorlol.dto.champion.ChampionFactory;
 import org.jsoup.nodes.Document;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -27,7 +24,9 @@ public class PatchNoteCrawlerTest {
         //given
         PatchNoteCrawler patchNoteCrawler = new RiotPagePatchNoteCrawler(createJsoupConnection());
 
-        List<Champion> champions = patchNoteCrawler.findChampionPatchById(PATCH_NOTE_0912_ID);
+        PatchResponseDto<Champion> patchResponseDtos = patchNoteCrawler.findChampionPatchById(PATCH_NOTE_0912_ID);
+        List<Champion> champions = patchResponseDtos.getPatch();
+
         //then
         assertEquals(18, champions.size());
     }

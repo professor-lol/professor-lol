@@ -1,0 +1,56 @@
+package com.ccs.professorlol;
+
+import com.ccs.professorlol.config.properties.RiotProperties;
+import com.ccs.professorlol.config.resttemplate.RiotRestTemplateBuilder;
+import com.ccs.professorlol.league.LeagueRestTemplate;
+import com.ccs.professorlol.league.impl.LeagueRestTemplateImpl;
+import com.ccs.professorlol.league.impl.LeagueRestTemplateStubImpl;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+
+import java.time.Duration;
+
+@Slf4j
+@Configuration
+@ComponentScan("com.ccs.professorlol.config.properties")
+public class LeagueRestTemplateConfig {
+
+    @Profile({"major"})
+    @RequiredArgsConstructor
+    @Configuration
+    public static class MajorLeagueConfig {
+
+        private static final Duration ONE_SEC = Duration.ofMillis(1000);
+        private static final Duration TWO_SEC = Duration.ofMillis(2000);
+
+        private final RiotProperties riotProperties;
+
+        @Bean
+        public LeagueRestTemplate leagueRestTemplate() {
+            log.debug("League RestTemplate Builder created");
+            RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.get(new RestTemplateBuilder(), this.riotProperties);
+            return new LeagueRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
+                    .setReadTimeout(TWO_SEC)
+                    .build());
+        }
+
+    }
+
+    @Profile({"local", "test"})
+    @RequiredArgsConstructor
+    @Configuration
+    public static class LocalLeagueConfig {
+
+        @Bean
+        public LeagueRestTemplate leagueRestTemplate() {
+            log.debug("League RestTemplate Stub Bean created");
+            return new LeagueRestTemplateStubImpl();
+        }
+
+    }
+}

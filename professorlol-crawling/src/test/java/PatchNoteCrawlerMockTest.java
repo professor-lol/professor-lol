@@ -1,7 +1,8 @@
-import com.css.professorlol.PatchNoteCrawler;
-import com.css.professorlol.RiotPageJsoupConnection;
-import com.css.professorlol.RiotPagePatchNoteCrawler;
-import com.css.professorlol.dto.champion.Champion;
+import com.ccs.professorlol.crawler.PatchNoteCrawler;
+import com.ccs.professorlol.crawler.PatchResponseDto;
+import com.ccs.professorlol.crawler.RiotPageJsoupConnection;
+import com.ccs.professorlol.crawler.RiotPagePatchNoteCrawler;
+import com.ccs.professorlol.dto.champion.Champion;
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -42,8 +43,9 @@ public class PatchNoteCrawlerMockTest {
 
         //when
         PatchNoteCrawler patchNoteCrawler = new RiotPagePatchNoteCrawler(createMockJsoupConnection());
-        List<Champion> champions = patchNoteCrawler.findChampionPatchById(id);
-
+        PatchResponseDto<Champion> patchResponseDtos = patchNoteCrawler.findChampionPatchById(id);
+        List<Champion> champions = patchResponseDtos.getPatch();
+        System.out.println(champions.toString());
         //then
         assertEquals("모데카이저", champions.get(0).getName());
         assertEquals("강철의 망령", champions.get(0).getSummary());
