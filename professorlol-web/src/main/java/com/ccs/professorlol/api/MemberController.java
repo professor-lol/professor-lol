@@ -22,8 +22,8 @@ public class MemberController {
 
     @PostMapping()
     public ResponseEntity<Member> sighUp(@RequestBody MemberSaveReqDto memberSaveReqDto) {
-        Member user = memberService.saveUser(memberSaveReqDto);
-        log.info("회원가입: {}", user.getLolId());
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        Member member = memberService.saveUser(memberSaveReqDto);
+        log.info("회원가입: {}", member.getEmail());
+        return new ResponseEntity<>(member, HttpStatus.OK);
     }
 }
