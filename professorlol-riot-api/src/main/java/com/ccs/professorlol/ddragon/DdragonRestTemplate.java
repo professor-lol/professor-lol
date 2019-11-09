@@ -10,7 +10,7 @@ public interface DdragonRestTemplate {
     //ddragon의 버전정보
     RealmsDto getCurrentRealms();
 
-    DdragonChampionSimplesDto getChampions(String version);
+    DdragonChampionSimplesDto getChampionSimples(String version);
 
     DdragonChampionFullsDto getChampionFulls(String version);
 

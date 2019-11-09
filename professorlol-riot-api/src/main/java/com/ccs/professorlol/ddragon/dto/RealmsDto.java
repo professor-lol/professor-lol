@@ -1,7 +1,9 @@
 package com.ccs.professorlol.ddragon.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 @Getter
@@ -27,6 +29,7 @@ public class RealmsDto {
     }
 
     @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class LoLDataVersion {
         private String item; //item 버전
         private String rune; //rune 버전

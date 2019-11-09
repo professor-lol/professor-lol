@@ -26,7 +26,7 @@ public class DdragonRestTemplateImpl implements DdragonRestTemplate {
     }
 
     @Override
-    public DdragonChampionSimplesDto getChampions(String version) {
+    public DdragonChampionSimplesDto getChampionSimples(String version) {
         return restTemplate.getForObject(CHAMPIONS, DdragonChampionSimplesDto.class, version);
     }
 

@@ -68,7 +68,7 @@ public class DdragonRestTemplateImplMockTest {
         this.mockServer.expect(requestTo(uri))
                 .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
         //when
-        DdragonChampionSimplesDto champions = ddragonRestTemplate.getChampions(version);
+        DdragonChampionSimplesDto champions = ddragonRestTemplate.getChampionSimples(version);
 
         //then
         assertThat(champions.getVersion()).isEqualTo(version);
