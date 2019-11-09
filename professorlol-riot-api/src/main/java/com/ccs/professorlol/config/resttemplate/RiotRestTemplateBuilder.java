@@ -10,11 +10,21 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 public class RiotRestTemplateBuilder {
     private static final String RIOT_HOST_URL = "https://kr.api.riotgames.com";
 
+    private static final String RIOT_DDRAGON_URL = "https://ddragon.leagueoflegends.com";
+
     public static RestTemplateBuilder get(RestTemplateBuilder restTemplateBuilder, RiotProperties riotProperties) {
         RiotErrorHandler riotErrorHandler = new RiotErrorHandler();
         RiotTokenInterceptor riotTokenInterceptor = new RiotTokenInterceptor(riotProperties);
         return restTemplateBuilder.rootUri(RIOT_HOST_URL)
                 .additionalInterceptors(riotTokenInterceptor)
+                .errorHandler(riotErrorHandler);
+    }
+
+    //TODO : 함수명 체크 해봐야해...
+    public static RestTemplateBuilder getDdragon(RestTemplateBuilder restTemplateBuilder, RiotProperties riotProperties) {
+        RiotErrorHandler riotErrorHandler = new RiotErrorHandler();
+        RiotTokenInterceptor riotTokenInterceptor = new RiotTokenInterceptor(riotProperties);
+        return restTemplateBuilder.rootUri(RIOT_DDRAGON_URL)
                 .errorHandler(riotErrorHandler);
     }
 
