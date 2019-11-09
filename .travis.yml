@@ -32,6 +32,7 @@ deploy:
     skip_cleanup: true
     on:
       repo: professor-lol/professor-lol
+      branch: feature/professor-lol-51
 
   - provider: s3
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings에 설정된 값
