@@ -6,6 +6,9 @@ branches:
   only:
     - feature/professor-lol-51
 
+notifications:
+  slack: professor-lol:pAWHye0uRCUwO9GWDtqoKd5q
+
 cache:
   directories:
     - '$HOME/.m2/repository'
