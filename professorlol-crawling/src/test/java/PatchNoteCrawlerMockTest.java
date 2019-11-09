@@ -2,7 +2,7 @@ import com.ccs.professorlol.PatchNoteCrawler;
 import com.ccs.professorlol.PatchResponseDto;
 import com.ccs.professorlol.RiotPageJsoupConnection;
 import com.ccs.professorlol.RiotPagePatchNoteCrawler;
-import com.ccs.professorlol.dto.champion.Champion;
+import com.ccs.professorlol.dto.champion.ChampionDto;
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -43,16 +43,16 @@ public class PatchNoteCrawlerMockTest {
 
         //when
         PatchNoteCrawler patchNoteCrawler = new RiotPagePatchNoteCrawler(createMockJsoupConnection());
-        PatchResponseDto<Champion> patchResponseDtos = patchNoteCrawler.findChampionPatchById(id);
-        List<Champion> champions = patchResponseDtos.getPatch();
-        System.out.println(champions.toString());
+        PatchResponseDto<ChampionDto> patchResponseDtos = patchNoteCrawler.findChampionPatchById(id);
+        List<ChampionDto> championDtos = patchResponseDtos.getPatch();
+        System.out.println(championDtos.toString());
 
         //then
-        assertEquals("모데카이저", champions.get(0).getName());
-        assertEquals("강철의 망령", champions.get(0).getSummary());
+        assertEquals("모데카이저", championDtos.get(0).getName());
+        assertEquals("강철의 망령", championDtos.get(0).getSummary());
         assertEquals("죽은 자의 세상에서 귀환한 멈출 수 없는 돌격형 전사인 모데카이저가 9.12 패치에서 산 자의 세상을 정복하기 위한 준비를 마쳤습니다! 업데이트된 모데카이저와 다양한 스킨의 고화질 일러스트를 LoL 디스플레이에서도 감상해 보세요!",
-                champions.get(0).getContext());
-        assertEquals("./PatchNote_9_12_files/image(1)", champions.get(0).getImage());
+                championDtos.get(0).getContext());
+        assertEquals("./PatchNote_9_12_files/image(1)", championDtos.get(0).getImage());
     }
 
     private byte[] readFile() throws IOException {

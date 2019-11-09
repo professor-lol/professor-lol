@@ -1,4 +1,4 @@
-package com.ccs.professorlol.dto.champion.ability.attribute;
+package com.ccs.professorlol.type;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

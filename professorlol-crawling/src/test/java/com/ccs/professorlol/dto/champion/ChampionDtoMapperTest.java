@@ -11,7 +11,7 @@ import static support.DocumentTestUtil.convertFromHtmlFile;
 import static support.DocumentTestUtil.getFileFromPath;
 
 
-public class ChampionMapperTest {
+public class ChampionDtoMapperTest {
     public final static String CHAMPION_MAPPER_FILE_PATH = "ChampionOneElement";
 
     @Test
@@ -23,15 +23,15 @@ public class ChampionMapperTest {
         Element select = document.child(0);
 
         //when
-        Champion champion = Champion.of(select);
+        ChampionDto championDto = ChampionDto.of(select);
 
         //then
-        assertEquals("라이즈", champion.getName());
-        assertEquals("./PatchNote_9_12_files/image(2)", champion.getImage());
+        assertEquals("라이즈", championDto.getName());
+        assertEquals("./PatchNote_9_12_files/image(2)", championDto.getImage());
         assertEquals("Q - 과부하 최고 스킬 레벨이 감소하고 보호막이 삭제되며 " +
                 "추가 피해량이 R - 공간 왜곡에 따라 증가합니다. " +
                 "이제 W - 룬 감옥이 둔화 효과를 적용하고, " +
-                "E - 주문 전이로 전이 표식을 남긴 적에게는 둔화 대신 속박 효과가 적용됩니다.", champion.getSummary());
+                "E - 주문 전이로 전이 표식을 남긴 적에게는 둔화 대신 속박 효과가 적용됩니다.", championDto.getSummary());
 
         assertEquals("라이즈로 최적의 플레이를 펼칠 경우 약점을 찾기가 너무나 힘듭니다. " +
                 "또한 라이즈는 사전 구성된 팀에서 아주 강한 위력을 발휘합니다. " +
@@ -46,9 +46,9 @@ public class ChampionMapperTest {
                 "R - 공간 왜곡 기본 지속 효과로 추가 피해를 입히도록 했으니 전이 표식을 활용할 여지가 더 커질 겁니다. " +
                 "또한 이번 변경에 맞춰 다양한 조정도 적용했습니다. 이번 변경이 일반적으로 업데이트라고 부를 정도의 규모는 " +
                 "아니지만 라이즈는 변경되는 경우가 많지 않으니 업데이트라고 생각하셔도 좋습니다. 라이즈 버전 7을 기대해주세요! " +
-                "(버전 8이었나요?)", champion.getContext());
+                "(버전 8이었나요?)", championDto.getContext());
 
-        assertEquals(5, champion.getAbilities().size());
+        assertEquals(5, championDto.getAbilities().size());
     }
 
     @Test

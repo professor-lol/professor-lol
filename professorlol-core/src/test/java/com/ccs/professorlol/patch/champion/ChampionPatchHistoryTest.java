@@ -1,6 +1,9 @@
 package com.ccs.professorlol.patch.champion;
 
-import com.ccs.professorlol.patch.skill.*;
+import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
+import com.ccs.professorlol.patch.skill.ChampionAttributeHistory;
+import com.ccs.professorlol.patch.skill.SkillType;
+import com.ccs.professorlol.type.AttributeType;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
@@ -33,7 +37,7 @@ public class ChampionPatchHistoryTest {
     private final static String CONTEXT = "라이즈로 최적의 플레이를 펼칠 경우 약점을 찾기가 너무나 힘듭니다. 또한 라이즈는 사전 구성된 팀에서 아주 강한 위력을 발휘합니다.";
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         patchHistoryRepository.deleteAll();
     }
 
@@ -52,8 +56,8 @@ public class ChampionPatchHistoryTest {
         assertThat(championPatchHistory.getSummary()).isEqualTo(SUMMARY);
         assertThat(championPatchHistory.getChampionName()).isEqualTo(CHAMPION_NAME);
         assertThat(championPatchHistory.getContext()).isEqualTo(CONTEXT);
-        assertThat(championPatchHistory.getChampionAbilityHistories().size()).isEqualTo(3);
-        assertThat(championPatchHistory.getChampionAbilityHistories().get(0).getAttribute()).isEqualTo("보호막");
+        assertThat(championPatchHistory.getChampionAbilityHistories().size()).isEqualTo(1);
+        assertThat(championPatchHistory.getChampionAbilityHistories().get(0).getTitle()).isEqualTo("큐스킬");
 
     }
 
@@ -73,15 +77,15 @@ public class ChampionPatchHistoryTest {
         assertThat(championPatchHistory.getSummary()).isEqualTo(SUMMARY);
         assertThat(championPatchHistory.getChampionName()).isEqualTo(CHAMPION_NAME);
         assertThat(championPatchHistory.getContext()).isEqualTo(CONTEXT);
-        assertThat(championPatchHistory.getChampionAbilityHistories().size()).isEqualTo(3);
+        assertThat(championPatchHistory.getChampionAbilityHistories().size()).isEqualTo(1);
     }
 
     private PatchHistory makePatchHistory() {
-        List<ChampionAbilityHistory> championAbilityHistories = makeAbilityList();
+        ChampionAbilityHistory championAbilityHistory = makeAbilityList();
 
         PatchHistory patchHistory = ChampionPatchHistory.builder()
                 .patchVersion("1v")
-                .championAbilityHistories(championAbilityHistories)
+                .championAbilityHistories(Collections.singletonList(championAbilityHistory))
                 .championName(CHAMPION_NAME)
                 .summary(SUMMARY)
                 .context(CONTEXT)
@@ -91,7 +95,7 @@ public class ChampionPatchHistoryTest {
     }
 
     private ChampionPatchHistory makeChampionPatchHistory() {
-        List<ChampionAbilityHistory> championAbilityHistories = makeAbilityList();
+        List<ChampionAbilityHistory> championAbilityHistories = Collections.singletonList(makeAbilityList());
 
         ChampionPatchHistory patchHistory = ChampionPatchHistory.builder()
                 .patchVersion("1v")
@@ -104,7 +108,10 @@ public class ChampionPatchHistoryTest {
         return patchHistory;
     }
 
-    private List<ChampionAbilityHistory> makeAbilityList() {
+    private ChampionAbilityHistory makeAbilityList() {
+
+        String title = "큐스킬";
+        String image = "src";
 
         String attribute1 = "보호막";
         String removeContent1 = "이제 룬이 2개 방출되어도 라이즈에게 보호막을 씌우지 않습니다.";
@@ -116,32 +123,39 @@ public class ChampionPatchHistoryTest {
         String attribute3 = "멀리 멀리 퍼져라";
         String newContent1 = "이제 첫 번째 대상 주변의 적에게 항상 전이 표식을 남깁니다.";
 
-        List<ChampionAbilityHistory> championAbilityHistories = new ArrayList<>();
+        List<ChampionAttributeHistory> championAttributeHistories = new ArrayList<>();
 
-        ChampionAbilityHistory championAbilityHistory1 = RemoveAbility.builder()
+        ChampionAttributeHistory championAttributeHistory1 = ChampionAttributeHistory.builder()
                 .attribute(attribute1)
-                .removeContent(removeContent1)
-                .skillType(SkillType.Q)
+                .afterContent(removeContent1)
+                .beforeContent(null)
+                .attributeType(AttributeType.REMOVE)
                 .build();
 
-        ChampionAbilityHistory championAbilityHistory2 = ChangeAbility.builder()
+        ChampionAttributeHistory championAttributeHistory2 = ChampionAttributeHistory.builder()
                 .attribute(attribute2)
-                .beforeContent(changeContent1)
-                .afterContent(changeContent2)
+                .afterContent(changeContent1)
+                .beforeContent(changeContent2)
+                .attributeType(AttributeType.CHANGE)
+                .build();
+
+        ChampionAttributeHistory championAttributeHistory3 = ChampionAttributeHistory.builder()
+                .attribute(attribute3)
+                .afterContent(newContent1)
+                .beforeContent(null)
+                .attributeType(AttributeType.NEW)
+                .build();
+
+        championAttributeHistories.add(championAttributeHistory1);
+        championAttributeHistories.add(championAttributeHistory2);
+        championAttributeHistories.add(championAttributeHistory3);
+
+        return ChampionAbilityHistory.builder()
+                .title(title)
+                .image(image)
+                .championAttributeHistories(championAttributeHistories)
                 .skillType(SkillType.Q)
                 .build();
-
-        ChampionAbilityHistory championAbilityHistory3 = NewAbility.builder()
-                .attribute(attribute3)
-                .newContent(newContent1)
-                .skillType(SkillType.E)
-                .build();
-
-        championAbilityHistories.add(championAbilityHistory1);
-        championAbilityHistories.add(championAbilityHistory2);
-        championAbilityHistories.add(championAbilityHistory3);
-
-        return championAbilityHistories;
     }
 
 

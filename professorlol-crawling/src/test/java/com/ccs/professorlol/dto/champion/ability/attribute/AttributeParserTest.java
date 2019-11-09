@@ -1,5 +1,6 @@
 package com.ccs.professorlol.dto.champion.ability.attribute;
 
+import com.ccs.professorlol.type.AttributeType;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 import org.junit.Before;

@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 import static support.DocumentTestUtil.convertFromHtmlFile;
 import static support.DocumentTestUtil.getFileFromPath;
 
-public class ChampionParserTest {
+public class ChampionDtoParserTest {
 
     public static final String CHAMPION_FACTORY_PATCH_FILE = "PatchNote_9_12.html";
 

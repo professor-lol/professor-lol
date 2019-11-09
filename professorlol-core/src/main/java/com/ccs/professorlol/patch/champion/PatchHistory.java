@@ -1,6 +1,7 @@
 package com.ccs.professorlol.patch.champion;
 
 import com.ccs.professorlol.lolInfo.LolInfo;
+import com.ccs.professorlol.lolInfo.champion.Champion;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,13 +30,13 @@ public abstract class PatchHistory {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "lol_info_id")
-    private LolInfo lolInfo;
+    @JoinColumn(name = "champion_id")
+    private Champion champion;
 
     private String patchVersion;
 
-    protected PatchHistory(LolInfo lolInfo, String patchVersion) {
-        this.lolInfo = lolInfo;
+    protected PatchHistory(Champion champion, String patchVersion) {
+        this.champion = champion;
         this.patchVersion = patchVersion;
     }
 

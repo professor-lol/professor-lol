@@ -1,8 +1,8 @@
 package com.ccs.professorlol;
 
-import com.ccs.professorlol.dto.champion.Champion;
+import com.ccs.professorlol.dto.champion.ChampionDto;
 
 public interface PatchNoteCrawler {
 
-    PatchResponseDto<Champion> findChampionPatchById(Long id);
+    PatchResponseDto<ChampionDto> findChampionPatchById(Long id);
 }
