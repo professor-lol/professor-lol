@@ -2,10 +2,10 @@
 
 professorlol-riot-api/src/main/resources/application-riot.yml
 
+
 HELP.md
 .gradle
 build/
-!gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
 
@@ -48,3 +48,5 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+professorlol-web/src/main/resources/static/
+professorlol-web/src/main/resources/favicon.ico
