@@ -5,11 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -25,8 +21,11 @@ public class Champion {
     private Integer key;
     private String name;
 
-    @OneToMany(mappedBy = "champion")
+    @OneToMany(mappedBy = "champion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Stat> stats;
+
+    @OneToMany(mappedBy = "champion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<MostChampion> mostChampion;
 
     @Builder
     public Champion(String riotId, Integer key, String name) {

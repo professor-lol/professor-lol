@@ -48,7 +48,7 @@ public class MemberControllerTest {
     @Test
     public void 정상_회원가입() throws Exception {
         MemberSaveReqDto memberSaveReqDto = MemberSaveReqDto.createBuilder()
-                .lolId("a1010100z")
+                .summonerName("a1010100z")
                 .build();
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
