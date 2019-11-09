@@ -2,12 +2,12 @@ package com.ccs.professorlol.ddragon.impl;
 
 import com.ccs.professorlol.MockResponse;
 import com.ccs.professorlol.config.properties.RiotProperties;
-import com.ccs.professorlol.config.resttemplate.RiotRestTemplateBuilder;
+import com.ccs.professorlol.config.resttemplate.DdragonRestTemplateBuilder;
 import com.ccs.professorlol.ddragon.DdragonRestTemplate;
-import com.ccs.professorlol.ddragon.dto.ChampionDataDto;
-import com.ccs.professorlol.ddragon.dto.ChampionFullDataDto;
-import com.ccs.professorlol.ddragon.dto.ItemDataDto;
 import com.ccs.professorlol.ddragon.dto.RealmsDto;
+import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionFullsDto;
+import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionSimplesDto;
+import com.ccs.professorlol.ddragon.dto.item.ItemDataDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
@@ -43,7 +43,7 @@ public class DdragonRestTemplateImplMockTest {
         RiotProperties riotProperties = new RiotProperties();
         riotProperties.setToken(new RiotProperties.Token());
         riotProperties.getToken().setValue("value");
-        RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.getDdragon(new RestTemplateBuilder(), riotProperties);
+        RestTemplateBuilder restTemplateBuilder = DdragonRestTemplateBuilder.getDdragon(new RestTemplateBuilder(), riotProperties);
         RestTemplate restTemplate = restTemplateBuilder.build();
         mockServer = MockRestServiceServer.createServer(restTemplate);
         ddragonRestTemplate = new DdragonRestTemplateImpl(restTemplate);
@@ -68,11 +68,11 @@ public class DdragonRestTemplateImplMockTest {
         this.mockServer.expect(requestTo(uri))
                 .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
         //when
-        ChampionDataDto champions = ddragonRestTemplate.getChampions(version);
+        DdragonChampionSimplesDto champions = ddragonRestTemplate.getChampions(version);
 
         //then
         assertThat(champions.getVersion()).isEqualTo(version);
-        assertThat(champions.getChampionDtos().get(0).getId()).isEqualTo("Aatrox");
+        assertThat(champions.getChampions().get(0).getId()).isEqualTo("Aatrox");
         System.out.println(gson.toJson(champions));
     }
 
@@ -87,9 +87,10 @@ public class DdragonRestTemplateImplMockTest {
         this.mockServer.expect(requestTo(uri))
                 .andRespond(withSuccess(mockBody, MediaType.APPLICATION_JSON_UTF8));
         //when
-        ChampionFullDataDto championFulls = ddragonRestTemplate.getChampionFulls(version);
+        DdragonChampionFullsDto championFulls = ddragonRestTemplate.getChampionFulls(version);
         //then
         assertThat(championFulls.getChampionFullDtos().get(0).getVersion()).isEqualTo("9.13.1");
+        assertThat(championFulls.getChampionFullDtos().get(0).getSpells().get(0).getName()).isEqualTo("다르킨의 검");
         assertThat(championFulls.getChampionFullDtos().size()).isEqualTo(14);
     }
 
@@ -133,7 +134,7 @@ public class DdragonRestTemplateImplMockTest {
         RealmsDto realmsDto = ddragonRestTemplate.getCurrentRealms();
         //then
         assertThat(realmsDto.getL()).isEqualTo("ko_KR");
-        assertThat(realmsDto.getN().getChampion()).isEqualTo("9.19.1");
+        assertThat(realmsDto.getLolDataVersion().getChampion()).isEqualTo("9.19.1");
     }
 
     @Test

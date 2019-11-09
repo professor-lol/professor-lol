@@ -2,13 +2,12 @@ package com.ccs.professorlol.ddragon.impl;
 
 import com.ccs.professorlol.config.resttemplate.DdragonRestTemplateConfing;
 import com.ccs.professorlol.ddragon.DdragonRestTemplate;
-import com.ccs.professorlol.ddragon.dto.ChampionDataDto;
-import com.ccs.professorlol.ddragon.dto.ChampionDto;
-import com.ccs.professorlol.ddragon.dto.ChampionFullDataDto;
-import com.ccs.professorlol.ddragon.dto.ChampionFullDto;
-import com.ccs.professorlol.ddragon.dto.ItemDataDto;
-import com.ccs.professorlol.ddragon.dto.ItemDto;
 import com.ccs.professorlol.ddragon.dto.RealmsDto;
+import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionDto;
+import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionFullsDto;
+import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionSimplesDto;
+import com.ccs.professorlol.ddragon.dto.item.ItemDataDto;
+import com.ccs.professorlol.ddragon.dto.item.ItemDto;
 import com.ccs.professorlol.summoner.SummonerRestTemplate;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -34,11 +33,10 @@ public class DdragonRestTemplateImplTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplate.class);
 
-    private static final String VERSION = "9.21.1";
+    private static final String VERSION = "9.22.1";
 
     @Autowired
     private DdragonRestTemplateConfing.MajorDdragonConfig majorDdragonConfig;
-
 
     private DdragonRestTemplate ddragonRestTemplate;
 
@@ -53,14 +51,14 @@ public class DdragonRestTemplateImplTest {
         //when
         RealmsDto realmsDto = this.ddragonRestTemplate.getCurrentRealms();
         //then
-        assertThat(realmsDto.getN().getChampion()).isEqualTo(VERSION);
+        assertThat(realmsDto.getLolDataVersion().getChampion()).isEqualTo(VERSION);
     }
 
     @Test
     public void 챔피언_리스트_가져오기() {
         //given
-        ChampionDataDto championDataDto = this.ddragonRestTemplate.getChampions(VERSION);
-        List<ChampionDto> champions = championDataDto.getChampionDtos();
+        DdragonChampionSimplesDto ddragonChampionSimplesDto = this.ddragonRestTemplate.getChampions(VERSION);
+        List<DdragonChampionDto> champions = ddragonChampionSimplesDto.getChampions();
         //when
         //then
         assertThat(champions.get(0).getId()).isEqualTo("Aatrox");
@@ -68,10 +66,10 @@ public class DdragonRestTemplateImplTest {
 
     @Test
     public void 챔피언_스펠_포함_리스트_가져오기() {
-        ChampionFullDataDto championFullDataDto = this.ddragonRestTemplate.getChampionFulls(VERSION);
-        List<ChampionFullDto> championFulls = championFullDataDto.getChampionFullDtos();
+        DdragonChampionFullsDto ddragonChampionFullsDto = this.ddragonRestTemplate.getChampionFulls(VERSION);
+        List<DdragonChampionDto> championFulls = ddragonChampionFullsDto.getChampionFullDtos();
 
-        assertThat(championFulls.size()).isEqualTo(145);
+        assertThat(championFulls.size()).isEqualTo(146);
 
         assertThat(championFulls.get(0).getName()).isEqualTo("아트록스");
         assertThat(championFulls.get(0).getPartype()).isEqualTo("피의 샘");

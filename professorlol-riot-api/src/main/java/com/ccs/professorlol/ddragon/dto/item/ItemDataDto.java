@@ -1,4 +1,4 @@
-package com.ccs.professorlol.ddragon.dto;
+package com.ccs.professorlol.ddragon.dto.item;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
