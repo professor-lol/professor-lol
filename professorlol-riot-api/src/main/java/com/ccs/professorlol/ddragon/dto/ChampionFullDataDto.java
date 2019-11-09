@@ -3,6 +3,7 @@ package com.ccs.professorlol.ddragon.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class ChampionFullDataDto {
 
     private ChampionFullDto parseChampion(JsonNode jsonNode) {
         try {
+            ((ObjectNode) jsonNode).put("version", this.version);
             ObjectMapper objectMapper = new ObjectMapper();
             return objectMapper.readValue(jsonNode.toString(), ChampionFullDto.class);
         } catch (Exception e) {

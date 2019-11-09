@@ -89,6 +89,7 @@ public class DdragonRestTemplateImplMockTest {
         //when
         ChampionFullDataDto championFulls = ddragonRestTemplate.getChampionFulls(version);
         //then
+        assertThat(championFulls.getChampionFullDtos().get(0).getVersion()).isEqualTo("9.13.1");
         assertThat(championFulls.getChampionFullDtos().size()).isEqualTo(14);
     }
 
