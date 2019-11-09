@@ -61,7 +61,7 @@ public class MemberControllerTest {
                 .content(requestJson)
                 .characterEncoding("UTF-8"))
                 .andDo(print())
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andReturn();
 
     }
