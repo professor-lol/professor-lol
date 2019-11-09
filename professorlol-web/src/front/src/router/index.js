@@ -1,11 +1,3 @@
-/**
- * Vue Router
- *
- * @library
- *
- * https://router.vuejs.org/en/
- */
-
 // Lib imports
 import Vue from 'vue'
 import VueAnalytics from 'vue-analytics'
@@ -20,7 +12,7 @@ function route (path, view, name) {
     name: name || view,
     path,
     component: (resovle) => import(
-      `@/views/${view}.vue`
+      `@coreui/${view}.vue`
     ).then(resovle)
   }
 }
