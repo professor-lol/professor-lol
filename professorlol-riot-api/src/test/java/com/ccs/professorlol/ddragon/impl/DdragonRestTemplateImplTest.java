@@ -6,11 +6,11 @@ import com.ccs.professorlol.ddragon.dto.RealmsDto;
 import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionDto;
 import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionFullsDto;
 import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionSimplesDto;
+import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionStandAloneDto;
 import com.ccs.professorlol.ddragon.dto.item.ItemDataDto;
 import com.ccs.professorlol.ddragon.dto.item.ItemDto;
 import com.ccs.professorlol.summoner.SummonerRestTemplate;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -25,7 +25,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 //TODO : 항상 최신 버전 찌르고 가져오는거 추가해야함
-@Ignore
+
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("major")
@@ -57,8 +57,8 @@ public class DdragonRestTemplateImplTest {
     @Test
     public void 챔피언_리스트_가져오기() {
         //given
-        DdragonChampionSimplesDto ddragonChampionSimplesDto = this.ddragonRestTemplate.getChampions(VERSION);
-        List<DdragonChampionDto> champions = ddragonChampionSimplesDto.getChampions();
+        DdragonChampionSimplesDto ddragonChampionSimplesDto = this.ddragonRestTemplate.getChampionSimples(VERSION);
+        List<DdragonChampionStandAloneDto> champions = ddragonChampionSimplesDto.getChampions();
         //when
         //then
         assertThat(champions.get(0).getId()).isEqualTo("Aatrox");

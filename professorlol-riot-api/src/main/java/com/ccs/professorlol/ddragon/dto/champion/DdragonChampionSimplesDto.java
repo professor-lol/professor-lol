@@ -18,7 +18,7 @@ public class DdragonChampionSimplesDto {
     private String format;
     private String version;
     @JsonProperty("data")
-    private List<DdragonChampionDto> champions;
+    private List<DdragonChampionStandAloneDto> champions;
 
     public void setChampions(JsonNode jsonNode) {
         List<String> names = new ArrayList<>();
@@ -30,10 +30,10 @@ public class DdragonChampionSimplesDto {
                 .collect(Collectors.toList());
     }
 
-    private DdragonChampionDto parseChampion(JsonNode jsonNode) {
+    private DdragonChampionStandAloneDto parseChampion(JsonNode jsonNode) {
         try {
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(jsonNode.toString(), DdragonChampionDto.class);
+            return objectMapper.readValue(jsonNode.toString(), DdragonChampionStandAloneDto.class);
         } catch (Exception e) {
             throw new RuntimeException("Champion parse error");
         }

@@ -1,8 +1,11 @@
 package com.ccs.professorlol.ddragon.dto.champion;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StatDto {
     private double attackspeed;
     private double attackspeedperlevel;
