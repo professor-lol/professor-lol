@@ -30,6 +30,15 @@
                     <b-col class="text-right" cols="6">
                       <b-button class="px-0" variant="link">Forgot password?</b-button>
                     </b-col>
+
+
+                  </b-row>
+                  <b-row>
+                    <b-col cols="6">
+                      <a class="google-btn" href="/oauth2/authorization/google">
+                        <img src="@/assets/loginButton/google_signin_normal.png"/>
+                      </a>
+                    </b-col>
                   </b-row>
                 </b-form>
               </b-card-body>
@@ -56,3 +65,13 @@
     name: 'Login'
   }
 </script>
+
+<style scoped>
+  .google-btn {
+    margin: 0px auto;
+    display: block;
+  }
+  .google-btn img {
+    height: 50px;
+  }
+</style>
