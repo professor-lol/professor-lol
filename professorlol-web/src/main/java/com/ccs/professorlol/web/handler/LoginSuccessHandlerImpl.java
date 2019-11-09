@@ -1,14 +1,12 @@
 package com.ccs.professorlol.web.handler;
 
 import com.ccs.professorlol.security.user.AccessUser;
-import com.ccs.professorlol.service.UserService;
+import com.ccs.professorlol.service.MemberService;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -19,13 +17,12 @@ import java.io.IOException;
 public class LoginSuccessHandlerImpl implements LoginSuccessHandler {
 
     private static final String SESSION_ATTRIBUTE_NAME_USER_INFO = "USER_INFO";
-    private final UserService userService;
+    private final MemberService memberService;
 
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         AccessUser accessUser = (AccessUser)request.getSession().getAttribute(SESSION_ATTRIBUTE_NAME_USER_INFO);
-        if(userService.findByGoogleEmail(accessUser.getEmail())==null){
-            log.info("없는회원: {}", accessUser.getEmail());
+        if (memberService.findByEmail(accessUser.getEmail()) == null) {
             response.sendRedirect("/registration");
             return;
         }

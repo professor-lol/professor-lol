@@ -1,8 +1,8 @@
 package com.ccs.professorlol.api;
 
-import com.ccs.professorlol.domain.user.User;
-import com.ccs.professorlol.dto.UserSaveReqDto;
-import com.ccs.professorlol.service.UserService;
+import com.ccs.professorlol.dto.MemberSaveReqDto;
+import com.ccs.professorlol.member.domain.Member;
+import com.ccs.professorlol.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/v1/user")
 @RequiredArgsConstructor
 @Slf4j
-public class UserController {
+public class MemberController {
 
-    private final UserService userService;
+    private final MemberService memberService;
 
     @PostMapping()
-    public ResponseEntity<User> sighUp(@RequestBody UserSaveReqDto userSaveReqDto) {
-        User user = userService.saveUser(userSaveReqDto);
+    public ResponseEntity<Member> sighUp(@RequestBody MemberSaveReqDto memberSaveReqDto) {
+        Member user = memberService.saveUser(memberSaveReqDto);
         log.info("회원가입: {}", user.getLolId());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

@@ -2,11 +2,13 @@ package com.ccs.professorlol.security.store;
 
 import com.ccs.professorlol.security.user.AccessUser;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
 
 
+@Profile("major")
 @Component
 @RequiredArgsConstructor
 public class AccessUserSessionManager implements AccessUserManager {

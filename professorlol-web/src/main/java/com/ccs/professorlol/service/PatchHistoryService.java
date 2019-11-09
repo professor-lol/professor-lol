@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PatchHistoryService {
 
+
     private final PatchNoteCrawler patchNoteCrawler;
     private final PatchHistoryRepository patchHistoryRepository;
     private final LolInfoRepository lolInfoRepository;
@@ -29,4 +30,5 @@ public class PatchHistoryService {
 //
 //        return lolInfoRepository.findAllByChampionNamesIn(championNames);
 //    }
+
 }
