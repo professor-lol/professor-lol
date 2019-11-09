@@ -1,16 +1,16 @@
 dependencies {
-implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-testImplementation 'org.springframework.security:spring-security-test'
-implementation 'org.springframework.boot:spring-boot-starter-web'
-testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
-testCompile('org.springframework.boot:spring-boot-starter-test')
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 
-implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 }
 
 task buildFrontEnd(type: Exec) {
     workingDir "./src/front"
-
+    commandLine 'npm', 'install'
     commandLine 'npm', 'run', 'build'
 }
 

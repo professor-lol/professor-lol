@@ -15,11 +15,7 @@ cache:
     - '$HOME/.gradle'
 
 
-script:
-  - "cd professorlol-web/src/front"
-  - "npm install"
-  - "cd ../../.."
-  - "./gradlew clean build -x test"
+script: "./gradlew clean build -x test"
 
 before_deploy:
   - zip -r professor-lol appspec.yml deploy
