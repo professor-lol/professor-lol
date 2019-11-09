@@ -1,6 +1,7 @@
 package com.ccs.professorlol.patch.skill;
 
 import com.ccs.professorlol.type.AttributeType;
+import com.ccs.professorlol.type.SkillType;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;

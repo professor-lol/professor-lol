@@ -1,5 +1,6 @@
 package com.ccs.professorlol.dto.champion.ability;
 
+import com.ccs.professorlol.type.SkillType;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -29,7 +30,8 @@ public class AbilityMapperTest {
     @Test
     public void 하나의_Ability_생성_확인() {
         Ability ability = Ability.of(select);
-        assertEquals("W - 룬 감옥", ability.getTitle());
+        assertEquals(SkillType.W,ability.getSkillType());
+        assertEquals("룬 감옥", ability.getTitle());
         assertEquals("./PatchNote_9_12_files/image(4)", ability.getImage());
         assertEquals(5, ability.getAttributes().size());
     }

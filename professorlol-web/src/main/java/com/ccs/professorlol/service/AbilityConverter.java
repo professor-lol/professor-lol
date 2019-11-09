@@ -20,6 +20,7 @@ public class AbilityConverter {
         return ChampionAbilityHistory.builder()
                 .title(ability.getTitle())
                 .image(ability.getImage())
+                .skillType(ability.getSkillType())
                 .championAttributeHistories(ability.getAttributes().stream().map(AbilityConverter::convert).collect(Collectors.toList()))
                 .build();
     }
