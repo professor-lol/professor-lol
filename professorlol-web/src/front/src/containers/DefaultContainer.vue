@@ -6,19 +6,13 @@
         <SidebarHeader/>
         <SidebarForm/>
         <SidebarNav :navItems="nav"></SidebarNav>
-        <SidebarFooter/>
-        <SidebarMinimizer/>
       </AppSidebar>
       <main class="main">
-        <Breadcrumb :list="list"/>
+        <!--<Breadcrumb :list="list"/>-->
         <div class="container-fluid">
           <router-view></router-view>
         </div>
       </main>
-      <AppAside fixed>
-        <!--aside-->
-        <DefaultAside/>
-      </AppAside>
     </div>
     <DefaultFooter/>
   </div>
@@ -27,8 +21,6 @@
 <script>
   import nav from '@/_nav'
   import {
-    Aside as AppAside,
-    Breadcrumb,
     Sidebar as AppSidebar,
     SidebarFooter,
     SidebarForm,
@@ -36,25 +28,22 @@
     SidebarMinimizer,
     SidebarNav
   } from '@coreui/vue'
-  import DefaultAside from './DefaultAside'
+  // import DefaultAside from './DefaultAside'
   import DefaultHeaderDropdownAccnt from './DefaultHeaderDropdownAccnt'
   import DefaultHeader from './DefaultHeader'
-  import DefaultFooter from './DefaultFooter'
 
   export default {
     name: 'DefaultContainer',
     components: {
       AppSidebar,
-      AppAside,
-      Breadcrumb,
-      DefaultAside,
+      // AppAside,
+      // DefaultAside,
       DefaultHeaderDropdownAccnt,
       SidebarForm,
       SidebarFooter,
       SidebarHeader,
       SidebarNav,
       SidebarMinimizer,
-      DefaultFooter,
       DefaultHeader
     },
     data() {
