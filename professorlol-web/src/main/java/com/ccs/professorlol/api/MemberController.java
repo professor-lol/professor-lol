@@ -1,5 +1,6 @@
 package com.ccs.professorlol.api;
 
+import com.ccs.professorlol.dto.MemberResponseDto;
 import com.ccs.professorlol.dto.MemberSaveReqDto;
 import com.ccs.professorlol.member.domain.Member;
 import com.ccs.professorlol.service.MemberService;
@@ -7,10 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
@@ -24,6 +22,14 @@ public class MemberController {
     public ResponseEntity<Member> sighUp(@RequestBody MemberSaveReqDto memberSaveReqDto) {
         Member member = memberService.saveUser(memberSaveReqDto);
         log.info("회원가입: {}", member.getEmail());
-        return new ResponseEntity<>(member, HttpStatus.OK);
+        return new ResponseEntity<>(member, HttpStatus.CREATED);
     }
+
+    //유저정보조회
+    @GetMapping()
+    public ResponseEntity<MemberResponseDto> findAccessMemberAllInfo() {
+        MemberResponseDto memberResponseDto = memberService.findMemberWithRiotInfoByAccessUser();
+        return new ResponseEntity<>(memberResponseDto, HttpStatus.OK);
+    }
+
 }

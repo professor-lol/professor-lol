@@ -1,5 +1,6 @@
 package com.ccs.professorlol.service;
 
+import com.ccs.professorlol.config.exception.RiotClientException;
 import com.ccs.professorlol.dto.MemberResponseDto;
 import com.ccs.professorlol.dto.MemberSaveReqDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
@@ -35,6 +36,8 @@ public class MemberService {
         if (isExist(memberSaveReqDto.getSummonerName())) {
             throw new IllegalArgumentException("이미 해당 lol 아이디로 가입된 계정이 존재합니다!!!");
         }
+        isExistSummoner(memberSaveReqDto.getSummonerName());
+
         AccessUser accessUser = accessUserManager.loadUserInfo();
         Member user = Member.createBuilder()
                 .email(accessUser.getEmail())
@@ -53,7 +56,9 @@ public class MemberService {
                 .name(member.getName())
                 .summonerName(member.getSummonerName())
                 .mostChampions(member.getMostChampion().stream()
-                        .map(MostChampion::getChampion).map(Champion::getName).collect(Collectors.toList()))
+                        .map(MostChampion::getChampion)
+                        .map(Champion::getName)
+                        .collect(Collectors.toList()))
                 .build();
         return memberResponseDto;
     }
@@ -70,6 +75,15 @@ public class MemberService {
                 .findAny()
                 .orElseThrow(IllegalAccessError::new);
 
+    }
+
+
+    private void isExistSummoner(final String summonerName) {
+        try {
+            summonerRestTemplate.getSummonerDtoBySummonerName(summonerName);
+        } catch (RiotClientException re) {
+            throw new IllegalArgumentException("존재하지 않는 소환사입니다");
+        }
     }
 
 }
