@@ -13,6 +13,10 @@ cache:
   directories:
     - '$HOME/.m2/repository'
     - '$HOME/.gradle'
+before_script:
+  - cd professorlol-web/src/front
+  - npm install
+  - cd ../../..
 
 script: "./gradlew clean build -x test"
 
