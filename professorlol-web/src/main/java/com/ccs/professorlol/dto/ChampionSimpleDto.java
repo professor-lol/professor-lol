@@ -8,7 +8,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ChampionsResDto {
+public class ChampionSimpleDto {
     private Long id;
 
     private String riotId;
@@ -16,7 +16,7 @@ public class ChampionsResDto {
     private String name;
 //    private String image;
 
-    public ChampionsResDto(Champion champion) {
+    public ChampionSimpleDto(Champion champion) {
         this.id = champion.getId();
         this.riotId = champion.getRiotId();
         this.key = champion.getKey();
