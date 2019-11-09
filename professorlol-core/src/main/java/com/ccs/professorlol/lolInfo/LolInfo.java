@@ -25,4 +25,9 @@ public class LolInfo {
     public LolInfo(String patchNoteVersion) {
         this.patchNoteVersion = patchNoteVersion;
     }
+
+    public LolInfo(Long id, String patchNoteVersion) {
+        this.id = id;
+        this.patchNoteVersion = patchNoteVersion;
+    }
 }

@@ -12,29 +12,29 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StatSaveDto {
 
-    private Double hp;
-    private Double hpPerLevel;
-    private Double mp;
-    private Double mpPerLevel;
-    private Double moveSpeed;
-    private Double armor;
+    private Integer hp;
+    private Integer hpPerLevel;
+    private Integer mp;
+    private Integer mpPerLevel;
+    private Integer moveSpeed;
+    private Integer armor;
     private Double armorPerLevel;
     private Double spellBlock;
     private Double spellBlockPerLevel;
-    private Double attackRange;
-    private Double hpRegen;
+    private Integer attackRange;
+    private Integer hpRegen;
     private Double hpRegenPerLevel;
-    private Double mpRegen;
-    private Double mpRegenPerLevel;
-    private Double crit;
-    private Double critPerLevel;
-    private Double attackDamage;
-    private Double attackDamagePerLevel;
+    private Integer mpRegen;
+    private Integer mpRegenPerLevel;
+    private Integer crit;
+    private Integer critPerLevel;
+    private Integer attackDamage;
+    private Integer attackDamagePerLevel;
     private Double attackSpeed;
     private Double attackSpeedPerLevel;
 
     @Builder
-    public StatSaveDto(Double hp, Double hpPerLevel, Double mp, Double mpPerLevel, Double moveSpeed, Double armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Double attackRange, Double hpRegen, Double hpRegenPerLevel, Double mpRegen, Double mpRegenPerLevel, Double crit, Double critPerLevel, Double attackDamage, Double attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel) {
+    public StatSaveDto(Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel) {
         this.hp = hp;
         this.hpPerLevel = hpPerLevel;
         this.mp = mp;
@@ -56,6 +56,7 @@ public class StatSaveDto {
         this.attackSpeed = attackSpeed;
         this.attackSpeedPerLevel = attackSpeedPerLevel;
     }
+
 
     public Stat toEntity(LolInfo lolInfo, Champion champion) {
         return Stat.builder()

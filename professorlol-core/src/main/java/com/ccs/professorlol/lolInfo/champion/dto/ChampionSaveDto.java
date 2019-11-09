@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChampionSaveDto {
     private String id;
-    private Integer key;
+    private String key;
     private String name;
 
     @Builder
-    public ChampionSaveDto(String id, Integer key, String name) {
+    public ChampionSaveDto(String id, String key, String name) {
         this.id = id;
         this.key = key;
         this.name = name;

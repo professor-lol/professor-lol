@@ -33,7 +33,7 @@ public class ChampionTest {
         ChampionSaveDto championSaveDto = ChampionSaveDto.builder()
                 .name("아리")
                 .id("Ahri")
-                .key(109)
+                .key("109")
                 .build();
         Champion champion = championSaveDto.toEntity();
 

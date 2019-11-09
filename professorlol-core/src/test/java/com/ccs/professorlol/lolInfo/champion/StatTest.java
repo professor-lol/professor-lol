@@ -36,19 +36,19 @@ public class StatTest {
 
         Champion champion = Champion.builder()
                 .riotId("Ahri")
-                .key(109)
+                .key("109")
                 .name("아리")
                 .build();
 
         StatSaveDto statSaveDto = StatSaveDto.builder()
-                .hp(10D)
+                .hp(10)
                 .build();
 
         Stat stat = statSaveDto.toEntity(lolInfo, champion);
 
         statRepository.save(stat);
 
-        assertThat(stat.getHp()).isEqualTo(10D);
+        assertThat(stat.getHp()).isEqualTo(10);
         assertThat(stat.getLolInfo().getPatchNoteVersion()).isEqualTo("9.1.12");
         assertThat(stat.getChampion().getName()).isEqualTo("아리");
     }

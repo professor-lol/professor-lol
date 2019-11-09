@@ -2,11 +2,13 @@ package com.ccs.professorlol.ddragon.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RealmsDto {
 
     @JsonAlias("n")
@@ -19,6 +21,19 @@ public class RealmsDto {
     private String css;
     private int profileiconmax;
     private String store;
+
+    @Builder(builderMethodName = "testBuilder")
+    private RealmsDto(LoLDataVersion lolDataVersion, String v, String l, String cdn, String dd, String lg, String css, int profileiconmax, String store) {
+        this.lolDataVersion = lolDataVersion;
+        this.v = v;
+        this.l = l;
+        this.cdn = cdn;
+        this.dd = dd;
+        this.lg = lg;
+        this.css = css;
+        this.profileiconmax = profileiconmax;
+        this.store = store;
+    }
 
     public String getItemVersion() {
         return this.lolDataVersion.getItem();
@@ -39,5 +54,17 @@ public class RealmsDto {
         private String map; //map 버전
         private String langauage; //language 버전
         private String sticker; //sticker 버전
+
+        @Builder(builderMethodName = "testBuilder")
+        private LoLDataVersion(String item, String rune, String mastery, String champion, String profileicon, String map, String langauage, String sticker) {
+            this.item = item;
+            this.rune = rune;
+            this.mastery = mastery;
+            this.champion = champion;
+            this.profileicon = profileicon;
+            this.map = map;
+            this.langauage = langauage;
+            this.sticker = sticker;
+        }
     }
 }

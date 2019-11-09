@@ -79,7 +79,7 @@ public class MemberServiceTest {
         AccessUser accessUser = accessUserManager.loadUserInfo();
         Champion champion = Champion.builder()
                 .name("아리")
-                .key(1)
+                .key("1")
                 .riotId("roitId")
                 .build();
 
