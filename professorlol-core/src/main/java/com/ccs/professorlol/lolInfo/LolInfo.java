@@ -1,6 +1,7 @@
-package com.ccs.professorlol.lolInfo.domain;
+package com.ccs.professorlol.lolInfo;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,12 +15,14 @@ import javax.persistence.Id;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public abstract class LolInfo {
+public class LolInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String patchNoteVersion;
 
-    private String imageUrl;
-
-    private String patchNoteVersion; // title, version 논의 필요
+    @Builder
+    public LolInfo(String patchNoteVersion) {
+        this.patchNoteVersion = patchNoteVersion;
+    }
 }

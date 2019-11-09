@@ -1,14 +1,18 @@
 package com.ccs.professorlol.patch.champion;
 
 
-import com.ccs.professorlol.lolInfo.domain.LolInfo;
+import com.ccs.professorlol.lolInfo.LolInfo;
 import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
