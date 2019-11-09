@@ -1,9 +1,8 @@
-package com.ccs.professorlol.ddragon.dto;
+package com.ccs.professorlol.ddragon.dto.champion;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,30 +13,28 @@ import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ChampionFullDataDto {
+public class DdragonChampionSimplesDto {
     private String type;
     private String format;
     private String version;
     @JsonProperty("data")
-    private List<ChampionFullDto> championFullDtos;
+    private List<DdragonChampionDto> champions;
 
-    public void setChampionFullDtos(JsonNode data) {
+    public void setChampions(JsonNode jsonNode) {
         List<String> names = new ArrayList<>();
-        data.fieldNames().forEachRemaining(names::add);
+        jsonNode.fieldNames().forEachRemaining(names::add);
 
-        this.championFullDtos = names.stream()
-                .map(data::get)
+        this.champions = names.stream()
+                .map(jsonNode::get)
                 .map(this::parseChampion)
                 .collect(Collectors.toList());
     }
 
-    private ChampionFullDto parseChampion(JsonNode jsonNode) {
+    private DdragonChampionDto parseChampion(JsonNode jsonNode) {
         try {
-            ((ObjectNode) jsonNode).put("version", this.version);
             ObjectMapper objectMapper = new ObjectMapper();
-            return objectMapper.readValue(jsonNode.toString(), ChampionFullDto.class);
+            return objectMapper.readValue(jsonNode.toString(), DdragonChampionDto.class);
         } catch (Exception e) {
-            e.printStackTrace();
             throw new RuntimeException("Champion parse error");
         }
     }

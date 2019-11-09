@@ -1,4 +1,4 @@
-package com.ccs.professorlol.ddragon.dto;
+package com.ccs.professorlol.ddragon.dto.champion;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ChampionFullDto {
+public class DdragonChampionDto {
     private PassiveDto passive;
     private String version;
     //@JsonProperty("spells")

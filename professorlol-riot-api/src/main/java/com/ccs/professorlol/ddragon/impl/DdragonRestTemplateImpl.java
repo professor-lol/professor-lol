@@ -1,7 +1,11 @@
 package com.ccs.professorlol.ddragon.impl;
 
 import com.ccs.professorlol.ddragon.DdragonRestTemplate;
-import com.ccs.professorlol.ddragon.dto.*;
+import com.ccs.professorlol.ddragon.dto.RealmsDto;
+import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionDto;
+import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionFullsDto;
+import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionSimplesDto;
+import com.ccs.professorlol.ddragon.dto.item.ItemDataDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,19 +26,19 @@ public class DdragonRestTemplateImpl implements DdragonRestTemplate {
     }
 
     @Override
-    public ChampionDataDto getChampions(String version) {
-        return restTemplate.getForObject(CHAMPIONS, ChampionDataDto.class, version);
+    public DdragonChampionSimplesDto getChampions(String version) {
+        return restTemplate.getForObject(CHAMPIONS, DdragonChampionSimplesDto.class, version);
     }
 
     @Override
-    public ChampionFullDataDto getChampionFulls(String version) {
-        return restTemplate.getForObject(CHAMPIONS_FULL, ChampionFullDataDto.class, version);
+    public DdragonChampionFullsDto getChampionFulls(String version) {
+        return restTemplate.getForObject(CHAMPIONS_FULL, DdragonChampionFullsDto.class, version);
     }
 
     //TODO : 챔피언 상세정보 가져오기, 데이터가 너무 많아서 정리하고 구현해야할듯
     @Override
-    public ChampionDto getIndividualChampion(String version, String championName) {
-        return restTemplate.getForObject(INDIVIDUAL_CHAMPION, ChampionDto.class);
+    public DdragonChampionDto getIndividualChampion(String version, String championName) {
+        return restTemplate.getForObject(INDIVIDUAL_CHAMPION, DdragonChampionDto.class);
     }
 
     @Override

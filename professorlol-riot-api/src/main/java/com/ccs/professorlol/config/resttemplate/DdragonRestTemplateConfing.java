@@ -31,7 +31,7 @@ public class DdragonRestTemplateConfing {
         public DdragonRestTemplate DdragonRestTemplate() {
             log.debug("Ddragon RestTemplate bean Created");
 
-            RestTemplateBuilder restTemplateBuilder = RiotRestTemplateBuilder.getDdragon(this.restTemplateBuilder, this.riotProperties);
+            RestTemplateBuilder restTemplateBuilder = DdragonRestTemplateBuilder.getDdragon(this.restTemplateBuilder, this.riotProperties);
 
             return new DdragonRestTemplateImpl(restTemplateBuilder.setConnectTimeout(ONE_SEC)
                     .setConnectTimeout(TWO_SEC)

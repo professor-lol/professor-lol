@@ -1,4 +1,4 @@
-package com.ccs.professorlol.ddragon.dto;
+package com.ccs.professorlol.ddragon.dto.champion;
 
 import lombok.Getter;
 
