@@ -3,15 +3,13 @@ import axios from 'axios';
 
 router.beforeEach(async (to, from, next) => {
   try {
-    if (to.path === '/login') {
+    if (to.path === '/pages/login') {
       next();
     }
-    const response = await
-      axios.get("/api/v1/resources/user");
+    const response = await axios.get("/api/v1/resources/user");
     next()
-  } catch
-    (error) {
-    next('/')
+  } catch (error) {
+    console.log("error");
+    next('/pages/login')
   }
-})
-;
+});
