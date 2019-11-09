@@ -1,9 +1,9 @@
 package com.ccs.professorlol.config;
 
-import com.ccs.professorlol.crawler.PatchNoteCrawler;
-import com.ccs.professorlol.crawler.RiotPageJsoupConnection;
-import com.ccs.professorlol.crawler.RiotPagePatchNoteCrawler;
-import com.ccs.professorlol.crawler.RiotPageProperties;
+import com.ccs.professorlol.PatchNoteCrawler;
+import com.ccs.professorlol.RiotPageJsoupConnection;
+import com.ccs.professorlol.RiotPagePatchNoteCrawler;
+import com.ccs.professorlol.RiotPageProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

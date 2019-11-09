@@ -1,6 +1,6 @@
-import com.ccs.professorlol.crawler.*;
+import com.ccs.professorlol.*;
 import com.ccs.professorlol.dto.champion.Champion;
-import com.ccs.professorlol.dto.champion.ChampionFactory;
+import com.ccs.professorlol.parser.ChampionParser;
 import org.jsoup.nodes.Document;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -41,9 +41,9 @@ public class PatchNoteCrawlerTest {
         //given
         File resourceFile = getFileFromPath(PATCH_NOTE_0912_HTML);
         Document document = convertFromHtmlFile(resourceFile);
-        ChampionFactory championFactory = new ChampionFactory(document);
+        ChampionParser championParser = new ChampionParser();
         //then
-        assertEquals(18, championFactory.getChampions().size());
+        assertEquals(18, championParser.parse(document).size());
     }
 
 

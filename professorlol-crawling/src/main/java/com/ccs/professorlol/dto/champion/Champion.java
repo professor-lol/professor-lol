@@ -1,11 +1,17 @@
 package com.ccs.professorlol.dto.champion;
 
 import com.ccs.professorlol.dto.champion.ability.Ability;
+import com.ccs.professorlol.parser.element.AbilityParser;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import org.jsoup.nodes.Element;
 
 import java.util.List;
+
+import static com.ccs.professorlol.dto.champion.ChampionSelector.*;
+import static com.ccs.professorlol.util.ElementContextUtil.getTextFromCssSelector;
+import static com.ccs.professorlol.util.ElementContextUtil.getUrlFromCssSelector;
 
 /**
  * 패치 노트에서와 수정된 패치 노트에서의 html이 다르다
@@ -31,4 +37,13 @@ public class Champion { // .header-primary : 제목이 나온다 (여기 id 값�
                 "\nabilities : " + abilities.toString();
     }
 
+    public static Champion of(Element element) {
+        return Champion.builder()
+                .name(getTextFromCssSelector(element, NAME.getCssQuery()))
+                .summary(getTextFromCssSelector(element, SUMMARY.getCssQuery()))
+                .context(getTextFromCssSelector(element, CONTEXT.getCssQuery()))
+                .image(getUrlFromCssSelector(element, IMAGE.getCssQuery()))
+                .abilities(AbilityParser.of(element))
+                .build();
+    }
 }

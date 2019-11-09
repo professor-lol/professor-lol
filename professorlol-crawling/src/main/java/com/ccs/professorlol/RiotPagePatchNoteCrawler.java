@@ -1,7 +1,8 @@
-package com.ccs.professorlol.crawler;
+package com.ccs.professorlol;
 
 import com.ccs.professorlol.dto.champion.Champion;
-import com.ccs.professorlol.dto.champion.ChampionFactory;
+import com.ccs.professorlol.parser.ChampionParser;
+import com.ccs.professorlol.parser.ParserGroup;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
 
@@ -17,8 +18,9 @@ public class RiotPagePatchNoteCrawler implements PatchNoteCrawler {
         String url = String.format(PATCH_NOTE_QUERY, id);
         Document document = riotPageJsoupConnection.getForDocument(url);
         String version = "123"; //TODO : 버전 가져오는 클래스 필요
+
         // 수정된 버전일 경우의 밸리데이션 체크 로직이 필요할 듯
-        List<Champion> champions = new ChampionFactory(document).getChampions();
+        List<Champion> champions = ParserGroup.findByParserType(ChampionParser.class).parse(document);
         return new PatchResponseDto<>(version, champions);
     }
 }
