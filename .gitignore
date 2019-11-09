@@ -1,7 +1,7 @@
 .DS_Store
 
 professorlol-riot-api/src/main/resources/application-riot.yml
-professorlol-web/src/main/resources/favicon.ico
+
 
 HELP.md
 .gradle
@@ -50,3 +50,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 professorlol-web/src/main/resources/static/
+professorlol-web/src/main/resources/favicon.ico
