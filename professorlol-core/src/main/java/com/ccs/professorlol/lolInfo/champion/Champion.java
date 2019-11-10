@@ -33,6 +33,7 @@ public class Champion {
     @OneToMany(mappedBy = "champion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MostChampion> mostChampion;
 
+
     @Builder
     public Champion(String riotId, String key, String name) {
         this.riotId = riotId;

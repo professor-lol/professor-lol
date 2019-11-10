@@ -2,6 +2,7 @@
 
 professorlol-riot-api/src/main/resources/application-riot.yml
 
+generated/
 
 HELP.md
 .gradle

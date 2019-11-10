@@ -1,6 +1,5 @@
 package com.ccs.professorlol.security;
 
-import com.ccs.professorlol.security.store.AccessUserSessionManager;
 import com.ccs.professorlol.security.user.CustomUserService;
 import com.ccs.professorlol.web.handler.LoginSuccessHandler;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,7 @@ public class SecurityConfig {
     @EnableGlobalMethodSecurity(securedEnabled = true)
     @RequiredArgsConstructor
     static public class SecurityMajorConfig extends WebSecurityConfigurerAdapter {
-        private final AccessUserSessionManager accessUserSessionManager;
+        private final CustomUserService customUserService;
         private final LoginSuccessHandler loginSuccessHandler;
 
         @Override
@@ -33,7 +32,7 @@ public class SecurityConfig {
                     .and().oauth2Login()
                     .successHandler(loginSuccessHandler)
                     .userInfoEndpoint()
-                    .userService(new CustomUserService(accessUserSessionManager));
+                    .userService(customUserService);
         }
     }
 

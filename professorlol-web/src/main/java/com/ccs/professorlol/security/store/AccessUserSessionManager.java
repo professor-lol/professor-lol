@@ -15,6 +15,12 @@ public class AccessUserSessionManager implements AccessUserManager {
     private static final String SESSION_ATTRIBUTE_NAME_USER_INFO = "USER_INFO";
 
     private final HttpSession httpSession;
+    private AccessUser accessUser;
+
+    @Override
+    public void saveAccessUserToStore(AccessUser accessUser) {
+        this.accessUser = accessUser;
+    }
 
     @Override
     public void saveUserInfo(AccessUser accessUser) {
@@ -24,5 +30,10 @@ public class AccessUserSessionManager implements AccessUserManager {
     @Override
     public AccessUser loadUserInfo() {
         return (AccessUser) httpSession.getAttribute(SESSION_ATTRIBUTE_NAME_USER_INFO);
+    }
+
+    @Override
+    public AccessUser loadAccessUserInStore() {
+        return this.accessUser;
     }
 }

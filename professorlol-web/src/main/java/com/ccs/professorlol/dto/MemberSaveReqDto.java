@@ -5,15 +5,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
 public class MemberSaveReqDto {
-    @NotBlank
+
     private String summonerName;
+    private List<MostChampionDto> mostChampionDtos;
 
     @Builder(builderMethodName = "createBuilder")
-    public MemberSaveReqDto(@NotBlank String summonerName) {
+
+    public MemberSaveReqDto(String summonerName, List<MostChampionDto> mostChampionDtos) {
         this.summonerName = summonerName;
+        this.mostChampionDtos = mostChampionDtos;
     }
 }

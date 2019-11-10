@@ -1,5 +1,6 @@
 package com.ccs.professorlol.security.user;
 
+import com.ccs.professorlol.dto.MostChampionDto;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -8,6 +9,7 @@ import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
 import java.util.Map;
 
 @Getter
@@ -15,12 +17,16 @@ public class AccessUser {
     private String name;
     private String email;
     private String picture;
+    private String summonerName;
+    private List<MostChampionDto> mostChampionDtos;
 
     @Builder
-    public AccessUser(String name, String email, String picture) {
+    public AccessUser(String name, String email, String picture, String summonerName, List<MostChampionDto> mostChampionDtos) {
         this.name = name;
         this.email = email;
         this.picture = picture;
+        this.summonerName = summonerName;
+        this.mostChampionDtos = mostChampionDtos;
     }
 
     public static AccessUser of(OAuth2User oAuth2User) {
