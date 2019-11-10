@@ -2,6 +2,7 @@
   <div class="animated fadeIn">
     <br/>
     <patch-note-block-ver/>
+    <reading-record/>
     <patch-note-block-ver/>
     <patch-note-block-ver/>
     <patch-note-block-ver/>
@@ -11,11 +12,13 @@
 <script>
 
   import PatchNoteBlockVer from './PatchNoteBlockVer'
+  import ReadingRecord from './ReadingRecord'
 
   export default {
     name: 'dashboard',
     components: {
       PatchNoteBlockVer,
+      ReadingRecord
     },
     data: function () {
       return {

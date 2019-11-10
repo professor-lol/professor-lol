@@ -1,28 +1,22 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-card>
-        <b-row>
-          <b-col lg="9" sm="9">
-            <b-card no-body style="height:200px;">
-              <b-card-body class="pb-0">
-                <p>{{champion_summary}}</p>
-              </b-card-body>
-            </b-card>
-          </b-col>
-          <b-col lg="3" sm="3">
-            <b-card class="bg-dark" no-body style="height:200px;">
-              <b-card-body class="pb-0">
-                <h4 class="mb-0">9.22 V</h4>
-                <p>Members online</p>
-              </b-card-body>
-            </b-card>
-          </b-col>
-        </b-row>
-        <b-card no-body>
-          <b-tabs card nav-wrapper-class="w-40" pills v-model="tabIndex[1]" vertical>
+      <b-card class="bg-dark">
+        <div slot="header">
+          <h3><strong> 9.22V </strong></h3>
+        </div>
+        <div class="list-group list-group-accent">
+          <div class="list-group-item text-white bg-dark">{{champion_summary}}</div>
+          <br/>
+          <div class="list-group-item text-gray bg-dark">{{champion_context}}</div>
+        </div>
+        <br/>
+
+        <b-tabs card nav-wrapper-class="w-40" pills v-model="tabIndex[1]" vertical>
             <b-tab active>
               <template slot="title">
+                <img
+                  src="https://am-a.akamaihd.net/image?f=https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/GarenQ.png&resize=32:"/>
                 {{skill[0].name}}
               </template>
               <b-list-group flush>
@@ -50,6 +44,8 @@
             </b-tab>
             <b-tab active>
               <template slot="title">
+                <img
+                  src="https://am-a.akamaihd.net/image?f=https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/GarenQ.png&resize=32:"/>
                 {{skill[1].name}}
               </template>
               <b-list-group flush>
@@ -77,6 +73,8 @@
             </b-tab>
             <b-tab active>
               <template slot="title">
+                <img
+                  src="https://am-a.akamaihd.net/image?f=https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/GarenQ.png&resize=32:"/>
                 {{skill[2].name}}
               </template>
               <b-list-group flush>
@@ -104,7 +102,6 @@
             </b-tab>
           </b-tabs>
         </b-card>
-      </b-card>
     </b-row>
   </div>
 </template>
