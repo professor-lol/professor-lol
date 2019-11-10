@@ -47,17 +47,17 @@ public class ChampionServiceTest {
 
     public List<Champion> generateMockChampions() {
         Champion aatrox = Champion.builder()
-                .key(1)
+                .key("1")
                 .name("아트록스")
                 .riotId("Aatrox")
                 .build();
         Champion ahri = Champion.builder()
-                .key(2)
+                .key("2")
                 .name("아리")
                 .riotId("Ahri")
                 .build();
         Champion akali = Champion.builder()
-                .key(3)
+                .key("3")
                 .name("아칼리")
                 .riotId("Akali")
                 .build();
