@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,6 +20,14 @@ public class DdragonChampionSimplesDto {
     private String version;
     @JsonProperty("data")
     private List<DdragonChampionStandAloneDto> champions;
+
+    @Builder(builderMethodName = "testBuilder")
+    private DdragonChampionSimplesDto(String type, String format, String version, List<DdragonChampionStandAloneDto> champions) {
+        this.type = type;
+        this.format = format;
+        this.version = version;
+        this.champions = champions;
+    }
 
     public void setChampions(JsonNode jsonNode) {
         List<String> names = new ArrayList<>();
