@@ -12,7 +12,7 @@ public class ChampionSimpleDto {
     private Long id;
 
     private String riotId;
-    private Integer key;
+    private String key;
     private String name;
     private String image;
 
