@@ -14,13 +14,13 @@ public class ChampionSimpleDto {
     private String riotId;
     private Integer key;
     private String name;
-//    private String image;
+    private String image;
 
     public ChampionSimpleDto(Champion champion) {
         this.id = champion.getId();
         this.riotId = champion.getRiotId();
         this.key = champion.getKey();
         this.name = champion.getName();
-//        this.image = champion.getImage();
+        this.image = "http://ddragon.leagueoflegends.com/cdn/9.22.1/img/champion/Yuumi.png";
     }
 }
