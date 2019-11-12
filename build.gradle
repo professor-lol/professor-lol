@@ -1,13 +1,16 @@
 buildscript {
     ext {
         springBootVersion = '2.2.0.RELEASE'
+        querydslPluginVersion = '1.0.10'
     }
     repositories {
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" } // plugin 저장소
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath "io.spring.gradle:dependency-management-plugin:1.0.6.RELEASE"
+        classpath("gradle.plugin.com.ewerk.gradle.plugins:querydsl-plugin:${querydslPluginVersion}")
     }
 }
 
@@ -24,6 +27,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
+    apply plugin: "com.ewerk.gradle.plugins.querydsl"
 
     sourceCompatibility = '1.8'
 
@@ -31,15 +35,39 @@ subprojects {
         mavenCentral()
     }
     dependencies {
+        compile("com.querydsl:querydsl-jpa") // querydsl
+        compile("com.querydsl:querydsl-apt") // querydsl
         testCompile group: 'junit', name: 'junit', version: '4.12'
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
     }
 
+    def querydslSrcDir = 'src/main/generated'
+
+    querydsl {
+        library = "com.querydsl:querydsl-apt"
+        jpa = true
+        querydslSourcesDir = querydslSrcDir
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs = ['src/main/java', querydslSrcDir]
+            }
+        }
+    }
+
+    compileQuerydsl{
+        options.annotationProcessorPath = configurations.querydsl
+    }
+
+
     configurations {
         compileOnly {
             extendsFrom annotationProcessor
         }
+        querydsl.extendsFrom compileClasspath
     }
 }
 
