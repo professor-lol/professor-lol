@@ -28,6 +28,7 @@ public class Member {
     @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<MostChampion> mostChampions = new ArrayList<>();
 
+
     @Builder(builderMethodName = "createBuilder")
     public Member(String email, String name, String summonerName, String picture, MemberType memberType) {
         this.email = email;

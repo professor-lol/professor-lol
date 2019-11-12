@@ -14,6 +14,8 @@ import java.util.Arrays;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"member_id", "champion_id"})})
 public class MostChampion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,8 +5,6 @@ import com.ccs.professorlol.security.user.AccessUser;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-import java.util.Arrays;
-
 
 @Component
 @Profile({"test", "local"})
@@ -23,7 +21,7 @@ public class AccessUserTestManager implements AccessUserManager {
                 .email("aaa@gmail.com")
                 .picture("picture")
                 .summonerName("aaaaa")
-                .mostChampionDtos(Arrays.asList(mostChampionDto))
+                //.mostChampionDtos(Arrays.asList(mostChampionDto))
                 .build();
     }
 

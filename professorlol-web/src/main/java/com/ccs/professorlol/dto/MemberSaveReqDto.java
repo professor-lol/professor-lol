@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -12,10 +12,9 @@ import java.util.List;
 public class MemberSaveReqDto {
 
     private String summonerName;
-    private List<MostChampionDto> mostChampionDtos;
+    private List<MostChampionDto> mostChampionDtos = new ArrayList<>();
 
     @Builder(builderMethodName = "createBuilder")
-
     public MemberSaveReqDto(String summonerName, List<MostChampionDto> mostChampionDtos) {
         this.summonerName = summonerName;
         this.mostChampionDtos = mostChampionDtos;

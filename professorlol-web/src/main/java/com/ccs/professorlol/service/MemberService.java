@@ -41,6 +41,7 @@ public class MemberService {
     public Member saveMember(MemberSaveReqDto memberSaveReqDto) {
         validation(memberSaveReqDto);
 
+
         AccessUser accessUser = accessUserManager.loadAccessUserInStore();
 
         Member member = Member.createBuilder()
@@ -51,10 +52,10 @@ public class MemberService {
                 .memberType(findMemberTypeByEmail(accessUser.getEmail()))
                 .build();
         memberRepository.save(member);
-
        saveMostChampion(memberSaveReqDto, member);
 
         return member;
+
     }
 
     //TODO: MostChampionService로 이동
