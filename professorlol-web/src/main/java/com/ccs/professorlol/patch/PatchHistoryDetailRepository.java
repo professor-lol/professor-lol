@@ -1,14 +1,11 @@
 package com.ccs.professorlol.patch;
 
-import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
-import com.ccs.professorlol.patch.skill.ChampionAbilityHistoryRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.ccs.professorlol.patch.champion.PatchHistory;
 
-public interface PatchHistoryDetailRepository extends ChampionAbilityHistoryRepository, PatchHistoryRepositoryCustom {
-    @Query("select ca from ChampionAbilityHistory ca join fetch ca.championPatchHistory as cp where cp.champion_id = #{championId}")
-    List<ChampionAbilityHistory> getMyChampionHistory(@Param("championId") Long id);
+public interface PatchHistoryDetailRepository extends JpaRepository<PatchHistory, Long>, PatchHistoryRepositoryCustom {
+	// @Query("select ca from ChampionAbilityHistory ca join fetch ca.championPatchHistory as cp where cp.champion_id = #{championId}")
+	// List<ChampionAbilityHistory> getMyChampionHistory(@Param("championId") Long id);
 
 }
