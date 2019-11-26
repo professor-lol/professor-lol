@@ -6,11 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +28,13 @@ public class Champion {
 
     private String riotId;
     private String key;
+    @Column(unique = true)
     private String name;
 
-    @OneToMany(mappedBy = "champion", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Stat> stats;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "stat_id")
+    private List<Stat> stats = new ArrayList<>();
+
 
     @Builder
     public Champion(String riotId, String key, String name) {
@@ -37,4 +42,10 @@ public class Champion {
         this.key = key;
         this.name = name;
     }
+
+    public void addStat(Stat stat) {
+        //TODO validation
+        this.stats.add(stat);
+    }
+
 }

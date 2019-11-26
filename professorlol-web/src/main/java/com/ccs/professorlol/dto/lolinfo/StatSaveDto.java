@@ -1,7 +1,7 @@
-package com.ccs.professorlol.lolInfo.champion.dto;
+package com.ccs.professorlol.dto.lolinfo;
 
+import com.ccs.professorlol.ddragon.dto.champion.StatDto;
 import com.ccs.professorlol.lolInfo.LolInfo;
-import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.Stat;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -58,7 +58,33 @@ public class StatSaveDto {
     }
 
 
-    public Stat toEntity(LolInfo lolInfo, Champion champion) {
+    public static Stat makeStat(LolInfo lolInfo, StatDto statDto) {
+        return StatSaveDto.builder()
+                .hp(statDto.getHp())
+                .hpPerLevel(statDto.getHpperlevel())
+                .mp(statDto.getMp())
+                .mpPerLevel(statDto.getMpperlevel())
+                .moveSpeed(statDto.getMovespeed())
+                .armor(statDto.getArmor())
+                .armorPerLevel(statDto.getArmorperlevel())
+                .spellBlock(statDto.getSpellblock())
+                .spellBlockPerLevel(statDto.getSpellblockperlevel())
+                .attackRange(statDto.getAttackrange())
+                .hpRegen(statDto.getHpregen())
+                .hpRegenPerLevel(statDto.getHpregenperlevel())
+                .mpRegen(statDto.getMpregen())
+                .mpRegenPerLevel(statDto.getMpregenperlevel())
+                .crit(statDto.getCrit())
+                .critPerLevel(statDto.getCritperlevel())
+                .attackDamage(statDto.getAttackdamage())
+                .attackDamagePerLevel(statDto.getAttackdamageperlevel())
+                .attackSpeed(statDto.getAttackspeed())
+                .attackSpeedPerLevel(statDto.getAttackspeedperlevel())
+                .build()
+                .toEntity(lolInfo);
+    }
+
+    public Stat toEntity(LolInfo lolInfo) {
         return Stat.builder()
                 .hp(this.hp)
                 .hpPerLevel(this.hpPerLevel)
@@ -81,7 +107,6 @@ public class StatSaveDto {
                 .attackSpeed(this.attackSpeed)
                 .attackSpeedPerLevel(this.attackSpeedPerLevel)
                 .lolInfo(lolInfo)
-                .champion(champion)
                 .build();
     }
 }

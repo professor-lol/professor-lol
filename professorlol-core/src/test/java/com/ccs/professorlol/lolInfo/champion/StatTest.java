@@ -1,7 +1,7 @@
 package com.ccs.professorlol.lolInfo.champion;
 
 import com.ccs.professorlol.lolInfo.LolInfo;
-import com.ccs.professorlol.lolInfo.champion.dto.StatSaveDto;
+import com.ccs.professorlol.lolInfo.LolInfoRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,16 +23,25 @@ public class StatTest {
     @Autowired
     private StatRepository statRepository;
 
+    @Autowired
+    private ChampionRepository championRepository;
+
+    @Autowired
+    private LolInfoRepository lolInfoRepository;
+
     @After
     public void tearDown() throws Exception {
         statRepository.deleteAll();
+        championRepository.deleteAll();
+        lolInfoRepository.deleteAll();
     }
 
     @Test
-    public void Stat_정상저장_LolInfo_Champion_같이저장() {
+    public void Stat_챔피언_저장할때_같이저장() {
         LolInfo lolInfo = LolInfo.builder()
                 .patchNoteVersion("9.1.12")
                 .build();
+        lolInfo = lolInfoRepository.save(lolInfo);
 
         Champion champion = Champion.builder()
                 .riotId("Ahri")
@@ -40,16 +49,17 @@ public class StatTest {
                 .name("아리")
                 .build();
 
-        StatSaveDto statSaveDto = StatSaveDto.builder()
+        Stat stat = Stat.builder()
                 .hp(10)
+                .lolInfo(lolInfo)
                 .build();
 
-        Stat stat = statSaveDto.toEntity(lolInfo, champion);
+        champion.addStat(stat);
 
-        statRepository.save(stat);
+        championRepository.save(champion);
 
-        assertThat(stat.getHp()).isEqualTo(10);
-        assertThat(stat.getLolInfo().getPatchNoteVersion()).isEqualTo("9.1.12");
-        assertThat(stat.getChampion().getName()).isEqualTo("아리");
+        assertThat(champion.getStats().get(0).getHp()).isEqualTo(10);
+        assertThat(champion.getStats().get(0).getLolInfo().getPatchNoteVersion()).isEqualTo("9.1.12");
+        assertThat(champion.getName()).isEqualTo("아리");
     }
 }

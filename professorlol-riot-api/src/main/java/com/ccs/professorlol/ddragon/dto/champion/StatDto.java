@@ -52,4 +52,5 @@ public class StatDto {
         this.hpperlevel = hpperlevel;
         this.hp = hp;
     }
+
 }

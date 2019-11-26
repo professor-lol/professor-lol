@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,8 @@ public class LolInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String patchNoteVersion;
 
     @Builder
@@ -29,5 +32,9 @@ public class LolInfo {
     public LolInfo(Long id, String patchNoteVersion) {
         this.id = id;
         this.patchNoteVersion = patchNoteVersion;
+    }
+
+    public void alreadySavedException() throws IllegalArgumentException {
+        throw new IllegalArgumentException();
     }
 }

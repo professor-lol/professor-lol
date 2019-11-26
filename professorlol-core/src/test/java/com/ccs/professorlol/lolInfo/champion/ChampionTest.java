@@ -1,6 +1,5 @@
 package com.ccs.professorlol.lolInfo.champion;
 
-import com.ccs.professorlol.lolInfo.champion.dto.ChampionSaveDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,12 +29,11 @@ public class ChampionTest {
 
     @Test
     public void Champion_정상저장() {
-        ChampionSaveDto championSaveDto = ChampionSaveDto.builder()
+        Champion champion = Champion.builder()
                 .name("아리")
-                .id("Ahri")
+                .riotId("Ahri")
                 .key("109")
                 .build();
-        Champion champion = championSaveDto.toEntity();
 
         championRepository.save(champion);
         Champion maybeAhri = championRepository.findAll().get(0);

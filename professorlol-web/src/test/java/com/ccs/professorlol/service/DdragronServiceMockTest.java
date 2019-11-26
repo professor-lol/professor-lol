@@ -26,16 +26,17 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
 
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
-public class LolInfoServiceMockTest {
+public class DdragronServiceMockTest {
 
     @Autowired
-    private LolInfoService lolInfoService;
+    private DdragronService ddragronService;
 
     @Autowired
     private ChampionRepository championRepository;
@@ -57,30 +58,65 @@ public class LolInfoServiceMockTest {
     }
 
     @Test
-    public void saveDdragonData_정상저장() {
+    public void saveDdragonData_최초정상저장() {
         given(ddragonRestTemplate.getCurrentRealms())
-                .willReturn(getCurrentRealms());
+                .willReturn(getCurrentRealms("9.22.1"));
         given(ddragonRestTemplate.getChampionSimples("9.22.1"))
                 .willReturn(getTestChampionDataDto());
         given(lolInfoRepository.findByPatchNoteVersion("9.22.1"))
                 .willReturn(Optional.empty());
 
-        boolean result = lolInfoService.saveDdragonData();
-        assertThat(result).isTrue();
+        ddragronService.saveDdragonData();
 
         List<Champion> champions = championRepository.findAll();
         assertThat(champions.isEmpty()).isFalse();
     }
 
     @Test
+    public void saveDdragonData_스탯만_추가저장() {
+        //given
+        given(ddragonRestTemplate.getCurrentRealms())
+                .willReturn(getCurrentRealms("9.22.1"));
+        given(ddragonRestTemplate.getChampionSimples("9.22.1"))
+                .willReturn(getTestChampionDataDto());
+        given(lolInfoRepository.findByPatchNoteVersion("9.22.1"))
+                .willReturn(Optional.empty());
+
+        ddragronService.saveDdragonData();
+
+        List<Champion> champions = championRepository.findAll();
+        Champion ahri = champions.get(0);
+        int statSize = ahri.getStats().size();
+
+        assertThat(statSize).isEqualTo(1);
+
+        //when
+        given(ddragonRestTemplate.getCurrentRealms())
+                .willReturn(getCurrentRealms("9.22.2"));
+        given(ddragonRestTemplate.getChampionSimples("9.22.2"))
+                .willReturn(getTestChampionDataDto());
+        given(lolInfoRepository.findByPatchNoteVersion("9.22.1"))
+                .willReturn(Optional.empty());
+
+        ddragronService.saveDdragonData();
+
+        //then
+        champions = championRepository.findAll();
+        ahri = champions.get(0);
+        statSize = ahri.getStats().size();
+
+        assertThat(statSize).isEqualTo(2);
+    }
+
+    @Test
     public void saveDdragonData_새로운패치_없는경우() {
         given(ddragonRestTemplate.getCurrentRealms())
-                .willReturn(getCurrentRealms());
+                .willReturn(getCurrentRealms("9.22.1"));
         given(lolInfoRepository.findByPatchNoteVersion("9.22.1"))
                 .willReturn(Optional.of(new LolInfo(1L, "9.22.1")));
 
-        boolean result = lolInfoService.saveDdragonData();
-        assertThat(result).isFalse();
+        assertThatThrownBy(() -> ddragronService.saveDdragonData())
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     private DdragonChampionSimplesDto getTestChampionDataDto() {
@@ -97,9 +133,9 @@ public class LolInfoServiceMockTest {
                 .build();
     }
 
-    private RealmsDto getCurrentRealms() {
+    private RealmsDto getCurrentRealms(String version) {
         RealmsDto.LoLDataVersion loLDataVersion = RealmsDto.LoLDataVersion.testBuilder()
-                .champion("9.22.1")
+                .champion(version)
                 .build();
         return RealmsDto.testBuilder()
                 .lolDataVersion(loLDataVersion)

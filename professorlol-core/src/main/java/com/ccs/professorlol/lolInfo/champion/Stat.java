@@ -6,7 +6,12 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Getter
 @Entity
@@ -37,14 +42,11 @@ public class Stat {
     private Double attackSpeed;
     private Double attackSpeedPerLevel;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private LolInfo lolInfo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Champion champion;
-
     @Builder
-    public Stat(Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel, LolInfo lolInfo, Champion champion) {
+    public Stat(Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel, LolInfo lolInfo) {
         this.hp = hp;
         this.hpPerLevel = hpPerLevel;
         this.mp = mp;
@@ -66,6 +68,5 @@ public class Stat {
         this.attackSpeed = attackSpeed;
         this.attackSpeedPerLevel = attackSpeedPerLevel;
         this.lolInfo = lolInfo;
-        this.champion = champion;
     }
 }
