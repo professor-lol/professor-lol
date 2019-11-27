@@ -8,6 +8,18 @@ import com.ccs.professorlol.member.domain.MemberRepository;
 import com.ccs.professorlol.member.domain.MemberType;
 import com.ccs.professorlol.repository.mostchampion.MostChampionRepository;
 import org.junit.After;
+
+import org.junit.Before;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import com.ccs.professorlol.dto.MostChampionAddReqDto;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,27 +37,36 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
 public class MostChampionServiceTest {
+    private static final String EMAIL = "aaa@gmail.com";
 
+    @Autowired
+    private MemberRepository memberRepository;
+    @Autowired
+    private MostChampionRepository mostChampionRepository;
     @Autowired
     MemberService memberService;
     @Autowired
     ChampionRepository championRepository;
-
     @Autowired
     MostChampionService mostChampionService;
 
-    @Autowired
-    MemberRepository memberRepository;
+    @Before
+    public void setUp() throws Exception {
+        Member member = Member.createBuilder()
+                .name("테스트")
+                .summonerName("킹북골")
+                .email(EMAIL)
+                .memberType(MemberType.GOOGLE)
+                .build();
+        memberRepository.save(member);
 
-    @Autowired
-    MostChampionRepository mostChampionRepository;
-
+        championRepository.saveAll(generateMockChampions());
+    }
 
     @After
     public void tearDown() throws Exception {
         memberRepository.deleteAll();
         championRepository.deleteAll();
-        mostChampionRepository.deleteAll();
     }
 
     @Test
@@ -60,8 +81,28 @@ public class MostChampionServiceTest {
         assertThat(mostChampions.get(1).getChampion().getName()).isEqualTo("판테온");
     }
 
-    private Member saveUser() {
+    @Test
+    public void 챔피언_이름_리스트로_모스트_챔피언_추가_성공() {
+        List<String> championNames = Arrays.asList("아리", "아트록스");
 
+        MostChampionAddReqDto mostChampionAddReqDto = MostChampionAddReqDto.createBuilder()
+                .championNames(championNames)
+                .build();
+
+        championRepository.saveAll(generateMockChampions());
+        //when
+        List<MostChampion> mostChampions = mostChampionService.addMostChampion(mostChampionAddReqDto);
+        //then
+        mostChampions.stream()
+                .map(MostChampion::getChampion)
+                .map(Champion::getName)
+                .forEach(System.out::println);
+
+        assertThat(mostChampions.size()).isEqualTo(2);
+        assertThat(mostChampions.get(0).getChampion().getName()).isEqualTo("아리");
+    }
+
+    private Member saveUser() {
         Member member = Member.createBuilder()
                 .email("jaeyeon9327@gmail.com")
                 .name("서재연")
@@ -96,4 +137,28 @@ public class MostChampionServiceTest {
         return member;
     }
 
+    private List<Champion> generateMockChampions() {
+        Champion aatrox = Champion.builder()
+                .key("1")
+                .name("아트록스")
+                .riotId("Aatrox")
+                .build();
+        Champion ahri = Champion.builder()
+                .key("2")
+                .name("아리")
+                .riotId("Ahri")
+                .build();
+        Champion akali = Champion.builder()
+                .key("3")
+                .name("아칼리")
+                .riotId("Akali")
+                .build();
+
+        Champion pantheon = Champion.builder()
+                .key("4")
+                .name("판테온")
+                .riotId("Pantheon")
+                .build();
+        return Arrays.asList(aatrox, ahri, akali,pantheon);
+    }
 }
