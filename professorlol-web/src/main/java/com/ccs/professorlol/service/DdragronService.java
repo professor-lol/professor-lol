@@ -11,8 +11,8 @@ import com.ccs.professorlol.dto.lolinfo.StatSaveDto;
 import com.ccs.professorlol.lolInfo.LolInfo;
 import com.ccs.professorlol.lolInfo.LolInfoRepository;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.lolInfo.champion.Stat;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

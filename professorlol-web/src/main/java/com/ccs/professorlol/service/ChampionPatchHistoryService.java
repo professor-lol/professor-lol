@@ -5,7 +5,7 @@ import com.ccs.professorlol.PatchNoteCrawler;
 import com.ccs.professorlol.PatchResponseDto;
 import com.ccs.professorlol.dto.champion.ChampionDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

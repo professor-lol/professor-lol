@@ -2,6 +2,7 @@ package com.ccs.professorlol.lolInfo.champion;
 
 import com.ccs.professorlol.lolInfo.LolInfo;
 import com.ccs.professorlol.lolInfo.LolInfoRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;

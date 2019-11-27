@@ -3,7 +3,7 @@ package com.ccs.professorlol.service;
 import com.ccs.professorlol.dto.MemberSaveReqDto;
 import com.ccs.professorlol.dto.MostChampionDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import com.ccs.professorlol.member.domain.Member;
 import com.ccs.professorlol.member.domain.MemberRepository;
 import com.ccs.professorlol.member.domain.MemberType;
@@ -66,7 +66,7 @@ public class MemberServiceTest {
         assertThat(member.getName()).isEqualTo("테스트");
         assertThat(member.getMemberType()).isEqualTo(MemberType.GOOGLE);
 
-      //  assertThat(member.getMostChampions().get(0).getChampion().getName()).isEqualTo("아리");
+        //  assertThat(member.getMostChampions().get(0).getChampion().getName()).isEqualTo("아리");
         assertThat(mostChampionRepository.findAllByMember(member).size()).isEqualTo(2);
     }
 

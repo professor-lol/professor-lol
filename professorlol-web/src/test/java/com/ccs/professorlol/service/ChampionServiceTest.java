@@ -2,7 +2,7 @@ package com.ccs.professorlol.service;
 
 import com.ccs.professorlol.dto.ChampionSimpleDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
