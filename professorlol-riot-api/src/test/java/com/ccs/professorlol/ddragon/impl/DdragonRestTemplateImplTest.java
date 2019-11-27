@@ -9,13 +9,10 @@ import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionSimplesDto;
 import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionStandAloneDto;
 import com.ccs.professorlol.ddragon.dto.item.ItemDataDto;
 import com.ccs.professorlol.ddragon.dto.item.ItemDto;
-import com.ccs.professorlol.summoner.SummonerRestTemplate;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -32,8 +29,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("major")
 @Ignore
 public class DdragonRestTemplateImplTest {
-
-    private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplate.class);
 
     private static final String VERSION = "9.22.1";
 

@@ -23,7 +23,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
@@ -44,7 +43,7 @@ public class DdragronServiceMockTest {
     @Autowired
     private StatRepository statRepository;
 
-    @MockBean
+    @Autowired
     private LolInfoRepository lolInfoRepository;
 
     @MockBean
@@ -60,11 +59,9 @@ public class DdragronServiceMockTest {
     @Test
     public void saveDdragonData_최초정상저장() {
         given(ddragonRestTemplate.getCurrentRealms())
-                .willReturn(getCurrentRealms("9.22.1"));
+                .willReturn(aRealms("9.22.1"));
         given(ddragonRestTemplate.getChampionSimples("9.22.1"))
-                .willReturn(getTestChampionDataDto());
-        given(lolInfoRepository.findByPatchNoteVersion("9.22.1"))
-                .willReturn(Optional.empty());
+                .willReturn(aChampionDataDto());
 
         ddragronService.saveDdragonData();
 
@@ -76,64 +73,64 @@ public class DdragronServiceMockTest {
     public void saveDdragonData_스탯만_추가저장() {
         //given
         given(ddragonRestTemplate.getCurrentRealms())
-                .willReturn(getCurrentRealms("9.22.1"));
+                .willReturn(aRealms("9.22.1"));
         given(ddragonRestTemplate.getChampionSimples("9.22.1"))
-                .willReturn(getTestChampionDataDto());
-        given(lolInfoRepository.findByPatchNoteVersion("9.22.1"))
-                .willReturn(Optional.empty());
+                .willReturn(aChampionDataDto());
 
         ddragronService.saveDdragonData();
 
-        List<Champion> champions = championRepository.findAll();
+        List<Champion> champions = championRepository.findAllFetch();
         Champion ahri = champions.get(0);
-        int statSize = ahri.getStats().size();
 
-        assertThat(statSize).isEqualTo(1);
+        assertThat(ahri.getStats().size()).isEqualTo(1);
 
         //when
         given(ddragonRestTemplate.getCurrentRealms())
-                .willReturn(getCurrentRealms("9.22.2"));
+                .willReturn(aRealms("9.22.2"));
         given(ddragonRestTemplate.getChampionSimples("9.22.2"))
-                .willReturn(getTestChampionDataDto());
-        given(lolInfoRepository.findByPatchNoteVersion("9.22.1"))
-                .willReturn(Optional.empty());
+                .willReturn(aChampionDataDto());
 
         ddragronService.saveDdragonData();
 
         //then
-        champions = championRepository.findAll();
+        champions = championRepository.findAllFetch();
         ahri = champions.get(0);
-        statSize = ahri.getStats().size();
 
-        assertThat(statSize).isEqualTo(2);
+        assertThat(ahri.getStats().size()).isEqualTo(2);
     }
 
     @Test
     public void saveDdragonData_새로운패치_없는경우() {
         given(ddragonRestTemplate.getCurrentRealms())
-                .willReturn(getCurrentRealms("9.22.1"));
-        given(lolInfoRepository.findByPatchNoteVersion("9.22.1"))
-                .willReturn(Optional.of(new LolInfo(1L, "9.22.1")));
+                .willReturn(aRealms("9.22.1"));
+        lolInfoRepository.saveAndFlush(new LolInfo(1L, "9.22.1"));
 
         assertThatThrownBy(() -> ddragronService.saveDdragonData())
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    private DdragonChampionSimplesDto getTestChampionDataDto() {
+    private DdragonChampionSimplesDto aChampionDataDto() {
         StatDto statDto = StatDto.testBuilder()
+                .hp(10)
                 .build();
-        DdragonChampionStandAloneDto championDto = DdragonChampionStandAloneDto.testBuilder()
+        DdragonChampionStandAloneDto championDto1 = DdragonChampionStandAloneDto.testBuilder()
                 .name("아리")
                 .id("109")
                 .key("Ahri")
                 .stats(statDto)
                 .build();
+        DdragonChampionStandAloneDto championDto2 = DdragonChampionStandAloneDto.testBuilder()
+                .name("베이가")
+                .id("110")
+                .key("Veiga")
+                .stats(statDto)
+                .build();
         return DdragonChampionSimplesDto.testBuilder()
-                .champions(Arrays.asList(championDto))
+                .champions(Arrays.asList(championDto1, championDto2))
                 .build();
     }
 
-    private RealmsDto getCurrentRealms(String version) {
+    private RealmsDto aRealms(String version) {
         RealmsDto.LoLDataVersion loLDataVersion = RealmsDto.LoLDataVersion.testBuilder()
                 .champion(version)
                 .build();

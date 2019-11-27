@@ -34,22 +34,23 @@ public class DdragronService {
 
         lolInfoRepository.findByPatchNoteVersion(currentChampionVersion)
                 .ifPresent(LolInfo::alreadySavedException);
+
         LolInfo lolInfo = lolInfoRepository.save(LolInfoSaveDto.makeLolInfo(currentChampionVersion));
 
         DdragonChampionSimplesDto championSimples = ddragonRestTemplate.getChampionSimples(currentChampionVersion);
         List<DdragonChampionStandAloneDto> ddragonChampionStandAloneDtos = championSimples.getChampions();
 
-        ddragonChampionStandAloneDtos.forEach(championStandAloneDto -> saveStat(lolInfo, championStandAloneDto));
+        ddragonChampionStandAloneDtos.forEach(championStandAloneDto -> updateStat(championStandAloneDto, lolInfo));
     }
 
-    private void saveStat(LolInfo lolInfo, DdragonChampionStandAloneDto championStandAloneDto) {
+    private void updateStat(DdragonChampionStandAloneDto championStandAloneDto, LolInfo lolInfo) {
         Champion champion = championRepository.findByName(championStandAloneDto.getName())
-                .orElseGet(() -> championRepository.save(ChampionSaveDto.makeChampion(championStandAloneDto)));
+                .orElseGet(() -> ChampionSaveDto.makeChampion(championStandAloneDto));
 
         StatDto statDto = championStandAloneDto.getStats();
         Stat stat = StatSaveDto.makeStat(lolInfo, statDto);
-
         champion.addStat(stat);
-    }
 
+        championRepository.save(champion);
+    }
 }
