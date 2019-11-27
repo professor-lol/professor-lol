@@ -1,4 +1,10 @@
 dependencies {
+    compile project(':professorlol-riot-api')   // 독립 모듈
+    compile project(':professorlol-core')       // 공통 모듈
+    compile project(':professorlol-crawling')
+    compile project(':professorlol-common')
+
+
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'org.springframework.boot:spring-boot-starter-web'
