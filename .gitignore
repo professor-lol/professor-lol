@@ -50,3 +50,6 @@ yarn-debug.log*
 yarn-error.log*
 professorlol-web/src/main/resources/static/
 professorlol-web/src/main/resources/favicon.ico
+
+
+professorlol-core/src/main/generated/

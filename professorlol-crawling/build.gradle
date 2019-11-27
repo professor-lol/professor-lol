@@ -3,6 +3,7 @@ jar { enabled = true }
 
 dependencies {
     compile project(':professorlol-common')
+
     implementation 'org.jsoup:jsoup:1.11.3'
     testImplementation group: 'org.mock-server', name: 'mockserver-netty', version: '5.6.1'
 }

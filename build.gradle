@@ -14,11 +14,6 @@ buildscript {
     }
 }
 
-//전체 프로젝트에 적용될 설정
-allprojects {
-
-}
-
 //모든 하위 프로젝트에 공통으로 적용될 설정
 subprojects {
     group = 'com.ccs'
@@ -27,41 +22,52 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
-    apply plugin: "com.ewerk.gradle.plugins.querydsl"
 
     sourceCompatibility = '1.8'
 
     repositories {
         mavenCentral()
     }
+
     dependencies {
-        compile("com.querydsl:querydsl-jpa") // querydsl
-        compile("com.querydsl:querydsl-apt") // querydsl
-        testCompile group: 'junit', name: 'junit', version: '4.12'
+        testImplementation group: 'junit', name: 'junit', version: '4.12'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
         compileOnly 'org.projectlombok:lombok'
         annotationProcessor 'org.projectlombok:lombok'
     }
 
-    def querydslSrcDir = 'src/main/generated'
+
+}
+
+def queryDslProjects = [project(':professorlol-web'), project(':professorlol-core')]
+configure(queryDslProjects) {
+
+    def queryDslSrcDir = 'src/main/generated'
+
+    apply plugin: "com.ewerk.gradle.plugins.querydsl"
 
     querydsl {
         library = "com.querydsl:querydsl-apt"
         jpa = true
-        querydslSourcesDir = querydslSrcDir
+        querydslSourcesDir = queryDslSrcDir
     }
 
     sourceSets {
         main {
             java {
-                srcDirs = ['src/main/java', querydslSrcDir]
+                srcDirs = ['src/main/java', queryDslSrcDir]
             }
         }
     }
-
-    compileQuerydsl{
-        options.annotationProcessorPath = configurations.querydsl
+    dependencies {
+        implementation("com.querydsl:querydsl-jpa") // querydsl
+        implementation("com.querydsl:querydsl-apt") // querydsl
     }
 
+    compileQuerydsl {
+        options.annotationProcessorPath = configurations.querydsl
+    }
 
     configurations {
         compileOnly {
@@ -71,14 +77,6 @@ subprojects {
     }
 }
 
-project(':professorlol-web') {   //application 모듈
-    dependencies {
-        compile project(':professorlol-riot-api')   // 독립 모듈
-        compile project(':professorlol-core')       // 공통 모듈
-        compile project(':professorlol-crawling')
-        compile project(':professorlol-common')
-    }
-}
 
 /**
  * main메소드가 필요없는 모듈의 경우 build.gradle에
