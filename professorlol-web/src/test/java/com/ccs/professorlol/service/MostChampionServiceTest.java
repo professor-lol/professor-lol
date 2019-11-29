@@ -4,12 +4,10 @@ import com.ccs.professorlol.dto.MemberSaveReqDto;
 import com.ccs.professorlol.dto.MostChampionDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
+import com.ccs.professorlol.lolInfo.champion.MostChampion;
 import com.ccs.professorlol.member.domain.Member;
 import com.ccs.professorlol.member.domain.MemberRepository;
 import com.ccs.professorlol.member.domain.MemberType;
-import com.ccs.professorlol.repository.mostchampion.MostChampionRepository;
-import com.ccs.professorlol.security.store.AccessUserManager;
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,33 +19,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.Assert.*;
 
-@ActiveProfiles("test")
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class MemberServiceTest {
+@ActiveProfiles("test")
+public class MostChampionServiceTest {
 
-    @Autowired
-    MostChampionRepository mostChampionRepository;
-    @Autowired
-    MemberRepository memberRepository;
     @Autowired
     MemberService memberService;
     @Autowired
-    AccessUserManager accessUserManager;
-    @Autowired
     ChampionRepository championRepository;
 
-    @After
-    public void cleanUp() {
-        memberRepository.deleteAll();
-    }
+    @Autowired
+    MostChampionService mostChampionService;
 
     @Test
-    public void 유저_저장_성공() {
-
+    public void 멤버로_모스트챔피언_조회_성공_테스트() {
         //given
+        Member member = saveUser();
+        //when
+        List<MostChampion> mostChampions = mostChampionService.findByMember(member);
+        //then
+        assertThat(mostChampions.get(0).getChampion().getName()).isEqualTo("아리");
+        assertThat(mostChampions.get(1).getChampion().getName()).isEqualTo("판테온");
+    }
+
+    private Member saveUser(){
         List<MostChampionDto> mostChampionDtos = settingMostChampionSaveDtos();
 
         MemberSaveReqDto memberSaveReqDto = MemberSaveReqDto.createBuilder()
@@ -55,18 +53,7 @@ public class MemberServiceTest {
                 .mostChampionDtos(mostChampionDtos)
                 .build();
 
-        //when
-        memberService.saveMember(memberSaveReqDto);
-
-        //then
-        Member member = memberService.findByEmail("aaa@gmail.com");
-        assertThat(member.getSummonerName()).isEqualTo("a1010100z");
-        assertThat(member.getEmail()).isEqualTo("aaa@gmail.com");
-        assertThat(member.getName()).isEqualTo("테스트");
-        assertThat(member.getMemberType()).isEqualTo(MemberType.GOOGLE);
-
-      //  assertThat(member.getMostChampions().get(0).getChampion().getName()).isEqualTo("아리");
-        assertThat(mostChampionRepository.findAllByMember(member).size()).isEqualTo(2);
+        return memberService.saveMember(memberSaveReqDto);
     }
 
     private List<MostChampionDto> settingMostChampionSaveDtos() {
@@ -87,7 +74,5 @@ public class MemberServiceTest {
                 .id(champions1.get(1).getId())
                 .name(champions1.get(1).getName()).build());
         return mostChampionDtos;
-
     }
-
 }

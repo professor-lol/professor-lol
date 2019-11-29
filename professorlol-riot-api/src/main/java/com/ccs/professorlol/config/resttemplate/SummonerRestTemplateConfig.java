@@ -17,7 +17,7 @@ import java.time.Duration;
 @Slf4j
 public class SummonerRestTemplateConfig {
 
-    @Profile("major")
+    @Profile({"major", "local"})
     @RequiredArgsConstructor
     @Configuration
     public static class MajorSummonerConfig {
@@ -39,7 +39,7 @@ public class SummonerRestTemplateConfig {
 
     }
 
-    @Profile({"local", "test"})
+    @Profile({"test"})
     @RequiredArgsConstructor
     @Configuration
     public static class LocalSummonerConfig {

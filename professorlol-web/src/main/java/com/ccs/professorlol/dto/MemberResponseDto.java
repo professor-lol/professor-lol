@@ -13,13 +13,15 @@ public class MemberResponseDto {
     private String email;
     private String name;
     private String summonerName;
-    private List<String> mostChampions;
+    private String picture;
+    private List<MostChampionDto> mostChampions;
 
     @Builder(builderMethodName = "createBuilder")
-    public MemberResponseDto(String email, String name, String summonerName, List<String> mostChampions) {
+    public MemberResponseDto(String email, String name, String summonerName, String picture, List<MostChampionDto> mostChampions) {
         this.email = email;
         this.name = name;
         this.summonerName = summonerName;
+        this.picture = picture;
         this.mostChampions = mostChampions;
     }
 }
