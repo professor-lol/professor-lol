@@ -4,7 +4,7 @@ jdk:
 
 branches:
   only:
-    - feature/professor-lol-81
+    - dev
 
 notifications:
   slack: professor-lol:pAWHye0uRCUwO9GWDtqoKd5q
@@ -20,3 +20,4 @@ before_install:
   - cd ../../..
 
 script: "./gradlew clean build -x test"
+
