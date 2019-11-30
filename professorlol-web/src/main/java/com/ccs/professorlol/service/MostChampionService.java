@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,13 +34,11 @@ public class MostChampionService {
         return mostChampionRepository.findAllByMember(member);
     }
 
-    public List<MostChampion> addMostChampion(MostChampionAddReqDto mostChampionAddReqDto) {
-
+    @Transactional
+    public List<MostChampion> addMostChampions(MostChampionAddReqDto mostChampionAddReqDto) {
         AccessUser accessUser = accessUserManager.loadUserInfo();
         Member member = memberRepository.findByEmail(accessUser.getEmail());
-        List<Champion> champions = championRepository.findAllByNameIn(mostChampionAddReqDto.getChampionNames());
-
-        champions.stream().forEach(champion -> System.out.println(champion.getName()));
+        List<Champion> champions = championRepository.findAllByIdIn(mostChampionAddReqDto.getChampionIds());
 
         List<MostChampion> mostChampions = champions.stream()
                 .map(champion -> MostChampion.builder()

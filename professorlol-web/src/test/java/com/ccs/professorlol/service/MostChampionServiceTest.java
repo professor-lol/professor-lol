@@ -59,8 +59,6 @@ public class MostChampionServiceTest {
                 .memberType(MemberType.GOOGLE)
                 .build();
         memberRepository.save(member);
-
-        championRepository.saveAll(generateMockChampions());
     }
 
     @After
@@ -83,23 +81,22 @@ public class MostChampionServiceTest {
 
     @Test
     public void 챔피언_이름_리스트로_모스트_챔피언_추가_성공() {
-        List<String> championNames = Arrays.asList("아리", "아트록스");
+        List<Long> championIds = Arrays.asList(2L, 1L);
 
         MostChampionAddReqDto mostChampionAddReqDto = MostChampionAddReqDto.createBuilder()
-                .championNames(championNames)
+                .championIds(championIds)
                 .build();
 
         championRepository.saveAll(generateMockChampions());
         //when
-        List<MostChampion> mostChampions = mostChampionService.addMostChampion(mostChampionAddReqDto);
+        List<MostChampion> mostChampions = mostChampionService.addMostChampions(mostChampionAddReqDto);
+        Member member = memberRepository.findByEmail(EMAIL);
         //then
-        mostChampions.stream()
-                .map(MostChampion::getChampion)
-                .map(Champion::getName)
-                .forEach(System.out::println);
-
+        assertThat(mostChampions.get(0).getMember().getEmail()).isEqualTo(EMAIL);
+        assertThat(member.getMostChampions().size()).isEqualTo(2);
         assertThat(mostChampions.size()).isEqualTo(2);
-        assertThat(mostChampions.get(0).getChampion().getName()).isEqualTo("아리");
+        assertThat(mostChampions.get(0).getChampion().getName()).isEqualTo("아트록스");
+
     }
 
     private Member saveUser() {
@@ -159,6 +156,6 @@ public class MostChampionServiceTest {
                 .name("판테온")
                 .riotId("Pantheon")
                 .build();
-        return Arrays.asList(aatrox, ahri, akali,pantheon);
+        return Arrays.asList(ahri, pantheon, akali, aatrox);
     }
 }

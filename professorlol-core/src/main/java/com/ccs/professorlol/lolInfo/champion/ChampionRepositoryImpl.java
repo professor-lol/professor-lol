@@ -1,26 +1,27 @@
 package com.ccs.professorlol.lolInfo.champion;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import java.util.List;
 
 import static com.ccs.professorlol.lolInfo.champion.QChampion.champion;
 
-@RequiredArgsConstructor
-public class ChampionRepositoryImpl implements ChampionRepositoryCustom {
-    private final JPAQueryFactory jpaQueryFactory;
+public class ChampionRepositoryImpl extends QuerydslRepositorySupport implements ChampionRepositoryCustom {
+
+    public ChampionRepositoryImpl() {
+        super(Champion.class);
+    }
 
     @Override
     public List<Champion> findAllByNameIn(List<String> championNames) {
-        return jpaQueryFactory.selectFrom(champion)
+        return super.from(champion)
                 .where(champion.name.in(championNames))
                 .fetch();
     }
 
     @Override
     public List<Champion> findAllByIdIn(List<Long> championIds) {
-        return jpaQueryFactory.selectFrom(champion)
+        return super.from(champion)
                 .where(champion.id.in(championIds))
                 .fetch();
     }

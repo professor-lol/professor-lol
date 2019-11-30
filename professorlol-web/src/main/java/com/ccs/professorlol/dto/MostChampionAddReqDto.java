@@ -9,21 +9,21 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 public class MostChampionAddReqDto {
-    private List<String> championNames;
+    private List<Long> championIds;
 
     @Builder(builderMethodName = "createBuilder")
-    public MostChampionAddReqDto(List<String> championNames) {
-        validationSize(championNames);
-        this.championNames = championNames;
+    public MostChampionAddReqDto(List<Long> championIds) {
+        validationSize(championIds);
+        this.championIds = championIds;
     }
 
-    public void setChampionNames(List<String> championNames) {
-        validationSize(championNames);
-        this.championNames = championNames;
+    public void setChampionIds(List<Long> championIds) {
+        validationSize(championIds);
+        this.championIds = championIds;
     }
 
-    private void validationSize(List<String> championNames) {
-        if (championNames.size() < 0 || championNames.size() > 3) {
+    private void validationSize(List<Long> championIds) {
+        if (championIds.size() < 0 || championIds.size() > 3) {
             throw new RuntimeException("Most Champion Select Size Error");
         }
     }
