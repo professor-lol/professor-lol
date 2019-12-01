@@ -7,6 +7,4 @@ import com.ccs.professorlol.patch.champion.PatchHistory;
 public interface PatchHistoryDetailRepository
 	extends JpaRepository<PatchHistory, Long>, PatchHistoryDetailRepositoryCustom {
 
-
-
 }

@@ -21,9 +21,10 @@ public class PatchHistoryDetailRepositoryImpl extends QuerydslRepositorySupport
 	@Override
 	public List<ChampionAbilityHistory> getMyChampionHistoryByChampionId(Long championId) {
 		return super.from(championAbilityHistory)
-			.join(championAbilityHistory.championAttributeHistories, championAttributeHistory).fetchJoin()
-			.join(championAbilityHistory.championPatchHistory, championPatchHistory).fetchJoin()
-			.join(championPatchHistory.champion, champion).fetchJoin()
+			.leftJoin(championAbilityHistory.championAttributeHistories, championAttributeHistory).fetchJoin()
+			.leftJoin(championAbilityHistory.championPatchHistory, championPatchHistory).fetchJoin()
+			.leftJoin(championPatchHistory.champion, champion).fetchJoin()
+			.distinct()
 			.fetch();
 	}
 
