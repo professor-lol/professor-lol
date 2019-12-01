@@ -1,5 +1,6 @@
-package com.ccs.professorlol.dto.lolinfo;
+package com.ccs.professorlol.dto.lolinfo.champion;
 
+import com.ccs.professorlol.dto.lolinfo.stat.StatResDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.Stat;
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -3,20 +3,21 @@ package com.ccs.professorlol.lolInfo.champion;
 import com.ccs.professorlol.lolInfo.LolInfo;
 import com.ccs.professorlol.lolInfo.LolInfoRepository;
 import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class StatTest {
@@ -30,15 +31,16 @@ public class StatTest {
     @Autowired
     private LolInfoRepository lolInfoRepository;
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         statRepository.deleteAll();
         championRepository.deleteAll();
         lolInfoRepository.deleteAll();
     }
 
+    @DisplayName("챔피언_저장할때_같이저장")
     @Test
-    public void Stat_챔피언_저장할때_같이저장() {
+    public void Stat_1() {
         LolInfo lolInfo = LolInfo.builder()
                 .patchNoteVersion("9.1.12")
                 .build();

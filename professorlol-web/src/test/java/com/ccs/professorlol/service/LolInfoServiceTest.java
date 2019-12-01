@@ -1,25 +1,29 @@
 package com.ccs.professorlol.service;
 
-import com.ccs.professorlol.dto.lolinfo.ChampionResDto;
-import com.ccs.professorlol.dto.lolinfo.ChampionSaveDto;
 import com.ccs.professorlol.dto.lolinfo.LolInfoResDto;
 import com.ccs.professorlol.dto.lolinfo.LolInfoSaveDto;
-import com.ccs.professorlol.dto.lolinfo.StatResDto;
-import com.ccs.professorlol.dto.lolinfo.StatSaveDto;
+import com.ccs.professorlol.dto.lolinfo.LolInfoUpdateDto;
+import com.ccs.professorlol.dto.lolinfo.champion.ChampionResDto;
+import com.ccs.professorlol.dto.lolinfo.champion.ChampionSaveDto;
+import com.ccs.professorlol.dto.lolinfo.champion.ChampionUpdateDto;
+import com.ccs.professorlol.dto.lolinfo.stat.StatResDto;
+import com.ccs.professorlol.dto.lolinfo.stat.StatSaveDto;
+import com.ccs.professorlol.dto.lolinfo.stat.StatUpdateDto;
 import com.ccs.professorlol.lolInfo.LolInfo;
 import com.ccs.professorlol.lolInfo.LolInfoRepository;
 import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.Stat;
 import com.ccs.professorlol.lolInfo.champion.StatRepository;
 import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
-import com.ccs.professorlol.lolInfo.exception.AlreadyExistException;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.ccs.professorlol.lolInfo.exception.AlreadySavedException;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 
@@ -27,9 +31,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class LolInfoServiceTest {
+class LolInfoServiceTest {
 
     @Autowired
     private LolInfoService lolInfoService;
@@ -43,15 +47,16 @@ public class LolInfoServiceTest {
     @Autowired
     private StatRepository statRepository;
 
-    @After
-    public void tearDown() throws Exception {
+    @AfterEach
+    void tearDown() throws Exception {
         statRepository.deleteAll();
         lolInfoRepository.deleteAll();
         championRepository.deleteAll();
     }
 
+    @DisplayName("LoL 패치노트 버전 저장")
     @Test
-    public void saveLolInfo_정상저장() {
+    void saveLolInfo_1() {
         String version = "9.22.1";
 
         LolInfoSaveDto lolInfoSaveDto = LolInfoSaveDto.builder()
@@ -63,8 +68,9 @@ public class LolInfoServiceTest {
         assertThat(lolInfoResDto.getPatchNoteVersion()).isEqualTo(version);
     }
 
+    @DisplayName("Lol 패치노트 중복된 버전 저장 시도시")
     @Test
-    public void saveLolInfo_중복된_버전_저장_시도시() {
+    void saveLolInfo_2() {
         String version = "9.22.1";
 
         LolInfoSaveDto lolInfoSaveDto = LolInfoSaveDto.builder()
@@ -72,14 +78,35 @@ public class LolInfoServiceTest {
                 .build();
 
         lolInfoService.saveLolInfo(lolInfoSaveDto);
-        lolInfoRepository.flush();
 
         assertThatThrownBy(() -> lolInfoService.saveLolInfo(lolInfoSaveDto))
-                .isInstanceOf(AlreadyExistException.class);
+                .isInstanceOf(AlreadySavedException.class);
     }
 
+    @DisplayName("Lol 패치노트 버전 수정하기")
     @Test
-    public void saveChampion_정상저장() {
+    void updateLolInfo() {
+        //given
+        LolInfoSaveDto saveDto = LolInfoSaveDto.builder()
+                .patchNoteVersion("9.22.1")
+                .build();
+        LolInfo lolInfo = lolInfoRepository.saveAndFlush(saveDto.toEntity());
+
+        LolInfoUpdateDto updateDto = LolInfoUpdateDto.builder()
+                .savedPatchVersion(lolInfo.getPatchNoteVersion())
+                .changePatchVersion("바뀐버전")
+                .build();
+
+        //when
+        LolInfoResDto lolInfoResDto = lolInfoService.updateLolInfo(updateDto);
+
+        //then
+        assertThat(lolInfoResDto.getPatchNoteVersion()).isEqualTo("바뀐버전");
+    }
+
+    @DisplayName("챔피언 정상저장")
+    @Test
+    void saveChampion_1() {
         ChampionSaveDto championSaveDto = ChampionSaveDto.builder()
                 .name("아리")
                 .key("Ahri")
@@ -93,8 +120,9 @@ public class LolInfoServiceTest {
         assertThat(championResDto.getRiotId()).isEqualTo(championSaveDto.getRiotId());
     }
 
+    @DisplayName("중복된 챔피언 저장 시도시")
     @Test
-    public void saveChampion_중복된_챔피언_저장_시도시() {
+    void saveChampion_2() {
         ChampionSaveDto championSaveDto = ChampionSaveDto.builder()
                 .name("아리")
                 .key("Ahri")
@@ -102,14 +130,36 @@ public class LolInfoServiceTest {
                 .build();
 
         lolInfoService.saveChampion(championSaveDto);
-        championRepository.flush();
 
         assertThatThrownBy(() -> lolInfoService.saveChampion(championSaveDto))
-                .isInstanceOf(AlreadyExistException.class);
+                .isInstanceOf(AlreadySavedException.class);
     }
 
+    @DisplayName("챔피언 정보업데이트")
     @Test
-    public void saveStat_정상저장() {
+    void updateChampion_1() {
+        ChampionSaveDto championSaveDto = ChampionSaveDto.builder()
+                .name("바뀌기전 이름")
+                .key("Ahri")
+                .riotId("109")
+                .build();
+
+        Champion saveAhri = championRepository.saveAndFlush(championSaveDto.toEntity());
+
+        ChampionUpdateDto championUpdateDto = ChampionUpdateDto.builder()
+                .id(saveAhri.getId())
+                .name("바꾼이름")
+                .build();
+
+        ChampionResDto championResDto = lolInfoService.updateChampion(championUpdateDto);
+
+        assertThat(championResDto.getName()).isEqualTo("바꾼이름");
+    }
+
+    @DisplayName("Stat 정상저장")
+    @Test
+    void saveStat_1() {
+        //given
         ChampionSaveDto championSaveDto = ChampionSaveDto.builder()
                 .name("아리")
                 .key("Ahri")
@@ -129,12 +179,37 @@ public class LolInfoServiceTest {
         StatSaveDto statSaveDto = StatSaveDto.builder()
                 .hp(100)
                 .build();
+
+        //when
         StatResDto statResDto = lolInfoService.saveStat(statSaveDto, championId, lolInfoId);
 
+        //then
         assertThat(statResDto.getHp()).isEqualTo(100);
 
         List<Stat> allStats = statRepository.findAll();
         assertThat(allStats.isEmpty()).isFalse();
         assertThat(allStats.get(0).getHp()).isEqualTo(100);
+    }
+
+    @DisplayName("기존 스탯 업데이트 하기")
+    @Test
+    void updateStat() {
+        //given
+        LolInfo lolInfo = lolInfoRepository.saveAndFlush(LolInfoSaveDto.makeLolInfo("1"));
+        StatSaveDto statSaveDto = StatSaveDto.builder()
+                .hp(10)
+                .build();
+        Stat savedStat = statRepository.saveAndFlush(statSaveDto.toEntity(lolInfo));
+
+        //when
+        StatUpdateDto statUpdateDto = StatUpdateDto.builder()
+                .id(savedStat.getId())
+                .lolInfoVersion(lolInfo.getPatchNoteVersion())
+                .hp(100)
+                .build();
+        StatResDto statResDto = lolInfoService.updateStat(statUpdateDto);
+
+        //then
+        assertThat(statResDto.getHp()).isEqualTo(100);
     }
 }

@@ -1,9 +1,11 @@
 package com.ccs.professorlol.lolInfo;
 
+import com.ccs.professorlol.lolInfo.exception.AlreadySavedException;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,6 +24,7 @@ public class LolInfo {
     private Long id;
 
     @Column(unique = true)
+    @Setter
     private String patchNoteVersion;
 
     @Builder
@@ -34,7 +37,7 @@ public class LolInfo {
         this.patchNoteVersion = patchNoteVersion;
     }
 
-    public void alreadySavedException() throws IllegalArgumentException {
-        throw new IllegalArgumentException();
+    public void alreadySavedException() {
+        throw new AlreadySavedException(this.getPatchNoteVersion());
     }
 }

@@ -10,14 +10,16 @@ import com.ccs.professorlol.lolInfo.LolInfoRepository;
 import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.StatRepository;
 import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.ccs.professorlol.lolInfo.exception.AlreadySavedException;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +31,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.BDDMockito.given;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class DdragronServiceMockTest {
@@ -49,28 +51,34 @@ public class DdragronServiceMockTest {
     @MockBean
     private DdragonRestTemplate ddragonRestTemplate;
 
-    @After
+    @AfterEach
     public void tearDown() throws Exception {
         statRepository.deleteAll();
         lolInfoRepository.deleteAll();
         championRepository.deleteAll();
     }
 
+    @DisplayName("DDragon 에서 가져온 정보 최초 저장시")
     @Test
-    public void saveDdragonData_최초정상저장() {
+    public void saveDdragonData_1() {
+        //given
         given(ddragonRestTemplate.getCurrentRealms())
                 .willReturn(aRealms("9.22.1"));
         given(ddragonRestTemplate.getChampionSimples("9.22.1"))
                 .willReturn(aChampionDataDto());
 
+        //when
         ddragronService.saveDdragonData();
 
+
+        //then
         List<Champion> champions = championRepository.findAll();
         assertThat(champions.isEmpty()).isFalse();
     }
 
+    @DisplayName("DDragon 에서 가져온 스탯만 챔피언에게 추가")
     @Test
-    public void saveDdragonData_스탯만_추가저장() {
+    public void saveDdragonData_2() {
         //given
         given(ddragonRestTemplate.getCurrentRealms())
                 .willReturn(aRealms("9.22.1"));
@@ -99,14 +107,17 @@ public class DdragronServiceMockTest {
         assertThat(ahri.getStats().size()).isEqualTo(2);
     }
 
+    @DisplayName("DDragon 에서 새로운 패치버전이 없는경우")
     @Test
-    public void saveDdragonData_새로운패치_없는경우() {
+    public void saveDdragonData_3() {
+        //given
         given(ddragonRestTemplate.getCurrentRealms())
                 .willReturn(aRealms("9.22.1"));
         lolInfoRepository.saveAndFlush(new LolInfo(1L, "9.22.1"));
 
+        //when then
         assertThatThrownBy(() -> ddragronService.saveDdragonData())
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(AlreadySavedException.class);
     }
 
     private DdragonChampionSimplesDto aChampionDataDto() {

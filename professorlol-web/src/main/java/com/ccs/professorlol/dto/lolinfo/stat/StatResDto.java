@@ -1,5 +1,6 @@
-package com.ccs.professorlol.dto.lolinfo;
+package com.ccs.professorlol.dto.lolinfo.stat;
 
+import com.ccs.professorlol.dto.lolinfo.LolInfoResDto;
 import com.ccs.professorlol.lolInfo.champion.Stat;
 import lombok.AccessLevel;
 import lombok.Builder;

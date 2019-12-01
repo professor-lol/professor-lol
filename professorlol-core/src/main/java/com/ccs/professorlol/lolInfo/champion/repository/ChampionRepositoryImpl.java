@@ -4,6 +4,7 @@ import com.ccs.professorlol.lolInfo.champion.Champion;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.ccs.professorlol.lolInfo.QLolInfo.lolInfo;
 import static com.ccs.professorlol.lolInfo.champion.QChampion.champion;
@@ -21,5 +22,14 @@ public class ChampionRepositoryImpl extends QuerydslRepositorySupport implements
                 .innerJoin(champion.stats, stat).fetchJoin()
                 .innerJoin(stat.lolInfo, lolInfo).fetchJoin()
                 .fetch();
+    }
+
+    @Override
+    public Optional<Champion> findByNameFetch(String name) {
+        return Optional.ofNullable(super.from(champion)
+                .innerJoin(champion.stats, stat).fetchJoin()
+                .innerJoin(stat.lolInfo, lolInfo)
+                .where(champion.name.eq(name))
+                .fetchOne());
     }
 }

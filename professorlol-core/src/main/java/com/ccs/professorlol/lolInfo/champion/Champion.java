@@ -1,12 +1,14 @@
 package com.ccs.professorlol.lolInfo.champion;
 
+import com.ccs.professorlol.lolInfo.exception.AlreadySavedException;
+import com.ccs.professorlol.time.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,9 +28,11 @@ public class Champion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     private String riotId;
+    @Setter
     private String key;
-    @Column(unique = true)
+    @Setter
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -46,6 +50,16 @@ public class Champion {
     public void addStat(Stat stat) {
         //TODO validation
         this.stats.add(stat);
+    }
+
+    public Stat getLatestStat() {
+        return stats.stream()
+                .min(BaseTimeEntity::compareTo)
+                .orElseThrow(RuntimeException::new);
+    }
+
+    public void alreadySavedException() {
+        throw new AlreadySavedException(this.name);
     }
 
 }

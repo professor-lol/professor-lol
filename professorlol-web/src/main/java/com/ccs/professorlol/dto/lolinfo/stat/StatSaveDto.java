@@ -1,4 +1,4 @@
-package com.ccs.professorlol.dto.lolinfo;
+package com.ccs.professorlol.dto.lolinfo.stat;
 
 import com.ccs.professorlol.ddragon.dto.champion.StatDto;
 import com.ccs.professorlol.lolInfo.LolInfo;
