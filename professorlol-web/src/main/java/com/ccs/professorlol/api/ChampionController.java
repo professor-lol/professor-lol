@@ -14,7 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/champion")
 @RequiredArgsConstructor
-public class ChampionContoller {
+public class ChampionController {
     private final ChampionService championService;
 
     @GetMapping("/list")

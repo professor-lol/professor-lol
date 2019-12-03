@@ -33,10 +33,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class LolInfoServiceTest {
+class StaticInfoServiceTest {
 
     @Autowired
-    private LolInfoService lolInfoService;
+    private StaticInfoService staticInfoService;
 
     @Autowired
     private LolInfoRepository lolInfoRepository;
@@ -63,7 +63,7 @@ class LolInfoServiceTest {
                 .patchNoteVersion(version)
                 .build();
 
-        LolInfoResDto lolInfoResDto = lolInfoService.saveLolInfo(lolInfoSaveDto);
+        LolInfoResDto lolInfoResDto = staticInfoService.saveLolInfo(lolInfoSaveDto);
 
         assertThat(lolInfoResDto.getPatchNoteVersion()).isEqualTo(version);
     }
@@ -77,9 +77,9 @@ class LolInfoServiceTest {
                 .patchNoteVersion(version)
                 .build();
 
-        lolInfoService.saveLolInfo(lolInfoSaveDto);
+        staticInfoService.saveLolInfo(lolInfoSaveDto);
 
-        assertThatThrownBy(() -> lolInfoService.saveLolInfo(lolInfoSaveDto))
+        assertThatThrownBy(() -> staticInfoService.saveLolInfo(lolInfoSaveDto))
                 .isInstanceOf(AlreadySavedException.class);
     }
 
@@ -98,7 +98,7 @@ class LolInfoServiceTest {
                 .build();
 
         //when
-        LolInfoResDto lolInfoResDto = lolInfoService.updateLolInfo(updateDto);
+        LolInfoResDto lolInfoResDto = staticInfoService.updateLolInfo(updateDto);
 
         //then
         assertThat(lolInfoResDto.getPatchNoteVersion()).isEqualTo("바뀐버전");
@@ -113,7 +113,7 @@ class LolInfoServiceTest {
                 .riotId("109")
                 .build();
 
-        ChampionResDto championResDto = lolInfoService.saveChampion(championSaveDto);
+        ChampionResDto championResDto = staticInfoService.saveChampion(championSaveDto);
 
         assertThat(championResDto.getKey()).isEqualTo(championSaveDto.getKey());
         assertThat(championResDto.getName()).isEqualTo(championSaveDto.getName());
@@ -129,9 +129,9 @@ class LolInfoServiceTest {
                 .riotId("109")
                 .build();
 
-        lolInfoService.saveChampion(championSaveDto);
+        staticInfoService.saveChampion(championSaveDto);
 
-        assertThatThrownBy(() -> lolInfoService.saveChampion(championSaveDto))
+        assertThatThrownBy(() -> staticInfoService.saveChampion(championSaveDto))
                 .isInstanceOf(AlreadySavedException.class);
     }
 
@@ -151,7 +151,7 @@ class LolInfoServiceTest {
                 .name("바꾼이름")
                 .build();
 
-        ChampionResDto championResDto = lolInfoService.updateChampion(championUpdateDto);
+        ChampionResDto championResDto = staticInfoService.updateChampion(championUpdateDto);
 
         assertThat(championResDto.getName()).isEqualTo("바꾼이름");
     }
@@ -165,23 +165,23 @@ class LolInfoServiceTest {
                 .key("Ahri")
                 .riotId("109")
                 .build();
-        Champion champion = championRepository.save(championSaveDto.toEntity());
+        Champion champion = championRepository.saveAndFlush(championSaveDto.toEntity());
         Long championId = champion.getId();
-        championRepository.flush();
 
         LolInfoSaveDto lolInfoSaveDto = LolInfoSaveDto.builder()
                 .patchNoteVersion("9.22.1")
                 .build();
-        LolInfo lolInfo = lolInfoRepository.save(lolInfoSaveDto.toEntity());
+        LolInfo lolInfo = lolInfoRepository.saveAndFlush(lolInfoSaveDto.toEntity());
         Long lolInfoId = lolInfo.getId();
-        lolInfoRepository.flush();
 
         StatSaveDto statSaveDto = StatSaveDto.builder()
+                .championId(championId)
+                .lolInfoId(lolInfoId)
                 .hp(100)
                 .build();
 
         //when
-        StatResDto statResDto = lolInfoService.saveStat(statSaveDto, championId, lolInfoId);
+        StatResDto statResDto = staticInfoService.saveStat(statSaveDto);
 
         //then
         assertThat(statResDto.getHp()).isEqualTo(100);
@@ -207,7 +207,7 @@ class LolInfoServiceTest {
                 .lolInfoVersion(lolInfo.getPatchNoteVersion())
                 .hp(100)
                 .build();
-        StatResDto statResDto = lolInfoService.updateStat(statUpdateDto);
+        StatResDto statResDto = staticInfoService.updateStat(statUpdateDto);
 
         //then
         assertThat(statResDto.getHp()).isEqualTo(100);

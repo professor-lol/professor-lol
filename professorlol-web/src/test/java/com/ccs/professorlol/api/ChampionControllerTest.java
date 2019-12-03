@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class ChampionContollerTest {
+public class ChampionControllerTest {
 
     private static final String CHAMPION_API_URL = "/api/v1/champion";
 

@@ -1,12 +1,12 @@
 package com.ccs.professorlol.service;
 
-import static com.ccs.professorlol.patch.PatchHistroyMockData.*;
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.List;
-
-import javax.persistence.EntityManager;
-
+import com.ccs.professorlol.dto.patch.AbilityHistoryDto;
+import com.ccs.professorlol.dto.patch.AttributeHistoryDto;
+import com.ccs.professorlol.dto.patch.PatchHistoryDto;
+import com.ccs.professorlol.lolInfo.champion.Champion;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
+import com.ccs.professorlol.patch.champion.ChampionPatchHistory;
+import com.ccs.professorlol.patch.champion.PatchHistoryRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,13 +15,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ccs.professorlol.dto.patch.AbilityHistoryDto;
-import com.ccs.professorlol.dto.patch.AttributeHistoryDto;
-import com.ccs.professorlol.dto.patch.PatchHistoryDto;
-import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
-import com.ccs.professorlol.patch.champion.ChampionPatchHistory;
-import com.ccs.professorlol.patch.champion.PatchHistoryRepository;
+import javax.persistence.EntityManager;
+import java.util.List;
+
+import static com.ccs.professorlol.patch.PatchHistroyMockData.makeChampion;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.makeChampionPatchHistory;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("patchHistoryDetailService Test")
 @SpringBootTest

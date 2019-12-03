@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StatSaveDto {
+    private Long championId;
+    private Long lolInfoId;
 
     private Integer hp;
     private Integer hpPerLevel;
@@ -34,7 +36,9 @@ public class StatSaveDto {
     private Double attackSpeedPerLevel;
 
     @Builder
-    public StatSaveDto(Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel) {
+    public StatSaveDto(Long championId, Long lolInfoId, Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel) {
+        this.championId = championId;
+        this.lolInfoId = lolInfoId;
         this.hp = hp;
         this.hpPerLevel = hpPerLevel;
         this.mp = mp;

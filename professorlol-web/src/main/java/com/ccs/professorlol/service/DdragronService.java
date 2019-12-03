@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -39,19 +40,24 @@ public class DdragronService {
         LolInfo lolInfo = lolInfoRepository.save(LolInfoSaveDto.makeLolInfo(currentChampionVersion));
 
         DdragonChampionSimplesDto championSimples = ddragonRestTemplate.getChampionSimples(currentChampionVersion);
-        List<DdragonChampionStandAloneDto> ddragonChampionStandAloneDtos = championSimples.getChampions();
 
-        ddragonChampionStandAloneDtos.forEach(championStandAloneDto -> addStat(championStandAloneDto, lolInfo));
+        List<Champion> champions = new ArrayList<>();
+        for (DdragonChampionStandAloneDto championStandAloneDto : championSimples.getChampions()) {
+            Champion champion = findChampion(championStandAloneDto);
+
+            StatDto statDto = championStandAloneDto.getStats();
+            Stat stat = StatSaveDto.makeStat(lolInfo, statDto);
+            champion.addStat(stat);
+
+            champions.add(champion);
+        }
+
+        championRepository.saveAll(champions);
     }
 
-    private void addStat(DdragonChampionStandAloneDto championStandAloneDto, LolInfo lolInfo) {
-        Champion champion = championRepository.findByName(championStandAloneDto.getName())
+    private Champion findChampion(DdragonChampionStandAloneDto championStandAloneDto) {
+        return championRepository.findByName(championStandAloneDto.getName())
                 .orElseGet(() -> ChampionSaveDto.makeChampion(championStandAloneDto));
-
-        StatDto statDto = championStandAloneDto.getStats();
-        Stat stat = StatSaveDto.makeStat(lolInfo, statDto);
-        champion.addStat(stat);
-
-        championRepository.save(champion);
     }
+
 }

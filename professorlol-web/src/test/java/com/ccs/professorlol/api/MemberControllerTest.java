@@ -3,7 +3,7 @@ package com.ccs.professorlol.api;
 import com.ccs.professorlol.dto.MemberSaveReqDto;
 import com.ccs.professorlol.dto.MostChampionDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import com.ccs.professorlol.member.domain.MemberRepository;
 import com.ccs.professorlol.repository.mostchampion.MostChampionRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;

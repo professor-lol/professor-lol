@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class LolInfoService {
+public class StaticInfoService {
 
     private final ChampionRepository championRepository;
     private final LolInfoRepository lolInfoRepository;
@@ -73,7 +73,10 @@ public class LolInfoService {
 
     // 챔피언 스탯 정보 저장
     @Transactional
-    public StatResDto saveStat(StatSaveDto statSaveDto, Long championId, Long lolInfoId) {
+    public StatResDto saveStat(StatSaveDto statSaveDto) {
+        Long championId = statSaveDto.getChampionId();
+        Long lolInfoId = statSaveDto.getLolInfoId();
+
         Champion champion = championRepository.findById(championId)
                 .orElseThrow(() -> new NotExistEntityException(championId));
         LolInfo lolInfo = lolInfoRepository.findById(lolInfoId)

@@ -12,24 +12,24 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class LolInfoSaveDto {
 
-    @NotBlank
-    private String patchNoteVersion;
-
     @Builder
-    public LolInfoSaveDto(String patchNoteVersion) {
+    private LolInfoSaveDto(String patchNoteVersion) {
         this.patchNoteVersion = patchNoteVersion;
     }
 
-    public LolInfo toEntity() {
-        return LolInfo.builder()
-                .patchNoteVersion(this.patchNoteVersion)
-                .build();
-    }
+    @NotBlank
+    private String patchNoteVersion;
 
     public static LolInfo makeLolInfo(String currentChampionVersion) {
         return LolInfoSaveDto.builder()
                 .patchNoteVersion(currentChampionVersion)
                 .build()
                 .toEntity();
+    }
+
+    public LolInfo toEntity() {
+        return LolInfo.builder()
+                .patchNoteVersion(this.patchNoteVersion)
+                .build();
     }
 }
