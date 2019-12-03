@@ -6,8 +6,8 @@ import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.lolInfo.champion.MostChampion;
 import com.ccs.professorlol.member.domain.Member;
-import com.ccs.professorlol.member.domain.MemberRepository;
-import com.ccs.professorlol.member.domain.MemberType;
+import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
+@Ignore
 public class MostChampionServiceTest {
 
     @Autowired
@@ -33,6 +33,11 @@ public class MostChampionServiceTest {
 
     @Autowired
     MostChampionService mostChampionService;
+
+    @After
+    public void tearDown() throws Exception {
+
+    }
 
     @Test
     public void 멤버로_모스트챔피언_조회_성공_테스트() {

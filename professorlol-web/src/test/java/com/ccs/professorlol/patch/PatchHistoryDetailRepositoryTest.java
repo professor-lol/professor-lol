@@ -1,21 +1,5 @@
 package com.ccs.professorlol.patch;
 
-import static com.ccs.professorlol.type.AttributeType.*;
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.patch.champion.ChampionPatchHistory;
@@ -24,12 +8,26 @@ import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
 import com.ccs.professorlol.patch.skill.ChampionAttributeHistory;
 import com.ccs.professorlol.type.AttributeType;
 import com.ccs.professorlol.type.SkillType;
+import org.junit.Ignore;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.ccs.professorlol.type.AttributeType.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+
+@Ignore
 @DisplayName("패치노트에서 챔피언별 조회 테스트")
 @ActiveProfiles("test")
 @SpringBootTest
-@Transactional(propagation = Propagation.NOT_SUPPORTED)
-public class PatchHistoryDetailRepositoryTest {
+class PatchHistoryDetailRepositoryTest {
 
 	@Autowired
 	PatchHistoryDetailRepository patchHistoryDetailRepository;
@@ -68,77 +66,77 @@ public class PatchHistoryDetailRepositoryTest {
 
 	public void getChampionDetailByChampionId() {
 		List<ChampionAbilityHistory> championAbilityHistories =
-			patchHistoryDetailRepository.getMyChampionHistoryByChampionId(1L);
+				patchHistoryDetailRepository.getMyChampionHistoryByChampionId(1L);
 
 		assertAll(
-			() -> assertThat(championAbilityHistories.size()).isEqualTo(4)
+				() -> assertThat(championAbilityHistories.size()).isEqualTo(4)
 		);
 
 		//ChampionAbilityHistory 검증
 		for (ChampionAbilityHistory ch : championAbilityHistories) {
 			assertAll(
-				() -> assertThat(ch.getImage()).isEqualTo(IMAGE),
-				() -> assertThat(ch.getTitle()).isEqualTo(TITLE),
-				() -> assertThat(ch.getSkillType()).isEqualTo(SkillType.Q)
+					() -> assertThat(ch.getImage()).isEqualTo(IMAGE),
+					() -> assertThat(ch.getTitle()).isEqualTo(TITLE),
+					() -> assertThat(ch.getSkillType()).isEqualTo(SkillType.Q)
 			);
 			ChampionPatchHistory championPatchHistory = ch.getChampionPatchHistory();
 			assertAll(
-				() -> assertThat(championPatchHistory.getPatchVersion()).isEqualTo("1v"),
-				() -> assertThat(championPatchHistory.getChampionName()).isEqualTo(CHAMPION_NAME),
-				() -> assertThat(championPatchHistory.getContext()).isEqualTo(CONTEXT),
-				() -> assertThat(championPatchHistory.getSummary()).isEqualTo(SUMMARY));
+					() -> assertThat(championPatchHistory.getPatchVersion()).isEqualTo("1v"),
+					() -> assertThat(championPatchHistory.getChampionName()).isEqualTo(CHAMPION_NAME),
+					() -> assertThat(championPatchHistory.getContext()).isEqualTo(CONTEXT),
+					() -> assertThat(championPatchHistory.getSummary()).isEqualTo(SUMMARY));
 
 			Champion champion = championPatchHistory.getChampion();
 			assertAll(
-				() -> assertThat(champion.getId()).isEqualTo(1L),
-				() -> assertThat(champion.getKey()).isEqualTo("key"),
-				() -> assertThat(champion.getName()).isEqualTo(CHAMPION_NAME),
-				() -> assertThat(champion.getRiotId()).isEqualTo("riotId")
+					() -> assertThat(champion.getId()).isEqualTo(1L),
+					() -> assertThat(champion.getKey()).isEqualTo("key"),
+					() -> assertThat(champion.getName()).isEqualTo(CHAMPION_NAME),
+					() -> assertThat(champion.getRiotId()).isEqualTo("riotId")
 			);
 
 			List<ChampionAttributeHistory> championAttributeHistories = ch.getChampionAttributeHistories();
 			ChampionAttributeHistory championAttributeHistories1 = championAttributeHistories.get(0);
 			assertAll(
-				() -> assertThat(championAttributeHistories1.getAttributeType()).isEqualTo(REMOVE),
-				() -> assertThat(championAttributeHistories1.getAttribute()).isEqualTo(ATTRIBUTE1),
-				() -> assertThat(championAttributeHistories1.getAfterContent()).isEqualTo(REMOVE_CONTENT1),
-				() -> assertThat(championAttributeHistories1.getBeforeContent()).isEqualTo(null)
+					() -> assertThat(championAttributeHistories1.getAttributeType()).isEqualTo(REMOVE),
+					() -> assertThat(championAttributeHistories1.getAttribute()).isEqualTo(ATTRIBUTE1),
+					() -> assertThat(championAttributeHistories1.getAfterContent()).isEqualTo(REMOVE_CONTENT1),
+					() -> assertThat(championAttributeHistories1.getBeforeContent()).isEqualTo(null)
 			);
 			ChampionAttributeHistory championAttributeHistories2 = championAttributeHistories.get(1);
 			assertAll(
-				() -> assertThat(championAttributeHistories2.getAttributeType()).isEqualTo(CHANGE),
-				() -> assertThat(championAttributeHistories2.getAttribute()).isEqualTo(ATTRIBUTE2),
-				() -> assertThat(championAttributeHistories2.getAfterContent()).isEqualTo(CHANGE_CONTENT1),
-				() -> assertThat(championAttributeHistories2.getBeforeContent()).isEqualTo(CHANGE_CONTENT2)
+					() -> assertThat(championAttributeHistories2.getAttributeType()).isEqualTo(CHANGE),
+					() -> assertThat(championAttributeHistories2.getAttribute()).isEqualTo(ATTRIBUTE2),
+					() -> assertThat(championAttributeHistories2.getAfterContent()).isEqualTo(CHANGE_CONTENT1),
+					() -> assertThat(championAttributeHistories2.getBeforeContent()).isEqualTo(CHANGE_CONTENT2)
 			);
 			ChampionAttributeHistory championAttributeHistories3 = championAttributeHistories.get(2);
 			assertAll(
-				() -> assertThat(championAttributeHistories3.getAttributeType()).isEqualTo(NEW),
-				() -> assertThat(championAttributeHistories3.getAttribute()).isEqualTo(ATTRIBUTE3),
-				() -> assertThat(championAttributeHistories3.getAfterContent()).isEqualTo(NEW_CONTENT1),
-				() -> assertThat(championAttributeHistories3.getBeforeContent()).isEqualTo(null)
+					() -> assertThat(championAttributeHistories3.getAttributeType()).isEqualTo(NEW),
+					() -> assertThat(championAttributeHistories3.getAttribute()).isEqualTo(ATTRIBUTE3),
+					() -> assertThat(championAttributeHistories3.getAfterContent()).isEqualTo(NEW_CONTENT1),
+					() -> assertThat(championAttributeHistories3.getBeforeContent()).isEqualTo(null)
 			);
 		}
 	}
 
 	private Champion makeChampion() {
 		return Champion.builder()
-			.key("key")
-			.name(CHAMPION_NAME)
-			.riotId("riotId")
-			.build();
+				.key("key")
+				.name(CHAMPION_NAME)
+				.riotId("riotId")
+				.build();
 	}
 
 	private ChampionPatchHistory makePatchHistory(Champion champion) {
 
 		return ChampionPatchHistory.builder()
-			.patchVersion("1v")
-			.championAbilityHistories(makeAbilityList())
-			.championName(CHAMPION_NAME)
-			.summary(SUMMARY)
-			.context(CONTEXT)
-			.champion(champion)
-			.build();
+				.patchVersion("1v")
+				.championAbilityHistories(makeAbilityList())
+				.championName(CHAMPION_NAME)
+				.summary(SUMMARY)
+				.context(CONTEXT)
+				.champion(champion)
+				.build();
 	}
 
 	private List<ChampionAbilityHistory> makeAbilityList() {
@@ -149,18 +147,18 @@ public class PatchHistoryDetailRepositoryTest {
 		List<ChampionAttributeHistory> championAttributeHistories1 = makeAttributeList();
 
 		ChampionAbilityHistory build = ChampionAbilityHistory.builder()
-			.title(TITLE)
-			.image(IMAGE)
-			.championAttributeHistories(championAttributeHistories0)
-			.skillType(SkillType.Q)
-			.build();
+				.title(TITLE)
+				.image(IMAGE)
+				.championAttributeHistories(championAttributeHistories0)
+				.skillType(SkillType.Q)
+				.build();
 
 		ChampionAbilityHistory build1 = ChampionAbilityHistory.builder()
-			.title(TITLE)
-			.image(IMAGE)
-			.championAttributeHistories(championAttributeHistories1)
-			.skillType(SkillType.Q)
-			.build();
+				.title(TITLE)
+				.image(IMAGE)
+				.championAttributeHistories(championAttributeHistories1)
+				.skillType(SkillType.Q)
+				.build();
 
 		championAbilityHistories.add(build);
 		championAbilityHistories.add(build1);
@@ -172,25 +170,25 @@ public class PatchHistoryDetailRepositoryTest {
 		List<ChampionAttributeHistory> championAttributeHistories = new ArrayList<>();
 
 		ChampionAttributeHistory championAttributeHistory1 = ChampionAttributeHistory.builder()
-			.attribute(ATTRIBUTE1)
-			.afterContent(REMOVE_CONTENT1)
-			.beforeContent(null)
-			.attributeType(REMOVE)
-			.build();
+				.attribute(ATTRIBUTE1)
+				.afterContent(REMOVE_CONTENT1)
+				.beforeContent(null)
+				.attributeType(REMOVE)
+				.build();
 
 		ChampionAttributeHistory championAttributeHistory2 = ChampionAttributeHistory.builder()
-			.attribute(ATTRIBUTE2)
-			.afterContent(CHANGE_CONTENT1)
-			.beforeContent(CHANGE_CONTENT2)
-			.attributeType(AttributeType.CHANGE)
-			.build();
+				.attribute(ATTRIBUTE2)
+				.afterContent(CHANGE_CONTENT1)
+				.beforeContent(CHANGE_CONTENT2)
+				.attributeType(AttributeType.CHANGE)
+				.build();
 
 		ChampionAttributeHistory championAttributeHistory3 = ChampionAttributeHistory.builder()
-			.attribute(ATTRIBUTE3)
-			.afterContent(NEW_CONTENT1)
-			.beforeContent(null)
-			.attributeType(AttributeType.NEW)
-			.build();
+				.attribute(ATTRIBUTE3)
+				.afterContent(NEW_CONTENT1)
+				.beforeContent(null)
+				.attributeType(AttributeType.NEW)
+				.build();
 
 		championAttributeHistories.add(championAttributeHistory1);
 		championAttributeHistories.add(championAttributeHistory2);

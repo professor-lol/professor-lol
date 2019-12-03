@@ -8,6 +8,7 @@ import com.ccs.professorlol.summoner.dto.SummonerDto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("major")
+@Ignore
 public class SummonerRestTemplateImplTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplate.class);

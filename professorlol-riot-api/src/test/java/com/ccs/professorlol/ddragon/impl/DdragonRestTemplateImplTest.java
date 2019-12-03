@@ -11,6 +11,7 @@ import com.ccs.professorlol.ddragon.dto.item.ItemDataDto;
 import com.ccs.professorlol.ddragon.dto.item.ItemDto;
 import com.ccs.professorlol.summoner.SummonerRestTemplate;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -29,6 +30,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("major")
+@Ignore
 public class DdragonRestTemplateImplTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplate.class);
