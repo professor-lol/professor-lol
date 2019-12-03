@@ -40,7 +40,7 @@ subprojects {
 
 }
 
-def queryDslProjects = [project(':professorlol-web'), project(':professorlol-core')]
+def queryDslProjects = [project(':professorlol-core')]
 configure(queryDslProjects) {
 
     def queryDslSrcDir = 'src/main/generated'
@@ -61,8 +61,8 @@ configure(queryDslProjects) {
         }
     }
     dependencies {
-        implementation("com.querydsl:querydsl-jpa") // querydsl
-        implementation("com.querydsl:querydsl-apt") // querydsl
+        compile("com.querydsl:querydsl-jpa") // querydsl
+        compile("com.querydsl:querydsl-apt") // querydsl
     }
 
     compileQuerydsl {
