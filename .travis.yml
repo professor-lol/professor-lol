@@ -19,5 +19,5 @@ before_install:
   - npm install
   - cd ../../..
 
-script: "./gradlew clean build -x test"
+script: "./gradlew clean build"
 

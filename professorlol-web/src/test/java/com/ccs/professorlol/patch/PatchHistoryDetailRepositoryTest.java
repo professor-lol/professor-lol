@@ -8,7 +8,7 @@ import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
 import com.ccs.professorlol.patch.skill.ChampionAttributeHistory;
 import com.ccs.professorlol.type.AttributeType;
 import com.ccs.professorlol.type.SkillType;
-import org.junit.Ignore;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ import static com.ccs.professorlol.type.AttributeType.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@Ignore
+
 @DisplayName("패치노트에서 챔피언별 조회 테스트")
 @ActiveProfiles("test")
 @SpringBootTest
@@ -61,6 +61,13 @@ class PatchHistoryDetailRepositoryTest {
 		patchHistoryRepository.save(patchHistory2);
 	}
 
+	@AfterEach
+	void tearDown() {
+		patchHistoryDetailRepository.deleteAll();
+		patchHistoryRepository.deleteAll();
+		championRepository.deleteAll();
+	}
+
 	@Test
 	@DisplayName("챔피언 아이디값을 이용해서, 해당 챔피언의 패치정보 리스트 가져오기")
 
@@ -88,7 +95,6 @@ class PatchHistoryDetailRepositoryTest {
 
 			Champion champion = championPatchHistory.getChampion();
 			assertAll(
-					() -> assertThat(champion.getId()).isEqualTo(1L),
 					() -> assertThat(champion.getKey()).isEqualTo("key"),
 					() -> assertThat(champion.getName()).isEqualTo(CHAMPION_NAME),
 					() -> assertThat(champion.getRiotId()).isEqualTo("riotId")

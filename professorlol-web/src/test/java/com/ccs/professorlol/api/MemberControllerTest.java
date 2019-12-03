@@ -55,6 +55,8 @@ public class MemberControllerTest {
 
     @After
     public void cleanUp() {
+        mostChampionRepository.deleteAll();
+        championRepository.deleteAll();
         memberRepository.deleteAll();
     }
 
