@@ -2,13 +2,9 @@ package com.ccs.professorlol.service;
 
 import com.ccs.professorlol.config.exception.RiotClientException;
 import com.ccs.professorlol.dto.MemberSaveReqDto;
-import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
-import com.ccs.professorlol.lolInfo.champion.MostChampion;
 import com.ccs.professorlol.member.domain.Member;
 import com.ccs.professorlol.member.domain.MemberRepository;
 import com.ccs.professorlol.member.domain.MemberType;
-import com.ccs.professorlol.repository.mostchampion.MostChampionRepository;
 import com.ccs.professorlol.security.store.AccessUserManager;
 import com.ccs.professorlol.security.user.AccessUser;
 import com.ccs.professorlol.summoner.SummonerRestTemplate;
@@ -18,8 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -27,8 +21,7 @@ import java.util.stream.Collectors;
 public class MemberService {
 
     private final MemberRepository memberRepository;
-    private final ChampionRepository championRepository;
-    private final MostChampionRepository mostChampionRepository;
+    private final MostChampionService mostChampionService;
     private final AccessUserManager accessUserManager;
     private final SummonerRestTemplate summonerRestTemplate;
 
@@ -52,27 +45,12 @@ public class MemberService {
                 .memberType(findMemberTypeByEmail(accessUser.getEmail()))
                 .build();
         memberRepository.save(member);
-       saveMostChampion(memberSaveReqDto, member);
+        mostChampionService.saveMostChampion(memberSaveReqDto, member);
 
         return member;
 
     }
 
-    //TODO: MostChampionService로 이동
-    private void saveMostChampion(MemberSaveReqDto memberSaveReqDto, Member member){
-        List<Champion> champions = memberSaveReqDto.getMostChampionDtos().stream()
-                .map(mostChampionDto -> championRepository.findById(mostChampionDto.getId()).orElseThrow(IllegalAccessError::new))
-                .collect(Collectors.toList());
-
-        List<MostChampion> mostChampions = champions.stream()
-                .map(champion -> MostChampion.builder()
-                        .member(member)
-                        .champion(champion)
-                        .build())
-                .collect(Collectors.toList());
-
-        mostChampionRepository.saveAll(mostChampions);
-    }
 
 
     private void validation(MemberSaveReqDto memberSaveReqDto) {
