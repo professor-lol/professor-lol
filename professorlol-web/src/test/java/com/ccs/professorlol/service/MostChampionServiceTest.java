@@ -1,19 +1,20 @@
 package com.ccs.professorlol.service;
 
-import com.ccs.professorlol.dto.MemberSaveReqDto;
-import com.ccs.professorlol.dto.MostChampionDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.lolInfo.champion.MostChampion;
 import com.ccs.professorlol.member.domain.Member;
+import com.ccs.professorlol.member.domain.MemberRepository;
+import com.ccs.professorlol.member.domain.MemberType;
+import com.ccs.professorlol.repository.mostchampion.MostChampionRepository;
 import org.junit.After;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("test")
-@Ignore
 public class MostChampionServiceTest {
 
     @Autowired
@@ -34,12 +34,20 @@ public class MostChampionServiceTest {
     @Autowired
     MostChampionService mostChampionService;
 
+    @Autowired
+    MemberRepository memberRepository;
+
+    @Autowired
+    MostChampionRepository mostChampionRepository;
+
+
     @After
     public void tearDown() throws Exception {
-
+        memberRepository.deleteAll();
     }
 
     @Test
+    @Transactional
     public void 멤버로_모스트챔피언_조회_성공_테스트() {
         //given
         Member member = saveUser();
@@ -50,18 +58,18 @@ public class MostChampionServiceTest {
         assertThat(mostChampions.get(1).getChampion().getName()).isEqualTo("판테온");
     }
 
-    private Member saveUser(){
-        List<MostChampionDto> mostChampionDtos = settingMostChampionSaveDtos();
+    private Member saveUser() {
 
-        MemberSaveReqDto memberSaveReqDto = MemberSaveReqDto.createBuilder()
+        Member member = Member.createBuilder()
+                .email("jaeyeon9327@gmail.com")
+                .name("서재연")
                 .summonerName("a1010100z")
-                .mostChampionDtos(mostChampionDtos)
+                .memberType(MemberType.GOOGLE)
                 .build();
 
-        return memberService.saveMember(memberSaveReqDto);
-    }
 
-    private List<MostChampionDto> settingMostChampionSaveDtos() {
+        memberRepository.save(member);
+
         List<Champion> champions = new ArrayList<>();
         champions.add(Champion.builder()
                 .name("아리")
@@ -69,15 +77,21 @@ public class MostChampionServiceTest {
         champions.add(Champion.builder()
                 .name("판테온")
                 .build());
-        List<Champion> champions1 = championRepository.saveAll(champions);
+        championRepository.saveAll(champions);
 
-        List<MostChampionDto> mostChampionDtos = new ArrayList<>();
-        mostChampionDtos.add(MostChampionDto.builder()
-                .id(champions1.get(0).getId())
-                .name(champions1.get(0).getName()).build());
-        mostChampionDtos.add(MostChampionDto.builder()
-                .id(champions1.get(1).getId())
-                .name(champions1.get(1).getName()).build());
-        return mostChampionDtos;
+        List<MostChampion> mostChampions = new ArrayList<>();
+        mostChampions.add(MostChampion.builder()
+                .member(member)
+                .champion(champions.get(0))
+                .build());
+        mostChampions.add(MostChampion.builder()
+                .member(member)
+                .champion(champions.get(1))
+                .build());
+
+        mostChampionRepository.saveAll(mostChampions);
+
+        return member;
     }
+
 }
