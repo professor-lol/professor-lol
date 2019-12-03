@@ -19,6 +19,7 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ccs.professorlol.patch.PatchHistroyMockData.*;
 import static com.ccs.professorlol.type.AttributeType.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -35,20 +36,6 @@ class PatchHistoryDetailRepositoryTest {
 	@Autowired
 	PatchHistoryRepository patchHistoryRepository;
 
-	private final String ATTRIBUTE1 = "보호막";
-
-	private final static String CHAMPION_NAME = "라이즈";
-	private final static String SUMMARY = "Q - 과부하 최고 스킬 레벨이 감소하고 보호막이 삭제되며 추가 피해량이 R - 공간 왜곡에 따라 증가합니다.";
-	private final static String CONTEXT = "라이즈로 최적의 플레이를 펼칠 경우 약점을 찾기가 너무나 힘듭니다. 또한 라이즈는 사전 구성된 팀에서 아주 강한 위력을 발휘합니다.";
-
-	private final static String TITLE = "큐스킬";
-	private final static String IMAGE = "src";
-	private final String REMOVE_CONTENT1 = "이제 룬이 2개 방출되어도 라이즈에게 보호막을 씌우지 않습니다.";
-	private final String ATTRIBUTE2 = "피해량";
-	private final String CHANGE_CONTENT1 = "60/85/110/135/160/185";
-	private final String CHANGE_CONTENT2 = "80/105/130/155/180";
-	private final String ATTRIBUTE3 = "멀리 멀리 퍼져라";
-	private final String NEW_CONTENT1 = "이제 첫 번째 대상 주변의 적에게 항상 전이 표식을 남깁니다.";
 	@Autowired
 	ChampionRepository championRepository;
 
@@ -60,6 +47,7 @@ class PatchHistoryDetailRepositoryTest {
 		ChampionPatchHistory patchHistory2 = makePatchHistory(save1);
 		patchHistoryRepository.save(patchHistory2);
 	}
+
 
 	@AfterEach
 	void tearDown() {

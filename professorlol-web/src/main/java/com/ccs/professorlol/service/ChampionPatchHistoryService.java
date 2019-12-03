@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ChampionPatchHistoryService {
 
-
     private final PatchNoteCrawler patchNoteCrawler;
 
     private final ChampionRepository championRepository;
