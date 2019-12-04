@@ -44,6 +44,8 @@ public class MostChampionServiceTest {
     @After
     public void tearDown() throws Exception {
         memberRepository.deleteAll();
+        championRepository.deleteAll();
+        mostChampionRepository.deleteAll();
     }
 
     @Test
