@@ -7,7 +7,6 @@ import com.ccs.professorlol.lolInfo.champion.MostChampion;
 import com.ccs.professorlol.member.domain.Member;
 import com.ccs.professorlol.member.domain.MemberRepository;
 import com.ccs.professorlol.member.domain.MemberType;
-import com.ccs.professorlol.repository.mostchampion.MostChampionRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -48,9 +47,6 @@ public class MostChampionControllerTest {
     private ChampionRepository championRepository;
 
     @Autowired
-    private MostChampionRepository mostChampionRepository;
-
-    @Autowired
     private WebApplicationContext webApplicationContext;
 
     private MockMvc mockMvc;
@@ -67,7 +63,6 @@ public class MostChampionControllerTest {
                 .summonerName("testSummoner")
                 .build();
         memberRepository.save(member);
-        championRepository.saveAll(generateMockChampions());
     }
 
     @After
@@ -79,8 +74,10 @@ public class MostChampionControllerTest {
     @Test
     public void 모스트_챔피언_추가_성공() throws Exception {
         //given
+        List<Champion> champions = championRepository.saveAll(generateMockChampions());
+        List<Long> championIds = Arrays.asList(champions.get(0).getId(), champions.get(1).getId());
         MostChampionAddReqDto mostChampionAddReqDto = MostChampionAddReqDto.createBuilder()
-                .championIds(Arrays.asList(2L, 3L))
+                .championIds(championIds)
                 .build();
         //when
         ObjectMapper mapper = new ObjectMapper();
@@ -96,12 +93,12 @@ public class MostChampionControllerTest {
                 .andExpect(status().isOk())
                 .andReturn();
 
-        Member member = memberRepository.findByEmail(EMAIL);
+        Member member = memberRepository.findByEmailWithMostChampion(EMAIL);
         List<MostChampion> mostChampions = member.getMostChampions();
 
         assertThat(member.getEmail()).isEqualTo(EMAIL);
         assertThat(mostChampions.size()).isEqualTo(2);
-        assertThat(mostChampions.get(0).getChampion().getName()).isEqualTo("아리");
+        assertThat(mostChampions.get(0).getChampion().getName()).isEqualTo(champions.get(0).getName());
     }
 
     public List<Champion> generateMockChampions() {

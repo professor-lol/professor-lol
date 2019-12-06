@@ -1,18 +1,15 @@
 package com.ccs.professorlol.service;
 
 import com.ccs.professorlol.dto.MemberSaveReqDto;
+import com.ccs.professorlol.dto.MostChampionAddReqDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.lolInfo.champion.MostChampion;
 import com.ccs.professorlol.member.domain.Member;
-import com.ccs.professorlol.repository.mostchampion.MostChampionRepository;
-import com.ccs.professorlol.dto.MostChampionAddReqDto;
-import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.member.domain.MemberRepository;
+import com.ccs.professorlol.repository.mostchampion.MostChampionRepository;
 import com.ccs.professorlol.security.store.AccessUserManager;
 import com.ccs.professorlol.security.user.AccessUser;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +25,6 @@ public class MostChampionService {
     private final MostChampionRepository mostChampionRepository;
     private final ChampionRepository championRepository;
     private final MemberRepository memberRepository;
-    private final ChampionRepository championRepository;
 
     public List<MostChampion> findByMember(Member member) {
         return mostChampionRepository.findAllByMember(member);
@@ -39,6 +35,20 @@ public class MostChampionService {
         AccessUser accessUser = accessUserManager.loadUserInfo();
         Member member = memberRepository.findByEmail(accessUser.getEmail());
         List<Champion> champions = championRepository.findAllByIdIn(mostChampionAddReqDto.getChampionIds());
+        List<MostChampion> mostChampions = champions.stream()
+                .map(champion -> MostChampion.builder()
+                        .champion(champion)
+                        .member(member)
+                        .build())
+                .collect(Collectors.toList());
+
+        return mostChampionRepository.saveAll(mostChampions);
+    }
+
+    public List<MostChampion> addMostChampionsByNames(List<String> names) {
+        AccessUser accessUser = accessUserManager.loadUserInfo();
+        Member member = memberRepository.findByEmail(accessUser.getEmail());
+        List<Champion> champions = championRepository.findAllByNameIn(names);
 
         List<MostChampion> mostChampions = champions.stream()
                 .map(champion -> MostChampion.builder()

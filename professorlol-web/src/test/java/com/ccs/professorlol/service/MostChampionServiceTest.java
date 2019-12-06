@@ -1,5 +1,6 @@
 package com.ccs.professorlol.service;
 
+import com.ccs.professorlol.dto.MostChampionAddReqDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.lolInfo.champion.MostChampion;
@@ -7,18 +8,6 @@ import com.ccs.professorlol.member.domain.Member;
 import com.ccs.professorlol.member.domain.MemberRepository;
 import com.ccs.professorlol.member.domain.MemberType;
 import com.ccs.professorlol.repository.mostchampion.MostChampionRepository;
-import org.junit.After;
-
-import org.junit.Before;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-
-import com.ccs.professorlol.dto.MostChampionAddReqDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -44,22 +34,9 @@ public class MostChampionServiceTest {
     @Autowired
     private MostChampionRepository mostChampionRepository;
     @Autowired
-    MemberService memberService;
+    private ChampionRepository championRepository;
     @Autowired
-    ChampionRepository championRepository;
-    @Autowired
-    MostChampionService mostChampionService;
-
-    @Before
-    public void setUp() throws Exception {
-        Member member = Member.createBuilder()
-                .name("테스트")
-                .summonerName("킹북골")
-                .email(EMAIL)
-                .memberType(MemberType.GOOGLE)
-                .build();
-        memberRepository.save(member);
-    }
+    private MostChampionService mostChampionService;
 
     @After
     public void tearDown() throws Exception {
@@ -80,22 +57,29 @@ public class MostChampionServiceTest {
     }
 
     @Test
-    public void 챔피언_이름_리스트로_모스트_챔피언_추가_성공() {
-        List<Long> championIds = Arrays.asList(2L, 1L);
+    public void 챔피언_ID_리스트로_모스트_챔피언_추가_성공() {
+        Member member = Member.createBuilder()
+                .name("테스트")
+                .summonerName("킹북골")
+                .email(EMAIL)
+                .memberType(MemberType.GOOGLE)
+                .build();
+        memberRepository.save(member);
+        List<Champion> champions = championRepository.saveAll(generateMockChampions());
+        List<Long> championIds = Arrays.asList(champions.get(0).getId(), champions.get(1).getId());
 
         MostChampionAddReqDto mostChampionAddReqDto = MostChampionAddReqDto.createBuilder()
                 .championIds(championIds)
                 .build();
 
-        championRepository.saveAll(generateMockChampions());
         //when
         List<MostChampion> mostChampions = mostChampionService.addMostChampions(mostChampionAddReqDto);
-        Member member = memberRepository.findByEmail(EMAIL);
+        Member savedMember = memberRepository.findByEmailWithMostChampion(EMAIL);
         //then
+        assertThat(savedMember.getMostChampions().size()).isEqualTo(2);
         assertThat(mostChampions.get(0).getMember().getEmail()).isEqualTo(EMAIL);
-        assertThat(member.getMostChampions().size()).isEqualTo(2);
         assertThat(mostChampions.size()).isEqualTo(2);
-        assertThat(mostChampions.get(0).getChampion().getName()).isEqualTo("아트록스");
+        assertThat(mostChampions.get(0).getChampion().getName()).isEqualTo(champions.get(0).getName());
 
     }
 
