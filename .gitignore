@@ -11,6 +11,9 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+### QueryDsl QClass ###
+generated/
+
 ### STS ###
 .apt_generated
 .classpath
