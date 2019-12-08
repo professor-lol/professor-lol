@@ -32,4 +32,18 @@ public class ChampionRepositoryImpl extends QuerydslRepositorySupport implements
                 .where(champion.name.eq(name))
                 .fetchOne());
     }
+
+    @Override
+    public List<Champion> findAllByNameIn(List<String> championNames) {
+        return super.from(champion)
+                .where(champion.name.in(championNames))
+                .fetch();
+    }
+
+    @Override
+    public List<Champion> findAllByIdIn(List<Long> championIds) {
+        return super.from(champion)
+                .where(champion.id.in(championIds))
+                .fetch();
+    }
 }

@@ -2,8 +2,8 @@ package com.ccs.professorlol.api;
 
 import com.ccs.professorlol.dto.MostChampionAddReqDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.lolInfo.champion.MostChampion;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import com.ccs.professorlol.member.domain.Member;
 import com.ccs.professorlol.member.domain.MemberRepository;
 import com.ccs.professorlol.member.domain.MemberType;

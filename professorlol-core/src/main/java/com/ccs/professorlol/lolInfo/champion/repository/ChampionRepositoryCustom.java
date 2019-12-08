@@ -9,4 +9,8 @@ public interface ChampionRepositoryCustom {
     List<Champion> findAllFetch();
 
     Optional<Champion> findByNameFetch(String name);
+
+    List<Champion> findAllByNameIn(List<String> championNames);
+
+    List<Champion> findAllByIdIn(List<Long> championIds);
 }
