@@ -1,10 +1,13 @@
 package com.ccs.professorlol.lolInfo;
 
+import com.ccs.professorlol.lolInfo.exception.AlreadySavedException;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +22,9 @@ public class LolInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
+    @Setter
     private String patchNoteVersion;
 
     @Builder
@@ -29,5 +35,9 @@ public class LolInfo {
     public LolInfo(Long id, String patchNoteVersion) {
         this.id = id;
         this.patchNoteVersion = patchNoteVersion;
+    }
+
+    public void alreadySavedException() {
+        throw new AlreadySavedException(this.getPatchNoteVersion());
     }
 }

@@ -1,21 +1,23 @@
 package com.ccs.professorlol.lolInfo.champion;
 
 import com.ccs.professorlol.lolInfo.LolInfo;
-import com.ccs.professorlol.lolInfo.champion.dto.StatSaveDto;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.ccs.professorlol.lolInfo.LolInfoRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ActiveProfiles("test")
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @DataJpaTest
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class StatTest {
@@ -23,16 +25,26 @@ public class StatTest {
     @Autowired
     private StatRepository statRepository;
 
-    @After
+    @Autowired
+    private ChampionRepository championRepository;
+
+    @Autowired
+    private LolInfoRepository lolInfoRepository;
+
+    @AfterEach
     public void tearDown() throws Exception {
         statRepository.deleteAll();
+        championRepository.deleteAll();
+        lolInfoRepository.deleteAll();
     }
 
+    @DisplayName("챔피언_저장할때_같이저장")
     @Test
-    public void Stat_정상저장_LolInfo_Champion_같이저장() {
+    public void Stat_1() {
         LolInfo lolInfo = LolInfo.builder()
                 .patchNoteVersion("9.1.12")
                 .build();
+        lolInfo = lolInfoRepository.save(lolInfo);
 
         Champion champion = Champion.builder()
                 .riotId("Ahri")
@@ -40,16 +52,17 @@ public class StatTest {
                 .name("아리")
                 .build();
 
-        StatSaveDto statSaveDto = StatSaveDto.builder()
+        Stat stat = Stat.builder()
                 .hp(10)
+                .lolInfo(lolInfo)
                 .build();
 
-        Stat stat = statSaveDto.toEntity(lolInfo, champion);
+        champion.addStat(stat);
 
-        statRepository.save(stat);
+        championRepository.save(champion);
 
-        assertThat(stat.getHp()).isEqualTo(10);
-        assertThat(stat.getLolInfo().getPatchNoteVersion()).isEqualTo("9.1.12");
-        assertThat(stat.getChampion().getName()).isEqualTo("아리");
+        assertThat(champion.getStats().get(0).getHp()).isEqualTo(10);
+        assertThat(champion.getStats().get(0).getLolInfo().getPatchNoteVersion()).isEqualTo("9.1.12");
+        assertThat(champion.getName()).isEqualTo("아리");
     }
 }

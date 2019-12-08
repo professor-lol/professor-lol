@@ -2,8 +2,8 @@ package com.ccs.professorlol.service;
 
 import com.ccs.professorlol.lolInfo.LolInfoRepository;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
 import com.ccs.professorlol.lolInfo.champion.StatRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import org.junit.After;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -19,10 +19,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @Ignore
-public class LolInfoServiceTest {
+public class DdragronServiceTest {
 
     @Autowired
-    private LolInfoService lolInfoService;
+    private DdragronService ddragronService;
 
     @Autowired
     private ChampionRepository championRepository;
@@ -42,7 +42,7 @@ public class LolInfoServiceTest {
 
     @Test
     public void saveDdragonData() {
-        lolInfoService.saveDdragonData();
+        ddragronService.saveDdragonData();
 
         List<Champion> champions = championRepository.findAll();
         assertThat(champions.isEmpty()).isFalse();

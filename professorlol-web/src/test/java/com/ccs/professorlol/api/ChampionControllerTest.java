@@ -2,7 +2,7 @@ package com.ccs.professorlol.api;
 
 import com.ccs.professorlol.dto.ChampionSimpleDto;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.After;
@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class ChampionContollerTest {
+public class ChampionControllerTest {
 
     private static final String CHAMPION_API_URL = "/api/v1/champion";
 

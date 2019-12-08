@@ -1,29 +1,15 @@
-package com.ccs.professorlol.lolInfo.champion;
+package com.ccs.professorlol.dto.lolinfo.stat;
 
-import com.ccs.professorlol.lolInfo.LolInfo;
-import com.ccs.professorlol.time.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Getter
-@Setter
-@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Stat extends BaseTimeEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class StatUpdateDto {
     private Long id;
-
     private Integer hp;
     private Integer hpPerLevel;
     private Integer mp;
@@ -44,33 +30,31 @@ public class Stat extends BaseTimeEntity {
     private Integer attackDamagePerLevel;
     private Double attackSpeed;
     private Double attackSpeedPerLevel;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private LolInfo lolInfo;
+    private String lolInfoVersion;
 
     @Builder
-    public Stat(Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel, LolInfo lolInfo) {
+    public StatUpdateDto(Long id, Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel, String lolInfoVersion) {
+        this.id = id;
         this.hp = hp;
         this.hpPerLevel = hpPerLevel;
-        this.hpRegen = hpRegen;
-        this.hpRegenPerLevel = hpRegenPerLevel;
         this.mp = mp;
         this.mpPerLevel = mpPerLevel;
-        this.mpRegen = mpRegen;
-        this.mpRegenPerLevel = mpRegenPerLevel;
+        this.moveSpeed = moveSpeed;
         this.armor = armor;
         this.armorPerLevel = armorPerLevel;
         this.spellBlock = spellBlock;
         this.spellBlockPerLevel = spellBlockPerLevel;
         this.attackRange = attackRange;
+        this.hpRegen = hpRegen;
+        this.hpRegenPerLevel = hpRegenPerLevel;
+        this.mpRegen = mpRegen;
+        this.mpRegenPerLevel = mpRegenPerLevel;
+        this.crit = crit;
+        this.critPerLevel = critPerLevel;
         this.attackDamage = attackDamage;
         this.attackDamagePerLevel = attackDamagePerLevel;
         this.attackSpeed = attackSpeed;
         this.attackSpeedPerLevel = attackSpeedPerLevel;
-        this.crit = crit;
-        this.critPerLevel = critPerLevel;
-        this.moveSpeed = moveSpeed;
-        this.lolInfo = lolInfo;
+        this.lolInfoVersion = lolInfoVersion;
     }
-
 }

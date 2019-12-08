@@ -1,7 +1,7 @@
-package com.ccs.professorlol.lolInfo.champion.dto;
+package com.ccs.professorlol.dto.lolinfo.stat;
 
+import com.ccs.professorlol.ddragon.dto.champion.StatDto;
 import com.ccs.professorlol.lolInfo.LolInfo;
-import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.Stat;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StatSaveDto {
+    private Long championId;
+    private Long lolInfoId;
 
     private Integer hp;
     private Integer hpPerLevel;
@@ -34,7 +36,9 @@ public class StatSaveDto {
     private Double attackSpeedPerLevel;
 
     @Builder
-    public StatSaveDto(Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel) {
+    public StatSaveDto(Long championId, Long lolInfoId, Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel) {
+        this.championId = championId;
+        this.lolInfoId = lolInfoId;
         this.hp = hp;
         this.hpPerLevel = hpPerLevel;
         this.mp = mp;
@@ -58,7 +62,33 @@ public class StatSaveDto {
     }
 
 
-    public Stat toEntity(LolInfo lolInfo, Champion champion) {
+    public static Stat makeStat(LolInfo lolInfo, StatDto statDto) {
+        return StatSaveDto.builder()
+                .hp(statDto.getHp())
+                .hpPerLevel(statDto.getHpperlevel())
+                .mp(statDto.getMp())
+                .mpPerLevel(statDto.getMpperlevel())
+                .moveSpeed(statDto.getMovespeed())
+                .armor(statDto.getArmor())
+                .armorPerLevel(statDto.getArmorperlevel())
+                .spellBlock(statDto.getSpellblock())
+                .spellBlockPerLevel(statDto.getSpellblockperlevel())
+                .attackRange(statDto.getAttackrange())
+                .hpRegen(statDto.getHpregen())
+                .hpRegenPerLevel(statDto.getHpregenperlevel())
+                .mpRegen(statDto.getMpregen())
+                .mpRegenPerLevel(statDto.getMpregenperlevel())
+                .crit(statDto.getCrit())
+                .critPerLevel(statDto.getCritperlevel())
+                .attackDamage(statDto.getAttackdamage())
+                .attackDamagePerLevel(statDto.getAttackdamageperlevel())
+                .attackSpeed(statDto.getAttackspeed())
+                .attackSpeedPerLevel(statDto.getAttackspeedperlevel())
+                .build()
+                .toEntity(lolInfo);
+    }
+
+    public Stat toEntity(LolInfo lolInfo) {
         return Stat.builder()
                 .hp(this.hp)
                 .hpPerLevel(this.hpPerLevel)
@@ -81,7 +111,6 @@ public class StatSaveDto {
                 .attackSpeed(this.attackSpeed)
                 .attackSpeedPerLevel(this.attackSpeedPerLevel)
                 .lolInfo(lolInfo)
-                .champion(champion)
                 .build();
     }
 }

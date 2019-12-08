@@ -6,7 +6,7 @@ import com.ccs.professorlol.dto.champion.ChampionDto;
 import com.ccs.professorlol.dto.champion.ability.Ability;
 import com.ccs.professorlol.dto.champion.ability.attribute.Attribute;
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import com.ccs.professorlol.patch.champion.ChampionPatchHistory;
 import com.ccs.professorlol.patch.champion.ChampionPatchHistoryRepository;
 import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;

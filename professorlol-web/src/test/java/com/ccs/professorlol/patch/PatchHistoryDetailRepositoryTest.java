@@ -1,7 +1,7 @@
 package com.ccs.professorlol.patch;
 
 import com.ccs.professorlol.lolInfo.champion.Champion;
-import com.ccs.professorlol.lolInfo.champion.ChampionRepository;
+import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
 import com.ccs.professorlol.patch.champion.ChampionPatchHistory;
 import com.ccs.professorlol.patch.champion.PatchHistoryRepository;
 import com.ccs.professorlol.patch.skill.ChampionAbilityHistory;
@@ -19,8 +19,21 @@ import org.springframework.test.context.ActiveProfiles;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ccs.professorlol.patch.PatchHistroyMockData.*;
-import static com.ccs.professorlol.type.AttributeType.*;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.ATTRIBUTE1;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.ATTRIBUTE2;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.ATTRIBUTE3;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.CHAMPION_NAME;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.CHANGE_CONTENT1;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.CHANGE_CONTENT2;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.CONTEXT;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.IMAGE;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.NEW_CONTENT1;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.REMOVE_CONTENT1;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.SUMMARY;
+import static com.ccs.professorlol.patch.PatchHistroyMockData.TITLE;
+import static com.ccs.professorlol.type.AttributeType.CHANGE;
+import static com.ccs.professorlol.type.AttributeType.NEW;
+import static com.ccs.professorlol.type.AttributeType.REMOVE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
