@@ -29,12 +29,15 @@ public class ChampionDto { // .header-primary : 제목이 나온다 (여기 id �
     private String context;             // 챔피온 변경사항 이유  .blockquote context
     private List<Ability> abilities;    // 챔피온 변경사항 스킬 리스트  .attribute-change
 
+    @Override
     public String toString() {
-        return "\nname : " + name +
-                "\nimage : " + image +
-                "\nsummary : " + summary +
-                "\ncontext : " + context +
-                "\nabilities : " + abilities.toString();
+        return "{" +
+                "\"name\":\"" + name + '"' +
+                ", \"image\":\"" + image + '"' +
+                ", \"summary\":\"" + summary + '"' +
+                ", \"context\":\"" + context + '"' +
+                ", \"abilities\":" + abilities +
+                '}';
     }
 
     public static ChampionDto of(Element element) {

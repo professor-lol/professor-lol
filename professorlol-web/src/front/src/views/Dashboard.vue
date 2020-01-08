@@ -1,7 +1,7 @@
 <template>
   <div class="animated fadeIn">
     <br/>
-    <patch-note-block-ver/>
+    <patch-note-block-ver />
     <reading-record/>
     <patch-note-block-ver/>
     <patch-note-block-ver/>
@@ -13,12 +13,19 @@
 
   import PatchNoteBlockVer from './PatchNoteBlockVer'
   import ReadingRecord from './ReadingRecord'
+  import mock from '../../mockData/patch_note_0912_ryze'
+
 
   export default {
     name: 'dashboard',
     components: {
       PatchNoteBlockVer,
       ReadingRecord
+    },
+    computed: {
+      mock_json() {
+        return mock;
+      },
     },
     data: function () {
       return {

@@ -42,6 +42,16 @@ public class Ability {  //스킬 .change-detail-title .attribute-title
         this.attributes = attributes;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "\"title\" :\"" + title + '"' +
+                ", \"image\" :\"" + image + '"' +
+                ", \"skillType\" :\"" + skillType + '"' +
+                ", \"attributes\" :" + attributes +
+                '}';
+    }
+
     public static Ability of(Elements elements) {
 
         Elements attributeElements = elements.select(ATTRIBUTE_CHANGE.getCssQuery());

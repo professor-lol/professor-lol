@@ -1,0 +1,801 @@
+[
+  {
+    "name":"모데카이저",
+    "image":"./PatchNote_9_12_files/image(1)",
+    "summary":"강철의 망령",
+    "context":"죽은 자의 세상에서 귀환한 멈출 수 없는 돌격형 전사인 모데카이저가 9.12 패치에서 산 자의 세상을 정복하기 위한 준비를 마쳤습니다! 업데이트된 모데카이저와 다양한 스킨의 고화질 일러스트를 LoL 디스플레이에서도 감상해 보세요!",
+    "abilities":[
+
+    ]
+  },
+  {
+    "name":"라이즈",
+    "image":"./PatchNote_9_12_files/image(2)",
+    "summary":"Q - 과부하 최고 스킬 레벨이 감소하고 보호막이 삭제되며 추가 피해량이 R - 공간 왜곡에 따라 증가합니다. 이제 W - 룬 감옥이 둔화 효과를 적용하고, E - 주문 전이로 전이 표식을 남긴 적에게는 둔화 대신 속박 효과가 적용됩니다.",
+    "context":"라이즈로 최적의 플레이를 펼칠 경우 약점을 찾기가 너무나 힘듭니다. 또한 라이즈는 사전 구성된 팀에서 아주 강한 위력을 발휘합니다. 프로 플레이에서는 이런 특징을 가진 챔피언을 선호하기 때문에 라이즈는 지금까지 강력한 챔피언 선택지로 자리잡고 있습니다. 이런 위력을 약화시켜서 프로 플레이에서 발휘하는 존재감을 조정하는 동시에 라이즈를 선택하고 싶지만 연계 공격을 완벽하게는 입력하지 못하는 플레이어에게 도움이 될 수 있는 변경을 적용했습니다. 라이즈의 보호막이 삭제되면 까다로운 상대를 만났을 때 살아남을 수 있는 수단이 많지 않아질 겁니다. 군중 제어 효과를 둔화로 변경하면 라이즈의 갱킹 대상이 2대 1 공격(특히 점멸 > W - 룬 감옥 연계 공격)에서 도망칠 수 있는 가능성도 더 높아지겠죠. 숙련도가 낮은 플레이어들이 라이즈를 더 쉽게 플레이할 수 있도록 하기 위한 전반적 조정의 일환으로서 E - 주문 전이가 첫 번째 대상 주변의 적에게 항상 전이 표식을 남기게 하고 R - 공간 왜곡 기본 지속 효과로 추가 피해를 입히도록 했으니 전이 표식을 활용할 여지가 더 커질 겁니다. 또한 이번 변경에 맞춰 다양한 조정도 적용했습니다. 이번 변경이 일반적으로 업데이트라고 부를 정도의 규모는 아니지만 라이즈는 변경되는 경우가 많지 않으니 업데이트라고 생각하셔도 좋습니다. 라이즈 버전 7을 기대해주세요! (버전 8이었나요?)",
+    "abilities":[
+      {
+        "title":"기본 능력치",
+        "image":"",
+        "skillType":"STAT",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"마나",
+            "beforeContent":"400",
+            "afterContent":"300"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"마나 재생",
+            "beforeContent":"6",
+            "afterContent":"8"
+          }
+        ]
+      },
+      {
+        "title":"과부하",
+        "image":"./PatchNote_9_12_files/image(3)",
+        "skillType":"Q",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"최고 스킬 레벨",
+            "beforeContent":"6",
+            "afterContent":"5"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"피해량",
+            "beforeContent":"60/85/110/135/160/185",
+            "afterContent":"80/105/130/155/180"
+          },
+          {
+            "attributeType":"REMOVE",
+            "attribute":"보호막",
+            "beforeContent":"null",
+            "afterContent":"이제 룬이 2개 방출되어도 라이즈에게 보호막을 씌우지 않습니다."
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"추가 스킬 피해량",
+            "beforeContent":"40/50/60/70/80% (E - 주문 전이 스킬 레벨에 따라)",
+            "afterContent":"10/40/70/100% (R - 공간 왜곡 스킬 레벨에 따라)"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"추가 이동 속도",
+            "beforeContent":"25/28/31/34/37/40%",
+            "afterContent":"20/25/30/35/40%"
+          }
+        ]
+      },
+      {
+        "title":"룬 감옥",
+        "image":"./PatchNote_9_12_files/image(4)",
+        "skillType":"W",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"추가 마나 피해량 계수",
+            "beforeContent":"1%",
+            "afterContent":"4%"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"마나 소모량",
+            "beforeContent":"50/60/70/80/90",
+            "afterContent":"40/55/70/85/100"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"기본 군중 제어 효과",
+            "beforeContent":"0.75초 동안 속박",
+            "afterContent":"1.5초 동안 35% 둔화"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"E - 주문 전이 추가 효과",
+            "beforeContent":"속박 지속시간 증가",
+            "afterContent":"둔화 대신 속박 적용"
+          }
+        ]
+      },
+      {
+        "title":"주문 전이",
+        "image":"./PatchNote_9_12_files/image(5)",
+        "skillType":"E",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"피해량",
+            "beforeContent":"70/90/110/130/150",
+            "afterContent":"60/80/100/120/140"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"마나 소모량",
+            "beforeContent":"60/70/80/90/100",
+            "afterContent":"40/55/70/85/100"
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"멀리 멀리 퍼져라",
+            "beforeContent":"null",
+            "afterContent":"이제 첫 번째 대상 주변의 적에게 항상 전이 표식을 남깁니다."
+          },
+          {
+            "attributeType":"REMOVE",
+            "attribute":"탱탱볼 튀기기",
+            "beforeContent":"null",
+            "afterContent":"이제 퍼져나간 전이 표식이 적에게 피해를 입히지 않습니다."
+          },
+          {
+            "attributeType":"REMOVE",
+            "attribute":"전이된 폭탄",
+            "beforeContent":"null",
+            "afterContent":"이제 스킬을 사용해 전이 표식이 남은 적을 처치해도 주변의 모든 적에게 전이 표식을 남기지 않습니다."
+          }
+        ]
+      },
+      {
+        "title":"공간 왜곡",
+        "image":"./PatchNote_9_12_files/image(6)",
+        "skillType":"R",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"최고 스킬 레벨",
+            "beforeContent":"2",
+            "afterContent":"3"
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"공간 왜곡 피해",
+            "beforeContent":"null",
+            "afterContent":"전이 표식이 남은 대상을 Q - 과부하로 공격하면 40/70/100%의 추가 피해를 입힙니다."
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"바짝 붙기",
+            "beforeContent":"null",
+            "afterContent":"사거리를 벗어난 위치에 사용하면 최대 사거리로 즉시 사용됩니다."
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"최소 사거리",
+            "beforeContent":"730",
+            "afterContent":"1,000"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"최대 사거리",
+            "beforeContent":"1,750/3,000",
+            "afterContent":"3,000"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"재사용 대기시간",
+            "beforeContent":"180초",
+            "afterContent":"210/180/150초"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"사일러스",
+    "image":"./PatchNote_9_12_files/image(7)",
+    "summary":"이제 기본 지속 효과 - 페트리사이트 폭발을 2회까지 충전할 수 있고 기본 피해량이 증가하며 미니언에게 입히는 광역 피해량이 감소합니다. Q - 사슬 후려치기로 미니언에게 입히는 폭발 피해량과 광역 공격 사거리가 감소합니다. W - 국왕시해자 체력 회복량이 증가합니다. E - 도주/억압 보호막이 조정되고 재사용 대기시간이 높은 스킬 레벨에서 증가합니다.",
+    "context":"사일러스는 대부분의 플레이어가 플레이하기 어려운 상태이지만 상위 티어에서는 강한 모습을 계속해서 보이고 있습니다. 그래서 원할 때 바로 사용할 수 있는 특징을 가진 보호막과 광역 미니언 무리 처리 능력 등 프로 플레이에서 더 강한 위력을 발휘하는 스킬을 약화시켰습니다.",
+    "abilities":[
+      {
+        "title":"페트리사이트 폭발",
+        "image":"./PatchNote_9_12_files/image(8)",
+        "skillType":"PASSIVE",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"충전 횟수",
+            "beforeContent":"null",
+            "afterContent":"이제 최대 2회 충전할 수 있습니다. 충전 횟수는 스킬 사용 후 다음 기본 공격 시 소모됩니다."
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"기본 피해량",
+            "beforeContent":"5~47.5 (레벨에 따라)",
+            "afterContent":"9~60 (레벨에 따라)"
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"미니언은 우리의 친구",
+            "beforeContent":"null",
+            "afterContent":"미니언에게 입히는 피해량이 70% 감소합니다."
+          }
+        ]
+      },
+      {
+        "title":"사슬 후려치기",
+        "image":"./PatchNote_9_12_files/image(9)",
+        "skillType":"Q",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"폭발 피해량",
+            "beforeContent":"45/70/95/120/145 (+주문력의 60%)",
+            "afterContent":"40/60/80/100/120 (+주문력의 40%)"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"미니언에게 입히는 폭발 광역 피해 사거리",
+            "beforeContent":"200",
+            "afterContent":"180"
+          }
+        ]
+      },
+      {
+        "title":"국왕시해자",
+        "image":"./PatchNote_9_12_files/image(10)",
+        "skillType":"W",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"체력 회복량",
+            "beforeContent":"60/80/100/120/140 (+주문력의 40%)",
+            "afterContent":"70/90/110/130/150 (+주문력의 50%)"
+          }
+        ]
+      },
+      {
+        "title":"도주/억압",
+        "image":"./PatchNote_9_12_files/image(11)",
+        "skillType":"E",
+        "attributes":[
+          {
+            "attributeType":"REMOVE",
+            "attribute":"도주 보호막",
+            "beforeContent":"null",
+            "afterContent":"이제 첫 번째 사용 시 2초 동안 자신에게 보호막을 씌우지 않습니다."
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"재사용 대기시간",
+            "beforeContent":"18/16/14/12/10초",
+            "afterContent":"18/17/16/15/14초"
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"억압 보호막",
+            "beforeContent":"null",
+            "afterContent":"적 챔피언 또는 몬스터 적중 시 2초 동안 80/115/150/185/220(+주문력의 100%)의 피해를 흡수하는 보호막을 얻습니다."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"유미",
+    "image":"./PatchNote_9_12_files/image(12)",
+    "summary":"기본 체력이 증가합니다. 기본 지속 효과 - 퐁퐁방울 마나 회복량이 낮은 레벨에서 감소하고, 보호막 흡수량이 낮아집니다. W - 너랑 유미랑! 적응형 능력치 전환이 조정되고, 이제 유미의 돌진을 모든 군중 제어 효과로 방해할 수 있습니다.",
+    "context":"유미를 제대로 플레이하면 상대하기가 매우 까다롭고 사실상 약점을 거의 찾을 수 없습니다. 그리고 유미를 제대로 플레이하는 플레이어는 점점 더 늘어나고 있죠. 이 점을 고려해서 유미가 출시된 후 9.10 추가 패치 노트에서 강화했던 부분 일부를 되돌리고 유미가 약점을 조금은 보일 수 있도록 방어력을 약화시켰습니다. 또한 버그를 수정하고 사용성을 개선했습니다!",
+    "abilities":[
+      {
+        "title":"기본 능력치",
+        "image":"",
+        "skillType":"STAT",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"체력",
+            "beforeContent":"432.36",
+            "afterContent":"480"
+          }
+        ]
+      },
+      {
+        "title":"퐁퐁방울",
+        "image":"./PatchNote_9_12_files/image(13)",
+        "skillType":"PASSIVE",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"마나 회복량",
+            "beforeContent":"40~160 (레벨에 따라)",
+            "afterContent":"30~160 (레벨에 따라)"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"보호막",
+            "beforeContent":"80~360 (+주문력의 40%)",
+            "afterContent":"80~300 (+주문력의 30%)"
+          }
+        ]
+      },
+      {
+        "title":"사르르탄",
+        "image":"./PatchNote_9_12_files/image(14)",
+        "skillType":"Q",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"버그 수정",
+            "beforeContent":"null",
+            "afterContent":"사르르탄이 의도한 대로 마우스 커서 방향으로 발사되지 않는 버그를 수정했습니다."
+          }
+        ]
+      },
+      {
+        "title":"너랑 유미랑!",
+        "image":"./PatchNote_9_12_files/image(15)",
+        "skillType":"W",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"고양이 퇴치",
+            "beforeContent":"null",
+            "afterContent":"이제 적이 유미가 밀착된 아군에게 피해를 주면 유미가 사망했을 때 어시스트를 올릴 수 있습니다."
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"적응형 능력치 전환",
+            "beforeContent":"유미가 밀착한 아군 적응형 능력치의 5/9/13/17/21%",
+            "afterContent":"고정 적응형 능력치 5/7/9/11/13 (+유미가 밀착한 아군 적응형 능력치의 4/7/10/13/16%)"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"깜짝이야",
+            "beforeContent":"유미의 돌진을 띄워 올리기나 밀쳐 내기 효과로 방해할 수 있습니다.",
+            "afterContent":"유미의 돌진을 모든 이동 불가 군중 제어 효과로 방해할 수 있습니다."
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"버그 수정",
+            "beforeContent":"null",
+            "afterContent":"유미가 밀착 상태에서 사거리 밖에 있는 다른 챔피언에게 밀착하려고 할 때 의도와 다르게 밀착 상태가 풀리는 버그를 수정했습니다."
+          }
+        ]
+      },
+      {
+        "title":"쾌적한 플레이를 위한 변경",
+        "image":"",
+        "skillType":"STAT",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"관전자 모드",
+            "beforeContent":"null",
+            "afterContent":"이제 유미의 Q - 사르르탄, W - 너랑 유미랑!, R - 대단원의 원형 사거리 표시가 관전자 모드에서 표시되지 않습니다."
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"꼭꼭 숨어라",
+            "beforeContent":"null",
+            "afterContent":"이제 유미가 은신 상태인 챔피언에게 밀착하는 경우 유미에게도 밀착한 챔피언과 같은 은신 시각 효과가 적용되며 화면에서 서서히 사라집니다."
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"사다코의 보물",
+            "beforeContent":"null",
+            "afterContent":"이제 유미가 밀착한 아군 주위에 유미에게만 보이는 원형 표시가 나타납니다."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"노틸러스",
+    "image":"./PatchNote_9_12_files/image(16)",
+    "summary":"Q - 닻줄 견인 기본 피해량이 낮은 스킬 레벨에서 감소합니다.",
+    "context":"노틸러스는 현재 높은 실력대 플레이에서 너무 강한 모습을 보이고 있기 때문에 게임 초반 전면전에서 입히는 피해량을 감소시켰습니다.",
+    "abilities":[
+      {
+        "title":"닻줄 견인",
+        "image":"./PatchNote_9_12_files/image(17)",
+        "skillType":"Q",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"기본 피해량",
+            "beforeContent":"100/145/190/235/280",
+            "afterContent":"80/130/180/230/280"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"룰루",
+    "image":"./PatchNote_9_12_files/image(18)",
+    "summary":"모든 스킬의 시각 효과가 업데이트되었습니다. E - 도와줘, 픽스! 보호막이 증가하고 마나 소모량이 높은 스킬 레벨에서 감소합니다.",
+    "context":"서포터 룰루가 다시 고려할 만한 선택지가 될 수 있도록 위력을 강화했습니다. 또한 룰루의 마법을 더 개성 넘치게 하고 게임플레이 명확성을 개선하기 위해 룰루 시각 효과를 업데이트했습니다.",
+    "abilities":[
+      {
+        "title":"시각 효과 업데이트",
+        "image":"",
+        "skillType":"STAT",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"기본 공격",
+            "beforeContent":"null",
+            "afterContent":"발사체와 적중 효과가 보라색으로 새롭게 변경되었습니다."
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"모든 스킨",
+            "beforeContent":"null",
+            "afterContent":"기본 스킨 신규 효과에 맞게 다듬었습니다."
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"용 조련사 룰루",
+            "beforeContent":"null",
+            "afterContent":"이제 픽스가 작은 분홍색 화염구를 발사합니다."
+          }
+        ]
+      },
+      {
+        "title":"도와줘, 픽스!",
+        "image":"./PatchNote_9_12_files/image(19)",
+        "skillType":"E",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"보호막",
+            "beforeContent":"70/105/140/175/210",
+            "afterContent":"80/115/150/185/220"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"마나 소모량",
+            "beforeContent":"60/70/80/90/100",
+            "afterContent":"60/65/70/75/80"
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"시각 효과",
+            "beforeContent":"null",
+            "afterContent":"아군에게 씌우는 보호막을 다듬고 픽스가 적에게 사용하는 순간이동과 적중 효과를 개선했습니다."
+          }
+        ]
+      },
+      {
+        "title":"요정 친구 픽스",
+        "image":"./PatchNote_9_12_files/image(20)",
+        "skillType":"PASSIVE",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"시각 효과",
+            "beforeContent":"null",
+            "afterContent":"픽스의 공격 발사체를 다듬었습니다."
+          }
+        ]
+      },
+      {
+        "title":"반짝반짝 창",
+        "image":"./PatchNote_9_12_files/image(21)",
+        "skillType":"Q",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"시각 효과",
+            "beforeContent":"null",
+            "afterContent":"발사체와 적중 효과가 보라색으로 새롭게 변경되었습니다."
+          }
+        ]
+      },
+      {
+        "title":"변덕쟁이",
+        "image":"./PatchNote_9_12_files/image(22)",
+        "skillType":"W",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"시각 효과",
+            "beforeContent":"null",
+            "afterContent":"아군에 대한 이로운 효과와 적에 대한 발사체/적중 효과를 다듬었습니다."
+          }
+        ]
+      },
+      {
+        "title":"급성장",
+        "image":"./PatchNote_9_12_files/image(23)",
+        "skillType":"R",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"시각 효과",
+            "beforeContent":"null",
+            "afterContent":"요정의 가루를 추가하고 광역 효과를 완전히 새로운 모습으로 화려하게 변경했습니다. 적에 대한 적중 효과 및 둔화 효과를 다듬었습니다."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"마스터 이",
+    "image":"./PatchNote_9_12_files/image(24)",
+    "summary":"",
+    "context":"마스터 이의 기본 지속 효과 - 2연속 공격 버그를 수정했습니다.",
+    "abilities":[
+      {
+        "title":"2연속 공격",
+        "image":"./PatchNote_9_12_files/image(25)",
+        "skillType":"PASSIVE",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"버그 수정",
+            "beforeContent":"null",
+            "afterContent":"마스터 이의 기본 지속 효과 - 2연속 공격 중첩이 4초가 아니라 3초만 지속되는 버그를 수정했습니다."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"아트록스",
+    "image":"./PatchNote_9_12_files/image(26)",
+    "summary":"이제 기본 지속 효과 - 사신 태세 재사용 대기시간이 레벨에 따라 감소합니다. 이제 R - 세계의 종결자 추가 체력 회복 효과가 자체 체력 회복량에만 적용됩니다.",
+    "context":"현재 아트록스는 공격로에서 기본 지속 효과 - 사신 태세로 체력을 너무 자주 회복하고 있으며 게임 후반에도 유미와 소라카의 도움을 받아 지나치게 많은 체력을 회복하고 있기 때문에 9.9 패치에서 적용한 변경사항의 추가 조치를 적용했습니다.",
+    "abilities":[
+      {
+        "title":"사신 태세",
+        "image":"./PatchNote_9_12_files/image(27)",
+        "skillType":"PASSIVE",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"재사용 대기시간",
+            "beforeContent":"15초",
+            "afterContent":"24~12초 (레벨에 따라)"
+          }
+        ]
+      },
+      {
+        "title":"세계의 종결자",
+        "image":"./PatchNote_9_12_files/image(28)",
+        "skillType":"R",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"추가 체력 회복",
+            "beforeContent":"아트록스가 받는 모든 체력 회복량",
+            "afterContent":"자체 체력 회복량"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"애쉬",
+    "image":"./PatchNote_9_12_files/image(29)",
+    "summary":"W - 일제 사격 재사용 대기시간이 감소합니다.",
+    "context":"애쉬는 위력이 조금 더 강해져도 좋을 겁니다. 그래서 애쉬가 적의 접근을 막기 위해 가장 자주 사용하는 스킬을 강화했습니다.",
+    "abilities":[
+      {
+        "title":"일제 사격",
+        "image":"./PatchNote_9_12_files/image(30)",
+        "skillType":"W",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"재사용 대기시간",
+            "beforeContent":"15/12.5/10/7.5/5초",
+            "afterContent":"14/11.5/9/6.5/4초"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"이렐리아",
+    "image":"./PatchNote_9_12_files/image(31)",
+    "summary":"E - 쌍검협무 재사용 대기시간이 증가하고 사거리가 감소합니다.",
+    "context":"이렐리아는 프로 플레이에서 압도적인 위력을 보이기 때문에 E - 쌍검협무로 적을 기절시키지 못했을 때 더 비싼 대가를 치르도록 변경했습니다. 또한 사거리가 감소했으니 이렐리아는 전면전을 펼칠 때 더 큰 위험을 감수해야 할 겁니다.",
+    "abilities":[
+      {
+        "title":"쌍검협무",
+        "image":"./PatchNote_9_12_files/image(32)",
+        "skillType":"E",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"재사용 대기시간",
+            "beforeContent":"14/13/12/11/10초",
+            "afterContent":"18/16.5/15/13.5/12초"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"사거리",
+            "beforeContent":"850",
+            "afterContent":"775"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"자크",
+    "image":"./PatchNote_9_12_files/image(33)",
+    "summary":"W - 불안정 물질 기본 피해량이 증가합니다. R - 바운스! 밀어내기 거리와 세포 조각 생성 효과가 변경됩니다.",
+    "context":"자크는 9.11 패치에서 과거 모습으로 돌아간 후 상당히 약해졌습니다. 자크의 궁극기가 예전에 더 가까워지도록 후속 조치를 적용하고 게임 초반에 느렸던 미니언/몬스터 처리 속도에 도움이 되는 변경사항을 적용했습니다.",
+    "abilities":[
+      {
+        "title":"불안정 물질",
+        "image":"./PatchNote_9_12_files/image(34)",
+        "skillType":"W",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"기본 피해량",
+            "beforeContent":"15/30/45/60/75",
+            "afterContent":"25/40/55/70/85"
+          }
+        ]
+      },
+      {
+        "title":"바운스!",
+        "image":"./PatchNote_9_12_files/image(35)",
+        "skillType":"R",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"밀어내기 거리",
+            "beforeContent":"자크로부터 400 유닛",
+            "afterContent":"대상이 적중된 장소로부터 250 유닛"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"세포 분열 조각 생성",
+            "beforeContent":"적 챔피언에게 R - 바운스!를 처음으로 적중시키면 적 챔피언당 세포 조각이 하나 생성됩니다. (같은 적에게 R - 바운스!를 연속으로 적중시켜도 세포 조각은 추가로 생성되지 않습니다.)",
+            "afterContent":"R - 바운스!로 적 챔피언을 적중시킬 때마다 세포 조각이 하나 생성됩니다. (같은 적을 연속으로 적중시켜도 세포 조각이 하나 생성됩니다.)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"카르마",
+    "image":"./PatchNote_9_12_files/image(36)",
+    "summary":"Q - 내면의 열정 둔화 효과가 증가합니다. E - 고무의 마나 소모량이 감소하고 이동 속도 지속시간이 보호막 지속시간에 맞게 증가합니다.",
+    "context":"특히 카르마가 혼자 있을 때 위험해지는 경우에 살아남을 수 있는 수단을 강화했습니다.",
+    "abilities":[
+      {
+        "title":"내면의 열정",
+        "image":"./PatchNote_9_12_files/image(37)",
+        "skillType":"Q",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"둔화 효과",
+            "beforeContent":"25%",
+            "afterContent":"35%"
+          }
+        ]
+      },
+      {
+        "title":"고무",
+        "image":"./PatchNote_9_12_files/image(38)",
+        "skillType":"E",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"마나 소모량",
+            "beforeContent":"60/65/70/75/80",
+            "afterContent":"50/55/60/65/70"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"이동 속도 지속시간",
+            "beforeContent":"1.5초",
+            "afterContent":"2.5초 (이제 보호막 지속시간과 같습니다.)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"케이틀린",
+    "image":"./PatchNote_9_12_files/image(39)",
+    "summary":"기본 공격력이 증가합니다.",
+    "context":"이번 변경사항은 확실히 소규모이지만 케이틀린은 메타를 장악할 가능성이 있기 때문에 신중을 기했습니다.",
+    "abilities":[
+      {
+        "title":"기본 능력치",
+        "image":"",
+        "skillType":"STAT",
+        "attributes":[
+          {
+            "attributeType":"CHANGE",
+            "attribute":"공격력",
+            "beforeContent":"58",
+            "afterContent":"60"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"탐 켄치 (6/13 추가)",
+    "image":"./PatchNote_9_12_files/image(40)",
+    "summary":"W - 집어삼키기로 챔피언을 삼킨 뒤 다시 뱉어내기까지 최소 지속시간이 감소합니다. 이제 집어삼켜졌을 때 이동 방해 효과에 걸린 아군은 W - 집어삼키기 지속시간이 끝나기 전에 탐 켄치 밖으로 나올 수 없습니다. 아군을 뱉어내는 사거리가 감소합니다. 낮은 스킬 레벨에서 피해량이 감소합니다.",
+    "context":"상단 공격로에서 탐 켄치의 위력은 조금 줄어들지만 상대의 스킬에 맞서 W - 집어삼키기를 쓸 때는 좀 더 수월하게 대응할 수 있도록 변경했습니다.",
+    "abilities":[
+      {
+        "title":"집어삼키기",
+        "image":"./PatchNote_9_12_files/image(41)",
+        "skillType":"W",
+        "attributes":[
+          {
+            "attributeType":"NEW",
+            "attribute":"버그 수정",
+            "beforeContent":"null",
+            "afterContent":"챔피언이 아닌 대상에게 Q - 혀 채찍과 W - 집어삼키기를 함께 사용하면 마나가 소모되지 않는 버그가 수정되었습니다."
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"챔피언을 뱉어내기까지 최소 지속시간",
+            "beforeContent":"1초",
+            "afterContent":"0.25초"
+          },
+          {
+            "attributeType":"NEW",
+            "attribute":"날 내보내 줘",
+            "beforeContent":"null",
+            "afterContent":"이제 이동 방해 효과에 걸린 아군은 W - 집어삼키기 지속시간이 끝나기 전에 탐 켄치 밖으로 나올 수 없습니다."
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"아군을 뱉어내는 사거리",
+            "beforeContent":"400",
+            "afterContent":"250"
+          },
+          {
+            "attributeType":"CHANGE",
+            "attribute":"피해량",
+            "beforeContent":"100/135/170/205/240 (+대상 최대 체력의 5/7/9/11/13%)",
+            "afterContent":"60/105/150/195/240 (+대상 최대 체력의 9/10/11/12/13%)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name":"부패 물약",
+    "image":"./PatchNote_9_12_files/image(42)",
+    "summary":"추가 마법 피해량이 일정하게 변경됩니다.",
+    "context":"부패 물약은 프로 플레이와 높은 실력대 플레이에서 압도적인 선택을 받고 있습니다. 부패 물약을 약간 약화시키면 다른 아이템이 선택 받을 가능성이 증가할 겁니다.",
+    "abilities":[
+
+    ]
+  },
+  {
+    "name":"아무무",
+    "image":"./PatchNote_9_12_files/image(43)",
+    "summary":"",
+    "context":"이번 시각 효과 업데이트는 아무무가 가지고 있는 슈리마 테마를 강화하고 게임 플레이 명확성을 개선하는 데에 초점을 맞췄습니다. 또한 아무무의 뮤직 비디오에서 나타나는 스타일에 최대한 가깝게 시각 효과를 변경했습니다!",
+    "abilities":[
+
+    ]
+  },
+  {
+    "name":"트린다미어",
+    "image":"./PatchNote_9_12_files/image(44)",
+    "summary":"",
+    "context":"스킬을 다듬어서 불필요한 시각 효과를 감소시키는 변경을 주로 적용했으며 프렐요드 분위기도 조금 더 추가했습니다.",
+    "abilities":[
+
+    ]
+  },
+  {
+    "name":"직스",
+    "image":"./PatchNote_9_12_files/image(45)",
+    "summary":"",
+    "context":"직스의 광역 공격의 실제 범위가 표시되도록 하고 직스에게 최신 수준 시각 효과를 적용하는 데에 초점을 맞춰 직스의 시각 효과를 완전히 업데이트했습니다.",
+    "abilities":[
+
+    ]
+  }
+]

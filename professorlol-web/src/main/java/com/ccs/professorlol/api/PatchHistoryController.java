@@ -28,7 +28,7 @@ public class PatchHistoryController {
 		return ResponseEntity.ok().build();
 	}
 
-	@GetMapping("/{champion/{ChampionId}}")
+	@GetMapping("/{champion/{championId}")
 	public ResponseEntity<List<PatchHistoryDto>> getChampionPatchHistoryDetail(@PathVariable Long championId) {
 		List<PatchHistoryDto> detail = patchHistoryDetailService.getChampionPatchHistoryDetail(
 			championId);
