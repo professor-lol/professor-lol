@@ -13,7 +13,7 @@
 
   import PatchNoteBlockVer from './PatchNoteBlockVer'
   import ReadingRecord from './ReadingRecord'
-  import mock from '../mock/patch_note_0912_ryze'
+  import mock from '../../mockData/patch_note_0912_ryze'
 
 
   export default {

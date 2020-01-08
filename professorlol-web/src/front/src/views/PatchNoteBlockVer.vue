@@ -3,25 +3,27 @@
     <b-row>
       <b-card class="bg-dark">
         <div slot="header">
-          <h3><strong> 9.22V </strong></h3>
+          <h3><strong> {{mock_json.patchVersion}} </strong></h3>
         </div>
         <div class="list-group list-group-accent">
-          <div class="list-group-item text-white bg-dark">{{mock_json.champion_summary}}</div>
+          <div class="list-group-item text-white bg-dark">{{mock_json.summary}}</div>
           <br/>
-          <div class="list-group-item text-gray bg-dark">{{mock_json.champion_context}}</div>
+          <div class="list-group-item text-gray bg-dark">{{mock_json.context}}</div>
         </div>
         <br/>
         <b-tabs card nav-wrapper-class="w-40" pills v-model="tabIndex[1]" vertical>
-            <b-tab active v-for="data in mock_json.skill">
+            <b-tab active v-for="data in mock_json.abilityHistoryDto">
               <template slot="title">
-                <img
-                  src="https://am-a.akamaihd.net/image?f=https://ddragon.leagueoflegends.com/cdn/9.19.1/img/spell/GarenQ.png&resize=32:"/>
-                {{data.name}}
+                <img :src = "data.image" height="32" width="32"/>
+                {{data.skillType !== 'PASSIVE' ? data.skillType + " - " : ""}} {{data.title}}
               </template>
               <b-list-group flush>
-                <b-list-group-item v-for="attr in data.attribute" href="#">
-                  <b-badge class="m-1" :variant="attr.type">{{attr.type}}</b-badge> // TODO
-                  {{attr.name}} : {{attr.before ? attr.before + "->" : "" }} {{attr.after}}
+                <b-list-group-item v-for="attr in data.attributeHistoryDtos" href="#">
+<!--                  <span v-bind:class="{'badge-success': variant(attr.attributeType)}" class="badge badge-pill">{{attr.attributeType}}</span>-->
+                  <span :class="badgeColor(attr.attributeType)" class="badge badge-pill">{{attr.attributeType}}</span>
+
+                  <!--                  <b-badge class="m-1" v-on:variant="attr.attributeType">{{attr.attributeType}}</b-badge>-->
+                  {{attr.attribute}} : {{attr.beforeContent ? attr.beforeContent + "->" : "" }} {{attr.afterContent}}
                 </b-list-group-item>
               </b-list-group>
             </b-tab>
@@ -32,7 +34,7 @@
 </template>
 
 <script>
-  import mock from '../mock/patch_note_block_ver'
+  import mock from '../../mockData/patch_note_block_ver'
   export default {
     name: 'tabs',
     computed: {
@@ -40,23 +42,17 @@
         return mock;
       },
     },
-    data(){
+    data() {
       return {"tabIndex": [0, 0]}
     },
     methods: {
-      variant(value) {
-        let $variant;
-        console.log(value);
-        if (value === "change") {
-          $variant = 'success'
-        } else if (value === "remove") {
-          $variant = 'danger'
-        } else if (value === "new") {
-          $variant = 'warning'
+      badgeColor(value) {
+        return {
+          'badge-success': value === "CHANGE",
+          'badge-danger': value === "REMOVE",
+          'badge-warning': value === "NEW"
         }
-        return $variant
-      }
+      },
     }
-
   }
 </script>
