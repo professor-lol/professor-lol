@@ -30,6 +30,16 @@ public class Attribute {
         this.afterContent = afterContent;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                " \"attributeType\" : \"" + attributeType + '"' +
+                ", \"attribute\" :\"" + attribute + '"' +
+                ", \"beforeContent\" :\"" + beforeContent + '"' +
+                ", \"afterContent\" :\"" + afterContent + '"' +
+                '}';
+    }
+
     public static Attribute ofChange(Element element) {
         return Attribute.builder()
                 .attribute(getAttributeTextClearly(element))
