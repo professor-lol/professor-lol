@@ -1,0 +1,29 @@
+{
+  "riotId" : "",
+  "key" : "",
+  "name" :"라이즈",
+  "statResDto": [
+    {
+      "hp": 570.48,
+      "hpPerLevel": 98,
+      "mp":55.04,
+      "mpPerLevel":3,
+      "moveSpeed":340,
+      "armor": 21.552,
+      "armorPerLevel":3,
+      "spellBlock": 34,
+      "spellBlockPerLevel": 3,
+      "attackRange":0,
+      "hpRegen":8,
+      "hpRegenPerLevel": 0.8,
+      "mpRegen": 0,
+      "mpRegenPerLevel": 0,
+      "crit" : 34,
+      "critPerLevel" : 0.5,
+      "attackDamage":0,
+      "attackDamagePerLevel":0,
+      "attackSpeed": 0.625,
+      "attackSpeedPerLevel": 2.112
+    }
+  ]
+}
