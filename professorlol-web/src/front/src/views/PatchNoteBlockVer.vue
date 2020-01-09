@@ -7,7 +7,6 @@
         </div>
         <div class="list-group list-group-accent">
           <div class="list-group-item text-white bg-dark">{{mock_json.summary}}</div>
-          <br/>
           <div class="list-group-item text-gray bg-dark">{{mock_json.context}}</div>
         </div>
         <br/>
@@ -19,10 +18,7 @@
               </template>
               <b-list-group flush>
                 <b-list-group-item v-for="attr in data.attributeHistoryDtos" href="#">
-<!--                  <span v-bind:class="{'badge-success': variant(attr.attributeType)}" class="badge badge-pill">{{attr.attributeType}}</span>-->
                   <span :class="badgeColor(attr.attributeType)" class="badge badge-pill">{{attr.attributeType}}</span>
-
-                  <!--                  <b-badge class="m-1" v-on:variant="attr.attributeType">{{attr.attributeType}}</b-badge>-->
                   {{attr.attribute}} : {{attr.beforeContent ? attr.beforeContent + "->" : "" }} {{attr.afterContent}}
                 </b-list-group-item>
               </b-list-group>
@@ -35,6 +31,7 @@
 
 <script>
   import mock from '../../mockData/patch_note_block_ver'
+
   export default {
     name: 'tabs',
     computed: {
