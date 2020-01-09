@@ -1,7 +1,9 @@
 <template>
   <div class="animated fadeIn">
     <br/>
-    <patch-note-block-ver />
+    <champion class="border-double"/>
+    <br/>
+    <patch-note-block-ver/>
     <reading-record/>
     <patch-note-block-ver/>
     <patch-note-block-ver/>
@@ -14,13 +16,14 @@
   import PatchNoteBlockVer from './PatchNoteBlockVer'
   import ReadingRecord from './ReadingRecord'
   import mock from '../../mockData/patch_note_0912_ryze'
-
+  import Champion from "./Champion";
 
   export default {
     name: 'dashboard',
     components: {
       PatchNoteBlockVer,
-      ReadingRecord
+      ReadingRecord,
+      Champion
     },
     computed: {
       mock_json() {
@@ -107,7 +110,7 @@
     },
     methods: {
       variant(value) {
-        let $variant
+        let $variant;
         if (value <= 25) {
           $variant = 'info'
         } else if (value > 25 && value <= 50) {
@@ -130,5 +133,9 @@
   /* IE fix */
   #card-chart-01, #card-chart-02 {
     width: 100% !important;
+  }
+
+  .border-double {
+    border: double;
   }
 </style>
