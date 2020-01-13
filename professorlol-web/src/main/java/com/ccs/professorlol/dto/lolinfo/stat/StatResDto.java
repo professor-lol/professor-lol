@@ -58,7 +58,7 @@ public class StatResDto {
         this.lolInfoResDto = lolInfoResDto;
     }
 
-    public static StatResDto of(Stat stat) {
+    public static StatResDto from(Stat stat) {
         return StatResDto.builder()
                 .hp(stat.getHp())
                 .hpPerLevel(stat.getHpPerLevel())
@@ -80,7 +80,7 @@ public class StatResDto {
                 .attackDamagePerLevel(stat.getAttackDamagePerLevel())
                 .attackSpeed(stat.getAttackSpeed())
                 .attackSpeedPerLevel(stat.getAttackSpeedPerLevel())
-                .lolInfoResDto(LolInfoResDto.of(stat.getLolInfo()))
+                .lolInfoResDto(LolInfoResDto.from(stat.getLolInfo()))
                 .build();
     }
 }

@@ -14,7 +14,7 @@ public class LolInfoResDto {
         this.patchNoteVersion = patchNoteVersion;
     }
 
-    public static LolInfoResDto of(LolInfo lolInfo) {
+    public static LolInfoResDto from(LolInfo lolInfo) {
         return new LolInfoResDto(lolInfo.getPatchNoteVersion());
     }
 }

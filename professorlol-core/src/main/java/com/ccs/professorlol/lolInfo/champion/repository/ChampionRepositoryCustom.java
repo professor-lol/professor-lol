@@ -13,4 +13,6 @@ public interface ChampionRepositoryCustom {
     List<Champion> findAllByNameIn(List<String> championNames);
 
     List<Champion> findAllByIdIn(List<Long> championIds);
+
+    Optional<Champion> findByKeyFetch(String key);
 }

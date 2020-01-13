@@ -19,6 +19,12 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * example
+ * "id": "Ashe"
+ * "key": "22"
+ * "name": "애쉬"
+ */
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

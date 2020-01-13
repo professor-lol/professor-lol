@@ -34,7 +34,7 @@ public class ChampionResDto {
         this.statResDtos = statResDtos;
     }
 
-    public static ChampionResDto of(Champion champion) {
+    public static ChampionResDto from(Champion champion) {
         return ChampionResDto.builder()
                 .key(champion.getKey())
                 .name(champion.getName())
@@ -42,7 +42,7 @@ public class ChampionResDto {
                 .build();
     }
 
-    public static ChampionResDto of(Champion champion, List<Stat> stats) {
+    public static ChampionResDto from(Champion champion, List<Stat> stats) {
         return ChampionResDto.builder()
                 .key(champion.getKey())
                 .name(champion.getName())
@@ -56,7 +56,7 @@ public class ChampionResDto {
             return new ArrayList<>();
         }
         return stats.stream()
-                .map(StatResDto::of)
+                .map(StatResDto::from)
                 .collect(toList());
     }
 }
