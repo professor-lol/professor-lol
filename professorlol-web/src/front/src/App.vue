@@ -16,7 +16,6 @@
   @import '~font-awesome/scss/font-awesome.scss';
   /* Import Simple Line Icons Set */
   $simple-line-font-path: '~simple-line-icons/fonts/';
-  @import '~simple-line-icons/scss/simple-line-icons.scss';
   /* Import Flag Icons Set */
   @import '~flag-icon-css/css/flag-icon.min.css';
   /* Import Bootstrap Vue Styles */

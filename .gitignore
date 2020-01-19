@@ -43,7 +43,7 @@ out/
 professorlol-web/src/main/resources/application-oauth.yml
 
 node_modules
-/dist/*
+*/dist/*
 
 # local env files
 .env.local
