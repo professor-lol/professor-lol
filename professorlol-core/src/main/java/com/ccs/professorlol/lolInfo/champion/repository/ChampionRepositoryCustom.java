@@ -14,5 +14,5 @@ public interface ChampionRepositoryCustom {
 
     List<Champion> findAllByIdIn(List<Long> championIds);
 
-    Optional<Champion> findByKeyFetch(String key);
+    Optional<Champion> findByIdFetch(Long key);
 }

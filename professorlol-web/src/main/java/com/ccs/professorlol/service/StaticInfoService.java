@@ -51,7 +51,7 @@ public class StaticInfoService {
         return LolInfoResDto.from(lolInfo);
     }
 
-    // 롤 버전 정보 저장
+    // 롤 버전 정보 저장 admin 모듈로 이동해야함
     @Transactional
     public LolInfoResDto saveLolInfo(LolInfoSaveDto lolInfoSaveDto) {
         lolInfoRepository.findByPatchNoteVersion(lolInfoSaveDto.getPatchNoteVersion())
@@ -61,7 +61,7 @@ public class StaticInfoService {
         return LolInfoResDto.from(lolInfo);
     }
 
-    // 롤 버전 정보 수정
+    // 롤 버전 정보 수정 admin 모듈로 이동해야함
     @Transactional
     public LolInfoResDto updateLolInfo(LolInfoUpdateDto updateDto) {
         LolInfo lolInfo = lolInfoRepository.findByPatchNoteVersion(updateDto.getSavedPatchVersion())
@@ -72,17 +72,17 @@ public class StaticInfoService {
         return LolInfoResDto.from(lolInfo);
     }
 
-    // 챔피언 정보 저장
+    // 챔피언 정보 저장 admin 모듈로 이동해야함
     @Transactional
     public ChampionResDto saveChampion(ChampionSaveDto championSaveDto) {
         championRepository.findByName(championSaveDto.getName())
                 .ifPresent(Champion::alreadySavedException);
 
         Champion champion = championRepository.save(championSaveDto.toEntity());
-        return ChampionResDto.from(champion, champion.getStats());
+        return ChampionResDto.of(champion);
     }
 
-    // 챔피언 정보 수정
+    // 챔피언 정보 수정 admin 모듈로 이동해야함
     @Transactional
     public ChampionResDto updateChampion(ChampionUpdateDto updateDto) {
         Champion champion = championRepository.findById(updateDto.getId())
@@ -91,16 +91,6 @@ public class StaticInfoService {
         LolInfoUpdater.updateChampion(champion, updateDto);
 
         return ChampionResDto.from(champion);
-    }
-
-    //모든 스탯 정보 가져오기
-    @Transactional(readOnly = true)
-    public List<StatResDto> findAllStat() {
-        List<Stat> allStat = statRepository.findAll();
-
-        return allStat.stream()
-                .map(StatResDto::from)
-                .collect(Collectors.toList());
     }
 
     //특정 스탯 정보 가져오기
@@ -112,7 +102,7 @@ public class StaticInfoService {
         return StatResDto.from(stat);
     }
 
-    // 챔피언 스탯 정보 저장
+    // 챔피언 스탯 정보 저장 admin 모듈로 이동해야함
     @Transactional
     public StatResDto saveStat(StatSaveDto statSaveDto) {
         Long championId = statSaveDto.getChampionId();
@@ -128,7 +118,7 @@ public class StaticInfoService {
         return StatResDto.from(champion.getLatestStat());
     }
 
-    // 스탯 정보 수정
+    // 스탯 정보 수정 admin 모듈로 이동해야함
     @Transactional
     public StatResDto updateStat(StatUpdateDto statUpdateDto) {
         Stat stat = statRepository.findById(statUpdateDto.getId())
@@ -153,10 +143,12 @@ public class StaticInfoService {
 
     //챔피언의 모든 정보 가져오기
     @Transactional(readOnly = true)
-    public ChampionResDto findChampionByKey(String key) {
-        Champion champion = championRepository.findByKeyFetch(key)
-                .orElseThrow(() -> new NotExistEntityException(key));
+    public ChampionResDto findChampionByKey(Long id) {
+        Champion champion = championRepository.findByIdFetch(id)
+                .orElseThrow(() -> new NotExistEntityException(id));
 
-        return ChampionResDto.from(champion, champion.getStats());
+        return ChampionResDto.of(champion);
     }
+
+
 }

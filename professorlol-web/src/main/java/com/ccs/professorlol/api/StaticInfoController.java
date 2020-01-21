@@ -53,11 +53,6 @@ public class StaticInfoController {
         return new ResponseEntity<>(staticInfoService.updateLolInfo(lolInfoUpdateDto), HttpStatus.OK);
     }
 
-    @GetMapping("/stat")
-    public ResponseEntity<List<StatResDto>> findAllStat() {
-        return new ResponseEntity<>(staticInfoService.findAllStat(), HttpStatus.OK);
-    }
-
     @GetMapping("/stat/{id}")
     public ResponseEntity<StatResDto> findStat(@PathVariable Long id) {
         return new ResponseEntity<>(staticInfoService.findStatResDto(id), HttpStatus.OK);
@@ -78,9 +73,9 @@ public class StaticInfoController {
         return new ResponseEntity<>(staticInfoService.findAllChampion(), HttpStatus.OK);
     }
 
-    @GetMapping("/champion/{key}")
-    public ResponseEntity<ChampionResDto> findChampionByKey(@PathVariable String key) {
-        return new ResponseEntity<>(staticInfoService.findChampionByKey(key), HttpStatus.OK);
+    @GetMapping("/champion/{id}")
+    public ResponseEntity<ChampionResDto> findChampionByKey(@PathVariable Long id) {
+        return new ResponseEntity<>(staticInfoService.findChampionByKey(id), HttpStatus.OK);
     }
 
     @PostMapping("/champion")

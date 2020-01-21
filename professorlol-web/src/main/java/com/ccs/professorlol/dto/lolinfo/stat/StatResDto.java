@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StatResDto {
+    private Long id;
     private Integer hp;
     private Integer hpPerLevel;
     private Integer mp;
@@ -34,7 +35,8 @@ public class StatResDto {
     private LolInfoResDto lolInfoResDto;
 
     @Builder
-    private StatResDto(Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel, LolInfoResDto lolInfoResDto) {
+    private StatResDto(Long id, Integer hp, Integer hpPerLevel, Integer mp, Integer mpPerLevel, Integer moveSpeed, Integer armor, Double armorPerLevel, Double spellBlock, Double spellBlockPerLevel, Integer attackRange, Integer hpRegen, Double hpRegenPerLevel, Integer mpRegen, Integer mpRegenPerLevel, Integer crit, Integer critPerLevel, Integer attackDamage, Integer attackDamagePerLevel, Double attackSpeed, Double attackSpeedPerLevel, LolInfoResDto lolInfoResDto) {
+        this.id = id;
         this.hp = hp;
         this.hpPerLevel = hpPerLevel;
         this.mp = mp;
@@ -60,6 +62,7 @@ public class StatResDto {
 
     public static StatResDto from(Stat stat) {
         return StatResDto.builder()
+                .id(stat.getId())
                 .hp(stat.getHp())
                 .hpPerLevel(stat.getHpPerLevel())
                 .mp(stat.getMp())

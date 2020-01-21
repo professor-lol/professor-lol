@@ -48,11 +48,11 @@ public class ChampionRepositoryImpl extends QuerydslRepositorySupport implements
     }
 
     @Override
-    public Optional<Champion> findByKeyFetch(String key) {
+    public Optional<Champion> findByIdFetch(Long id) {
         return Optional.ofNullable(super.from(champion)
                 .innerJoin(champion.stats, stat).fetchJoin()
                 .innerJoin(stat.lolInfo, lolInfo).fetchJoin()
-                .where(champion.key.eq(key))
+                .where(champion.id.eq(id))
                 .fetchOne());
     }
 }
