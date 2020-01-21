@@ -15,6 +15,7 @@ import com.ccs.professorlol.lolInfo.champion.Champion;
 import com.ccs.professorlol.lolInfo.champion.Stat;
 import com.ccs.professorlol.lolInfo.champion.StatRepository;
 import com.ccs.professorlol.lolInfo.champion.repository.ChampionRepository;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,7 +32,11 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -68,6 +73,50 @@ class StaticInfoControllerTest {
         statRepository.deleteAll();
         lolInfoRepository.deleteAll();
         championRepository.deleteAll();
+    }
+
+    @DisplayName("롤 전체 버전 정보 가져오기")
+    @Test
+    void findAllLolInfo() throws Exception {
+        //given
+        lolInfoRepository.saveAll(makeLolInfo(10));
+
+        //when
+        MvcResult mvcResult = mockMvc.perform(get(API_V_1_STATIC + "/version")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<LolInfoResDto> lolInfoResDtos = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<LolInfoResDto>>() {
+        });
+
+        //then
+        assertThat(lolInfoResDtos.size()).isEqualTo(10);
+    }
+
+    @DisplayName("롤 특정 버전 정보 가져오기")
+    @Test
+    void testFindLolInfo() throws Exception {
+        //given
+        String targetVersion = "1.1.1";
+        lolInfoRepository.saveAndFlush(new LolInfo(targetVersion));
+
+        //when
+        MvcResult mvcResult = mockMvc.perform(get(API_V_1_STATIC + "/version/{version}", targetVersion)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        LolInfoResDto answer = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), LolInfoResDto.class);
+
+        //then
+        assertThat(answer.getPatchNoteVersion()).isEqualTo(targetVersion);
     }
 
     @DisplayName("롤 버전 정보 저장하기")
@@ -123,6 +172,33 @@ class StaticInfoControllerTest {
 
         LolInfoResDto lolInfoResDto = mapper.readValue(mvcResult.getResponse().getContentAsString(), LolInfoResDto.class);
         assertThat(lolInfoResDto.getPatchNoteVersion()).isEqualTo(changeVersion);
+    }
+
+    @DisplayName("스탯 ID로 스탯 정보 가져오기")
+    @Test
+    void findStat() throws Exception {
+        //given
+        LolInfo lolInfo = lolInfoRepository.saveAndFlush(new LolInfo("1"));
+        Stat stat = Stat.builder()
+                .lolInfo(lolInfo)
+                .build();
+
+        Stat savedStat = statRepository.saveAndFlush(stat);
+        Long targetId = savedStat.getId();
+
+        //when
+        MvcResult mvcResult = mockMvc.perform(get(API_V_1_STATIC + "/stat/{id}", targetId)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andReturn();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        StatResDto answer = objectMapper.readValue(mvcResult.getResponse().getContentAsString(), StatResDto.class);
+
+        //then
+        assertThat(answer.getId()).isEqualTo(targetId);
     }
 
     @DisplayName("스탯 정보 저장하기")
@@ -195,6 +271,7 @@ class StaticInfoControllerTest {
         assertThat(statResDto.getHp()).isEqualTo(11);
     }
 
+    @DisplayName("챔피언 저장하기")
     @Test
     void saveChampion() throws Exception {
         String key = "109";
@@ -213,6 +290,7 @@ class StaticInfoControllerTest {
                 .andReturn();
     }
 
+    @DisplayName("챔피언 정보 수정하기")
     @Test
     void updateChampion() throws Exception {
         String savedKey = "109";
@@ -241,5 +319,87 @@ class StaticInfoControllerTest {
         ChampionResDto championResDto = mapper.readValue(mvcResult.getResponse().getContentAsString(), ChampionResDto.class);
 
         assertThat(championResDto.getKey()).isEqualTo(changeKey);
+    }
+
+    @DisplayName("모든 챔피언 정보 가져오기")
+    @Test
+    void findAllChampion() throws Exception {
+        //given
+        LolInfo lolInfo = lolInfoRepository.save(new LolInfo("1"));
+        lolInfoRepository.flush();
+        List<Champion> champions = makeChampions(2, lolInfo);
+
+        championRepository.saveAll(champions);
+        championRepository.flush();
+
+        //when
+        MvcResult mvcResult = mockMvc.perform(get(API_V_1_STATIC + "/champion")
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8"))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        List<ChampionResDto> championResDtos = objectMapper.readValue(mvcResult.getResponse().getContentAsString(),
+                new TypeReference<List<ChampionResDto>>() {
+                });
+
+        //then
+        assertThat(championResDtos.size()).isEqualTo(2);
+    }
+
+    @DisplayName("특정 챔피언 id로 찾기")
+    @Test
+    void findLolInfo() throws Exception {
+        //given
+        LolInfo lolInfo = lolInfoRepository.save(new LolInfo("1"));
+        lolInfoRepository.flush();
+
+        List<Champion> champions = makeChampions(10, lolInfo);
+
+        List<Champion> savedAllChampion = championRepository.saveAll(champions);
+        Long targetId = savedAllChampion.get(0).getId();
+        championRepository.flush();
+
+        //when
+        MvcResult mvcResult = mockMvc.perform(get(API_V_1_STATIC + "/champion/{id}", targetId)
+                .contentType(MediaType.APPLICATION_JSON)
+                .characterEncoding("UTF-8"))
+                .andExpect(status().isOk())
+                .andReturn();
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        ChampionResDto findChampion = mapper.readValue(mvcResult.getResponse().getContentAsString(), ChampionResDto.class);
+
+        //then
+        assertThat(findChampion.getId()).isEqualTo(targetId);
+    }
+
+    // 롤 버전 저장 서포트 함수
+    private List<LolInfo> makeLolInfo(int amount) {
+        List<LolInfo> lolInfos = new ArrayList<>();
+        for (int i = 1; i <= amount; i++) {
+            lolInfos.add(new LolInfo(i + ".0"));
+        }
+        return lolInfos;
+    }
+
+    // 챔피언 저장 서포트 함수
+
+    private List<Champion> makeChampions(int amount, LolInfo lolInfo) {
+        List<Champion> champions = new ArrayList<>();
+        for (int i = 1; i <= amount; i++) {
+            Champion champion = Champion.builder()
+                    .key(String.valueOf(i))
+                    .build();
+            Stat stat = Stat.builder()
+                    .lolInfo(lolInfo)
+                    .build();
+            champion.addStat(stat);
+            champions.add(champion);
+        }
+        return champions;
     }
 }

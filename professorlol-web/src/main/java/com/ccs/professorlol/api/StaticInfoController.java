@@ -14,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -29,6 +32,16 @@ import javax.validation.Valid;
 public class StaticInfoController {
 
     private final StaticInfoService staticInfoService;
+
+    @GetMapping("/version")
+    public ResponseEntity<List<LolInfoResDto>> findAllLolInfo() {
+        return new ResponseEntity<>(staticInfoService.findAllLolInfo(), HttpStatus.OK);
+    }
+
+    @GetMapping("/version/{version}")
+    public ResponseEntity<LolInfoResDto> findLolInfo(@PathVariable String version) {
+        return new ResponseEntity<>(staticInfoService.findLolInfo(version), HttpStatus.OK);
+    }
 
     @PostMapping("/version")
     public ResponseEntity<LolInfoResDto> saveLolInfo(@RequestBody @Valid LolInfoSaveDto lolInfoSaveDto) {
@@ -40,6 +53,11 @@ public class StaticInfoController {
         return new ResponseEntity<>(staticInfoService.updateLolInfo(lolInfoUpdateDto), HttpStatus.OK);
     }
 
+    @GetMapping("/stat/{id}")
+    public ResponseEntity<StatResDto> findStat(@PathVariable Long id) {
+        return new ResponseEntity<>(staticInfoService.findStatResDto(id), HttpStatus.OK);
+    }
+
     @PostMapping("/stat")
     public ResponseEntity<StatResDto> saveStat(@RequestBody @Valid StatSaveDto statSaveDto) {
         return new ResponseEntity<>(staticInfoService.saveStat(statSaveDto), HttpStatus.CREATED);
@@ -48,6 +66,16 @@ public class StaticInfoController {
     @PutMapping("/stat")
     public ResponseEntity<StatResDto> updateStat(@RequestBody @Valid StatUpdateDto statUpdateDto) {
         return new ResponseEntity<>(staticInfoService.updateStat(statUpdateDto), HttpStatus.OK);
+    }
+
+    @GetMapping("/champion")
+    public ResponseEntity<List<ChampionResDto>> findAllChampion() {
+        return new ResponseEntity<>(staticInfoService.findAllChampion(), HttpStatus.OK);
+    }
+
+    @GetMapping("/champion/{id}")
+    public ResponseEntity<ChampionResDto> findChampionByKey(@PathVariable Long id) {
+        return new ResponseEntity<>(staticInfoService.findChampionByKey(id), HttpStatus.OK);
     }
 
     @PostMapping("/champion")

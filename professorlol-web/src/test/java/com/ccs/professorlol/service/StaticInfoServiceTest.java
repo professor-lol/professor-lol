@@ -212,4 +212,6 @@ class StaticInfoServiceTest {
         //then
         assertThat(statResDto.getHp()).isEqualTo(100);
     }
+
+
 }

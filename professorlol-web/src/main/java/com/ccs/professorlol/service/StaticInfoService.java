@@ -20,6 +20,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -29,17 +32,36 @@ public class StaticInfoService {
     private final LolInfoRepository lolInfoRepository;
     private final StatRepository statRepository;
 
-    // 롤 버전 정보 저장
+    //전체 버전 정보 가져오기
+    @Transactional(readOnly = true)
+    public List<LolInfoResDto> findAllLolInfo() {
+        List<LolInfo> allLolInfo = lolInfoRepository.findAll();
+
+        return allLolInfo.stream()
+                .map(LolInfoResDto::from)
+                .collect(Collectors.toList());
+    }
+
+    //특정버전 가져오기
+    @Transactional(readOnly = true)
+    public LolInfoResDto findLolInfo(String version) {
+        LolInfo lolInfo = lolInfoRepository.findByPatchNoteVersion(version)
+                .orElseThrow(() -> new NotExistEntityException(version));
+
+        return LolInfoResDto.from(lolInfo);
+    }
+
+    // 롤 버전 정보 저장 admin 모듈로 이동해야함
     @Transactional
     public LolInfoResDto saveLolInfo(LolInfoSaveDto lolInfoSaveDto) {
         lolInfoRepository.findByPatchNoteVersion(lolInfoSaveDto.getPatchNoteVersion())
                 .ifPresent(LolInfo::alreadySavedException);
 
         LolInfo lolInfo = lolInfoRepository.save(lolInfoSaveDto.toEntity());
-        return LolInfoResDto.of(lolInfo);
+        return LolInfoResDto.from(lolInfo);
     }
 
-    // 롤 버전 정보 수정
+    // 롤 버전 정보 수정 admin 모듈로 이동해야함
     @Transactional
     public LolInfoResDto updateLolInfo(LolInfoUpdateDto updateDto) {
         LolInfo lolInfo = lolInfoRepository.findByPatchNoteVersion(updateDto.getSavedPatchVersion())
@@ -47,20 +69,20 @@ public class StaticInfoService {
 
         LolInfoUpdater.updateLolInfo(lolInfo, updateDto);
 
-        return LolInfoResDto.of(lolInfo);
+        return LolInfoResDto.from(lolInfo);
     }
 
-    // 챔피언 정보 저장
+    // 챔피언 정보 저장 admin 모듈로 이동해야함
     @Transactional
     public ChampionResDto saveChampion(ChampionSaveDto championSaveDto) {
         championRepository.findByName(championSaveDto.getName())
                 .ifPresent(Champion::alreadySavedException);
 
         Champion champion = championRepository.save(championSaveDto.toEntity());
-        return ChampionResDto.of(champion, champion.getStats());
+        return ChampionResDto.of(champion);
     }
 
-    // 챔피언 정보 수정
+    // 챔피언 정보 수정 admin 모듈로 이동해야함
     @Transactional
     public ChampionResDto updateChampion(ChampionUpdateDto updateDto) {
         Champion champion = championRepository.findById(updateDto.getId())
@@ -68,10 +90,19 @@ public class StaticInfoService {
 
         LolInfoUpdater.updateChampion(champion, updateDto);
 
-        return ChampionResDto.of(champion);
+        return ChampionResDto.from(champion);
     }
 
-    // 챔피언 스탯 정보 저장
+    //특정 스탯 정보 가져오기
+    @Transactional(readOnly = true)
+    public StatResDto findStatResDto(Long statId) {
+        Stat stat = statRepository.findById(statId)
+                .orElseThrow(() -> new NotExistEntityException(statId));
+
+        return StatResDto.from(stat);
+    }
+
+    // 챔피언 스탯 정보 저장 admin 모듈로 이동해야함
     @Transactional
     public StatResDto saveStat(StatSaveDto statSaveDto) {
         Long championId = statSaveDto.getChampionId();
@@ -84,10 +115,10 @@ public class StaticInfoService {
 
         champion.addStat(statSaveDto.toEntity(lolInfo));
 
-        return StatResDto.of(champion.getLatestStat());
+        return StatResDto.from(champion.getLatestStat());
     }
 
-    // 스탯 정보 수정
+    // 스탯 정보 수정 admin 모듈로 이동해야함
     @Transactional
     public StatResDto updateStat(StatUpdateDto statUpdateDto) {
         Stat stat = statRepository.findById(statUpdateDto.getId())
@@ -97,6 +128,27 @@ public class StaticInfoService {
 
         LolInfoUpdater.updateStat(stat, statUpdateDto, lolInfo);
 
-        return StatResDto.of(stat);
+        return StatResDto.from(stat);
     }
+
+    //모든 챔피언 정보 스탯은 제외하고 가져오기
+    @Transactional(readOnly = true)
+    public List<ChampionResDto> findAllChampion() {
+        List<Champion> allChampion = championRepository.findAll();
+
+        return allChampion.stream()
+                .map(ChampionResDto::from)
+                .collect(Collectors.toList());
+    }
+
+    //챔피언의 모든 정보 가져오기
+    @Transactional(readOnly = true)
+    public ChampionResDto findChampionByKey(Long id) {
+        Champion champion = championRepository.findByIdFetch(id)
+                .orElseThrow(() -> new NotExistEntityException(id));
+
+        return ChampionResDto.of(champion);
+    }
+
+
 }

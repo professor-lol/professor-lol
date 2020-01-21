@@ -46,4 +46,13 @@ public class ChampionRepositoryImpl extends QuerydslRepositorySupport implements
                 .where(champion.id.in(championIds))
                 .fetch();
     }
+
+    @Override
+    public Optional<Champion> findByIdFetch(Long id) {
+        return Optional.ofNullable(super.from(champion)
+                .innerJoin(champion.stats, stat).fetchJoin()
+                .innerJoin(stat.lolInfo, lolInfo).fetchJoin()
+                .where(champion.id.eq(id))
+                .fetchOne());
+    }
 }

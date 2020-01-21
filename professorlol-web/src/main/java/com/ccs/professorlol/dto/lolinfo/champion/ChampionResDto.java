@@ -19,6 +19,7 @@ import static java.util.stream.Collectors.toList;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ChampionResDto {
 
+    private Long id;
     private String riotId;
     private String key;
     private String name;
@@ -27,27 +28,30 @@ public class ChampionResDto {
     private List<StatResDto> statResDtos;
 
     @Builder
-    private ChampionResDto(String riotId, String key, String name, List<StatResDto> statResDtos) {
+    private ChampionResDto(Long id, String riotId, String key, String name, List<StatResDto> statResDtos) {
+        this.id = id;
         this.riotId = riotId;
         this.key = key;
         this.name = name;
         this.statResDtos = statResDtos;
     }
 
-    public static ChampionResDto of(Champion champion) {
+    public static ChampionResDto from(Champion champion) {
         return ChampionResDto.builder()
+                .id(champion.getId())
                 .key(champion.getKey())
                 .name(champion.getName())
                 .riotId(champion.getRiotId())
                 .build();
     }
 
-    public static ChampionResDto of(Champion champion, List<Stat> stats) {
+    public static ChampionResDto of(Champion champion) {
         return ChampionResDto.builder()
+                .id(champion.getId())
                 .key(champion.getKey())
                 .name(champion.getName())
                 .riotId(champion.getRiotId())
-                .statResDtos(convertStat(stats))
+                .statResDtos(convertStat(champion.getStats()))
                 .build();
     }
 
@@ -56,7 +60,7 @@ public class ChampionResDto {
             return new ArrayList<>();
         }
         return stats.stream()
-                .map(StatResDto::of)
+                .map(StatResDto::from)
                 .collect(toList());
     }
 }
