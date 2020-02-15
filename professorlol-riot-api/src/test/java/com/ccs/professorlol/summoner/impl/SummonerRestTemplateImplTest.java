@@ -22,10 +22,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
+@Ignore
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("major")
-@Ignore
 public class SummonerRestTemplateImplTest {
 
     private static final Logger log = LoggerFactory.getLogger(SummonerRestTemplate.class);
@@ -59,7 +59,6 @@ public class SummonerRestTemplateImplTest {
         //given
         String summonerName = "@";
 
-        //when
         //then (404 NOT FOUND)
         assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerName(summonerName))
                 .isInstanceOf(RiotClientException.class);
@@ -67,9 +66,7 @@ public class SummonerRestTemplateImplTest {
 
     @Test
     public void getSummonerDto_올바르지_않은_값_입력() {
-        //given
-        //when
-        //then (400 BAD REQUEST)
+        // (400 BAD REQUEST)
         assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerName(null))
                 .isInstanceOf(NotCorrectInputException.class);
     }
@@ -92,7 +89,6 @@ public class SummonerRestTemplateImplTest {
         //given
         String summonerId = "zN1v1n2XlkIY9cYKj9XydSSKItQNRtDLVdJHEWIkVhN5fBasdf";
 
-        //when
         //then (404 NOT FOUND)
         assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(summonerId))
                 .isInstanceOf(NotCorrectInputException.class);
@@ -100,8 +96,6 @@ public class SummonerRestTemplateImplTest {
 
     @Test
     public void getSummonerDtoBySummonerId_올바르지_않은_값_입력_NULL() {
-        //given
-        //when
         //then (400 BAD REQUEST)
         assertThatThrownBy(() -> this.summonerRestTemplate.getSummonerDtoBySummonerId(null))
                 .isInstanceOf(NotCorrectInputException.class);

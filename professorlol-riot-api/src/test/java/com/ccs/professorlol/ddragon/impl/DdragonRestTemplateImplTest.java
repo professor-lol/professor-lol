@@ -1,6 +1,6 @@
 package com.ccs.professorlol.ddragon.impl;
 
-import com.ccs.professorlol.config.resttemplate.DdragonRestTemplateConfing;
+import com.ccs.professorlol.config.resttemplate.DdragonRestTemplateConfig;
 import com.ccs.professorlol.ddragon.DdragonRestTemplate;
 import com.ccs.professorlol.ddragon.dto.RealmsDto;
 import com.ccs.professorlol.ddragon.dto.champion.DdragonChampionDto;
@@ -24,16 +24,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 //TODO : 항상 최신 버전 찌르고 가져오는거 추가해야함
 
+@Ignore
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("major")
-@Ignore
 public class DdragonRestTemplateImplTest {
 
     private static final String VERSION = "9.22.1";
 
     @Autowired
-    private DdragonRestTemplateConfing.MajorDdragonConfig majorDdragonConfig;
+    private DdragonRestTemplateConfig.MajorDdragonConfig majorDdragonConfig;
 
     private DdragonRestTemplate ddragonRestTemplate;
 

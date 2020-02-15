@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @Ignore
-@SpringBootTest(classes = {LeagueRestTemplateConfig.class})
+@SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("major")
 public class LeagueRestTemplateImplTest {
@@ -71,12 +71,9 @@ public class LeagueRestTemplateImplTest {
     }
 
     @Test
-    public void getLeagueEntries() {
-        //given
+    public void getLeagueEntries_올바르지_않은_입력시() {
         String encodedSummonerId = "w";
 
-        //when
-        //then
         assertThatThrownBy(() -> leagueRestTemplate.getLeagueEntriesBySummonerId(encodedSummonerId))
                 .isInstanceOf(NotCorrectInputException.class);
     }
