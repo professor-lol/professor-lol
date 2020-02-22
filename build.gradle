@@ -23,7 +23,7 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'io.spring.dependency-management'
     apply plugin: 'org.springframework.boot'
-    apply plugin : 'jacoco'
+    apply plugin: 'jacoco'
 
     sourceCompatibility = '1.8'
 
@@ -43,7 +43,7 @@ subprojects {
         toolVersion = '0.8.5'
     }
 
-    test{
+    test {
         jacoco {
             enabled = true
             destinationFile = file("$buildDir/jacoco/${name}.exec")
@@ -66,7 +66,21 @@ subprojects {
         reports {
             html.enabled true
             xml.enabled false
-            csv.enabled false
+            csv.enabled true
+        }
+
+        afterEvaluate {
+            classDirectories.setFrom(files(classDirectories.files.collect {
+                fileTree(dir: it,
+                        exclude: [
+                                '**/generated',
+                                '**/*Dto*.*',
+                                '**/*Config*.*',
+                                '**/*Stub*.*',
+                                '**/BaseTimeEntity*.*',
+                                '**/*Properties.*'
+                        ])
+            }))
         }
         finalizedBy 'jacocoTestCoverageVerification'
     }
@@ -77,9 +91,9 @@ subprojects {
                 element = 'CLASS'
 
                 limit {
-                    counter = 'METHOD'
+                    counter = 'LINE'
                     value = 'COVEREDRATIO'
-                    minimum = 0.50
+                    minimum = 0.60
                 }
 
                 // Dto, Stub, config, QClass, Properties, BaseTimeEntity
