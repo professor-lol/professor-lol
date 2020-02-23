@@ -39,7 +39,7 @@ public class SummonerRestTemplateConfig {
 
     }
 
-    @Profile({"local,test"})
+    @Profile({"test", "local"})
     @RequiredArgsConstructor
     @Configuration
     public static class LocalSummonerConfig {

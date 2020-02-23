@@ -26,6 +26,7 @@ public class RiotErrorHandler extends DefaultResponseErrorHandler {
     @Override
     public void handleError(ClientHttpResponse response) {
         RiotExceptionDto exceptionDto = parseRiotExceptionBody(response);
+
         if (exceptionDto.isBadRequestError()) {
             log.error("[NotCorrectInputException] {} : {}", exceptionDto.getStatusCode(), exceptionDto.getMessage());
             throw new NotCorrectInputException(exceptionDto.getMessage());
@@ -47,8 +48,8 @@ public class RiotErrorHandler extends DefaultResponseErrorHandler {
             String exceptionBody = br.readLine();
             return new ObjectMapper().readValue(exceptionBody, RiotExceptionDto.class);
         } catch (Exception e) {
-            log.error("[Json Parsing Exception] {} : {}", HttpStatus.UNPROCESSABLE_ENTITY, "can't not parse error");
-            throw new NotJsonTypeException("can't not parse error");
+            log.error("[Json Parsing Exception] {} : {}", HttpStatus.UNPROCESSABLE_ENTITY, "can't parse exception message");
+            throw new NotJsonTypeException("can't parse exception message");
         }
     }
 
