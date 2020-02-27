@@ -1,7 +1,7 @@
 package com.ccs.professorlol.league.impl;
 
-import com.ccs.professorlol.LeagueRestTemplateConfig;
 import com.ccs.professorlol.config.exception.NotCorrectInputException;
+import com.ccs.professorlol.config.resttemplate.LeagueRestTemplateConfig;
 import com.ccs.professorlol.league.LeagueRestTemplate;
 import com.ccs.professorlol.league.dto.LeagueEntryDto;
 import com.ccs.professorlol.summoner.impl.SummonerRestTemplateImplMockTest;

@@ -1,7 +1,6 @@
-package com.ccs.professorlol;
+package com.ccs.professorlol.config.resttemplate;
 
 import com.ccs.professorlol.config.properties.RiotProperties;
-import com.ccs.professorlol.config.resttemplate.RiotRestTemplateBuilder;
 import com.ccs.professorlol.league.LeagueRestTemplate;
 import com.ccs.professorlol.league.impl.LeagueRestTemplateImpl;
 import com.ccs.professorlol.league.impl.LeagueRestTemplateStubImpl;
