@@ -2,137 +2,112 @@ package com.ccs.professorlol.config.exception.handler;
 
 import com.ccs.professorlol.MockResponse;
 import com.ccs.professorlol.config.exception.NotCorrectInputException;
+import com.ccs.professorlol.config.exception.NotJsonTypeException;
 import com.ccs.professorlol.config.exception.RiotClientException;
 import com.ccs.professorlol.config.exception.RiotServerException;
-import org.junit.Before;
-import org.junit.Test;
+import com.ccs.professorlol.config.exception.dto.RiotExceptionDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.mock.http.client.MockClientHttpResponse;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RiotErrorHandlerTest {
+class RiotErrorHandlerTest {
 
     private RiotErrorHandler riotErrorHandler;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeEach
+    void setUp() {
         riotErrorHandler = new RiotErrorHandler();
     }
 
-    private boolean hasError(ClientHttpResponse response) {
-        try {
-            return riotErrorHandler.hasError(response);
-        } catch (IOException e) {
-            throw new RuntimeException();
-        }
-    }
-
-    @Test
-    public void hasError_4XX_발생시_true() throws IOException {
+    @DisplayName("hasError 4XX ~ 5XX 발생시 true")
+    @ParameterizedTest
+    @CsvSource(value = {"400", "451", "500", "511"})
+    void hasError_4XX_5XX(int statusCode) throws IOException {
         //given
-        List<HttpStatus> http4XX = Arrays.stream(HttpStatus.values())
-                .filter(HttpStatus::is4xxClientError)
-                .collect(Collectors.toList());
+        HttpStatus status4XX_5XX = HttpStatus.valueOf(statusCode);
+        MockClientHttpResponse response4XX_5XX = new MockClientHttpResponse(new byte[0], status4XX_5XX);
 
         //when
-        List<Boolean> results = http4XX.stream()
-                .map(status -> new MockClientHttpResponse(new byte[0], status))
-                .map(this::hasError)
-                .collect(Collectors.toList());
+        boolean result4XX_5XX = riotErrorHandler.hasError(response4XX_5XX);
 
         //then
-        assertThat(results.contains(false)).isFalse();
+        assertThat(result4XX_5XX).isTrue();
     }
 
+    @DisplayName("handleError 400 발생시")
     @Test
-    public void hasError_5XX_발생시_true() throws IOException {
-        //given
-        List<HttpStatus> http5XX = Arrays.stream(HttpStatus.values())
-                .filter(HttpStatus::is5xxServerError)
-                .collect(Collectors.toList());
-
-        //when
-        List<Boolean> results = http5XX.stream()
-                .map(status -> new MockClientHttpResponse(new byte[0], status))
-                .map(this::hasError)
-                .collect(Collectors.toList());
-
-        //then
-        assertThat(results.contains(false)).isFalse();
-    }
-
-
-    @Test
-    public void handleError_400_발생시() throws IOException {
+    void handleError_400() throws JsonProcessingException {
         //given
         String mockBody = MockResponse.getExceptionResponseBody("BadRequest Exception", HttpStatus.BAD_REQUEST);
+
         ClientHttpResponse response = new MockClientHttpResponse(mockBody.getBytes(), HttpStatus.BAD_REQUEST);
+        RiotExceptionDto riotExceptionDto = new ObjectMapper().readValue(mockBody, RiotExceptionDto.class);
 
-        //when
         //then
         assertThatThrownBy(() -> riotErrorHandler.handleError(response))
-                .isInstanceOf(NotCorrectInputException.class);
+                .isInstanceOf(NotCorrectInputException.class)
+                .hasMessage(riotExceptionDto.getMessage());
     }
 
-    private void assertThrownBy(ClientHttpResponse response, Class tClass) {
+    @DisplayName("handleError 400 이외 400번대 발생시")
+    @ParameterizedTest
+    @CsvSource(value = {"401", "451"})
+    void handleError4XXExceptBadRequest(int statusCode) throws JsonProcessingException {
+        //given
+        HttpStatus status4XXExcept400 = HttpStatus.valueOf(statusCode);
+        String responseBody = MockResponse.getExceptionResponseBody(status4XXExcept400.getReasonPhrase(), status4XXExcept400);
+
+        ClientHttpResponse response = new MockClientHttpResponse(responseBody.getBytes(), status4XXExcept400);
+        RiotExceptionDto riotExceptionDto = new ObjectMapper().readValue(responseBody, RiotExceptionDto.class);
+
+        //then
         assertThatThrownBy(() -> riotErrorHandler.handleError(response))
-                .isInstanceOf(tClass);
+                .isInstanceOf(RiotClientException.class)
+                .hasMessage(riotExceptionDto.getMessage());
     }
 
-    @Test
-    public void handleError_400_이외_발생시() throws IOException {
+    @DisplayName("handleError 5XX 발생시")
+    @ParameterizedTest
+    @CsvSource(value = {"500", "511"})
+    void handleError_5XX(int statusCode) throws JsonProcessingException {
         //given
-        List<HttpStatus> http4XXExceptBadRequest = Arrays.stream(HttpStatus.values())
-                .filter(HttpStatus::is4xxClientError)
-                .filter(status -> status.value() != 400)
-                .collect(Collectors.toList());
+        HttpStatus status5XX = HttpStatus.valueOf(statusCode);
+        String responseBody = MockResponse.getExceptionResponseBody(status5XX.getReasonPhrase(), status5XX);
 
-        List<String> mockBodies = http4XXExceptBadRequest.stream()
-                .map(status -> MockResponse.getExceptionResponseBody(status.getReasonPhrase(), status))
-                .collect(Collectors.toList());
+        ClientHttpResponse response = new MockClientHttpResponse(responseBody.getBytes(), status5XX);
+        RiotExceptionDto riotExceptionDto = new ObjectMapper().readValue(responseBody, RiotExceptionDto.class);
 
-        List<ClientHttpResponse> responses = new ArrayList<>();
-        for (int i = 0; i < http4XXExceptBadRequest.size(); i++) {
-            HttpStatus status = http4XXExceptBadRequest.get(i);
-            String mockBody = mockBodies.get(i);
-            responses.add(new MockClientHttpResponse(mockBody.getBytes(), status));
-        }
-
-        //when
         //then
-        responses.forEach(response -> assertThrownBy(response, RiotClientException.class));
+        assertThatThrownBy(() -> riotErrorHandler.handleError(response))
+                .isInstanceOf(RiotServerException.class)
+                .hasMessage(riotExceptionDto.getMessage());
     }
 
+    @DisplayName("Response가 json 타입이 아닌경우")
     @Test
-    public void handleError_5xx_발생시() throws IOException {
+    void notJsonTypeResponse() {
         //given
-        List<HttpStatus> http5xxStatus = Arrays.stream(HttpStatus.values())
-                .filter(HttpStatus::is5xxServerError)
-                .collect(Collectors.toList());
+        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        String notJsonMessage = "not json message";
 
-        List<String> mockBodies = http5xxStatus.stream()
-                .map(status -> MockResponse.getExceptionResponseBody(status.getReasonPhrase(), status))
-                .collect(Collectors.toList());
+        ClientHttpResponse response = new MockClientHttpResponse(notJsonMessage.getBytes(), badRequest);
 
-        List<ClientHttpResponse> responses = new ArrayList<>();
-        for (int i = 0; i < http5xxStatus.size(); i++) {
-            HttpStatus status = http5xxStatus.get(i);
-            String mockBody = mockBodies.get(i);
-            responses.add(new MockClientHttpResponse(mockBody.getBytes(), status));
-        }
-
-        //when
         //then
-        responses.forEach(response -> assertThrownBy(response, RiotServerException.class));
+        assertThatThrownBy(() -> riotErrorHandler.handleError(response))
+                .isInstanceOf(NotJsonTypeException.class)
+                .hasMessage("can't parse exception message");
     }
 
 }

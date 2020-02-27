@@ -15,7 +15,7 @@ import java.time.Duration;
 
 @Configuration
 @Slf4j
-public class DdragonRestTemplateConfing {
+public class DdragonRestTemplateConfig {
 
     @Profile("major")
     @RequiredArgsConstructor

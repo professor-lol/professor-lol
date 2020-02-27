@@ -61,15 +61,12 @@ public class MatchRestTemplateImplTest {
 
     @Test
     public void getMatchList_잘못된_종료_시간값으로_요청() {
-        //given
         String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
 
         MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .endTime(0L)
                 .build();
 
-        //when
-        //then exception
         assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam))
                 .isInstanceOf(NotCorrectInputException.class);
 
@@ -77,14 +74,11 @@ public class MatchRestTemplateImplTest {
 
     @Test
     public void getMatchList_잘못된_시작_시간값으로_요청() {
-        //given
         String encryptedSummonerId = "w94qxPIxhJ2ALZoRItVSwyN6R-CNMXOE1VJwesmrZdAv";
         MatchQueryParam matchQueryParam = MatchQueryParam.builder()
                 .beginTime(15617397445077L)
                 .build();
 
-        //when
-        //then exception
         assertThatThrownBy(() -> matchRestTemplate.getMatchList(encryptedSummonerId, matchQueryParam))
                 .isInstanceOf(RiotClientException.class);
     }
@@ -108,7 +102,6 @@ public class MatchRestTemplateImplTest {
         //given
         Long matchId = 3724003831L;
 
-        //when
         //then exception
         assertThatThrownBy(() -> matchRestTemplate.getMatchByMatchId(matchId))
                 .isInstanceOf(RiotClientException.class);

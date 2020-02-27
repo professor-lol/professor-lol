@@ -11,14 +11,14 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "riot")
 public class RiotProperties {
 
-    private String host;
+    private String host = "";
     private Token token;
 
     @Getter
     @Setter
     public static class Token {
         public static final String KEY = "X-Riot-Token";
-        private String value;
+        private String value = "";
     }
 
 }

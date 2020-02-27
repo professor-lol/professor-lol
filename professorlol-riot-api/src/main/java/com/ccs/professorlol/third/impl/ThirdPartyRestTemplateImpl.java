@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
-//TODO : TEST CODE 작성하기
+//TODO : major TEST CODE 작성하기
 @Slf4j
 public class ThirdPartyRestTemplateImpl implements ThirdPartyRestTemplate {
 
@@ -21,7 +21,7 @@ public class ThirdPartyRestTemplateImpl implements ThirdPartyRestTemplate {
     @Override
     public String getThirdPartyCodeBySummonerId(final String encryptedSummonerId) {
         validateSummonerId(encryptedSummonerId);
-        return restTemplate.getForObject(THIRD_PARTY_CODE_URL, String.class);
+        return restTemplate.getForObject(THIRD_PARTY_CODE_URL, String.class, encryptedSummonerId);
     }
 
     private void validateSummonerId(final String encryptedSummonerId) {
