@@ -72,42 +72,51 @@ subprojects {
             csv.enabled true
         }
 
+        def qDomains = []
+        for(qPattern in "**/QA" .. "**/QZ"){
+            qDomains.add(qPattern+"*")
+        }
+
         afterEvaluate {
             classDirectories.setFrom(files(classDirectories.files.collect {
                 fileTree(dir: it,
                         exclude: [
-                                '**/generated',
                                 '**/*Dto*.*',
                                 '**/*Config*.*',
                                 '**/*Stub*.*',
                                 '**/BaseTimeEntity*.*',
                                 '**/*Properties.*'
-                        ])
+                        ] + qDomains)
             }))
         }
+
         finalizedBy 'jacocoTestCoverageVerification'
     }
 
     jacocoTestCoverageVerification {
+        def qDomains = []
+        for(qPattern in "**.QA" .. "**.QZ"){
+            qDomains.add(qPattern+"*")
+        }
+
         violationRules {
             rule {
                 element = 'CLASS'
 
                 limit {
-                    counter = 'LINE'
+                    counter = 'INSTRUCTION'
                     value = 'COVEREDRATIO'
                     minimum = 0.60
                 }
 
                 // Dto, Stub, config, QClass, Properties, BaseTimeEntity
                 excludes = [
-                        '*.Q*',
                         '*.*Dto*',
                         '*.*Config*',
                         '*.*Stub*',
                         '*.BaseTimeEntity*',
                         '*.*Properties'
-                ]
+                ] + qDomains
             }
 
         }
