@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: major
+    active: local
     include:
       - oauth
 

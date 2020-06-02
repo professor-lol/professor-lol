@@ -10,11 +10,12 @@ import App from './App'
 import router from './router'
 import './api/request'
 import './auth'
+import {store} from "./store/store";
 
 // todo
 // cssVars()
 
-Vue.use(BootstrapVue)
+Vue.use(BootstrapVue);
 
 /* eslint-disable no-new */
 new Vue({
@@ -23,5 +24,6 @@ new Vue({
   template: '<App/>',
   components: {
     App
-  }
-})
+  },
+  store: store
+});
